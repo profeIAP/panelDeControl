@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
-<div style="background-image:url('http://www.mundodopapeldeparede.com.br/wp-content/uploads/2013/05/05629-80-89892_280x231.jpg'); background-repeat:repeat;height:1000px;"
-	
 	<head>
-		<title>Panel de control</title>
+		<title>Saludo</title>
 		<meta charset="utf-8" />
 		{% block cabecera %}
 			<script src="/js/jquery.min.js"></script>
@@ -18,12 +16,14 @@
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
-				    <li id="contacto"><a href="/contactar">Formulario para alumnos</a></li>
-				    <li id="comentarios"><a href="/comentarios">Alumnos</a></li>
-				    <li id="about"><a href="/about">Acerca de</a></li>
+				    <li id="crear"><a href="/maria">Partes</a></li>
+					<li id="oir"><a href="/dictado/escuchar"></a></li>
+					{% if login.isLogged() %}
+						<li id="salir"><a href="/usuario/logout">Cerrar sesión</a></li>
+					{% endif %}
 				</ul>
-				<h3 class="text-muted">Panel de control</h3>
-				<img src="img/logotipodefinitivatititititon.png" height="160" width="160">
+				
+				<img src="img/icono.jpg">
 			</div>
 			
 			{% block cuerpo %} {% endblock %}
@@ -33,6 +33,14 @@
 			$(document).ready(function() {
 				$('ul.nav').find('li').removeAttr('class'); $('li#{% block tabActivo %} {% endblock %}').addClass('active')
 			});
+		</script>
+		<script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			  ga('create', 'UA-38574806-2', 'auto');
+			  ga('send', 'pageview');
 		</script>
 	</body>
 </html>
