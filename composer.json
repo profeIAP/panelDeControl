@@ -9,5 +9,8 @@
     "slim/extras": "*",
 	"twig/twig": "*",
     "swiftmailer/swiftmailer": "5.*"
+  },
+  "require-dev": {
+	"phpunit/phpunit": "4.8.*"
   }
 }

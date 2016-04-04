@@ -100,7 +100,7 @@ $app->get('/borrar', function() use ($app){
 	$q   = $pdo->prepare($sql);
 	$q->execute($valores);
 	
-    $app->redirect('/comentarios');
+    $app->redirect('/');
 }); 
 
 $app->get('/editar', function() use ($app){
