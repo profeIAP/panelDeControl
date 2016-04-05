@@ -99,7 +99,6 @@ $app->get('/borrar', function() use ($app){
 	$pdo = $app->db;
 	$q   = $pdo->prepare($sql);
 	$q->execute($valores);
-
     $app->redirect('/');
 }); 
 
