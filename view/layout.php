@@ -3,6 +3,7 @@
 <div style="background-image:url('http://blog.decoradornet.com.br/wp-content/uploads/2012/10/tiffany-328x205.jpg'); background-repeat:repeat;height:1000px;"
 	
 	<head>
+		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEREQAAAAAAAREQAAAAEREREREREQARERERERERABEAAAAAABEAEQAAAAAAEQARAAAAAAARABEAEQAAABEAEQAQAAAAEQAQABABAAARABABEREAABEAABEQAAAAEQABEQAAAAARABEQAAEREREAEQABEREREQAAAAAAAAAAD4HwAA/D8AAIABAACAAQAAn/kAAJ/5AACf+QAAmfkAAJv5AAC7eQAAsHkAAOP5AADH+QAAjwEAAJwBAAD//wAA" rel="icon" type="image/x-icon" />
 		<title>Panel de control</title>
 		<meta charset="utf-8" />
 		{% block cabecera %}
@@ -10,6 +11,21 @@
 			<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
 			<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 			<link href="/css/jumbotron-narrow.css" rel="stylesheet">
+			<link href="calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET">
+   <style type="text/css">
+   body{
+      font-family: tahoma, verdana, sans-serif;
+   }
+   </style>
+   <script type="text/javascript" src="calendario_dw/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="calendario_dw/calendario_dw.js"></script>
+   
+   <script type="text/javascript">
+   $(document).ready(function(){
+      $(".campofecha").calendarioDW();
+   })
+   </script>
+   
 		{% endblock %}
 		
 	</head>
