@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Saludo</title>
 <div style="background-image:url('http://blog.decoradornet.com.br/wp-content/uploads/2012/10/tiffany-328x205.jpg'); background-repeat:repeat;height:1000px;"
 	
 	<head>
@@ -36,14 +34,12 @@
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
-				    <li id="crear"><a href="/maria">Partes</a></li>
-					<li id="oir"><a href="/dictado/escuchar"></a></li>
-					{% if login.isLogged() %}
-						<li id="salir"><a href="/usuario/logout">Cerrar sesión</a></li>
-					{% endif %}
+				    <li id="contacto"><a href="/contactar">Formulario para alumnos</a></li>
+				    <li id="comentarios"><a href="/comentarios">Alumnos</a></li>
+				    <li id="about"><a href="/about">Acerca de</a></li>
 				</ul>
-				
-				<img src="img/icono.jpg">
+				<h3 class="text-muted">Panel de control</h3>
+				<img src="img/logotipodefinitivatititititon.png" height="160" width="160">
 			</div>
 			
 			{% block cuerpo %} {% endblock %}
@@ -53,14 +49,6 @@
 			$(document).ready(function() {
 				$('ul.nav').find('li').removeAttr('class'); $('li#{% block tabActivo %} {% endblock %}').addClass('active')
 			});
-		</script>
-		<script>
-			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			  ga('create', 'UA-38574806-2', 'auto');
-			  ga('send', 'pageview');
 		</script>
 	</body>
 </html>
