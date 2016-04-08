@@ -99,8 +99,7 @@ $app->get('/borrar', function() use ($app){
 	$pdo = $app->db;
 	$q   = $pdo->prepare($sql);
 	$q->execute($valores);
-	
-    $app->redirect('/comentarios');
+    $app->redirect('/');
 }); 
 
 $app->get('/editar', function() use ($app){
@@ -120,6 +119,7 @@ $app->get('/editar', function() use ($app){
 
     echo $twig->render('alumno.php',$valores);  	
 }); 
+
 
 $app->get('/contactar', function() use ($app){
     global $twig;
