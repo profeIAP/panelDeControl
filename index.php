@@ -86,6 +86,10 @@ $app->get('/about', function() use ($app){
     global $twig;
     echo $twig->render('about.php');  
 }); 
+$app->get('/partes', function() use ($app){
+    global $twig;
+    echo $twig->render('partes.php');  
+}); 
 
 $app->get('/borrar', function() use ($app){
 	

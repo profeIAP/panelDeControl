@@ -36,6 +36,7 @@
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
 				    <li id="contacto"><a href="/contactar">Formulario para alumnos</a></li>
 				    <li id="comentarios"><a href="/comentarios">Alumnos</a></li>
+				    <li id="partes"><a href="/partes">Partes</a></li>
 				    <li id="about"><a href="/about">Acerca de</a></li>
 				</ul>
 				<h3 class="text-muted">Panel de control</h3>
