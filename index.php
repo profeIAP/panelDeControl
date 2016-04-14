@@ -77,8 +77,19 @@ $app->get('/comentarios', function() use ($app){
     $r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
 		
 	$valores=array('comentarios'=>$r);
-
     echo $twig->render('comentarios.php',$valores);  
+    
+}); 
+
+$app->get('/notificaciones', function() use ($app){
+    global $twig;
+    
+    $pdo=$app->db;
+    $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+		
+	$valores=array('notificaciones'=>$r);
+
+    echo $twig->render('notificaciones.php',$valores);  
     
 }); 
 
