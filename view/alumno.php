@@ -35,7 +35,7 @@
 		</div>
 		<div class="form-group">
 			<label for="telefono">Teléfono:</label>
-			<input type="text" class="form-control" id="telefono" name="telefono"  value="{{comentario.TELEFONO}}">
+			<input type="text" class="campofecha" id="telefono" name="telefono" size="12" value="{{comentario.TELEFONO}}">
 		</div>
 		<div class="form-group">
 			<label for="comentario">Comentario:</label>
