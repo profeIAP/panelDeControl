@@ -70,13 +70,13 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
-$app->get('/comentarios', function() use ($app){
+$app->get('/alumnos', function() use ($app){
     global $twig;
     
     $pdo=$app->db;
     $r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
 		
-	$valores=array('comentarios'=>$r);
+	$valores=array('alumno'=>$r);
     echo $twig->render('comentarios.php',$valores);  
     
 }); 
@@ -130,7 +130,7 @@ $app->get('/editar', function() use ($app){
     $q->execute($valores);
     $r=$q->fetch(PDO::FETCH_ASSOC);
 		
-	$valores=array('comentario'=>$r);
+	$valores=array('alumno'=>$r);
 
     echo $twig->render('alumno.php',$valores);  	
 }); 
