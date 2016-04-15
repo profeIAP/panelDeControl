@@ -70,155 +70,130 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
-$app->get('/alumnos', function() use ($app){
-    global $twig;
-    
-    $pdo=$app->db;
-    $r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
-		
-	$valores=array('alumno'=>$r);
-    echo $twig->render('comentarios.php',$valores);  
-    
-}); 
+$app->group('/alumnos', function () use ($app) {
 
-$app->get('/notificaciones', function() use ($app){
-    global $twig;
-    
-    $pdo=$app->db;
-    $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+    $app->get('/', function() use ($app){
+		global $twig;
 		
-	$valores=array('notificaciones'=>$r);
+		$pdo=$app->db;
+		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('alumno'=>$r);
+		echo $twig->render('comentarios.php',$valores);  
+	}); 
+	
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from alumno WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/');
+	}); 
+	
+	$app->get('/editar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$pdo=$app->db;
+		$q = $pdo->prepare("select * from alumno where id=:id");
+		$q->execute($valores);
+		$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+		$valores=array('alumno'=>$r);
 
-    echo $twig->render('notificaciones.php',$valores);  
-    
-}); 
+		echo $twig->render('alumno.php',$valores);  	
+	}); 
+	
+	$app->post('/guardar', function() use ($app){
+	
+		global $twig;
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'nombre'=>$app->request()->post('nombre'),
+			'email'=>$app->request()->post('email'),		
+			'direccion'=>$app->request()->post('direccion'),	
+			'telefono'=>$app->request()->post('telefono'),	
+			'comentario'=>$app->request()->post('comentario')
+		);
+
+		if($valores['id']){
+			$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario WHERE ID=:id";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/comentarios');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario) VALUES (:nombre, :email, :direccion, :telefono, :comentario)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			echo $twig->render('agradecimiento.php',$valores); 
+		}
+
+	}); 
+
+});
+
+$app->group('/notificaciones', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('notificaciones'=>$r);
+
+		echo $twig->render('notificaciones.php',$valores);  
+		
+	}); 
+});
+
+$app->group('/partes', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		echo $twig->render('partes.php');  
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('parte.php');  
+	}); 
+});
+
 
 $app->get('/about', function() use ($app){
-    global $twig;
-    echo $twig->render('about.php');  
-}); 
-$app->get('/partes', function() use ($app){
-    global $twig;
-    echo $twig->render('partes.php');  
-}); 
-
-$app->get('/parte', function() use ($app){
-    global $twig;
-    echo $twig->render('parte.php');  
-}); 
-
-$app->get('/borrar', function() use ($app){
-	
-    global $twig;
-    
-    $valores=array(
-		"id"=>$app->request()->get('id')
-	);
-	
-	$sql = "delete from alumno WHERE ID=:id";
-	$pdo = $app->db;
-	$q   = $pdo->prepare($sql);
-	$q->execute($valores);
-    $app->redirect('/');
-}); 
-
-$app->get('/editar', function() use ($app){
-	
-    global $twig;
-    
-    $valores=array(
-		"id"=>$app->request()->get('id')
-	);
-	
-	$pdo=$app->db;
-    $q = $pdo->prepare("select * from alumno where id=:id");
-    $q->execute($valores);
-    $r=$q->fetch(PDO::FETCH_ASSOC);
-		
-	$valores=array('alumno'=>$r);
-
-    echo $twig->render('alumno.php',$valores);  	
+	global $twig;
+	echo $twig->render('about.php');  
 }); 
 
 
 $app->get('/contactar', function() use ($app){
     global $twig;
     echo $twig->render('alumno.php');  
-}); 
-
-$app->post('/guardarUsuario', function() use ($app){
-	
-    global $twig;
-    
-    // Recogemos datos formulario de contacto
-    
-    $valores=array(
-		'id'=>$app->request()->post('id'),
-		'nombre'=>$app->request()->post('nombre'),
-		'email'=>$app->request()->post('email'),			
-		'clave'=>$app->request()->post('clave')
-    );
-
-	if($valores['id']){
-		$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, CLAVE=:clave WHERE ID=:id";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-		
-		$app->redirect('/comentarios');
-	}
-	else
-	{
-		unset($valores['id']);
-		
-		$sql = "INSERT INTO alumno (nombre, email, clave) VALUES (:nombre, :email, :clave)";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-	
-		// Mostramos un mensaje al usuario
-		
-		echo $twig->render('agradecimiento.php',$valores); 
-	}
-
-}); 
-$app->post('/guardarSugerencia', function() use ($app){
-	
-    global $twig;
-    
-    // Recogemos datos formulario de contacto
-    
-    $valores=array(
-		'id'=>$app->request()->post('id'),
-		'nombre'=>$app->request()->post('nombre'),
-		'email'=>$app->request()->post('email'),		
-		'direccion'=>$app->request()->post('direccion'),	
-		'telefono'=>$app->request()->post('telefono'),	
-		'comentario'=>$app->request()->post('comentario')
-    );
-
-	if($valores['id']){
-		$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario WHERE ID=:id";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-		
-		$app->redirect('/comentarios');
-	}
-	else
-	{
-		unset($valores['id']);
-		
-		$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario) VALUES (:nombre, :email, :direccion, :telefono, :comentario)";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-	
-		// Mostramos un mensaje al usuario
-		
-		echo $twig->render('agradecimiento.php',$valores); 
-	}
-
 }); 
 
 // Ponemos en marcha el router

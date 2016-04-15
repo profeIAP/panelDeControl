@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<div style="background-image:url('http://www.mundodopapeldeparede.com.br/wp-content/uploads/2013/05/05629-80-89892_280x231.jpg'); background-repeat:repeat;height:1000px;"
-=======
-
->>>>>>> bc3eef999523a4e235054c22b0af00a7bb89f0c7
 	
 	<head>
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEREQAAAAAAAREQAAAAEREREREREQARERERERERABEAAAAAABEAEQAAAAAAEQARAAAAAAARABEAEQAAABEAEQAQAAAAEQAQABABAAARABABEREAABEAABEQAAAAEQABEQAAAAARABEQAAEREREAEQABEREREQAAAAAAAAAAD4HwAA/D8AAIABAACAAQAAn/kAAJ/5AACf+QAAmfkAAJv5AAC7eQAAsHkAAOP5AADH+QAAjwEAAJwBAAD//wAA" rel="icon" type="image/x-icon" />
@@ -42,7 +37,7 @@
 				    <li id="notificaciones"><a href="/notificaciones">Notificaciones</a></li>
 				    <li id="alumnos"><a href="/alumnos">Alumnos</a></li>
 				    <li id="partes"><a href="/partes">Partes</a></li>
-				    <li id="parte"><a href="/parte">Crear Partes</a></li>
+				    <li id="parte"><a href="/partes/crear">Crear Parte</a></li>
 				    <li id="about"><a href="/about">Acerca de</a></li>
 				</ul>
 				<h3 class="text-muted">Panel de control</h3>
