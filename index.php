@@ -141,6 +141,42 @@ $app->get('/contactar', function() use ($app){
     echo $twig->render('alumno.php');  
 }); 
 
+$app->post('/guardarUsuario', function() use ($app){
+	
+    global $twig;
+    
+    // Recogemos datos formulario de contacto
+    
+    $valores=array(
+		'id'=>$app->request()->post('id'),
+		'nombre'=>$app->request()->post('nombre'),
+		'email'=>$app->request()->post('email'),			
+		'clave'=>$app->request()->post('clave')
+    );
+
+	if($valores['id']){
+		$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, CLAVE=:clave WHERE ID=:id";
+		$pdo=$app->db;
+		$q = $pdo->prepare($sql);
+		$q->execute($valores);
+		
+		$app->redirect('/comentarios');
+	}
+	else
+	{
+		unset($valores['id']);
+		
+		$sql = "INSERT INTO alumno (nombre, email, clave) VALUES (:nombre, :email, :clave)";
+		$pdo=$app->db;
+		$q = $pdo->prepare($sql);
+		$q->execute($valores);
+	
+		// Mostramos un mensaje al usuario
+		
+		echo $twig->render('agradecimiento.php',$valores); 
+	}
+
+}); 
 $app->post('/guardarSugerencia', function() use ($app){
 	
     global $twig;
