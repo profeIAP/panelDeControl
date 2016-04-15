@@ -102,6 +102,11 @@ $app->get('/partes', function() use ($app){
     echo $twig->render('partes.php');  
 }); 
 
+$app->get('/parte', function() use ($app){
+    global $twig;
+    echo $twig->render('parte.php');  
+}); 
+
 $app->get('/borrar', function() use ($app){
 	
     global $twig;
