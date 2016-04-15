@@ -10,14 +10,14 @@
 			<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
 			<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 			<link href="/css/jumbotron-narrow.css" rel="stylesheet">
-			<link href="css/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET">
+			<link href="/css/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET">
    <style type="text/css">
    body{
       font-family: tahoma, verdana, sans-serif;
    }
    </style>
-   <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
-   <script type="text/javascript" src="js/calendario_dw.js"></script>
+   <script type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
+   <script type="text/javascript" src="/js/calendario_dw.js"></script>
    
    <script type="text/javascript">
    $(document).ready(function(){
@@ -33,7 +33,7 @@
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
-				    <li id="contacto"><a href="/contactar">Formulario para alumnos</a></li>
+				    <li id="contacto"><a href="/alumnos/crear">Formulario para alumnos</a></li>
 				    <li id="notificaciones"><a href="/notificaciones">Notificaciones</a></li>
 				    <li id="alumnos"><a href="/alumnos">Alumnos</a></li>
 				    <li id="partes"><a href="/partes">Partes</a></li>
@@ -41,7 +41,7 @@
 				    <li id="about"><a href="/about">Acerca de</a></li>
 				</ul>
 				<h3 class="text-muted">Panel de control</h3>
-				<img src="img/logotipodefinitivatititititon.png" height="160" width="160">
+				<img src="/img/logotipodefinitivatititititon.png" height="160" width="160">
 			</div>
 			
 			{% block cuerpo %} {% endblock %}

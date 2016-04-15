@@ -154,6 +154,10 @@ $app->group('/alumnos', function () use ($app) {
 
 	}); 
 
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('alumno.php');  
+	}); 
 });
 
 $app->group('/notificaciones', function () use ($app) {
@@ -188,12 +192,6 @@ $app->group('/partes', function () use ($app) {
 $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
-}); 
-
-
-$app->get('/contactar', function() use ($app){
-    global $twig;
-    echo $twig->render('alumno.php');  
 }); 
 
 // Ponemos en marcha el router

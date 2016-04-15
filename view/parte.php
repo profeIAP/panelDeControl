@@ -5,7 +5,7 @@
 {% block cuerpo %}
 
 <h1></h1>
-	<form novalidate="true" class="jotform-form" action="/guardarParte" method="post" name="form_60212753776356" id="60212753776356" accept-charset="utf-8">
+	<form novalidate="true" class="jotform-form" action="/partes/guardar" method="post" name="form_60212753776356" id="60212753776356" accept-charset="utf-8">
   <input name="formID" value="60212753776356" type="hidden">
   <div class="form-all">
     <ul class="form-section page-section">

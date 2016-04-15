@@ -17,7 +17,7 @@
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
 
-<form method="post" action="/guardar" role="form">
+<form method="post" action="/alumnos/guardar" role="form">
 		
 		<input type="hidden" name="id" value="{{comentario.ID}}"/>
 		
