@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <<<<<<< HEAD
-<div style="background-image:url('http://blog.decoradornet.com.br/wp-content/uploads/2012/10/tiffany-328x205.jpg'); background-repeat:repeat;height:1000px;"
+<div style="background-image:url('http://www.mundodopapeldeparede.com.br/wp-content/uploads/2013/05/05629-80-89892_280x231.jpg'); background-repeat:repeat;height:1000px;"
 =======
 
 >>>>>>> bc3eef999523a4e235054c22b0af00a7bb89f0c7
