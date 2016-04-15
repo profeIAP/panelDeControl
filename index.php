@@ -70,21 +70,36 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
-$app->get('/comentarios', function() use ($app){
+$app->get('/alumnos', function() use ($app){
     global $twig;
     
     $pdo=$app->db;
     $r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
 		
-	$valores=array('comentarios'=>$r);
-
+	$valores=array('alumno'=>$r);
     echo $twig->render('comentarios.php',$valores);  
+    
+}); 
+
+$app->get('/notificaciones', function() use ($app){
+    global $twig;
+    
+    $pdo=$app->db;
+    $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+		
+	$valores=array('notificaciones'=>$r);
+
+    echo $twig->render('notificaciones.php',$valores);  
     
 }); 
 
 $app->get('/about', function() use ($app){
     global $twig;
     echo $twig->render('about.php');  
+}); 
+$app->get('/partes', function() use ($app){
+    global $twig;
+    echo $twig->render('partes.php');  
 }); 
 
 $app->get('/borrar', function() use ($app){
@@ -99,8 +114,7 @@ $app->get('/borrar', function() use ($app){
 	$pdo = $app->db;
 	$q   = $pdo->prepare($sql);
 	$q->execute($valores);
-	
-    $app->redirect('/comentarios');
+    $app->redirect('/');
 }); 
 
 $app->get('/editar', function() use ($app){
@@ -116,10 +130,11 @@ $app->get('/editar', function() use ($app){
     $q->execute($valores);
     $r=$q->fetch(PDO::FETCH_ASSOC);
 		
-	$valores=array('comentario'=>$r);
+	$valores=array('alumno'=>$r);
 
     echo $twig->render('alumno.php',$valores);  	
 }); 
+
 
 $app->get('/contactar', function() use ($app){
     global $twig;

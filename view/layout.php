@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<div style="background-image:url('http://www.mundodopapeldeparede.com.br/wp-content/uploads/2013/05/05629-80-89892_280x231.jpg'); background-repeat:repeat;height:1000px;"
+
 	
 	<head>
+		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEREQAAAAAAAREQAAAAEREREREREQARERERERERABEAAAAAABEAEQAAAAAAEQARAAAAAAARABEAEQAAABEAEQAQAAAAEQAQABABAAARABABEREAABEAABEQAAAAEQABEQAAAAARABEQAAEREREAEQABEREREQAAAAAAAAAAD4HwAA/D8AAIABAACAAQAAn/kAAJ/5AACf+QAAmfkAAJv5AAC7eQAAsHkAAOP5AADH+QAAjwEAAJwBAAD//wAA" rel="icon" type="image/x-icon" />
 		<title>Panel de control</title>
 		<meta charset="utf-8" />
 		{% block cabecera %}
@@ -34,7 +35,9 @@
 				<ul class="nav nav-pills pull-right">
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
 				    <li id="contacto"><a href="/contactar">Formulario para alumnos</a></li>
-				    <li id="comentarios"><a href="/comentarios">Alumnos</a></li>
+				    <li id="notificaciones"><a href="/notificaciones">Notificaciones</a></li>
+				    <li id="alumnos"><a href="/alumnos">Alumnos</a></li>
+				    <li id="partes"><a href="/partes">Partes</a></li>
 				    <li id="about"><a href="/about">Acerca de</a></li>
 				</ul>
 				<h3 class="text-muted">Panel de control</h3>
