@@ -76,7 +76,7 @@ $app->get('/alumnos', function() use ($app){
     $pdo=$app->db;
     $r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
 		
-	$valores=array('alumno'=>$r);
+	$valores=array('comentario'=>$r);
     echo $twig->render('comentarios.php',$valores);  
     
 }); 
@@ -130,7 +130,7 @@ $app->get('/editar', function() use ($app){
     $q->execute($valores);
     $r=$q->fetch(PDO::FETCH_ASSOC);
 		
-	$valores=array('alumno'=>$r);
+	$valores=array('comentario'=>$r);
 
     echo $twig->render('alumno.php',$valores);  	
 }); 
@@ -162,7 +162,7 @@ $app->post('/guardarSugerencia', function() use ($app){
 		$q = $pdo->prepare($sql);
 		$q->execute($valores);
 		
-		$app->redirect('/comentarios');
+		$app->redirect('/alumnos');
 	}
 	else
 	{
