@@ -70,20 +70,7 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
-<<<<<<< HEAD
-$app->get('/alumnos', function() use ($app){
-    global $twig;
-    
-    $pdo=$app->db;
-    $r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
-		
-	$valores=array('comentario'=>$r);
-    echo $twig->render('comentarios.php',$valores);  
-    
-}); 
-=======
 $app->group('/alumnos', function () use ($app) {
->>>>>>> 058c02f9d6d0cb81a3b37c9fe0e4ad0ed052ed06
 
     $app->get('/', function() use ($app){
 		global $twig;
@@ -91,7 +78,7 @@ $app->group('/alumnos', function () use ($app) {
 		$pdo=$app->db;
 		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
 			
-		$valores=array('alumno'=>$r);
+		$valores=array('comentarios'=>$r);
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
 	
@@ -118,16 +105,12 @@ $app->group('/alumnos', function () use ($app) {
 			"id"=>$app->request()->get('id')
 		);
 		
-<<<<<<< HEAD
-	$valores=array('comentario'=>$r);
-=======
 		$pdo=$app->db;
 		$q = $pdo->prepare("select * from alumno where id=:id");
 		$q->execute($valores);
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
-		$valores=array('alumno'=>$r);
->>>>>>> 058c02f9d6d0cb81a3b37c9fe0e4ad0ed052ed06
+		$valores=array('comentario'=>$r);
 
 		echo $twig->render('alumno.php',$valores);  	
 	}); 
@@ -179,35 +162,8 @@ $app->group('/alumnos', function () use ($app) {
 
 $app->group('/notificaciones', function () use ($app) {
 	
-<<<<<<< HEAD
-    global $twig;
-    
-    // Recogemos datos formulario de contacto
-    
-    $valores=array(
-		'id'=>$app->request()->post('id'),
-		'nombre'=>$app->request()->post('nombre'),
-		'email'=>$app->request()->post('email'),		
-		'direccion'=>$app->request()->post('direccion'),	
-		'telefono'=>$app->request()->post('telefono'),	
-		'comentario'=>$app->request()->post('comentario')
-    );
-
-	if($valores['id']){
-		$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario WHERE ID=:id";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-		
-		$app->redirect('/alumnos');
-	}
-	else
-	{
-		unset($valores['id']);
-=======
 	$app->get('/', function() use ($app){
 		global $twig;
->>>>>>> 058c02f9d6d0cb81a3b37c9fe0e4ad0ed052ed06
 		
 		$pdo=$app->db;
 		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
