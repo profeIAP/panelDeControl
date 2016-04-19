@@ -41,7 +41,7 @@
 				    <li id="about"><a href="/about">Acerca de</a></li>
 				</ul>
 				<h3 class="text-muted">Panel de control</h3>
-				<img src="/img/logotipodefinitivatititititon.png" height="160" width="160">
+				<img src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg" src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg"
 			</div>
 			
 			{% block cuerpo %} {% endblock %}
