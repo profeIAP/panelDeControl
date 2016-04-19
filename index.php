@@ -78,7 +78,7 @@ $app->group('/alumnos', function () use ($app) {
 		$pdo=$app->db;
 		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
 			
-		$valores=array('alumno'=>$r);
+		$valores=array('comentarios'=>$r);
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
 	
@@ -110,7 +110,7 @@ $app->group('/alumnos', function () use ($app) {
 		$q->execute($valores);
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
-		$valores=array('alumno'=>$r);
+		$valores=array('comentario'=>$r);
 
 		echo $twig->render('alumno.php',$valores);  	
 	}); 
