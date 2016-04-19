@@ -173,6 +173,20 @@ $app->group('/notificaciones', function () use ($app) {
 		echo $twig->render('notificaciones.php',$valores);  
 		
 	}); 
+	
+	$app -> get('/rss', function() use ($app) {
+		
+	     global $twig;
+     
+		 $pdo=$app->db;
+		 #$app->response->headers->set('Content-Type', 'text/xml');
+		 
+		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		echo $twig->render('rss.php', array('items' => $r));
+	});
+
+	
 });
 
 $app->group('/partes', function () use ($app) {
@@ -196,6 +210,4 @@ $app->get('/about', function() use ($app){
 
 // Ponemos en marcha el router
 $app->run();
-
 ?>
-
