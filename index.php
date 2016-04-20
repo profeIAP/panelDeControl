@@ -159,6 +159,94 @@ $app->group('/alumnos', function () use ($app) {
 		echo $twig->render('alumno.php');  
 	}); 
 });
+$app->group('/usuario', function () use ($app) {
+
+    $app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('usuario'=>$r);
+		echo $twig->render('comentarios.php',$valores);  
+	}); 
+	//cambiar alumno por usuario
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from alumno WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/');
+	}); 
+	
+	$app->get('/editarusuario', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$pdo=$app->db;
+		$q = $pdo->prepare("select * from usuario where id=:id");
+		$q->execute($valores);
+		$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+		$valores=array('usuario'=>$r);
+
+		echo $twig->render('alumno.php',$valores);  	
+	}); 
+	
+	$app->post('/guardar', function() use ($app){
+	
+		global $twig;
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'nombre'=>$app->request()->post('nombre'),
+			'email'=>$app->request()->post('email'),		
+			'clave'=>$app->request()->post('clave'),	
+			
+		);
+
+		if($valores['id']){
+			$sql = "update usuario set NOMBRE=:nombre, EMAIL=:email, CLAVE=:clave WHERE ID=:id";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/comentariosusuario');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO usuario (nombre, email, clave) VALUES (:nombre, :email, :clave)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			echo $twig->render('agradecimiento.php',$valores); 
+		}
+
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('');  
+	}); 
+});
 
 $app->group('/notificaciones', function () use ($app) {
 	
