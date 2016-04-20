@@ -78,7 +78,7 @@ $app->group('/alumnos', function () use ($app) {
 		$pdo=$app->db;
 		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
 			
-		$valores=array('alumno'=>$r);
+		$valores=array('comentarios'=>$r);
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
 	
@@ -110,7 +110,7 @@ $app->group('/alumnos', function () use ($app) {
 		$q->execute($valores);
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
-		$valores=array('alumno'=>$r);
+		$valores=array('comentario'=>$r);
 
 		echo $twig->render('alumno.php',$valores);  	
 	}); 
@@ -261,6 +261,20 @@ $app->group('/notificaciones', function () use ($app) {
 		echo $twig->render('notificaciones.php',$valores);  
 		
 	}); 
+	
+	$app -> get('/rss', function() use ($app) {
+		
+	     global $twig;
+     
+		 $pdo=$app->db;
+		 #$app->response->headers->set('Content-Type', 'text/xml');
+		 
+		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		echo $twig->render('rss.php', array('items' => $r));
+	});
+
+	
 });
 
 $app->group('/partes', function () use ($app) {
@@ -284,6 +298,4 @@ $app->get('/about', function() use ($app){
 
 // Ponemos en marcha el router
 $app->run();
-
 ?>
-
