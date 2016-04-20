@@ -39,6 +39,7 @@
 				    <li id="partes"><a href="/partes">Partes</a></li>
 				    <li id="parte"><a href="/partes/crear">Crear Parte</a></li>
 				    <li id="about"><a href="/about">Acerca de</a></li>
+				    <li id="importar"><a href="/importar">Importar</a></li>
 				</ul>
 				<h3 class="text-muted">Panel de control</h3>
 				<img src="/img/logotipodefinitivatititititon.png" height="160" width="160">
