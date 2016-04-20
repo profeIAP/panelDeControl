@@ -68,168 +68,234 @@ $app->container->singleton('db', function () {
 $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
+}); 
+
+$app->group('/alumnos', function () use ($app) {
+
+    $app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('comentarios'=>$r);
+		echo $twig->render('comentarios.php',$valores);  
+	}); 
+	
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from alumno WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/');
+	}); 
+	
+	$app->get('/editar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$pdo=$app->db;
+		$q = $pdo->prepare("select * from alumno where id=:id");
+		$q->execute($valores);
+		$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+		$valores=array('comentario'=>$r);
+
+		echo $twig->render('alumno.php',$valores);  	
+	}); 
+	
+	$app->post('/guardar', function() use ($app){
+	
+		global $twig;
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'nombre'=>$app->request()->post('nombre'),
+			'email'=>$app->request()->post('email'),		
+			'direccion'=>$app->request()->post('direccion'),	
+			'telefono'=>$app->request()->post('telefono'),	
+			'comentario'=>$app->request()->post('comentario')
+		);
+
+		if($valores['id']){
+			$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario WHERE ID=:id";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/comentarios');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario) VALUES (:nombre, :email, :direccion, :telefono, :comentario)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			echo $twig->render('agradecimiento.php',$valores); 
+		}
+
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('alumno.php');  
+	}); 
+});
+$app->group('/usuario', function () use ($app) {
+
+    $app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('usuario'=>$r);
+		echo $twig->render('comentarios.php',$valores);  
+	}); 
+	//cambiar alumno por usuario
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from usuario WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/');
+	}); 
+	
+	$app->get('/editarusuario', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$pdo=$app->db;
+		$q = $pdo->prepare("select * from usuario where id=:id");
+		$q->execute($valores);
+		$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+		$valores=array('usuario'=>$r);
+
+		echo $twig->render('alumno.php',$valores);  	
+	}); 
+	
+	$app->post('/guardar', function() use ($app){
+	
+		global $twig;
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'nombre'=>$app->request()->post('nombre'),
+			'email'=>$app->request()->post('email'),		
+			'clave'=>$app->request()->post('clave'),	
+			
+		);
+
+		if($valores['id']){
+			$sql = "update usuario set NOMBRE=:nombre, EMAIL=:email, CLAVE=:clave WHERE ID=:id";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/comentariosusuario');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO usuario (nombre, email, clave) VALUES (:nombre, :email, :clave)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			echo $twig->render('agradecimiento.php',$valores); 
+		}
+
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('');  
+	}); 
 });
 
-function import_csv_to_sqlite(&$pdo, $csv_path, $options = array())
-{
-	extract($options);
+$app->group('/notificaciones', function () use ($app) {
 	
-	if (($csv_handle = fopen($csv_path, "r")) === FALSE)
-		throw new Exception('Cannot open CSV file');
+	$app->get('/', function() use ($app){
+		global $twig;
 		
-	if(!$delimiter)
-		$delimiter = ';';
+		$pdo=$app->db;
+		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('notificaciones'=>$r);
+
+		echo $twig->render('notificaciones.php',$valores);  
 		
-	$table = (isset($table) && !empty($table)) ? $table : preg_replace("/[^A-Z0-9]/i", '', basename($csv_path));
+	}); 
 	
-	if(!isset($fields)){
-		$fields = array_map(function ($field){
-			return strtolower(preg_replace("/[^A-Z0-9]/i", '', $field));
-		}, fgetcsv($csv_handle, 0, $delimiter));
-	}
-	
-	$create_fields_str = join(', ', array_map(function ($field){
-		return "$field TEXT NULL";
-	}, $fields));
-	
-	$pdo->beginTransaction();
-	
-	$create_table_sql = "CREATE TABLE IF NOT EXISTS $table ($create_fields_str)";
-	
-	$pdo->exec($create_table_sql);
-	
-	$insert_fields_str = join(', ', $fields);
-	$insert_values_str = join(', ', array_fill(0, count($fields),  '?'));
-	$insert_sql = "INSERT INTO $table ($insert_fields_str) VALUES ($insert_values_str)";
-	$insert_sth = $pdo->prepare($insert_sql);
-	
-	$inserted_rows = 0;
-	while (($data = fgetcsv($csv_handle, 0, $delimiter)) !== FALSE) {
-		$insert_sth->execute($data);
-		$inserted_rows++;
-	}
-	
-	$pdo->commit();
-	
-	fclose($csv_handle);
-	
-	return array(
-			/*'table' => $table,
-			'fields' => $fields,
-			'insert' => $insert_sth,*/
-			'table' => $table,
-			'inserted_rows' => $inserted_rows
-		);
-}
-
-$app->get('/importar', function() use ($app){
-    global $twig;
-    $valores=import_csv_to_sqlite($app->db, "./model/Datos/alumnos", array("delimiter"=>","));
-    echo $twig->render('importar.php',$valores);
-      
-}); 
-
-$app->get('/comentarios', function() use ($app){
-    global $twig;
-    
-    $pdo=$app->db;
-    $r = $pdo->query("select id, nombre, email, direccion, telefono, comentario from alumno")->fetchAll(PDO::FETCH_ASSOC);
+	$app -> get('/rss', function() use ($app) {
 		
-	$valores=array('comentarios'=>$r);
+	     global $twig;
+     
+		 $pdo=$app->db;
+		 #$app->response->headers->set('Content-Type', 'text/xml');
+		 
+		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		echo $twig->render('rss.php', array('items' => $r));
+	});
 
-    echo $twig->render('comentarios.php',$valores);  
-    
-}); 
+	
+});
+
+$app->group('/partes', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		echo $twig->render('partes.php');  
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('parte.php');  
+	}); 
+});
+
 
 $app->get('/about', function() use ($app){
-    global $twig;
-    echo $twig->render('about.php');  
-}); 
-
-$app->get('/borrar', function() use ($app){
-	
-    global $twig;
-    
-    $valores=array(
-		"id"=>$app->request()->get('id')
-	);
-	
-	$sql = "delete from alumno WHERE ID=:id";
-	$pdo = $app->db;
-	$q   = $pdo->prepare($sql);
-	$q->execute($valores);
-    $app->redirect('/');
-});
-
- 
-
-$app->get('/editar', function() use ($app){
-	
-    global $twig;
-    
-    $valores=array(
-		"id"=>$app->request()->get('id')
-	);
-	
-	$pdo=$app->db;
-    $q = $pdo->prepare("select * from alumno where id=:id");
-    $q->execute($valores);
-    $r=$q->fetch(PDO::FETCH_ASSOC);
-		
-	$valores=array('comentario'=>$r);
-
-    echo $twig->render('alumno.php',$valores);  	
-}); 
-
-
-$app->get('/contactar', function() use ($app){
-    global $twig;
-    echo $twig->render('alumno.php');  
-});
-
- 
-
-$app->post('/guardarSugerencia', function() use ($app){
-	
-    global $twig;
-    
-    // Recogemos datos formulario de contacto
-    
-    $valores=array(
-		'id'=>$app->request()->post('id'),
-		'nombre'=>$app->request()->post('nombre'),
-		'email'=>$app->request()->post('email'),		
-		'direccion'=>$app->request()->post('direccion'),	
-		'telefono'=>$app->request()->post('telefono'),	
-		'comentario'=>$app->request()->post('comentario')
-    );
-
-	if($valores['id']){
-		$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario WHERE ID=:id";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-		
-		$app->redirect('/comentarios');
-	}
-	else
-	{
-		unset($valores['id']);
-		
-		$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario) VALUES (:nombre, :email, :direccion, :telefono, :comentario)";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-	
-		// Mostramos un mensaje al usuario
-		
-		echo $twig->render('agradecimiento.php',$valores); 
-	}
-
+	global $twig;
+	echo $twig->render('about.php');  
 }); 
 
 // Ponemos en marcha el router
 $app->run();
-
 ?>
-
