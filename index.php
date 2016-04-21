@@ -1,21 +1,29 @@
 
 <?php 
 // ------------------------------------------------------------------------------------------------
+//
 // SLIM
+//
 // [http://goo.gl/7KR4vx] Documentación oficial 
 // [http://goo.gl/E2hriJ] Uso avanzado de Slim 
 // [http://goo.gl/KMglou] Añadir Middleware a determinada ruta (o cómo comprobar está logado)
 // [http://goo.gl/n2Q2Zk] Métodos (get, post, delete, ...) válidos en el enrutamiento
 // [http://goo.gl/DYkgGd] Cómo mostrar flash() y error() en la Vista
 // [http://goo.gl/UzoaCi] Slim MVC framework
+//
 // VISTA
+//
 // [http://goo.gl/hU1AVD] BootStrap
 // [http://goo.gl/ikw3Cv] Herencia en las Vistas con Twing
+//
 // VARIOS
+//
 // [http://goo.gl/wxnSy]  PDO
 // [http://goo.gl/pAsYSf] swiftmailer/swiftmailer con composer y "composer update"
 // [http://goo.gl/Ld7VXw] Servidor NGINX
+//
 // GESTION DE USUARIOS
+//
 // [http://goo.gl/8GIxET] Gestión de sesión de usuario con Slim
 // [http://goo.gl/sSJYcd] Control clásico de sesión de usuario en PHP
 // [http://goo.gl/meF6p8] Autenticación y XSS con SlimExtra
@@ -27,13 +35,18 @@
 // [http://goo.gl/53iEcN] oAuth con Slim
 // [http://goo.gl/PXt2YG] Otra implementación de oAuth
 // ------------------------------------------------------------------------------------------------
+
 // DUDA funcionará flash() y error() tras poner session_start() antes de header()
+
 session_cache_limiter(false);	
 session_start();
 header('Content-type: text/html; charset=utf-8');
+
 require 	 'vendor/autoload.php';
 require_once 'controller/Utils.php';
+
 Twig_Autoloader::register();  
+
 $app = new \Slim\Slim(
 		array(
 			//'debug' => true,
@@ -42,8 +55,9 @@ $app = new \Slim\Slim(
 	);
 	
 $loader = new Twig_Loader_Filesystem('./view');  
+
 $twig = new Twig_Environment($loader, array(  
-//'cache' => 'cache',  
+	//'cache' => 'cache',  
 ));  
       
 $app->container->singleton('db', function () {
@@ -54,7 +68,9 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
+
 $app->group('/alumno', function () use ($app) {
+	
     $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -109,12 +125,13 @@ $app->group('/alumno', function () use ($app) {
 			'email'=>$app->request()->post('email'),		
 			'direccion'=>$app->request()->post('direccion'),	
 			'telefono'=>$app->request()->post('telefono'),	
-			'comentario'=>$app->request()->post('comentario')
+			'comentario'=>$app->request()->post('comentario'),
 			'localidad'=>$app->request()->post('localidad'),		
 			'provincia'=>$app->request()->post('provincia'),	
 			'dni_tutor'=>$app->request()->post('dni_tutor'),	
 			'curso'=>$app->request()->post('curso')
 		);
+		
 		if($valores['id']){
 			$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario, LOCALIDAD=:localidad, PROVINCIA=:provincia, DNI_TUTOR=:dni_tutor, CURSO=:curso WHERE ID=:id ";
 			$pdo=$app->db;
@@ -137,12 +154,15 @@ $app->group('/alumno', function () use ($app) {
 			echo $twig->render('agradecimiento.php',$valores); 
 		}
 	}); 
+
 	$app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('alumno.php');  
 	}); 
 });
+
 $app->group('/usuario', function () use ($app) {
+	
     $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -152,6 +172,7 @@ $app->group('/usuario', function () use ($app) {
 		$valores=array('usuario'=>$r);
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
+	
 	//cambiar alumno por usuario
 	$app->get('/borrar', function() use ($app){
 	
@@ -167,7 +188,8 @@ $app->group('/usuario', function () use ($app) {
 		$q->execute($valores);
 		$app->redirect('/');
 	}); 
-	  $app->get('/', function() use ($app){
+	
+	$app->get('/', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
@@ -207,6 +229,7 @@ $app->group('/usuario', function () use ($app) {
 			'clave'=>$app->request()->post('clave'),	
 			
 		);
+		
 		if($valores['id']){
 			$sql = "update usuario set NOMBRE=:nombre, EMAIL=:email, CLAVE=:clave WHERE ID=:id";
 			$pdo=$app->db;
@@ -229,11 +252,13 @@ $app->group('/usuario', function () use ($app) {
 			echo $twig->render('agradecimiento.php',$valores); 
 		}
 	}); 
+
 	$app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('');  
 	}); 
 });
+
 $app->group('/notificaciones', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
@@ -260,23 +285,27 @@ $app->group('/notificaciones', function () use ($app) {
 	});
 	
 });
+
 $app->group('/partes', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
 		global $twig;
 		echo $twig->render('partes.php');  
 	}); 
+
 	$app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('parte.php');  
 	}); 
 });
+
 $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
-function import_csv_to_sqlite(&$pdo, $csv_path, $options = array())
-{
+
+function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
+	
 	extract($options);
 	
 	if (($csv_handle = fopen($csv_path, "r")) === FALSE)
@@ -326,12 +355,15 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array())
 			'inserted_rows' => $inserted_rows
 		);
 }
+
 $app->get('/importar', function() use ($app){
     global $twig;
-    $valores=import_csv_to_sqlite($app->db, "./model/Datos/alumnos", array("delimiter"=>","));
+    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
     echo $twig->render('importar.php',$valores);
       
 }); 
+
 // Ponemos en marcha el router
 $app->run();
+
 ?>
