@@ -163,6 +163,15 @@ $app->group('/usuario', function () use ($app) {
 		$q->execute($valores);
 		$app->redirect('/');
 	}); 
+	  $app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('usuario'=>$r);
+		echo $twig->render('comentarios.php',$valores);  
+	}); 
 	
 	$app->get('/editarusuario', function() use ($app){
 	
