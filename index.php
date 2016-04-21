@@ -154,7 +154,7 @@ $app->group('/alumnos', function () use ($app) {
 
 	}); 
 
-	$app->get('/crear', function() use ($app){
+	$app->get('/contactar', function() use ($app){
 		global $twig;
 		echo $twig->render('alumno.php');  
 	}); 
