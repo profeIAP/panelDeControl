@@ -54,7 +54,13 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
+<<<<<<< HEAD
 $app->group('/alumnos', function () use ($app) {
+=======
+
+$app->group('/alumnos', function () use ($app) {
+
+>>>>>>> a416cab71cacff5b104b6356fd46c1437d6df614
     $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -94,6 +100,10 @@ $app->group('/alumnos', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentario'=>$r);
+<<<<<<< HEAD
+=======
+
+>>>>>>> a416cab71cacff5b104b6356fd46c1437d6df614
 		echo $twig->render('alumno.php',$valores);  	
 	}); 
 	
@@ -111,6 +121,10 @@ $app->group('/alumnos', function () use ($app) {
 			'telefono'=>$app->request()->post('telefono'),	
 			'comentario'=>$app->request()->post('comentario')
 		);
+<<<<<<< HEAD
+=======
+
+>>>>>>> a416cab71cacff5b104b6356fd46c1437d6df614
 		if($valores['id']){
 			$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario WHERE ID=:id";
 			$pdo=$app->db;
@@ -132,6 +146,7 @@ $app->group('/alumnos', function () use ($app) {
 			
 			echo $twig->render('agradecimiento.php',$valores); 
 		}
+<<<<<<< HEAD
 	}); 
 	$app->get('/crear', function() use ($app){
 		global $twig;
@@ -267,12 +282,166 @@ $app->group('/partes', function () use ($app) {
 		echo $twig->render('parte.php');  
 	}); 
 });
+=======
+
+	}); 
+
+	$app->get('/contactar', function() use ($app){
+		global $twig;
+		echo $twig->render('alumno.php');  
+	}); 
+});
+
+$app->group('/notificaciones', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('notificaciones'=>$r);
+
+		echo $twig->render('notificaciones.php',$valores);  
+		
+	}); 
+	
+	$app -> get('/rss', function() use ($app) {
+		
+	     global $twig;
+     
+		 $pdo=$app->db;
+		 #$app->response->headers->set('Content-Type', 'text/xml');
+		 
+		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		echo $twig->render('rss.php', array('items' => $r));
+	});
+
+	
+});
+
+$app->group('/partes', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		echo $twig->render('partes.php');  
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('parte.php');  
+	}); 
+});
+
+$app->group('/usuario', function () use ($app) {
+
+    $app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('usuario'=>$r);
+		echo $twig->render('comentarios.php',$valores);  
+	});
+	 
+	//cambiar alumno por usuario
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from usuario WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/');
+	}); 
+	
+	$app->get('/editarusuario', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$pdo=$app->db;
+		$q = $pdo->prepare("select * from usuario where id=:id");
+		$q->execute($valores);
+		$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+		$valores=array('usuario'=>$r);
+
+		// TODO crear vista para la edición de usuarios e invocarla desde aquí
+		
+		echo $twig->render('alumno.php',$valores);  	
+	}); 
+	
+	$app->post('/guardar', function() use ($app){
+	
+		global $twig;
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'nombre'=>$app->request()->post('nombre'),
+			'email'=>$app->request()->post('email'),		
+			'clave'=>$app->request()->post('clave'),	
+			
+		);
+
+		if($valores['id']){
+			$sql = "update usuario set NOMBRE=:nombre, EMAIL=:email, CLAVE=:clave WHERE ID=:id";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/comentariosusuario');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO usuario (nombre, email, clave) VALUES (:nombre, :email, :clave)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			echo $twig->render('agradecimiento.php',$valores); 
+		}
+
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		
+		//TODO renderizar al formulario de usuarios cuando creemos la vista
+		echo $twig->render('');  
+	}); 
+});
+
+// Cajón "desastre"
+
+>>>>>>> a416cab71cacff5b104b6356fd46c1437d6df614
 $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
+<<<<<<< HEAD
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array())
 {
+=======
+
+function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
+>>>>>>> a416cab71cacff5b104b6356fd46c1437d6df614
 	extract($options);
 	
 	if (($csv_handle = fopen($csv_path, "r")) === FALSE)
@@ -326,8 +495,13 @@ $app->get('/importar', function() use ($app){
     global $twig;
     $valores=import_csv_to_sqlite($app->db, "./model/Datos/alumnos", array("delimiter"=>","));
     echo $twig->render('importar.php',$valores);
+<<<<<<< HEAD
       
 }); 
+=======
+}); 
+
+>>>>>>> a416cab71cacff5b104b6356fd46c1437d6df614
 // Ponemos en marcha el router
 $app->run();
 ?>

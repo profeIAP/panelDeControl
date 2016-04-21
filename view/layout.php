@@ -33,7 +33,7 @@
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
-				    <li id="contacto"><a href="/alumnos/crear">Formulario para alumnos</a></li>
+				    <li id="contacto"><a href="/alumnos/contactar">Alta alumnos</a></li>
 				    <li id="notificaciones"><a href="/notificaciones">Notificaciones</a></li>
 				    <li id="alumnos"><a href="/alumnos">Alumnos</a></li>
 				    <li id="partes"><a href="/partes">Partes</a></li>
