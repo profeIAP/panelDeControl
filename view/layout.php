@@ -35,13 +35,19 @@
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
 				    <li id="contacto"><a href="/alumnos/crear">Formulario para alumnos</a></li>
 				    <li id="notificaciones"><a href="/notificaciones">Notificaciones</a></li>
-				    <li id="alumnos"><a href="/alumnos">Alumnos</a></li>
+				    <li id="alumnos"><a href="/comentarios">Alumnos</a></li>
 				    <li id="partes"><a href="/partes">Partes</a></li>
 				    <li id="parte"><a href="/partes/crear">Crear Parte</a></li>
 				    <li id="about"><a href="/about">Acerca de</a></li>
+				    <li id="importar"><a href="/importar">Importar</a></li>
 				</ul>
+<<<<<<< HEAD
 				<h3 class="text-muted"></h3>
 				<img src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg" src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg"
+=======
+				<h3 class="text-muted">Panel de control</h3>
+				<img src="/img/logo.png" height="160" width="160">
+>>>>>>> 4693640a3c52aab8df67c1d9dc5a2dad319cdfe9
 			</div>
 			
 			{% block cuerpo %} {% endblock %}
