@@ -40,7 +40,7 @@
 				    <li id="parte"><a href="/partes/crear">Crear Parte</a></li>
 				    <li id="about"><a href="/about">Acerca de</a></li>
 				</ul>
-				<h3 class="text-muted">Panel de control</h3>
+				<h3 class="text-muted"></h3>
 				<img src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg" src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg"
 			</div>
 			
