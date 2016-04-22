@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<div style="background-image:url('http://www.mundodopapeldeparede.com.br/wp-content/uploads/2013/05/05629-80-89892_280x231.jpg'); background-repeat:repeat;height:1000px;"
 	
 	<head>
 		<title>Panel de control</title>
