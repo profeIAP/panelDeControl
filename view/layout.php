@@ -33,7 +33,7 @@
 				    <li id="inicio" class="active"><a href="/">Inicio</a></li>
 				    <li id="contacto"><a href="/alumnos/crear">Formulario para alumnos</a></li>
 				    <li id="notificaciones"><a href="/notificaciones">Notificaciones</a></li>
-				    <li id="alumnos"><a href="/alumnos">Alumnos</a></li>
+				    <li id="alumnos"><a href="/comentarios">Alumnos</a></li>
 				    <li id="partes"><a href="/partes">Partes</a></li>
 				    <li id="parte"><a href="/partes/crear">Crear Parte</a></li>
 				    <li id="about"><a href="/about">Acerca de</a></li>
