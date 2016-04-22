@@ -39,13 +39,10 @@
 				    <li id="about"><a href="/about">Acerca de</a></li>
 				    <li id="importar"><a href="/importar">Importar</a></li>
 				</ul>
-<<<<<<< HEAD
-				<h3 class="text-muted"></h3>
-				<img src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg" src="https://raw.githubusercontent.com/pablosaborido/informatica-2bach-c/master/img/icono.jpg"
-=======
+
 				<h3 class="text-muted">Panel de control</h3>
 				<img src="/img/logo.png" height="160" width="160">
->>>>>>> 4693640a3c52aab8df67c1d9dc5a2dad319cdfe9
+
 			</div>
 			
 			
