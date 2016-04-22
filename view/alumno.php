@@ -41,6 +41,22 @@
 			<label for="comentario">Comentario:</label>
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textarea>
 		</div>
+		<div class="form-group">
+			<label for="localidad">Localidad:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="localidad" name="localidad" >{{comentario.COMENTARIO}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="provincia">Provincia:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="provincia" name="provincia" >{{comentario.COMENTARIO}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="dni_tutor">dni_tutor:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="dni_tutor" name="dni_tutor" >{{comentario.COMENTARIO}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="curso">Curso:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="curso" name="curso" >{{comentario.COMENTARIO}}</textarea>
+		</div>
 		
 		<button type="submit" class="btn btn-default">Enviar</button>
 </form>
