@@ -68,12 +68,9 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
-$app->get('/tabla', function() use ($app){
-    global $twig;
-    echo $twig->render('Tabla2.php');  
-}); 
 
-$app->group('/alumno', function () use ($app) {
+
+$app->group('/alumnos', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
