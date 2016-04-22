@@ -147,7 +147,7 @@ $app->group('/alumnos', function () use ($app) {
 		{
 			unset($valores['id']);
 			
-			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso) VALUES (:nombre, :email, :direccion, :telefono, :comentario, :localidad, :provincia, :dni_tutor, :curso,)";
+			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso) VALUES (:nombre, :email, :direccion, :telefono, :comentario, :localidad, :provincia, :dni_tutor, :curso)";
 			$pdo=$app->db;
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
