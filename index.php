@@ -69,7 +69,12 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
+<<<<<<< HEAD
+
+$app->group('/alumnos', function () use ($app) {
+=======
 $app->group('/alumno', function () use ($app) {
+>>>>>>> 99c09c0e6992c6c00e3a9c7226dc2cbdaa0da41b
 	
     $app->get('/', function() use ($app){
 		global $twig;
