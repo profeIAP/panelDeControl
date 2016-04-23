@@ -13,7 +13,7 @@
 {% endif %}
 
 <div class="jumbotron">
-	<h1>Registrese como alumno del I.E.S. Al-Ándalus</h1>
+	<h1>Alta de alumno</h1>
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
 
