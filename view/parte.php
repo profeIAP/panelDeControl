@@ -11,27 +11,27 @@
 
 <form method="post" action="/partes/guardar" role="form">
 		
-		<input type="hidden" name="id" value=""/>
+		<input type="hidden" name="id" value="">
 		
-		<div class="form-group">
+		<div class="form-group col-md-12">
 			<label for="alumnoaImplicado">Alumno/a implicado</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-md-12">
 			<label for="cursoygrupo">Curso y Grupo</label>
-			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo"  value="">
+			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-md-6">
 			<label for="fecha">Fecha:</label>
-			<input type="text" class="form-control" id="fecha" name="fecha"  value="">
+			<input type="text" class="form-control" id="fecha" name="fecha" value="">
 		</div>
-		<div class="form-group">
+		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
-			<input type="text" class="campofecha" id="hora" name="hora" size="12" value="">
+			<input type="text" class="form-control col-md-6" id="hora" name="hora" value=""><a class="botoncal" href="#"><span></span></a>
 		</div>
-		<div class="form-group">
+		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
-			<input type="text" class="control" id="asignatura" name="asignatura" size="12" value="">
+			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
 		</div>
 		
 		<button type="submit" class="btn btn-default">Enviar</button>
