@@ -164,7 +164,7 @@ $app->group('/alumnos', function () use ($app) {
 	}); 
 });
 
-$app->group('/usuario', function () use ($app) {
+$app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -190,16 +190,6 @@ $app->group('/usuario', function () use ($app) {
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
 		$app->redirect('/');
-	}); 
-	
-	$app->get('/', function() use ($app){
-		global $twig;
-		
-		$pdo=$app->db;
-		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
-			
-		$valores=array('usuario'=>$r);
-		echo $twig->render('comentarios.php',$valores);  
 	}); 
 	
 	$app->get('/editarusuario', function() use ($app){
@@ -258,6 +248,7 @@ $app->group('/usuario', function () use ($app) {
 
 	$app->get('/crear', function() use ($app){
 		global $twig;
+		// TODO indicar la vista a renderizar (aun no existe el formulario)
 		echo $twig->render('');  
 	}); 
 });

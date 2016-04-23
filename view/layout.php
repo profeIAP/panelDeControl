@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-	
 	<head>
 		<title>Panel de control</title>
 		<meta charset="utf-8" />
