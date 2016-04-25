@@ -81,6 +81,13 @@ $app->group('/alumnos', function () use ($app) {
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
 	
+	$app->group('/buscar', function () use ($app) {
+		$app->get('/nombre', function() use ($app){
+			global $twig;
+			echo "hola";
+		}); 
+	});
+	
 	$app->get('/borrar', function() use ($app){
 	
 		global $twig;
