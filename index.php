@@ -145,7 +145,7 @@ $app->group('/alumnos', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/comentarios');
+			$app->redirect('/alumnos');
 		}
 		else
 		{
