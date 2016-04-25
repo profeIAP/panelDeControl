@@ -68,6 +68,10 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
+$app->get('/', function() use ($app){
+    global $twig;
+    echo $twig->render('opciones.php');  
+}); 
 
 $app->group('/alumnos', function () use ($app) {
 	
