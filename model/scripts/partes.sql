@@ -5,7 +5,7 @@ CREATE TABLE "Partes" (
     "ID_ALUMNO" INTEGER,
     "CURSO Y GRUPO" TEXT,
 =======
-    "ID_ALUMNO" TEXT,
+    "ID_ALUMNO" INTEGER,
     "GRUPO" TEXT,
 >>>>>>> f79f58a59c9d2e372d87172567cfbeb48d928447
     "FECHA" TEXT,
