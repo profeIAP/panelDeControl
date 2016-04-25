@@ -354,6 +354,11 @@ $app->get('/importar', function() use ($app){
       
 }); 
 
+$app->get('/grafica', function() use ($app){
+    global $twig;
+    echo $twig->render('grafica.php');  
+}); 
+
 // Ponemos en marcha el router
 $app->run();
 

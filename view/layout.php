@@ -30,6 +30,8 @@
     =========================== -->
     <link href='//fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
 
 
     <!--[if IE]>
@@ -127,6 +129,8 @@
                 <div class="col-sm-11 col-md-10 ">
                     <h3 class="mobmid">MENÚ</h3>
 
+                   <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
+                   
                     <p>Alumnos</p>
                     <ul>
 						<li><a href="/alumnos/crear">Crear</a></li>
