@@ -272,7 +272,7 @@ $app->group('/notificaciones', function () use ($app) {
 		
 	}); 
 	
-	$app -> get('/rss', function() use ($app) {
+	$app->get('/rss', function() use ($app) {
 		
 	     global $twig;
      
