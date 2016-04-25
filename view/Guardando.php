@@ -12,11 +12,8 @@
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
 {% endif %}
 
-<div
-  class="jumbotron">
-	<h1>Bienvenid@</h1>
-	<p class="lead">Panel de control y lista de alumnos del instituto I.E.S. Al-Andalus</p>
+<div class="jumbotron">
+	<h1>Ya estas regristado el parte "{{nombre}}"</h1>
+	<p class="lead">Sus datos serán utilizados en el control de partes del instituto</p>
 </div>
-
 {% endblock cuerpo %}
-
