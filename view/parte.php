@@ -4,9 +4,39 @@
 
 {% block cuerpo %}
 
-<h1></h1>
-	<form novalidate="true" class="jotform-form" action="/guardarParte" method="post" name="form_60212753776356" id="60212753776356" accept-charset="utf-8">
-  <input name="formID" value="60212753776356" type="hidden">
+<div class="jumbotron">
+	<h1>Parte de incidencia</h1>
+	<p class="lead">Registre el problema</p>
+</div>
+
+<form method="post" action="/partes/guardar" role="form">
+		
+		<input type="hidden" name="id" value="">
+		
+		<div class="form-group col-md-12">
+			<label for="alumnoaImplicado">Alumno/a implicado</label>
+			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
+		</div>
+		<div class="form-group col-md-12">
+			<label for="cursoygrupo">Curso y Grupo</label>
+			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="fecha">Fecha:</label>
+			<input type="text" class="form-control" id="fecha" name="fecha" value="">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="hora">Hora:</label>
+			<input type="text" class="form-control col-md-6" id="hora" name="hora" value=""><a class="botoncal" href="#"><span></span></a>
+		</div>
+		<div class="form-group col-md-12">
+			<label for="asignatura">Asignatura:</label>
+			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
+		</div>
+		
+		<button type="submit" class="btn btn-default">Enviar</button>
+</form>
+<!--
   <div class="form-all">
     <ul class="form-section page-section">
       <li id="cid_1" class="form-input-wide" data-type="control_head">
@@ -57,6 +87,7 @@
           <input class=" form-textbox" data-type="input-textbox" id="input_8" name="asignatura" size="20" value="" type="text">
         </div>
       </li>
+      -->
       
       <!--
       
@@ -255,12 +286,4 @@
     </ul>
   </div>
   -->
-  <input id="simple_spc" name="simple_spc" value="60212753776356-60212753776356" type="hidden">
-  <script type="text/javascript">
-  document.getElementById("si" + "mple" + "_spc").value = "60212753776356-60212753776356";
-  </script>
-<input value="true" name="preview" type="hidden"><input value="1453467120107_60212753776356_4HerYND" name="event_id" type="hidden">
-<button type="submit" class="btn btn-default">Enviar</button>
-
-</form>
 {% endblock cuerpo %}
