@@ -69,7 +69,7 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
-$app->group('/alumno', function () use ($app) {
+$app->group('/alumnos', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -80,6 +80,13 @@ $app->group('/alumno', function () use ($app) {
 		$valores=array('comentarios'=>$r);
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
+	
+	$app->group('/buscar', function () use ($app) {
+		$app->get('/nombre', function() use ($app){
+			global $twig;
+			echo "hola";
+		}); 
+	});
 	
 	$app->get('/borrar', function() use ($app){
 	
@@ -138,20 +145,20 @@ $app->group('/alumno', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/comentarios');
+			$app->redirect('/alumnos');
 		}
 		else
 		{
 			unset($valores['id']);
 			
-			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso) VALUES (:nombre, :email, :direccion, :telefono, :comentario, :localidad, :provincia, :dni_tutor, :curso,)";
+			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso) VALUES (:nombre, :email, :direccion, :telefono, :comentario, :localidad, :provincia, :dni_tutor, :curso)";
 			$pdo=$app->db;
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 		
 			// Mostramos un mensaje al usuario
 			
-			echo $twig->render('agradecimiento.php',$valores); 
+			echo $twig->render('alumno.php',$valores); 
 		}
 	}); 
 
@@ -161,7 +168,47 @@ $app->group('/alumno', function () use ($app) {
 	}); 
 });
 
-$app->group('/usuario', function () use ($app) {
+$app->group('/notificaciones', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('notificaciones'=>$r);
+		echo $twig->render('notificaciones.php',$valores);  
+		
+	}); 
+	
+	$app -> get('/rss', function() use ($app) {
+		
+	     global $twig;
+     
+		 $pdo=$app->db;
+		 #$app->response->headers->set('Content-Type', 'text/xml');
+		 
+		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		echo $twig->render('rss.php', array('items' => $r));
+	});
+	
+});
+
+$app->group('/partes', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		echo $twig->render('partes.php');  
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('parte.php');  
+	}); 
+});
+
+$app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -187,16 +234,6 @@ $app->group('/usuario', function () use ($app) {
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
 		$app->redirect('/');
-	}); 
-	
-	$app->get('/', function() use ($app){
-		global $twig;
-		
-		$pdo=$app->db;
-		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
-			
-		$valores=array('usuario'=>$r);
-		echo $twig->render('comentarios.php',$valores);  
 	}); 
 	
 	$app->get('/editarusuario', function() use ($app){
@@ -255,47 +292,8 @@ $app->group('/usuario', function () use ($app) {
 
 	$app->get('/crear', function() use ($app){
 		global $twig;
+		// TODO indicar la vista a renderizar (aun no existe el formulario)
 		echo $twig->render('');  
-	}); 
-});
-
-$app->group('/notificaciones', function () use ($app) {
-	
-	$app->get('/', function() use ($app){
-		global $twig;
-		
-		$pdo=$app->db;
-		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
-			
-		$valores=array('notificaciones'=>$r);
-		echo $twig->render('notificaciones.php',$valores);  
-		
-	}); 
-	
-	$app->get('/rss', function() use ($app) {
-		
-	     global $twig;
-     
-		 $pdo=$app->db;
-		 #$app->response->headers->set('Content-Type', 'text/xml');
-		 
-		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
-			
-		echo $twig->render('rss.php', array('items' => $r));
-	});
-	
-});
-
-$app->group('/partes', function () use ($app) {
-	
-	$app->get('/', function() use ($app){
-		global $twig;
-		echo $twig->render('partes.php');  
-	}); 
-
-	$app->get('/crear', function() use ($app){
-		global $twig;
-		echo $twig->render('parte.php');  
 	}); 
 });
 
@@ -361,6 +359,11 @@ $app->get('/importar', function() use ($app){
     $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
     echo $twig->render('importar.php',$valores);
       
+}); 
+
+$app->get('/grafica', function() use ($app){
+    global $twig;
+    echo $twig->render('grafica.php');  
 }); 
 
 // Ponemos en marcha el router
