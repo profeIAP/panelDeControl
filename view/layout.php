@@ -172,8 +172,8 @@
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/evenfly.js"></script>
+    <script src="/js/jquery.nicescroll.min.js"></script>
+    <script src="/js/evenfly.js"></script>
     
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
