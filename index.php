@@ -92,6 +92,14 @@ $app->group('/alumnos', function () use ($app) {
 		}); 
 	});
 	
+	
+	$app->group('/anotaciones', function () use ($app) {
+		$app->get('/', function() use ($app){
+			global $twig;
+			// Espacio "dedicado" a juan carlos
+		}); 
+	});
+	
 	$app->get('/borrar', function() use ($app){
 	
 		global $twig;
