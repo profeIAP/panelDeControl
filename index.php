@@ -158,7 +158,7 @@ $app->group('/alumnos', function () use ($app) {
 		
 			// Mostramos un mensaje al usuario
 			
-			echo $twig->render('alumno.php',$valores); 
+			$app->redirect('/alumnos');
 		}
 	}); 
 
