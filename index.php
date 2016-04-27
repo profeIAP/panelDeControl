@@ -68,6 +68,10 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
+$app->get('/', function() use ($app){
+    global $twig;
+    echo $twig->render('opciones.php');  
+}); 
 
 $app->group('/alumnos', function () use ($app) {
 	
@@ -80,6 +84,21 @@ $app->group('/alumnos', function () use ($app) {
 		$valores=array('comentarios'=>$r);
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
+	
+	$app->group('/buscar', function () use ($app) {
+		$app->get('/nombre', function() use ($app){
+			global $twig;
+			echo "hola";
+		}); 
+	});
+	
+	
+	$app->group('/anotaciones', function () use ($app) {
+		$app->get('/', function() use ($app){
+			global $twig;
+			// Espacio "dedicado" a juan carlos
+		}); 
+	});
 	
 	$app->get('/borrar', function() use ($app){
 	
@@ -138,7 +157,7 @@ $app->group('/alumnos', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/comentarios');
+			$app->redirect('/alumnos');
 		}
 		else
 		{
@@ -151,7 +170,7 @@ $app->group('/alumnos', function () use ($app) {
 		
 			// Mostramos un mensaje al usuario
 			
-			echo $twig->render('alumno.php',$valores); 
+			$app->redirect('/alumnos');
 		}
 	}); 
 
