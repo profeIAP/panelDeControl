@@ -181,9 +181,7 @@ $app->group('/notificaciones', function () use ($app) {
 		
 	}); 
 	
-	$app -> get('/rss', function() use ($app) {
-		
-	     global $twig;
+	global $twig;
      
 		 $pdo=$app->db;
 		 #$app->response->headers->set('Content-Type', 'text/xml');
@@ -192,7 +190,7 @@ $app->group('/notificaciones', function () use ($app) {
 			
 		echo $twig->render('rss.php', array('items' => $r));
 	});
-	
+
 });
 
 $app->group('/partes', function () use ($app) {
