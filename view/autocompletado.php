@@ -1,0 +1,48 @@
+9{% extends "layout.php" %}
+
+{% block tabActivo %}contacto{% endblock tabActivo %}
+
+{% block cuerpo %}
+
+{% if message %}
+	<div class="alert alert-success" role="alert"> {{ message|raw}}</div>
+{% endif %}
+
+{% if error %}
+	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
+{% endif %}
+
+<form>
+   <label for="matricula">Matricula:</label>
+   <input type="text" id="matricula" name="matricula" value=""/> <br/>
+   <label for="nombre">Nombre:</label>
+   <input type="text" id="nombre" name="nombre" value=""/> <br/>
+   <label for="paterno">Paterno:</label>
+   <input type="text" id="paterno" name="paterno" value=""/> <br/>
+   <label for="materno">Materno:</label>
+   <input type="text" id="materno" name="materno" value=""/>
+</form>
+<script type="text/javascript">
+	$(document).ready(function(){
+    $( "#matricula" ).autocomplete({
+      source: "buscaralumno.php",
+      minLength: 2
+    });
+ 
+    $("#matricula").focusout(function(){
+      $.ajax({
+            url:'alumno.php',
+          type:'POST',
+          dataType:'json',
+          data:{ matricula:$('#matricula').val()}
+      }).done(function(respuesta){
+          $("#nombre").val(respuesta.nombre);
+          $("#paterno").val(respuesta.paterno);
+          $("#materno").val(respuesta.materno);
+      });
+    });
+});
+
+</script>
+
+{% endblock %}

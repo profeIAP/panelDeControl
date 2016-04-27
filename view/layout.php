@@ -18,7 +18,8 @@
    </style>
    <script type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
    <script type="text/javascript" src="/js/calendario_dw.js"></script>
-   
+   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+   <link href="css/jqueryui.css" type="text/css" rel="stylesheet"/>
    <script type="text/javascript">
    $(document).ready(function(){
       $(".campofecha").calendarioDW();

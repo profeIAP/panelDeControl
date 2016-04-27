@@ -158,7 +158,13 @@ $app->group('/alumnos', function () use ($app) {
 		global $twig;
 		echo $twig->render('alumno.php');  
 	}); 
-});
+
+}); 
+
+	$app->get('/autocompletado', function() use ($app){
+		global $twig;
+		echo $twig->render('autocompletado.php');  
+	}); 
 
 $app->group('/notificaciones', function () use ($app) {
 	
