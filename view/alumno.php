@@ -13,7 +13,7 @@
 {% endif %}
 
 <div class="jumbotron">
-	<h1>Alta de alumno</h1>
+	<h1>Registrese como alumno del I.E.S. Al-Ándalus</h1>
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
 
@@ -35,7 +35,7 @@
 		</div>
 		<div class="form-group">
 			<label for="telefono">Teléfono:</label>
-			<input type="text" class="form-control" id="telefono" name="telefono" size="12" value="{{comentario.TELEFONO}}">
+			<input type="text" class="campofecha" id="telefono" name="telefono" size="12" value="{{comentario.TELEFONO}}">
 		</div>
 		<div class="form-group">
 			<label for="comentario">Comentario:</label>
