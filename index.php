@@ -98,7 +98,7 @@ $app->group('/alumnos', function () use ($app) {
 			global $twig;
 
 			// Espacio "dedicado" a juan carlos
-			$app->post('/guardarSugerencia', function() use ($app){
+			$app->post('/anotaciones', function() use ($app){
 	
     global $twig;
     
