@@ -1,3 +1,9 @@
+{% extends "layout.php" %}
+
+{% block tabActivo %}about{% endblock tabActivo %}
+
+{% block cuerpo %}
+
 <html>
 <head>
   <title>Tabla de partes dividida por género</title>
@@ -61,4 +67,6 @@ Partes
     <div id="piechart" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
+
+{% endblock cuerpo %}
 
