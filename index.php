@@ -73,7 +73,7 @@ $app->get('/', function() use ($app){
     echo $twig->render('opciones.php');  
 }); 
 
-$app->group('/alumnos', function () use ($app) {
+$app->group('/alumno', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
