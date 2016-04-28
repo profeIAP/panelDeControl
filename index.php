@@ -256,7 +256,7 @@ $app->group('/partes', function () use ($app) {
 	}); 
 });
 
-$app->group('/usuarios', function () use ($app) {
+$app->group('/usuario', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
