@@ -73,7 +73,7 @@ $app->get('/', function() use ($app){
     echo $twig->render('opciones.php');  
 }); 
 
-$app->group('/alumnos', function () use ($app) {
+$app->group('/alumno', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -98,7 +98,7 @@ $app->group('/alumnos', function () use ($app) {
 			global $twig;
 
 			// Espacio "dedicado" a juan carlos
-			$app->post('/guardarSugerencia', function() use ($app){
+			$app->post('/anotaciones', function() use ($app){
 	
     global $twig;
     
