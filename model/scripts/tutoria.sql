@@ -1,0 +1,6 @@
+-- Describe TABLA TUTORÍA 
+CREATE TABLE "tutoria" (
+    "ID" INTEGER PRIMARY KEY,
+    "ID_ALUMNO" TEXT,
+    "ID_USUARIO" TEXT
+)
