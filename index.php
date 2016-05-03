@@ -96,43 +96,7 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/anotaciones', function () use ($app) {
 		$app->get('/', function() use ($app){
 			global $twig;
-
 			// Espacio "dedicado" a juan carlos
-			$app->post('/anotaciones', function() use ($app){
-	
-    global $twig;
-    
-    // Recogemos datos formulario de contacto
-    
-    $valores=array(
-		'id'=>$app->request()->post('id'),
-		'alumno'=>$app->request()->post('alumno'),
-		'descripcion'=>$app->request()->post('descripcion'),		
-		
-    );
-	if($valores['id']){
-		$sql = "update alumno set ID=:ID, ALUMNO=:alumno, DESCRIPCION=:descripcion";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-		
-		$app->redirect('/comentarios');
-	}
-	else
-	{
-		unset($valores['id']);
-		
-		$sql = "INSERT INTO alumno (ID,alumno, descripcion) VALUES (:ID, :alumno, :descripcion)";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-	
-		// Mostramos un mensaje al usuario
-		
-		echo $twig->render('agradecimiento.php',$valores); 
-	}
-}); 
-
 		}); 
 	});
 	
