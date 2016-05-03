@@ -366,6 +366,17 @@ $app->get('/importar', function() use ($app){
       
 }); 
 
+$app->get('/contarFicheros', function() use ($app){
+	$directory = "./model/scripts/";
+$filecount = 0;
+$files = glob($directory . "*");
+if ($files){
+ $filecount = count($files);
+}
+echo "There were $filecount files";
+
+});
+
 // Ponemos en marcha el router
 $app->run();
 
