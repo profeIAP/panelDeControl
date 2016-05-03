@@ -42,8 +42,8 @@ session_cache_limiter(false);
 session_start();
 header('Content-type: text/html; charset=utf-8');
 
-require 	 'vendor/autoload.php';
-require_once 'controller/Utils.php';
+require 	 	'vendor/autoload.php';
+require_once	'controller/Utils.php';
 
 Twig_Autoloader::register();  
 
@@ -67,10 +67,6 @@ $app->container->singleton('db', function () {
 $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
-}); 
-$app->get('/', function() use ($app){
-    global $twig;
-    echo $twig->render('opciones.php');  
 }); 
 
 $app->group('/alumnos', function () use ($app) {
@@ -182,7 +178,7 @@ $app->group('/alumnos', function () use ($app) {
 
 $app->group('/notificaciones', function () use ($app) {
 	
-	$app->get('/', function() use ($app){
+	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
