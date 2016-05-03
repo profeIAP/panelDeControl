@@ -237,7 +237,7 @@ $app->group('/notificaciones', function () use ($app) {
 		 
 		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
 			
-		echo $twig->render('rss.php', array('article' => $r));
+		echo $twig->render('rss.php', array('items' => $r));
 	});
 
 });
