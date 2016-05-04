@@ -1,4 +1,4 @@
-9{% extends "layout.php" %}
+{% extends "layout.php" %}
 
 {% block tabActivo %}contacto{% endblock tabActivo %}
 
@@ -25,13 +25,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
     $( "#matricula" ).autocomplete({
-      source: "buscaralumno.php",
+      source: "/alumnos/buscar/nombre",
       minLength: 2
     });
  
     $("#matricula").focusout(function(){
       $.ajax({
-            url:'alumno.php',
+            url:'/alumnos/buscar/id',
           type:'POST',
           dataType:'json',
           data:{ matricula:$('#matricula').val()}
