@@ -136,7 +136,7 @@
 						<li><a href="/alumnos/crear">Crear</a></li>
 						<li>Buscar</li>
 						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/importar">Importar</a></li>
+						<li><a href="/alumnos/importar">Importar</a></li>
 					</ul>
 					
                     <p>Notificaciones</p>

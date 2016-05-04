@@ -71,6 +71,13 @@ $app->get('/', function() use ($app){
 
 $app->group('/alumnos', function () use ($app) {
 	
+	
+	$app->get('/importar', function() use ($app){
+    global $twig;
+    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
+    echo $twig->render('importar.php',$valores);
+      
+}); 
     $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -361,12 +368,6 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 		);
 }
 
-$app->get('/importar', function() use ($app){
-    global $twig;
-    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
-    echo $twig->render('importar.php',$valores);
-      
-}); 
 
 $app->get('/grafica', function() use ($app){
     global $twig;
