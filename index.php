@@ -42,8 +42,8 @@ session_cache_limiter(false);
 session_start();
 header('Content-type: text/html; charset=utf-8');
 
-require 	 'vendor/autoload.php';
-require_once 'controller/Utils.php';
+require 	 	'vendor/autoload.php';
+require_once	'controller/Utils.php';
 
 Twig_Autoloader::register();  
 
@@ -68,13 +68,16 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
-$app->get('/', function() use ($app){
-    global $twig;
-    echo $twig->render('opciones.php');  
-}); 
 
-$app->group('/alumno', function () use ($app) {
+$app->group('/alumnos', function () use ($app) {
 	
+	
+	$app->get('/importar', function() use ($app){
+    global $twig;
+    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
+    echo $twig->render('importar.php',$valores);
+      
+}); 
     $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -96,43 +99,7 @@ $app->group('/alumno', function () use ($app) {
 	$app->group('/anotaciones', function () use ($app) {
 		$app->get('/', function() use ($app){
 			global $twig;
-
 			// Espacio "dedicado" a juan carlos
-			$app->post('/anotaciones', function() use ($app){
-	
-    global $twig;
-    
-    // Recogemos datos formulario de contacto
-    
-    $valores=array(
-		'id'=>$app->request()->post('id'),
-		'alumno'=>$app->request()->post('alumno'),
-		'descripcion'=>$app->request()->post('descripcion'),		
-		
-    );
-	if($valores['id']){
-		$sql = "update alumno set ID=:ID, ALUMNO=:alumno, DESCRIPCION=:descripcion";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-		
-		$app->redirect('/comentarios');
-	}
-	else
-	{
-		unset($valores['id']);
-		
-		$sql = "INSERT INTO alumno (ID,alumno, descripcion) VALUES (:ID, :alumno, :descripcion)";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-	
-		// Mostramos un mensaje al usuario
-		
-		echo $twig->render('agradecimiento.php',$valores); 
-	}
-}); 
-
 		}); 
 	});
 	
@@ -165,7 +132,7 @@ $app->group('/alumno', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentario'=>$r);
-		echo $twig->render('alumno.php',$valores);  	
+		echo $twig->render('/alumnos',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
@@ -193,7 +160,7 @@ $app->group('/alumno', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/alumnos');
+			$app->redirect('/usuarios');
 		}
 		else
 		{
@@ -206,7 +173,7 @@ $app->group('/alumno', function () use ($app) {
 		
 			// Mostramos un mensaje al usuario
 			
-			$app->redirect('/alumnos');
+			$app->redirect('/usuarios');
 		}
 	}); 
 
@@ -218,7 +185,7 @@ $app->group('/alumno', function () use ($app) {
 
 $app->group('/notificaciones', function () use ($app) {
 	
-	$app->get('/', function() use ($app){
+	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
@@ -229,9 +196,8 @@ $app->group('/notificaciones', function () use ($app) {
 		
 	}); 
 	
-	$app -> get('/rss', function() use ($app) {
-		
-	     global $twig;
+	$app->get('/rss', function() use ($app){
+		global $twig;
      
 		 $pdo=$app->db;
 		 #$app->response->headers->set('Content-Type', 'text/xml');
@@ -240,7 +206,7 @@ $app->group('/notificaciones', function () use ($app) {
 			
 		echo $twig->render('rss.php', array('items' => $r));
 	});
-	
+
 });
 
 $app->group('/partes', function () use ($app) {
@@ -256,7 +222,7 @@ $app->group('/partes', function () use ($app) {
 	}); 
 });
 
-$app->group('/usuario', function () use ($app) {
+$app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -281,7 +247,7 @@ $app->group('/usuario', function () use ($app) {
 		$pdo = $app->db;
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
-		$app->redirect('/');
+		$app->redirect('/usuarios');
 	}); 
 	
 	$app->get('/editarusuario', function() use ($app){
@@ -402,12 +368,6 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 		);
 }
 
-$app->get('/importar', function() use ($app){
-    global $twig;
-    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
-    echo $twig->render('importar.php',$valores);
-      
-}); 
 
 $app->get('/contarFicheros', function() use ($app){
 	$directory = "./model/scripts/";
