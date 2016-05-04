@@ -11,6 +11,13 @@
 {% if error %}
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
 {% endif %}
+
+
+<div class="jumbotron">
+	<h1>Lista de alumno</h1>
+	<p class="lead">Alumnos matriculados en el centro</p>
+</div>
+
 <table id="myTable">  
         <thead>  
           <tr>  
