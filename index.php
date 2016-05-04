@@ -193,7 +193,7 @@ $app->group('/alumno', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/alumnos');
+			$app->redirect('/usuarios');
 		}
 		else
 		{
@@ -206,7 +206,7 @@ $app->group('/alumno', function () use ($app) {
 		
 			// Mostramos un mensaje al usuario
 			
-			$app->redirect('/alumnos');
+			$app->redirect('/usuarios');
 		}
 	}); 
 
@@ -256,7 +256,7 @@ $app->group('/partes', function () use ($app) {
 	}); 
 });
 
-$app->group('/usuario', function () use ($app) {
+$app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -281,7 +281,7 @@ $app->group('/usuario', function () use ($app) {
 		$pdo = $app->db;
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
-		$app->redirect('/');
+		$app->redirect('/usuarios');
 	}); 
 	
 	$app->get('/editarusuario', function() use ($app){
