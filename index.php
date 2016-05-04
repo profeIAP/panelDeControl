@@ -42,8 +42,8 @@ session_cache_limiter(false);
 session_start();
 header('Content-type: text/html; charset=utf-8');
 
-require 	 'vendor/autoload.php';
-require_once 'controller/Utils.php';
+require 	 	'vendor/autoload.php';
+require_once	'controller/Utils.php';
 
 Twig_Autoloader::register();  
 
@@ -68,12 +68,8 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
-$app->get('/', function() use ($app){
-    global $twig;
-    echo $twig->render('opciones.php');  
-}); 
 
-$app->group('/alumno', function () use ($app) {
+$app->group('/alumnos', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -96,43 +92,7 @@ $app->group('/alumno', function () use ($app) {
 	$app->group('/anotaciones', function () use ($app) {
 		$app->get('/', function() use ($app){
 			global $twig;
-
 			// Espacio "dedicado" a juan carlos
-			$app->post('/anotaciones', function() use ($app){
-	
-    global $twig;
-    
-    // Recogemos datos formulario de contacto
-    
-    $valores=array(
-		'id'=>$app->request()->post('id'),
-		'alumno'=>$app->request()->post('alumno'),
-		'descripcion'=>$app->request()->post('descripcion'),		
-		
-    );
-	if($valores['id']){
-		$sql = "update alumno set ID=:ID, ALUMNO=:alumno, DESCRIPCION=:descripcion";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-		
-		$app->redirect('/comentarios');
-	}
-	else
-	{
-		unset($valores['id']);
-		
-		$sql = "INSERT INTO alumno (ID,alumno, descripcion) VALUES (:ID, :alumno, :descripcion)";
-		$pdo=$app->db;
-		$q = $pdo->prepare($sql);
-		$q->execute($valores);
-	
-		// Mostramos un mensaje al usuario
-		
-		echo $twig->render('agradecimiento.php',$valores); 
-	}
-}); 
-
 		}); 
 	});
 	
@@ -218,7 +178,7 @@ $app->group('/alumno', function () use ($app) {
 
 $app->group('/notificaciones', function () use ($app) {
 	
-	$app->get('/', function() use ($app){
+	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
@@ -229,9 +189,8 @@ $app->group('/notificaciones', function () use ($app) {
 		
 	}); 
 	
-	$app -> get('/rss', function() use ($app) {
-		
-	     global $twig;
+	$app->get('/rss', function() use ($app){
+		global $twig;
      
 		 $pdo=$app->db;
 		 #$app->response->headers->set('Content-Type', 'text/xml');
@@ -240,7 +199,7 @@ $app->group('/notificaciones', function () use ($app) {
 			
 		echo $twig->render('rss.php', array('items' => $r));
 	});
-	
+
 });
 
 $app->group('/partes', function () use ($app) {

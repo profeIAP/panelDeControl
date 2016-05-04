@@ -36,9 +36,9 @@ Partes
 <div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px">
 </div>
 </body>
-</html>
 
-<html>
+
+
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
