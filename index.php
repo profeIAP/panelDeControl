@@ -303,12 +303,23 @@ $app->group('/usuario', function () use ($app) {
 		echo $twig->render('');  
 	}); 
 });
-
+$app->get('/contartabla', function() use ($app){
+	
+		global $twig;
+		
+		$pdo=$app->db;
+		$q = $pdo->prepare("select * from tablasbd");
+		$q->execute();
+		$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+		$valores=array('ntablas'=>$r);
+		echo $twig->render('tablas.php',$valores);  	
+	});
 $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
-
+ 
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	
 	extract($options);
