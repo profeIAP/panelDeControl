@@ -13,7 +13,7 @@
 {% endif %}
 
 <div class="jumbotron">
-	<h1>Alta de alumno</h1>
+	<h1>Registrese como alumno del I.E.S. Al-Ándalus</h1>
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
 
@@ -35,7 +35,7 @@
 		</div>
 		<div class="form-group">
 			<label for="telefono">Teléfono:</label>
-			<input type="text" class="form-control" id="telefono" name="telefono" size="12" value="{{comentario.TELEFONO}}">
+			<input type="text" class="campofecha" id="telefono" name="telefono" size="12" value="{{comentario.TELEFONO}}">
 		</div>
 		<div class="form-group">
 			<label for="comentario">Comentario:</label>
@@ -43,19 +43,19 @@
 		</div>
 		<div class="form-group">
 			<label for="localidad">Localidad:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="localidad" name="localidad" >{{localidad.LOCALIDAD}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="localidad" name="localidad" >{{comentario.LOCALIDAD}}</textarea>
 		</div>
 		<div class="form-group">
 			<label for="provincia">Provincia:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="provincia" name="provincia" >{{provincia.PROVINCIA}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="provincia" name="provincia" >{{comentario.PROVINCIA}}</textarea>
 		</div>
 		<div class="form-group">
 			<label for="dni_tutor">dni_tutor:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="dni_tutor" name="dni_tutor" >{{dni_tutor.DNI_TUTOR}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="dni_tutor" name="dni_tutor" >{{comentario.DNI_TUTOR}}</textarea>
 		</div>
 		<div class="form-group">
 			<label for="curso">Curso:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="curso" name="curso" >{{curso.CURSO}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="curso" name="curso" >{{comentario.CURSO}}</textarea>
 		</div>
 		
 		<button type="submit" class="btn btn-default">Enviar</button>
