@@ -69,6 +69,36 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
+$app->get('/hash',function() use ($app){
+    global $twig;
+    $userPassword="informatica";
+    $hash = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]) ;
+
+	//echo $hash;
+
+/*
+if (password_verify($userPassword, $hash)) {
+    // Login successful.
+     if (password_needs_rehash($hash, PASSWORD_DEFAULT, ['cost' => 12])) {
+        // Recalculate a new password_hash() and overwrite the one we stored previously
+    }
+}*/
+	$userPassword="InFoRmAtIcA";
+	$hash2 = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]);
+	
+	echo $hash."<br>";
+	echo $hash2."<br>";
+	$userPasswordveryfied="InFoRmAtIcA";
+	
+if (password_verify('InFoRmAtIcA', $hash)) {
+    echo '¡La contraseña es válida!';
+} else {
+    echo 'La contraseña no es válida.';
+}
+
+});  
+
+
 $app->group('/alumnos', function () use ($app) {
 	
 	
