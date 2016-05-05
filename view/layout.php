@@ -136,8 +136,12 @@
 						<li><a href="/alumnos/crear">Crear</a></li>
 						<li>Buscar</li>
 						<li><a href="/alumnos">Listar</a></li>
+<<<<<<< HEAD
 						<li><a href="/importar">Importar</a></li>
 						<li><a href="/upload">Subir</a></li>
+=======
+						<li><a href="/alumnos/importar">Importar</a></li>
+>>>>>>> c6927761183ceabcde71a6b4183b233aad576e21
 					</ul>
 					
                     <p>Notificaciones</p>

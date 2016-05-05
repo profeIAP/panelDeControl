@@ -71,6 +71,13 @@ $app->get('/', function() use ($app){
 
 $app->group('/alumnos', function () use ($app) {
 	
+	
+	$app->get('/importar', function() use ($app){
+    global $twig;
+    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
+    echo $twig->render('importar.php',$valores);
+      
+}); 
     $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -125,7 +132,7 @@ $app->group('/alumnos', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentario'=>$r);
-		echo $twig->render('alumno.php',$valores);  	
+		echo $twig->render('/alumnos',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
@@ -153,7 +160,7 @@ $app->group('/alumnos', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/alumnos');
+			$app->redirect('/usuarios');
 		}
 		else
 		{
@@ -166,7 +173,7 @@ $app->group('/alumnos', function () use ($app) {
 		
 			// Mostramos un mensaje al usuario
 			
-			$app->redirect('/alumnos');
+			$app->redirect('/usuarios');
 		}
 	}); 
 
@@ -215,7 +222,7 @@ $app->group('/partes', function () use ($app) {
 	}); 
 });
 
-$app->group('/usuario', function () use ($app) {
+$app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -240,7 +247,7 @@ $app->group('/usuario', function () use ($app) {
 		$pdo = $app->db;
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
-		$app->redirect('/');
+		$app->redirect('/usuarios');
 	}); 
 	
 	$app->get('/editarusuario', function() use ($app){
@@ -361,12 +368,16 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 		);
 }
 
-$app->get('/importar', function() use ($app){
-    global $twig;
-    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
-    echo $twig->render('importar.php',$valores);
-      
-}); 
+
+$app->get('/contarFicheros', function() use ($app){
+	$directory = "./model/scripts/";
+	$filecount = 0;
+	$files = glob($directory . "*");
+	if ($files){
+	 $filecount = count($files);
+	}
+	echo "There were $filecount files";
+});
 
 $app->get('/grafica', function() use ($app){
     global $twig;
