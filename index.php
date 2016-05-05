@@ -132,7 +132,7 @@ $app->group('/alumnos', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentario'=>$r);
-		echo $twig->render('/alumnos',$valores);  	
+		echo $twig->render('/usaurios',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
