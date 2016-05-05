@@ -71,6 +71,13 @@ $app->get('/', function() use ($app){
 
 $app->group('/alumnos', function () use ($app) {
 	
+	
+	$app->get('/importar', function() use ($app){
+    global $twig;
+    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
+    echo $twig->render('importar.php',$valores);
+      
+}); 
     $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -372,17 +379,73 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 		);
 }
 
-$app->get('/importar', function() use ($app){
-    global $twig;
-    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
-    echo $twig->render('importar.php',$valores);
-      
-}); 
+
+$app->get('/contarFicheros', function() use ($app){
+	$directory = "./model/scripts/";
+	$filecount = 0;
+	$files = glob($directory . "*");
+	if ($files){
+	 $filecount = count($files);
+	}
+	echo "There were $filecount files";
+});
 
 $app->get('/grafica', function() use ($app){
     global $twig;
     echo $twig->render('grafica.php');  
 }); 
+
+
+$app->get('/upload', function() use ($app){
+    global $twig;
+    echo $twig->render('upload.php');
+}); 
+
+$app->post('/upload', function() use ($app){
+	$target_dir = "model/datos/";
+$target_file = $target_dir .basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtoupper(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+
+/*if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}*/
+
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "CSV") {
+    echo "Sorry, only CSV files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+	}); 
 
 // Ponemos en marcha el router
 $app->run();
