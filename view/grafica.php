@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>Tabla de partes dividida por género</title>
-</head>
+
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
 <script>
@@ -35,11 +35,11 @@
 Partes
 <div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px">
 </div>
-</body>
 
 
 
-  <head>
+
+  
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -62,8 +62,8 @@ Partes
         chart.draw(data, options);
       }
     </script>
-  </head>
-  <body>
+    </head>
+  
     <div id="piechart" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
