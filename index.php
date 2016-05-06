@@ -250,7 +250,7 @@ $app->group('/usuarios', function () use ($app) {
 		$app->redirect('/usuarios');
 	}); 
 	
-	$app->get('/editarusuario', function() use ($app){
+	$app->get('/guardarusuario', function() use ($app){
 	
 		global $twig;
 		
@@ -287,7 +287,7 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/comentariosusuario');
+			$app->redirect('usuario');
 		}
 		else
 		{
@@ -298,9 +298,8 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 		
-			// Mostramos un mensaje al usuario
-			
-			echo $twig->render('agradecimiento.php',$valores); 
+		$app->redirect('usuario');
+		
 		}
 	}); 
 
