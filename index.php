@@ -245,10 +245,79 @@ $app->group('/partes', function () use ($app) {
 		echo $twig->render('partes.php');  
 	}); 
 
-	$app->get('/crear', function() use ($app){
+	
+		
+		$app->post('/guardar', function() use ($app){
+	
 		global $twig;
-		echo $twig->render('parte.php');  
-	}); 
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'id_alumno'=>$app->request()->post('nombre'),
+			'grupo'=>$app->request()->post('grupo'),		
+			'fecha'=>$app->request()->post('fecha'),	
+			'hora'=>$app->request()->post('hora'),	
+			'asignatura'=>$app->request()->post('asignatura'),	
+			'profesor'=>$app->request()->post('profesor'),	
+			'l_pertubar'=>$app->request()->post('l_pertubar'),	
+			'l_dificultar'=>$app->request()->post('l_dificultar'),
+			'l_faltarinjustificadamente'=>$app->request()->post('l_faltarinjustificadamente'),
+			'l_deteriorar'=>$app->request()->post('l_deteriorar'),		
+			'l_movil'=>$app->request()->post('l_movil'),	
+			'l_gafas'=>$app->request()->post('l_gafas'),	
+			'l_gorra'=>$app->request()->post('l_gorra'),
+			'l_pasillos'=>$app->request()->post('l_pasillos'),	
+			'l_faltainjustificada'=>$app->request()->post('l_faltainjustificada'),
+			'l_nocolaborar'=>$app->request()->post('l_nocolaborar'),
+			'l_impuntual'=>$app->request()->post('l_impuntual'),		
+			'l_desconsiderables'=>$app->request()->post('l_desconsiderables'),	
+			'l_beberocomer'=>$app->request()->post('l_beberocomer'),	
+			'l_faltamaterial'=>$app->request()->post('l_faltamaterial'),
+			'l_ordenador'=>$app->request()->post('l_ordenador'),	
+			'l_alterar'=>$app->request()->post('l_alterar'),
+			'l_fumar'=>$app->request()->post('l_fumar'),
+			'l_usoindebido'=>$app->request()->post('l_usoindebido'),
+			'g_agresion'=>$app->request()->post('g_agresion'),			
+			'g_incumplimiento'=>$app->request()->post('g_incumplimiento'),	
+			'g_amenazas'=>$app->request()->post('g_amenazas'),	
+			'g_suplantacion'=>$app->request()->post('g_suplantacion'),
+			'g_fumar'=>$app->request()->post('g_fumar'),
+			'g_ofensas'=>$app->request()->post('g_ofensas'),	
+			'g_humillaciones'=>$app->request()->post('g_humillaciones'),	
+			'g_deterioro'=>$app->request()->post('g_deterioro'),
+			'g_impedimento'=>$app->request()->post('g_impedimento')
+		);
+		
+		if($valores['id']){
+			$sql = "update alumno set ID_ALUMNO=:id_alumno, GRUPO=:grupo, FECHA=:fecha, HORA=:hora, ASIGNATURA=:asignatura, PROFESOR=:profesor, TUTOR=:tutor, L_PERTUBAR=:l_pertubar, L_DIFICULTAR=:l_dificultar, L_FALTARINJUSTIFICADAMENTE=:l_faltarinjustificadamente, L_DETERIORAR=:l_deteriorar, L_MOVIL=:l_movil, L_GAFAS=:l_gafas, L_GORRA=:l_gorra, L_PASILLOS=:l_pasillos, L_FALTAINJUSTIFICADA=:l_faltainjustificada, L_NOCOLABORAR=:l_nocolaborar, L_IMPUNTUAL=:l_impuntual, L_DESCONSIDERABLES=:l_desconsiderables, L_BEBEROCOMER=:l_beberocomer, L_FALTAMATERIAL=:l_faltamaterial, L_ORDENADOR=:l_ordenador, L_ALTERAR=:l_alterar, L_FUMAR=:l_fumar, L_USOINDEBIDO=:l_usoindebido, G_AGRESION=:g_agresion, G_INCUMPLIMIENTO=:g_incumplimiento, G_AMENAZAS=:g_amenazas, G_SUPLANTACION=:g_suplatancion, G_FUMAR=:g_fumar, G_OFENSAS=:g_ofensas, G_HUMILLACIONES=:g_humillaciones, G_DETERIORO=:g_deterioro, G_IMPEDIMENTO=:g_impedimento WHERE ID=:id ";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/partes');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO alumno (id_alumno, grupo, fecha, fecha, hora, asignatura, profesor, tutor, l_pertubar, l_dificultar, l_dificultar, l_faltarinjustificadamente, l_deteriorar, l_movil, l_gafas, l_gorra, l_pasillos, l_faltainjustificada, l_nocolaborar, l_impuntual, l_desconsiderables, l_beberocomer, l_faltamaterial, l_ordenador, l_alterar, l_fumar, l_usoindebido, g_agresion, g_incumplimiento, g_amenazas, g_suplantacion, g_fumar, g_ofensas, g_humillaciones, g_deterioro, g_impedimento) VALUES (:id_alumno, :grupo, :fecha, :hora, :asignatura, :profesor, :tutor, :l_pertubar, :l_dificultar, :l_faltarinjustificadamente, :l_deteriorar, :l_movil, :l_gafas, :l_gorra, :l_pasillos, :l_faltainjustificada, :l_nocolaborar, :l_impuntual, :l_desconsiderables, :l_beberocomer, :l_faltamaterial, :l_ordenador, :l_alterar, :l_fumar, :l_usoindebido, :g_agresion, :g_amenazas, :g_suplantacion, :g_fumar, :g_ofensas, :g_humillaciones, :g_deterioro, :g_impedimento)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			$app->redirect('/partes');
+		}
+ 
+	});
+	
+	 $app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('parte.php'); 
+	});
 });
 
 $app->group('/usuarios', function () use ($app) {
@@ -279,7 +348,7 @@ $app->group('/usuarios', function () use ($app) {
 		$app->redirect('/usuarios');
 	}); 
 	
-	$app->get('/editar', function() use ($app){
+	$app->get('/editarusuario', function() use ($app){
 	
 		global $twig;
 		
