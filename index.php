@@ -430,6 +430,15 @@ $app->get('/upload', function() use ($app){
     global $twig;
     echo $twig->render('upload.php');
 }); 
+$app->get('/Bd', function() use ($app){
+	$directory = "./model/dictados.db";
+	$filecount = 0;
+	$files = glob($directory . "*");
+	if ($files){
+	 $filecount = count($files);
+	}
+	echo "Hay $filecount fichero dictados.db";
+});
 
 $app->post('/upload', function() use ($app){
 	$target_dir = "model/datos/";
