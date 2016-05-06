@@ -114,8 +114,8 @@ $app->group('/alumnos', function () use ($app) {
 		$pdo=$app->db;
 		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso from alumno")->fetchAll(PDO::FETCH_ASSOC);
 			
-		$valores=array('comentarios'=>$r);
-		echo $twig->render('comentarios.php',$valores);  
+		$valores=array('alumnos'=>$r);
+		echo $twig->render('alumnos.php',$valores);  
 	}); 
 	
 	$app->group('/buscar', function () use ($app) {
