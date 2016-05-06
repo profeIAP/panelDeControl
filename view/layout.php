@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
-	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
 	
     {% block cabecera %}
 			
@@ -139,6 +140,11 @@
 						<li><a href="/upload">Subir</a></li>
 						<li><a href="/alumnos/importar">Importar</a></li>
 					</ul>
+							 
+							 <p>Anotaciones</p>
+                    <ul>
+						<li><a href="/alumnos/anotacion/crear">Crear</a></li>
+						</ul>
 					
                     <p>Notificaciones</p>
                     <ul>
@@ -160,11 +166,57 @@
 					</ul>
 
                     <p>Salir</p>
+
+
+    <ul id="accordion" class="accordion">
+  <li>
+    <div class="link"><i class="fa fa-database"></i>ALUMNOS<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+						<li><a href="/alumnos/crear">Crear</a></li>
+						<li>Buscar</li>
+						<li><a href="/alumnos">Listar</a></li>
+						<li><a href="/importar">Importar</a></li>
+					</ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-code"></i>NOTIFICACIONES<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+  		               <li><a href="/notificaciones">Listar</a></li>
+    </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-mobile"></i>PARTES<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+                        <li><a href="/partes/crear">Crear</a></li>
+						<li>Buscar</li>
+						<li><a href="/partes">Listar</a></li>
+    </ul>
+  </li>
+  <li>
+	    <div class="link"><i class="fa fa-code"></i>USUARIOS<i class="fa fa-chevron-down"></i></div>
+	    <ul class="submenu">
+	  <li><a href="/usuarios/crear">Crear</a></li>
+						<li>Buscar</li>
+						<li><a href="/usuarios">Listar</a></li>
+						<li>Importar</li>
+						 </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-globe"></i>SALIR<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+
+    </ul>
+  </li>
+</ul>
                     
                 </div><!--info end-->
             </div><!--tech skills end-->
 		</div><!--right end-->
     </div><!--container end-->
+
+                </div><!--info end-->
+            </div><!--tech skills end-->
+		</div><!--right end-->
 
     
     <footer class="text-center">  ... </footer>
