@@ -44,7 +44,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="width:97%">
         <!-- ===========================
         HEADER
         ============================ -->
@@ -103,8 +103,8 @@
         <!-- ===========================
         BODY LEFT PART
         ============================ -->
-        <div class="col-md-9 mainleft">
-            <div id="statement" class="row mobmid">
+        <div class="col-md-10 mainleft">
+            <div id="statement" class="row mobmid" style="margin left:40px">
                 
                 <div class="col-sm-12">
                     <!--<h3>Inicio </h3>
@@ -123,7 +123,7 @@
         <!-- ===========================
         SIDEBAR
         =========================== -->
-        <div class="col-md-3 mainright">
+        <div class="col-md-2 mainright">
             <div class="row">
                 <div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-briefcase"></span>
@@ -139,6 +139,7 @@
 						<li><a href="/alumnos/crear">Crear</a></li>
 						<li>Buscar</li>
 						<li><a href="/alumnos">Listar</a></li>
+						<li><a href="/upload">Subir</a></li>
 						<li><a href="/alumnos/importar">Importar</a></li>
 					</ul>
 					

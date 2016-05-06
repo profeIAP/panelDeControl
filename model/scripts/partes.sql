@@ -1,24 +1,8 @@
 -- Describe PARTES
 CREATE TABLE "Partes" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "ID_ALUMNO" TEXT,
-    "CURSOYGRUPO" TEXT,
-=======
-=======
->>>>>>> c1ba9a757eedee8e629ec14c5813991ad496eb91
-<<<<<<< HEAD
-    "ID_ALUMNO" INTEGER,
-    "CURSO Y GRUPO" TEXT,
-=======
     "ID_ALUMNO" INTEGER,
     "GRUPO" TEXT,
->>>>>>> f79f58a59c9d2e372d87172567cfbeb48d928447
-<<<<<<< HEAD
->>>>>>> 3eef2c58996de873053521097abde8a4ca3fc2f6
-=======
->>>>>>> c1ba9a757eedee8e629ec14c5813991ad496eb91
     "FECHA" TEXT,
     "HORA" TEXT,
     "ASIGNATURA" TEXT,
