@@ -279,7 +279,7 @@ $app->group('/usuarios', function () use ($app) {
 		$app->redirect('/usuarios');
 	}); 
 	
-	$app->get('/editarusuario', function() use ($app){
+	$app->get('/editar', function() use ($app){
 	
 		global $twig;
 		
