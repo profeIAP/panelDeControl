@@ -178,6 +178,7 @@
     
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
