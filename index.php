@@ -44,6 +44,7 @@ header('Content-type: text/html; charset=utf-8');
 
 require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
+require_once	'controller/LoginClave.php';
 
 Twig_Autoloader::register();  
 
@@ -491,6 +492,14 @@ $app->get('/grafica', function() use ($app){
     echo $twig->render('grafica.php');  
 }); 
 
+$app->get('/login', function() use ($app){
+    global $twig;
+	if(LoginClave::autenticar("profeIAP", "clave"))
+		echo "OK";
+	else
+		echo "!OK";
+}); 
+
 $app->get('/upload', function() use ($app){
     global $twig;
     echo $twig->render('upload.php');
@@ -551,6 +560,7 @@ $app->post('/upload', function() use ($app){
 		}
 	}
 }); 
+
 
 // Ponemos en marcha el router
 $app->run();
