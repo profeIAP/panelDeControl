@@ -383,7 +383,7 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('usuario');
+			$app->redirect('/usuarios');
 		}
 		else
 		{
@@ -394,7 +394,7 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 		
-		$app->redirect('usuario');
+		$app->redirect('/usuarios');
 		
 		}
 	}); 
