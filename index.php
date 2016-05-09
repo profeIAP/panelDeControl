@@ -245,9 +245,7 @@ $app->group('/partes', function () use ($app) {
 		echo $twig->render('partes.php');  
 	}); 
 
-	
-		
-		$app->post('/guardar', function() use ($app){
+	$app->post('/guardar', function() use ($app){
 	
 		global $twig;
 		
@@ -348,7 +346,7 @@ $app->group('/usuarios', function () use ($app) {
 		$app->redirect('/usuarios');
 	}); 
 	
-	$app->get('/editarusuario', function() use ($app){
+	$app->get('/editar', function() use ($app){
 	
 		global $twig;
 		
@@ -385,7 +383,7 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/comentariosusuario');
+			$app->redirect('usuario');
 		}
 		else
 		{
@@ -396,9 +394,8 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 		
-			// Mostramos un mensaje al usuario
-			
-			echo $twig->render('agradecimiento.php',$valores); 
+		$app->redirect('usuario');
+		
 		}
 	}); 
 
@@ -498,6 +495,7 @@ $app->get('/upload', function() use ($app){
     global $twig;
     echo $twig->render('upload.php');
 }); 
+
 $app->get('/Bd', function() use ($app){
 	$directory = "./model/dictados.db";
 	$filecount = 0;
