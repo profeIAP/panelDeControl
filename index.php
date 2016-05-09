@@ -326,8 +326,8 @@ $app->group('/usuarios', function () use ($app) {
 		$pdo=$app->db;
 		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
 			
-		$valores=array('usuario'=>$r);
-		echo $twig->render('comentarios.php',$valores);  
+		$valores=array('usuarios'=>$r);
+		echo $twig->render('usuarios.php',$valores);  
 	}); 
 	
 	//cambiar alumno por usuario
