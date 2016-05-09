@@ -48,7 +48,7 @@
         ============================ -->
         <div id="header" class="row">
             <div class="col-sm-2">
-                <img class="propic" src="/img/logo.png" alt="">
+                <a href="/"><img class="propic" src="/img/logo.png" alt=""></a>
             </div>
             <!-- photo end-->
 
