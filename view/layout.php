@@ -78,18 +78,19 @@
                         <ul class="list-unstyled">
                         </ul>
                     </div><!-- social 1st col end-->
-
+					<div class="col-sm-2">
+						
+                        <ul class="list-unstyled">
+                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
+                        </ul>
+                    </div><!-- social 2nd col end-->
                     <div class="col-sm-2">
                         <ul class="list-unstyled">
                             <li><a href="/"><span class="social fa fa-home"></span>Inicio</a></li>
                         </ul>
                     </div><!-- social 2nd col end-->
                     
-                    <div class="col-sm-2">
-                        <ul class="list-unstyled">
-                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
-                        </ul>
-                    </div><!-- social 2nd col end-->
+                    
                     
                     <!-- social 3rd col end-->
                 </div><!-- header social end-->
@@ -132,8 +133,11 @@
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 01690fdb80890161e05a4c061e800c931334eb3d
 
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="/css/menulateral.css" rel="stylesheet" type="text/css">
@@ -146,7 +150,6 @@
     <ul class="submenu">
 						<li><a href="/alumnos/crear">Crear</a></li>
 						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/upload">Subir</a></li>
 						<li><a href="/alumnos/importar">Importar</a></li>
 					</ul>
   </li>

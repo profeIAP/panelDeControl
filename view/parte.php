@@ -27,7 +27,22 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
-			<input type="text" class="form-control col-md-6" id="hora" name="hora" value=""><a class="botoncal" href="#"><span></span></a>
+			<div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Tramo Horario
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">Primera</a></li>
+              <li><a href="#">Segunda</a></li>
+              <li><a href="#">Tercera</a></li>
+              <li><a href="#">Recreo</a></li>
+              <li><a href="#">Cuarta</a></li>
+              <li><a href="#">Quinta</a></li>
+              <li><a href="#">Sexta</a></li>        
+            </ul>
+          </div>
+			
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
