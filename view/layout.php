@@ -262,7 +262,6 @@ h1 a {
     <ul class="submenu">
 						<li><a href="/alumnos/crear">Crear</a></li>
 						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/upload">Subir</a></li>
 						<li><a href="/alumnos/importar">Importar</a></li>
 					</ul>
   </li>
