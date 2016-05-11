@@ -32,8 +32,8 @@
     <link href='//fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
-
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
 
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -133,17 +133,6 @@
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 01690fdb80890161e05a4c061e800c931334eb3d
-
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
-</head>
-
-
 <ul id="accordion" class="accordion">
   <li>
     <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
