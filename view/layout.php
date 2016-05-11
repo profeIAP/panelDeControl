@@ -78,18 +78,19 @@
                         <ul class="list-unstyled">
                         </ul>
                     </div><!-- social 1st col end-->
-
+					<div class="col-sm-2">
+						
+                        <ul class="list-unstyled">
+                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
+                        </ul>
+                    </div><!-- social 2nd col end-->
                     <div class="col-sm-2">
                         <ul class="list-unstyled">
                             <li><a href="/"><span class="social fa fa-home"></span>Inicio</a></li>
                         </ul>
                     </div><!-- social 2nd col end-->
                     
-                    <div class="col-sm-2">
-                        <ul class="list-unstyled">
-                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
-                        </ul>
-                    </div><!-- social 2nd col end-->
+                    
                     
                     <!-- social 3rd col end-->
                 </div><!-- header social end-->
