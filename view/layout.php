@@ -132,41 +132,6 @@
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    
-                    <p>Alumnos</p>
-                    <ul>
-						<li><a href="/alumnos/crear">Crear</a></li>
-						<li>Buscar</li>
-						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/upload">Subir</a></li>
-						<li><a href="/alumnos/importar">Importar</a></li>
-					</ul>
-							 
-							 <p>Anotaciones</p>
-                    <ul>
-						<li><a href="/alumnos/anotacion/crear">Crear</a></li>
-						</ul>
-					
-                    <p>Notificaciones</p>
-                    <ul>
-						<li><a href="/notificaciones">Listar</a></li>
-					</ul>
-
-                    <p>Partes</p>
-                    <ul>
-						<li><a href="/partes/crear">Crear</a></li>
-						<li>Buscar</li>
-						<li><a href="/partes">Listar</a></li>
-					</ul>
-                    <p>Usuarios</p>
-                    <ul>
-						<li><a href="/usuarios/crear">Crear</a></li>
-						<li>Buscar</li>
-						<li><a href="/usuarios">Listar</a></li>
-						<li>Importar</li>
-					</ul>
-
-                    <p>Salir</p>
-
 
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
@@ -297,7 +262,6 @@ h1 a {
     <ul class="submenu">
 						<li><a href="/alumnos/crear">Crear</a></li>
 						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/upload">Subir</a></li>
 						<li><a href="/alumnos/importar">Importar</a></li>
 					</ul>
   </li>

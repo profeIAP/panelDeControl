@@ -102,12 +102,18 @@ if (password_verify('InFoRmAtIcA', $hash)) {
 
 $app->group('/alumnos', function () use ($app) {
 	
-	$app->get('/importar', function() use ($app){
+	$app->post('/importar', function() use ($app){
 		global $twig;
-		$valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
+		$fichero=upload_file();
+		$valores=import_csv_to_sqlite($app->db, $fichero, array("delimiter"=>","));
 		echo $twig->render('importar.php',$valores);
 		  
 	}); 
+	
+	$app->get('/importar', function() use ($app){
+    global $twig;
+    echo $twig->render('upload.php');
+}); 
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -519,8 +525,8 @@ $app->get('/Bd', function() use ($app){
 	echo "Hay $filecount fichero dictados.db";
 });
 
-$app->post('/upload', function() use ($app){
-	$target_dir = "model/datos/";
+function upload_file(){
+		$target_dir = "model/datos/";
 	$target_file = $target_dir .basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = strtoupper(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -539,31 +545,39 @@ $app->post('/upload', function() use ($app){
 
 	// Check if file already exists
 	if (file_exists($target_file)) {
+		// TODO quitar esto de aquí
 		echo "Sorry, file already exists.";
 		$uploadOk = 0;
 	}
 	// Check file size
 	if ($_FILES["fileToUpload"]["size"] > 500000) {
+		// TODO quitar esto de aquí
 		echo "Sorry, your file is too large.";
 		$uploadOk = 0;
 	}
 	// Allow certain file formats
 	if($imageFileType != "CSV") {
+		// TODO quitar esto de aquí
 		echo "Sorry, only CSV files are allowed.";
 		$uploadOk = 0;
 	}
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
+		// TODO quitar esto de aquí
 		echo "Sorry, your file was not uploaded.";
 	// if everything is ok, try to upload file
 	} else {
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			// TODO quitar esto de aquí
 		    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 		} else {
+			// TODO quitar esto de aquí
 		    echo "Sorry, there was an error uploading your file.";
 		}
 	}
-}); 
+	
+	return $target_file;
+}  
 
 
 // Ponemos en marcha el router
