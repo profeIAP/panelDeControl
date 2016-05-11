@@ -44,6 +44,7 @@ header('Content-type: text/html; charset=utf-8');
 
 require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
+require_once	'controller/Email.php';
 require_once	'controller/LoginClave.php';
 
 Twig_Autoloader::register();  
@@ -579,6 +580,10 @@ function upload_file(){
 	return $target_file;
 }  
 
+$app->get('/email', function() use ($app){
+	Email::enviar("micorreo@gmail.com","Prueba email","Esto es una prueba sencilla");
+    echo "enviado";
+}); 
 
 // Ponemos en marcha el router
 $app->run();

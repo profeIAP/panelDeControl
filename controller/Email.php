@@ -29,9 +29,18 @@ class Email {
 	
 	private static function enviarDesarrollo($to, $subject, $body){
 		
-		// TODO quitar clave email de aquí
+		// Cliente Android usa los hosts 
+		// www.googleapis.com:443 y mail.google.com:443
+		// Y FUNCIONA EN EL INSTITUTO
 		
-		$transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+		// [https://goo.gl/z5lDLV] Para el uso de Google APIs
+		
+		// [https://goo.gl/JY8Ll] Técnicamente los puertos son 
+		// TLS/STARTTLS: 587 y SSL: 465
+		
+		// TODO quitar clave email de aquí
+
+		$transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 587, "ssl")
 		  ->setUsername('TU_CORREO@gmail.com')
 		  ->setPassword('CLAVE_ULTRA_SECRETA');
 
