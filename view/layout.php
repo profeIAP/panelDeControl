@@ -32,8 +32,8 @@
     <link href='//fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
-
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
 
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -78,18 +78,19 @@
                         <ul class="list-unstyled">
                         </ul>
                     </div><!-- social 1st col end-->
-
+					<div class="col-sm-2">
+						
+                        <ul class="list-unstyled">
+                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
+                        </ul>
+                    </div><!-- social 2nd col end-->
                     <div class="col-sm-2">
                         <ul class="list-unstyled">
                             <li><a href="/"><span class="social fa fa-home"></span>Inicio</a></li>
                         </ul>
                     </div><!-- social 2nd col end-->
                     
-                    <div class="col-sm-2">
-                        <ul class="list-unstyled">
-                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
-                        </ul>
-                    </div><!-- social 2nd col end-->
+                    
                     
                     <!-- social 3rd col end-->
                 </div><!-- header social end-->
@@ -101,7 +102,7 @@
         <!-- ===========================
         BODY LEFT PART
         ============================ -->
-        <div class="col-md-10 mainleft">
+        <div class="col-md-9 mainleft">
             <div id="statement" class="row mobmid" style="margin left:40px">
                 
                 <div class="col-sm-12">
@@ -121,7 +122,7 @@
         <!-- ===========================
         SIDEBAR
         =========================== -->
-        <div class="col-md-2 mainright">
+        <div class="col-md-3 mainright">
             <div class="row">
                 <div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-briefcase"></span>
@@ -132,137 +133,12 @@
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    
-
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-
-
-ul { list-style-type: none; }
-
-a {
-  color: #b63b4d;
-  text-decoration: none;
-}
-
-/** =======================
- * Contenedor Principal
- ===========================*/
-
-
-h1 {
-  color: #FFF;
-  font-size: 24px;
-  font-weight: 400;
-  text-align: center;
-  margin-top: 80px;
-}
-
-h1 a {
-  color: #c12c42;
-  font-size: 16px;
-}
-
-.accordion {
-  width: 100%;
-  max-width: 360px;
-  margin: 30px auto 20px;
-  background: #FFF;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-
-.accordion .link {
-  cursor: pointer;
-  display: block;
-  padding: 15px 15px 15px 42px;
-  color: #4D4D4D;
-  font-size: 14px;
-  font-weight: 700;
-  border-bottom: 1px solid #CCC;
-  position: relative;
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-
-.accordion li:last-child .link { border-bottom: 0; }
-
-.accordion li i {
-  position: absolute;
-  top: 16px;
-  left: 12px;
-  font-size: 18px;
-  color: #595959;
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-
-.accordion li i.fa-chevron-down {
-  right: 12px;
-  left: auto;
-  font-size: 16px;
-}
-
-.accordion li.open .link { color: #b63b4d; }
-
-.accordion li.open i { color: #b63b4d; }
-
-.accordion li.open i.fa-chevron-down {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-/**
- * Submenu
- -----------------------------*/
-
-
-.submenu {
-  display: none;
-  background: #444359;
-  font-size: 14px;
-}
-
-.submenu li { border-bottom: 1px solid #4b4a5e; }
-
-.submenu a {
-  display: block;
-  text-decoration: none;
-  color: #d9d9d9;
-  padding: 12px;
-  padding-left: 42px;
-  -webkit-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-
-.submenu a:hover {
-  background: #b63b4d;
-  color: #FFF;
-}
-</style>
-</head>
-
-
 <ul id="accordion" class="accordion">
   <li>
     <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
 						<li><a href="/alumnos/crear">Crear</a></li>
 						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/upload">Subir</a></li>
 						<li><a href="/alumnos/importar">Importar</a></li>
 					</ul>
   </li>
@@ -270,7 +146,7 @@ h1 a {
   <li>
     <div class="link"></i>Anotaciones<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
-      <li><a href="/alumnos/anotacion/crear">Crear</a></li>
+      <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
 		</ul>
 		</li>
   
