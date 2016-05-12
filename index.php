@@ -433,7 +433,12 @@ $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
- 
+
+$app->get('/login', function() use ($app){
+    global $twig;
+    echo $twig->render('login.php');  
+}); 
+
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	
 	extract($options);
