@@ -71,7 +71,7 @@
 				    
                 -->
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <ul class="list-unstyled">
                         </ul>
                     </div><!-- social 1st col end-->
@@ -84,7 +84,13 @@
                     
                     <div class="col-sm-2">
                         <ul class="list-unstyled">
-                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
+                            <li><a href="/about"><span class="social fa fa-info"></span>Acerca de</a></li>
+                        </ul>
+                    </div><!-- social 2nd col end-->
+                    
+                    <div class="col-sm-2">
+                        <ul class="list-unstyled">
+                            <li><a href="/login"><span class="social fa fa-cog"></span>Log in</a></li>
                         </ul>
                     </div><!-- social 2nd col end-->
                     
