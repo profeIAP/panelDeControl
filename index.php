@@ -122,6 +122,13 @@ $app->group('/alumnos', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
 			echo "hola";
+		});
+		
+		$app->post('/id', function() use ($app){
+			global $twig;
+			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
+            echo (json_encode($miArray));
+			
 		}); 
 	});
 	
@@ -215,7 +222,7 @@ $app->group('/alumnos', function () use ($app) {
 
 	$app->get('/autocompletado', function() use ($app){
 		global $twig;
-		echo $twig->render('autocompletado.php');  
+		echo $twig->render('autocomplete.php');  
 	}); 
 
 $app->group('/notificaciones', function () use ($app) {
