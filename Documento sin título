@@ -1,0 +1,83 @@
+LAYOUT--
+
+					 <p>ANOTACIONES</p>
+                    <ul>
+						<li><a href="/alumnos/anotacion/crear">Crear</a></li>
+						</ul>
+
+MENU LATERAL --
+
+<ul id="accordion" class="accordion">
+  <li>
+    <div class="link"><i class="fa fa-database"></i>ALUMNOS<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+						<li><a href="/alumnos/crear">Crear</a></li>
+						<li>Buscar</li>
+						<li><a href="/alumnos">Listar</a></li>
+						<li><a href="/importar">Importar</a></li>
+					</ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-code"></i>NOTIFICACIONES<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+  		               <li><a href="/notificaciones">Listar</a></li>
+    </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-mobile"></i>PARTES<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+                        <li><a href="/partes/crear">Crear</a></li>
+						<li>Buscar</li>
+						<li><a href="/partes">Listar</a></li>
+    </ul>
+  </li>
+  <li>
+	    <div class="link"><i class="fa fa-code"></i>USUARIOS<i class="fa fa-chevron-down"></i></div>
+	    <ul class="submenu">
+	  <li><a href="/usuarios/crear">Crear</a></li>
+						<li>Buscar</li>
+						<li><a href="/usuarios">Listar</a></li>
+						<li>Importar</li>
+						 </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-globe"></i>SALIR<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+
+    </ul>
+  </li>
+</ul>
+
+
+                </div><!--info end-->
+            </div><!--tech skills end-->
+		</div><!--right end-->
+    </div><!--container end-->
+
+    
+    <footer class="text-center">  ... </footer>
+
+    <!--necessary scripts and plugins-->
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.nicescroll.min.js"></script>
+    <script src="/js/evenfly.js"></script>
+    
+	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/js/calendario_dw.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$(".campofecha").calendarioDW();
+		})
+	</script>
+	<script>
+		$(document).ready(function(){
+			$('#myTable').dataTable();
+		});
+	</script>
+</body>
+
+</html>
+
