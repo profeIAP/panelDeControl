@@ -1,4 +1,3 @@
-
 {% extends "layout.php" %}
 
 {% block tabActivo %}crear{% endblock tabActivo %}
@@ -28,20 +27,7 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
-			
-           <div class="form-group">
-            <label for="sel1">Tramo horario:</label>
-            <select class="form-control" id="sel1">
-              <option>Primera</option>
-              <option>Segunda</option>
-              <option>Tercera</option>
-              <option>Recreo</option>
-              <option>Cuarta</option>
-              <option>Quinta</option>
-              <option>Sexta</option>            
-            </select>
-          </div>
-			
+			<input type="text" class="form-control col-md-6" id="hora" name="hora" value=""><a class="botoncal" href="#"><span></span></a>
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
@@ -49,6 +35,9 @@
 		</div>
 		
 		<button type="submit" class="btn btn-default">Enviar</button>
+		<button type="submit" class="btn btn-danger">Cancelar</button>
+		<button type="submit" class="btn btn-primary">Guardar</button>
+		<button type="submit" class="btn btn-success">Aceptar</button>
 </form>
 <!--
   <div class="form-all">
