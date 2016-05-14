@@ -88,8 +88,8 @@ function sendMessage($to, $subject, $body) {
 	$mail->AddAddress($to);
 	$mail->AddReplyTo(FROM_EMAIL,FROM_NAME);
 	$mail->Subject = $subject;
-	// TODO admitir html en lugar de texto plano
 	$mail->Body    = $body;
+	$mail->IsHTML(true); 
 	$mail->preSend();
 	$mime = $mail->getSentMIMEMessage();
 	$m = new Google_Service_Gmail_Message();
