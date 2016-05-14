@@ -1,9 +1,12 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
+const FROM_EMAIL = "jasvazquez@iesalandalus.com";
+const FROM_NAME  = "profeIAP";
+	
 define('APPLICATION_NAME', 'Gmail API PHP Quickstart');
 define('CREDENTIALS_PATH', '~/.credentials/gmail-php-quickstart.json');
-define('CLIENT_SECRET_PATH', __DIR__ . '/client_id.json');
+define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/gmail-php-quickstart.json
 define('SCOPES', implode(' ', array(
@@ -70,48 +73,33 @@ function expandHomeDirectory($path) {
   return str_replace('~', realpath($homeDirectory), $path);
 }
 
-/**
- * Send Message.
- *
- * @param  Google_Service_Gmail $service Authorized Gmail API instance.
- * @param  string $userId User's email address. The special value 'me'
- * can be used to indicate the authenticated user.
- * @param  Google_Service_Gmail_Message $message Message to send.
- * @return Google_Service_Gmail_Message sent Message.
- */
-function sendMessage($service, $userId, $message) {
+function sendMessage($to, $subject, $body) {
 	
-  $message_object = new Google_Service_Gmail_Message();
-  $encoded_message = rtrim(strtr(base64_encode($message), '+/', '-_'), '=');
-  $message_object->setRaw($encoded_message);
+	// Get the API client and construct the service object.
+	
+	$client = getClient();
+	$service = new Google_Service_Gmail($client);
 
-  try {
-    $message = $service->users_messages->send($userId, $message_object);
-    print 'Message with ID: ' . $message->getId() . ' sent.';
-    return $message;
-  } catch (Exception $e) {
-    print 'An error occurred: ' . $e->getMessage();
-  }
+	$mail = new PHPMailer();
+	
+	$mail->CharSet = "ISO-8859-1";
+	$mail->From = FROM_EMAIL;
+	$mail->FromName = FROM_NAME;
+	$mail->AddAddress($to);
+	$mail->AddReplyTo(FROM_EMAIL,FROM_NAME);
+	$mail->Subject = $subject;
+	// TODO admitir html en lugar de texto plano
+	$mail->Body    = $body;
+	$mail->preSend();
+	$mime = $mail->getSentMIMEMessage();
+	$m = new Google_Service_Gmail_Message();
+	$data = base64_encode($mime);
+	$data = str_replace(array('+','/','='),array('-','_',''),$data); // url safe
+	$m->setRaw($data);
+	$service->users_messages->send('me', $m);
 }
-
-// Get the API client and construct the service object.
-$client = getClient();
-$service = new Google_Service_Gmail($client);
 
 // [https://goo.gl/QZIHWU] Para descargar el fichero de credenciales client_id.json
-sendMessage($service, "me", "Como funcione me muero");
-return;
+sendMessage("jasvazquez@gmail.com", "Prueba brutal","Como funcione <b>me muero</b>");
 
-// Print the labels in the user's account.
-$user = 'me';  // Equivale al usuario actualmente registrado
-$results = $service->users_labels->listUsersLabels($user);
-
-if (count($results->getLabels()) == 0) {
-  print "No labels found.\n";
-} else {
-  print "Labels:\n";
-  foreach ($results->getLabels() as $label) {
-    printf("- %s\n", $label->getName());
-  }
-}
 ?>
