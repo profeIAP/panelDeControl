@@ -581,7 +581,7 @@ function upload_file(){
 }  
 
 $app->get('/email', function() use ($app){
-	Email::enviar("micorreo@gmail.com","Prueba email","Esto es una prueba sencilla");
+	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
     echo "enviado";
 }); 
 
