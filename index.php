@@ -42,8 +42,8 @@ session_cache_limiter(false);
 session_start();
 header('Content-type: text/html; charset=utf-8');
 
-require 	 'vendor/autoload.php';
-require_once 'controller/Utils.php';
+require 	 	'vendor/autoload.php';
+require_once	'controller/Utils.php';
 
 Twig_Autoloader::register();  
 
@@ -69,7 +69,44 @@ $app->get('/', function() use ($app){
     echo $twig->render('inicio.php');  
 }); 
 
-$app->group('/alumno', function () use ($app) {
+$app->get('/hash',function() use ($app){
+    global $twig;
+    $userPassword="informatica";
+    $hash = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]) ;
+
+	//echo $hash;
+
+/*
+if (password_verify($userPassword, $hash)) {
+    // Login successful.
+     if (password_needs_rehash($hash, PASSWORD_DEFAULT, ['cost' => 12])) {
+        // Recalculate a new password_hash() and overwrite the one we stored previously
+    }
+}*/
+	$userPassword="InFoRmAtIcA";
+	$hash2 = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]);
+	
+	echo $hash."<br>";
+	echo $hash2."<br>";
+	$userPasswordveryfied="InFoRmAtIcA";
+	
+if (password_verify('InFoRmAtIcA', $hash)) {
+    echo '¡La contraseña es válida!';
+} else {
+    echo 'La contraseña no es válida.';
+}
+
+});  
+
+
+$app->group('/alumnos', function () use ($app) {
+	
+	$app->get('/importar', function() use ($app){
+		global $twig;
+		$valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
+		echo $twig->render('importar.php',$valores);
+		  
+	}); 
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -80,6 +117,20 @@ $app->group('/alumno', function () use ($app) {
 		$valores=array('comentarios'=>$r);
 		echo $twig->render('comentarios.php',$valores);  
 	}); 
+	
+	$app->group('/buscar', function () use ($app) {
+		$app->get('/nombre', function() use ($app){
+			global $twig;
+			echo "hola";
+		}); 
+	});
+	
+	$app->group('/anotaciones', function () use ($app) {
+		$app->get('/', function() use ($app){
+			global $twig;
+			// Espacio "dedicado" a juan carlos
+		}); 
+	});
 	
 	$app->get('/borrar', function() use ($app){
 	
@@ -110,7 +161,7 @@ $app->group('/alumno', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentario'=>$r);
-		echo $twig->render('alumno.php',$valores);  	
+		echo $twig->render('/usaurios',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
@@ -138,20 +189,20 @@ $app->group('/alumno', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/comentarios');
+			$app->redirect('/alumnos');
 		}
 		else
 		{
 			unset($valores['id']);
 			
-			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso) VALUES (:nombre, :email, :direccion, :telefono, :comentario, :localidad, :provincia, :dni_tutor, :curso,)";
+			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso) VALUES (:nombre, :email, :direccion, :telefono, :comentario, :localidad, :provincia, :dni_tutor, :curso)";
 			$pdo=$app->db;
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 		
 			// Mostramos un mensaje al usuario
 			
-			echo $twig->render('agradecimiento.php',$valores); 
+			$app->redirect('/alumnos');
 		}
 	}); 
 
@@ -161,7 +212,33 @@ $app->group('/alumno', function () use ($app) {
 	}); 
 });
 
-$app->group('/usuario', function () use ($app) {
+$app->group('/notificaciones', function () use ($app) {
+	
+	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('notificaciones'=>$r);
+		echo $twig->render('notificaciones.php',$valores);  
+		
+	}); 
+	
+	$app->get('/rss', function() use ($app){
+		global $twig;
+     
+		 $pdo=$app->db;
+		 #$app->response->headers->set('Content-Type', 'text/xml');
+		 
+		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+			
+		echo $twig->render('rss.php', array('items' => $r));
+	});
+
+});
+
+$app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -186,17 +263,7 @@ $app->group('/usuario', function () use ($app) {
 		$pdo = $app->db;
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
-		$app->redirect('/');
-	}); 
-	
-	$app->get('/', function() use ($app){
-		global $twig;
-		
-		$pdo=$app->db;
-		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
-			
-		$valores=array('usuario'=>$r);
-		echo $twig->render('comentarios.php',$valores);  
+		$app->redirect('/usuarios');
 	}); 
 	
 	$app->get('/editarusuario', function() use ($app){
@@ -255,36 +322,23 @@ $app->group('/usuario', function () use ($app) {
 
 	$app->get('/crear', function() use ($app){
 		global $twig;
+		// TODO indicar la vista a renderizar (aun no existe el formulario)
 		echo $twig->render('');  
 	}); 
 });
 
-$app->group('/notificaciones', function () use ($app) {
+$app->get('/contartabla', function() use ($app){
 	
-	$app->get('/', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+		$q = $pdo->prepare("select * from tablasbd");
+		$q->execute();
+		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
-		$valores=array('notificaciones'=>$r);
-		echo $twig->render('notificaciones.php',$valores);  
-		
-	}); 
-	
-	$app -> get('/rss', function() use ($app) {
-		
-	     global $twig;
-     
-		 $pdo=$app->db;
-		 #$app->response->headers->set('Content-Type', 'text/xml');
-		 
-		 $r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
-			
-		echo $twig->render('rss.php', array('items' => $r));
+		$valores=array('ntablas'=>$r);
+		echo $twig->render('tablas.php',$valores);  	
 	});
-	
-});
 
 $app->group('/partes', function () use ($app) {
 	
@@ -292,10 +346,10 @@ $app->group('/partes', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select * from parte")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentarios'=>$r);
-		echo $twig->render('partes.php');  
+		echo $twig->render('partes.php',$valores);  
 	}); 
 
 	$app->get('/crear', function() use ($app){
@@ -308,7 +362,7 @@ $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
-
+ 
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	
 	extract($options);
@@ -358,14 +412,74 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 			'insert' => $insert_sth,*/
 			'table' => $table,
 			'inserted_rows' => $inserted_rows
-		);
+	);
 }
 
-$app->get('/importar', function() use ($app){
+
+$app->get('/contarFicheros', function() use ($app){
+	$directory = "./model/scripts/";
+	$filecount = 0;
+	$files = glob($directory . "*");
+	if ($files){
+	 $filecount = count($files);
+	}
+	echo "There were $filecount files";
+});
+
+$app->get('/grafica', function() use ($app){
     global $twig;
-    $valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
-    echo $twig->render('importar.php',$valores);
-      
+    echo $twig->render('grafica.php');  
+}); 
+
+$app->get('/upload', function() use ($app){
+    global $twig;
+    echo $twig->render('upload.php');
+}); 
+
+$app->post('/upload', function() use ($app){
+	$target_dir = "model/datos/";
+	$target_file = $target_dir .basename($_FILES["fileToUpload"]["name"]);
+	$uploadOk = 1;
+	$imageFileType = strtoupper(pathinfo($target_file,PATHINFO_EXTENSION));
+	// Check if image file is a actual image or fake image
+
+	/*if(isset($_POST["submit"])) {
+		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+		if($check !== false) {
+		    echo "File is an image - " . $check["mime"] . ".";
+		    $uploadOk = 1;
+		} else {
+		    echo "File is not an image.";
+		    $uploadOk = 0;
+		}
+	}*/
+
+	// Check if file already exists
+	if (file_exists($target_file)) {
+		echo "Sorry, file already exists.";
+		$uploadOk = 0;
+	}
+	// Check file size
+	if ($_FILES["fileToUpload"]["size"] > 500000) {
+		echo "Sorry, your file is too large.";
+		$uploadOk = 0;
+	}
+	// Allow certain file formats
+	if($imageFileType != "CSV") {
+		echo "Sorry, only CSV files are allowed.";
+		$uploadOk = 0;
+	}
+	// Check if $uploadOk is set to 0 by an error
+	if ($uploadOk == 0) {
+		echo "Sorry, your file was not uploaded.";
+	// if everything is ok, try to upload file
+	} else {
+		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+		    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		} else {
+		    echo "Sorry, there was an error uploading your file.";
+		}
+	}
 }); 
 
 // Ponemos en marcha el router
