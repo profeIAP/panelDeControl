@@ -159,7 +159,7 @@
 						<li>Importar</li>
 					</ul>
 
-                    <p>Salir</p>
+                    <li><a href="/logout">Salir</a></li>
                     
                 </div><!--info end-->
             </div><!--tech skills end-->
