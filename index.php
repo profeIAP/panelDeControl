@@ -129,7 +129,7 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
-			echo json_encode(array('julio sánchez','jose antonio vázquez'));
+			echo json_encode(array('julio sánchez','jose antonio vázquez','patricia murillo','miguel angel hinojosa'));
 		});
 		
 		$app->post('/id', function() use ($app){
