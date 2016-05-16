@@ -9,7 +9,7 @@ Partes
 <div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px"></div>
 <div id="piechart" style="width: 900px; height: 500px;"></div>
 
-      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      
       
       <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
