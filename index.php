@@ -129,13 +129,13 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
-			echo "hola";
+			echo json_encode(array('julio sánchez','jose antonio vázquez'));
 		});
 		
 		$app->post('/id', function() use ($app){
 			global $twig;
 			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
-            echo (json_encode($miArray));
+            echo json_encode($miArray);
 			
 		}); 
 	});
