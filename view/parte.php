@@ -34,7 +34,6 @@
 			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
 		</div>
 		
-		<button type="submit" class="btn btn-default">Enviar</button>
 		<button type="submit" class="btn btn-danger">Cancelar</button>
 		<button type="submit" class="btn btn-primary">Guardar</button>
 		<button type="submit" class="btn btn-success">Aceptar</button>
