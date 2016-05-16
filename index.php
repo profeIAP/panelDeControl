@@ -44,6 +44,8 @@ header('Content-type: text/html; charset=utf-8');
 
 require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
+require_once	'controller/Email.php';
+require_once	'controller/LoginClave.php';
 
 Twig_Autoloader::register();  
 
@@ -101,12 +103,18 @@ if (password_verify('InFoRmAtIcA', $hash)) {
 
 $app->group('/alumnos', function () use ($app) {
 	
-	$app->get('/importar', function() use ($app){
+	$app->post('/importar', function() use ($app){
 		global $twig;
-		$valores=import_csv_to_sqlite($app->db, "./model/datos/alumnos", array("delimiter"=>","));
+		$fichero=upload_file();
+		$valores=import_csv_to_sqlite($app->db, $fichero, array("delimiter"=>",", "table"=>"alumno"));
 		echo $twig->render('importar.php',$valores);
 		  
 	}); 
+	
+	$app->get('/importar', function() use ($app){
+    global $twig;
+    echo $twig->render('upload.php');
+}); 
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -114,14 +122,21 @@ $app->group('/alumnos', function () use ($app) {
 		$pdo=$app->db;
 		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso from alumno")->fetchAll(PDO::FETCH_ASSOC);
 			
-		$valores=array('comentarios'=>$r);
-		echo $twig->render('comentarios.php',$valores);  
+		$valores=array('alumnos'=>$r);
+		echo $twig->render('alumnos.php',$valores);  
 	}); 
 	
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
-			echo "hola";
+			echo json_encode(array('julio sánchez','jose antonio vázquez'));
+		});
+		
+		$app->post('/id', function() use ($app){
+			global $twig;
+			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
+            echo json_encode($miArray);
+			
 		}); 
 	});
 	
@@ -130,6 +145,10 @@ $app->group('/alumnos', function () use ($app) {
 			global $twig;
 			// Espacio "dedicado" a juan carlos
 		}); 
+		$app->get('/crear', function() use ($app){
+			global $twig;
+			echo $twig->render('anotacion.php'); 
+		});
 	});
 	
 	$app->get('/borrar', function() use ($app){
@@ -210,7 +229,13 @@ $app->group('/alumnos', function () use ($app) {
 		global $twig;
 		echo $twig->render('alumno.php');  
 	}); 
-});
+
+}); 
+
+	$app->get('/autocompletado', function() use ($app){
+		global $twig;
+		echo $twig->render('autocomplete.php');  
+	}); 
 
 $app->group('/notificaciones', function () use ($app) {
 	
@@ -238,6 +263,86 @@ $app->group('/notificaciones', function () use ($app) {
 
 });
 
+$app->group('/partes', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		echo $twig->render('partes.php');  
+	}); 
+
+	$app->post('/guardar', function() use ($app){
+	
+		global $twig;
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'id_alumno'=>$app->request()->post('nombre'),
+			'grupo'=>$app->request()->post('grupo'),		
+			'fecha'=>$app->request()->post('fecha'),	
+			'hora'=>$app->request()->post('hora'),	
+			'asignatura'=>$app->request()->post('asignatura'),	
+			'profesor'=>$app->request()->post('profesor'),	
+			'l_pertubar'=>$app->request()->post('l_pertubar'),	
+			'l_dificultar'=>$app->request()->post('l_dificultar'),
+			'l_faltarinjustificadamente'=>$app->request()->post('l_faltarinjustificadamente'),
+			'l_deteriorar'=>$app->request()->post('l_deteriorar'),		
+			'l_movil'=>$app->request()->post('l_movil'),	
+			'l_gafas'=>$app->request()->post('l_gafas'),	
+			'l_gorra'=>$app->request()->post('l_gorra'),
+			'l_pasillos'=>$app->request()->post('l_pasillos'),	
+			'l_faltainjustificada'=>$app->request()->post('l_faltainjustificada'),
+			'l_nocolaborar'=>$app->request()->post('l_nocolaborar'),
+			'l_impuntual'=>$app->request()->post('l_impuntual'),		
+			'l_desconsiderables'=>$app->request()->post('l_desconsiderables'),	
+			'l_beberocomer'=>$app->request()->post('l_beberocomer'),	
+			'l_faltamaterial'=>$app->request()->post('l_faltamaterial'),
+			'l_ordenador'=>$app->request()->post('l_ordenador'),	
+			'l_alterar'=>$app->request()->post('l_alterar'),
+			'l_fumar'=>$app->request()->post('l_fumar'),
+			'l_usoindebido'=>$app->request()->post('l_usoindebido'),
+			'g_agresion'=>$app->request()->post('g_agresion'),			
+			'g_incumplimiento'=>$app->request()->post('g_incumplimiento'),	
+			'g_amenazas'=>$app->request()->post('g_amenazas'),	
+			'g_suplantacion'=>$app->request()->post('g_suplantacion'),
+			'g_fumar'=>$app->request()->post('g_fumar'),
+			'g_ofensas'=>$app->request()->post('g_ofensas'),	
+			'g_humillaciones'=>$app->request()->post('g_humillaciones'),	
+			'g_deterioro'=>$app->request()->post('g_deterioro'),
+			'g_impedimento'=>$app->request()->post('g_impedimento')
+		);
+		
+		if($valores['id']){
+			$sql = "update alumno set ID_ALUMNO=:id_alumno, GRUPO=:grupo, FECHA=:fecha, HORA=:hora, ASIGNATURA=:asignatura, PROFESOR=:profesor, TUTOR=:tutor, L_PERTUBAR=:l_pertubar, L_DIFICULTAR=:l_dificultar, L_FALTARINJUSTIFICADAMENTE=:l_faltarinjustificadamente, L_DETERIORAR=:l_deteriorar, L_MOVIL=:l_movil, L_GAFAS=:l_gafas, L_GORRA=:l_gorra, L_PASILLOS=:l_pasillos, L_FALTAINJUSTIFICADA=:l_faltainjustificada, L_NOCOLABORAR=:l_nocolaborar, L_IMPUNTUAL=:l_impuntual, L_DESCONSIDERABLES=:l_desconsiderables, L_BEBEROCOMER=:l_beberocomer, L_FALTAMATERIAL=:l_faltamaterial, L_ORDENADOR=:l_ordenador, L_ALTERAR=:l_alterar, L_FUMAR=:l_fumar, L_USOINDEBIDO=:l_usoindebido, G_AGRESION=:g_agresion, G_INCUMPLIMIENTO=:g_incumplimiento, G_AMENAZAS=:g_amenazas, G_SUPLANTACION=:g_suplatancion, G_FUMAR=:g_fumar, G_OFENSAS=:g_ofensas, G_HUMILLACIONES=:g_humillaciones, G_DETERIORO=:g_deterioro, G_IMPEDIMENTO=:g_impedimento WHERE ID=:id ";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/partes');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO alumno (id_alumno, grupo, fecha, fecha, hora, asignatura, profesor, tutor, l_pertubar, l_dificultar, l_dificultar, l_faltarinjustificadamente, l_deteriorar, l_movil, l_gafas, l_gorra, l_pasillos, l_faltainjustificada, l_nocolaborar, l_impuntual, l_desconsiderables, l_beberocomer, l_faltamaterial, l_ordenador, l_alterar, l_fumar, l_usoindebido, g_agresion, g_incumplimiento, g_amenazas, g_suplantacion, g_fumar, g_ofensas, g_humillaciones, g_deterioro, g_impedimento) VALUES (:id_alumno, :grupo, :fecha, :hora, :asignatura, :profesor, :tutor, :l_pertubar, :l_dificultar, :l_faltarinjustificadamente, :l_deteriorar, :l_movil, :l_gafas, :l_gorra, :l_pasillos, :l_faltainjustificada, :l_nocolaborar, :l_impuntual, :l_desconsiderables, :l_beberocomer, :l_faltamaterial, :l_ordenador, :l_alterar, :l_fumar, :l_usoindebido, :g_agresion, :g_amenazas, :g_suplantacion, :g_fumar, :g_ofensas, :g_humillaciones, :g_deterioro, :g_impedimento)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			$app->redirect('/partes');
+		}
+ 
+	});
+	
+	 $app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('parte.php'); 
+	});
+});
+
 $app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
@@ -246,8 +351,8 @@ $app->group('/usuarios', function () use ($app) {
 		$pdo=$app->db;
 		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
 			
-		$valores=array('usuario'=>$r);
-		echo $twig->render('comentarios.php',$valores);  
+		$valores=array('usuarios'=>$r);
+		echo $twig->render('usuarios.php',$valores);  
 	}); 
 	
 	//cambiar alumno por usuario
@@ -266,7 +371,7 @@ $app->group('/usuarios', function () use ($app) {
 		$app->redirect('/usuarios');
 	}); 
 	
-	$app->get('/editarusuario', function() use ($app){
+	$app->get('/editar', function() use ($app){
 	
 		global $twig;
 		
@@ -303,7 +408,7 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 			
-			$app->redirect('/comentariosusuario');
+			$app->redirect('/usuarios');
 		}
 		else
 		{
@@ -314,9 +419,8 @@ $app->group('/usuarios', function () use ($app) {
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
 		
-			// Mostramos un mensaje al usuario
-			
-			echo $twig->render('agradecimiento.php',$valores); 
+		$app->redirect('/usuarios');
+		
 		}
 	}); 
 
@@ -332,13 +436,12 @@ $app->get('/contartabla', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
-		$q = $pdo->prepare("select * from tablasbd");
+		$q = $pdo->prepare("select count(*) numero from tablasbd");
 		$q->execute();
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
-		$valores=array('ntablas'=>$r);
-		echo $twig->render('tablas.php',$valores);  	
-	});
+		echo "Hay ". $r['numero'] . " tablas.";
+});
 
 $app->group('/partes', function () use ($app) {
 	
@@ -362,7 +465,12 @@ $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
- 
+
+$app->get('/login', function() use ($app){
+    global $twig;
+    echo $twig->render('login.php');  
+}); 
+
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	
 	extract($options);
@@ -373,11 +481,12 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	if(!$delimiter)
 		$delimiter = ';';
 		
-	$table = (isset($table) && !empty($table)) ? $table : preg_replace("/[^A-Z0-9]/i", '', basename($csv_path));
+	$table = (isset($table) && !empty($table)) ? $table : preg_replace("/[^A-Z0-9_]/i", '', basename($csv_path));
+	
 	
 	if(!isset($fields)){
 		$fields = array_map(function ($field){
-			return strtolower(preg_replace("/[^A-Z0-9]/i", '', $field));
+			return strtolower(preg_replace("/[^A-Z0-9_]/i", '', $field));
 		}, fgetcsv($csv_handle, 0, $delimiter));
 	}
 	
@@ -388,7 +497,6 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	$pdo->beginTransaction();
 	
 	$create_table_sql = "CREATE TABLE IF NOT EXISTS $table ($create_fields_str)";
-	
 	$pdo->exec($create_table_sql);
 	
 	$insert_fields_str = join(', ', $fields);
@@ -431,13 +539,31 @@ $app->get('/grafica', function() use ($app){
     echo $twig->render('grafica.php');  
 }); 
 
+$app->get('/login', function() use ($app){
+    global $twig;
+	if(LoginClave::autenticar("profeIAP", "clave"))
+		echo "OK";
+	else
+		echo "!OK";
+}); 
+
 $app->get('/upload', function() use ($app){
     global $twig;
     echo $twig->render('upload.php');
 }); 
 
-$app->post('/upload', function() use ($app){
-	$target_dir = "model/datos/";
+$app->get('/Bd', function() use ($app){
+	$directory = "./model/dictados.db";
+	$filecount = 0;
+	$files = glob($directory . "*");
+	if ($files){
+	 $filecount = count($files);
+	}
+	echo "Hay $filecount fichero dictados.db";
+});
+
+function upload_file(){
+		$target_dir = "model/datos/";
 	$target_file = $target_dir .basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = strtoupper(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -456,30 +582,55 @@ $app->post('/upload', function() use ($app){
 
 	// Check if file already exists
 	if (file_exists($target_file)) {
-		echo "Sorry, file already exists.";
+		// TODO quitar esto de aquí
+		
+		/*echo "Sorry, file already exists.";*/
+		
 		$uploadOk = 0;
 	}
 	// Check file size
 	if ($_FILES["fileToUpload"]["size"] > 500000) {
-		echo "Sorry, your file is too large.";
+		// TODO quitar esto de aquí
+		
+		/*echo "Sorry, your file is too large.";*/
+		
 		$uploadOk = 0;
 	}
 	// Allow certain file formats
 	if($imageFileType != "CSV") {
-		echo "Sorry, only CSV files are allowed.";
+		// TODO quitar esto de aquí
+		
+		/*echo "Sorry, only CSV files are allowed.;"*/
+		
 		$uploadOk = 0;
 	}
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
-		echo "Sorry, your file was not uploaded.";
+		// TODO quitar esto de aquí
+		
+		/*echo "Sorry, your file was not uploaded.";*/
+		
 	// if everything is ok, try to upload file
 	} else {
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-		    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+			// TODO quitar esto de aquí
+			
+		    /*echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";*/
+		    
 		} else {
-		    echo "Sorry, there was an error uploading your file.";
+			// TODO quitar esto de aquí
+			
+		    /*echo "Sorry, there was an error uploading your file.";*/
+		    
 		}
 	}
+	
+	return $target_file;
+}  
+
+$app->get('/email', function() use ($app){
+	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
+    echo "enviado";
 }); 
 
 // Ponemos en marcha el router

@@ -27,14 +27,26 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
-			<input type="text" class="form-control col-md-6" id="hora" name="hora" value=""><a class="botoncal" href="#"><span></span></a>
+			 <div class="form-group">
+            <select class="form-control" id="sel1">
+              <option>Primera</option>
+              <option>Segunda</option>
+              <option>Tercera</option>
+              <option>Recreo</option>
+              <option>Cuarta</option>
+              <option>Quinta</option>
+              <option>Sexta</option>
+            </select>
+          </div>			
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
 			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
 		</div>
 		
-		<button type="submit" class="btn btn-default">Enviar</button>
+		<button type="submit" class="btn btn-danger">Cancelar</button>
+		<button type="submit" class="btn btn-primary">Guardar</button>
+		<button type="submit" class="btn btn-success">Aceptar</button>
 </form>
 <!--
   <div class="form-all">
