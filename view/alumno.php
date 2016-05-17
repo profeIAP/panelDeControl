@@ -58,7 +58,11 @@
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="curso" name="curso" >{{comentario.CURSO}}</textarea>
 		</div>
 		
-		<button type="submit" class="btn btn-default">Enviar</button>
+		</div>
+		
+		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
+
+		<button type="submit" class="btn btn-success">Aceptar</button><a href="/alumnos/aceptar"></a>
 </form>
 
 {% endblock cuerpo %}
