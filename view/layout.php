@@ -9,18 +9,26 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
+<<<<<<< HEAD
 	<link rel="stylesheet" href="/css/datatable.css">
 	
+=======
+	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
+
+	<script src="/js/jquery.min.js"></script>
+
+>>>>>>> 609f9c9de57c14da0b73b73de06ef233bac455bf
     {% block cabecera %}
 			
 			
 			<!--
-			
-			
-			
 			<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
 			<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-			<link href="/css/jumbotron-narrow.css" rel="stylesheet">		-->
+			<link href="/css/jumbotron-narrow.css" rel="stylesheet">
+			
+   
+   		-->
 			
 	{% endblock %}
 		
@@ -32,9 +40,9 @@
     <link href='//fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    
-
-
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -74,19 +82,24 @@
 				    
                 -->
                 <div class="row">
-                    <div class="col-sm-8">
-                        <ul class="list-unstyled">
-                        </ul>
+                    <div class="col-sm-6">
+                        <ul class="list-unstyled"></ul>
                     </div><!-- social 1st col end-->
 					<div class="col-sm-2">
-						
                         <ul class="list-unstyled">
-                            <li><a href="/about"><span class="social fa"></span>Acerca de</a></li>
+                            <li><a href="/about"><span class="social fa fa-info"></span>Acerca de</a></li>
                         </ul>
                     </div><!-- social 2nd col end-->
+                    
                     <div class="col-sm-2">
                         <ul class="list-unstyled">
-                            <li><a href="/"><span class="social fa fa-home"></span>Inicio</a></li>
+                            <li><a href="/login"><span class="social fa fa-cog"></span>Log in</a></li>
+                        </ul>
+                    </div><!-- social 2nd col end-->
+
+                    <div class="col-sm-2">
+                        <ul class="list-unstyled">
+							<li><a href="/"><span class="social fa fa-home"></span>Inicio</a></li>
                         </ul>
                     </div><!-- social 2nd col end-->
                     
@@ -102,7 +115,7 @@
         <!-- ===========================
         BODY LEFT PART
         ============================ -->
-        <div class="col-md-10 mainleft">
+        <div class="col-md-9 mainleft">
             <div id="statement" class="row mobmid" style="margin left:40px">
                 
                 <div class="col-sm-12">
@@ -122,7 +135,7 @@
         <!-- ===========================
         SIDEBAR
         =========================== -->
-        <div class="col-md-2 mainright">
+        <div class="col-md-3 mainright">
             <div class="row">
                 <div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-briefcase"></span>
@@ -133,6 +146,7 @@
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    
+<<<<<<< HEAD
 
 <style>
 * {
@@ -256,6 +270,8 @@ h1 a {
 </head>
 
 
+=======
+>>>>>>> 609f9c9de57c14da0b73b73de06ef233bac455bf
 <ul id="accordion" class="accordion">
   <li>
     <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
@@ -269,7 +285,7 @@ h1 a {
   <li>
     <div class="link"></i>Anotaciones<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
-      <li><a href="/alumnos/anotacion/crear">Crear</a></li>
+      <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
 		</ul>
 		</li>
   
@@ -344,14 +360,17 @@ $(function() {
 
     <!--necessary scripts and plugins-->
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/evenfly.js"></script>
     
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 	
+	
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 		$(".campofecha").calendarioDW();

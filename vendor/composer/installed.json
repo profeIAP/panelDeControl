@@ -208,61 +208,6 @@
         ]
     },
     {
-        "name": "swiftmailer/swiftmailer",
-        "version": "v5.4.1",
-        "version_normalized": "5.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0697e6aa65c83edf97bb0f23d8763f94e3f11421",
-            "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9.1,<0.9.4"
-        },
-        "time": "2015-06-06 14:19:39",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/swift_required.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Chris Corbyn"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Swiftmailer, free feature-rich PHP mailer",
-        "homepage": "http://swiftmailer.org",
-        "keywords": [
-            "email",
-            "mail",
-            "mailer"
-        ]
-    },
-    {
         "name": "sebastian/version",
         "version": "1.0.6",
         "version_normalized": "1.0.6.0",
@@ -476,58 +421,6 @@
         ]
     },
     {
-        "name": "sebastian/environment",
-        "version": "1.3.5",
-        "version_normalized": "1.3.5.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/environment.git",
-            "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
-            "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.4"
-        },
-        "time": "2016-02-26 18:40:46",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de"
-            }
-        ],
-        "description": "Provides functionality to handle HHVM/PHP environments",
-        "homepage": "http://www.github.com/sebastianbergmann/environment",
-        "keywords": [
-            "Xdebug",
-            "environment",
-            "hhvm"
-        ]
-    },
-    {
         "name": "sebastian/diff",
         "version": "1.4.1",
         "version_normalized": "1.4.1.0",
@@ -646,57 +539,6 @@
             "compare",
             "equality"
         ]
-    },
-    {
-        "name": "symfony/yaml",
-        "version": "v3.0.3",
-        "version_normalized": "3.0.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/yaml.git",
-            "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/yaml/zipball/b5ba64cd67ecd6887f63868fa781ca094bd1377c",
-            "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "time": "2016-02-23 15:16:06",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Yaml\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Yaml Component",
-        "homepage": "https://symfony.com"
     },
     {
         "name": "doctrine/instantiator",
@@ -971,49 +813,6 @@
         ]
     },
     {
-        "name": "phpunit/php-timer",
-        "version": "1.0.7",
-        "version_normalized": "1.0.7.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/php-timer.git",
-            "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
-            "reference": "3e82f4e9fc92665fafd9157568e4dcb01d014e5b",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "time": "2015-06-21 08:01:12",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sb@sebastian-bergmann.de",
-                "role": "lead"
-            }
-        ],
-        "description": "Utility class for timing",
-        "homepage": "https://github.com/sebastianbergmann/php-timer/",
-        "keywords": [
-            "timer"
-        ]
-    },
-    {
         "name": "phpunit/php-token-stream",
         "version": "1.4.8",
         "version_normalized": "1.4.8.0",
@@ -1250,5 +1049,316 @@
             "testing",
             "xunit"
         ]
+    },
+    {
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.2",
+        "version_normalized": "5.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "d8db871a54619458a805229a057ea2af33c753e8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d8db871a54619458a805229a057ea2af33c753e8",
+            "reference": "d8db871a54619458a805229a057ea2af33c753e8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.1,<0.9.4"
+        },
+        "time": "2016-05-01 08:45:47",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/swift_required.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
+        "keywords": [
+            "email",
+            "mail",
+            "mailer"
+        ]
+    },
+    {
+        "name": "sebastian/environment",
+        "version": "1.3.6",
+        "version_normalized": "1.3.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/environment.git",
+            "reference": "2292b116f43c272ff4328083096114f84ea46a56"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/2292b116f43c272ff4328083096114f84ea46a56",
+            "reference": "2292b116f43c272ff4328083096114f84ea46a56",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2016-05-04 07:59:13",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Provides functionality to handle HHVM/PHP environments",
+        "homepage": "http://www.github.com/sebastianbergmann/environment",
+        "keywords": [
+            "Xdebug",
+            "environment",
+            "hhvm"
+        ]
+    },
+    {
+        "name": "symfony/yaml",
+        "version": "v3.0.6",
+        "version_normalized": "3.0.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/yaml.git",
+            "reference": "0047c8366744a16de7516622c5b7355336afae96"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/0047c8366744a16de7516622c5b7355336afae96",
+            "reference": "0047c8366744a16de7516622c5b7355336afae96",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "time": "2016-03-04 07:55:57",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Yaml\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "google/apiclient",
+        "version": "1.1.7",
+        "version_normalized": "1.1.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/google/google-api-php-client.git",
+            "reference": "400f250a30ae1dd4c4a0a4f750fe973fc70e6311"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/google/google-api-php-client/zipball/400f250a30ae1dd4c4a0a4f750fe973fc70e6311",
+            "reference": "400f250a30ae1dd4c4a0a4f750fe973fc70e6311",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2016-02-02 18:50:42",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Client library for Google APIs",
+        "homepage": "http://developers.google.com/api-client-library/php",
+        "keywords": [
+            "google"
+        ]
+    },
+    {
+        "name": "phpunit/php-timer",
+        "version": "1.0.8",
+        "version_normalized": "1.0.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-timer.git",
+            "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
+            "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4|~5"
+        },
+        "time": "2016-05-12 18:03:57",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sb@sebastian-bergmann.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Utility class for timing",
+        "homepage": "https://github.com/sebastianbergmann/php-timer/",
+        "keywords": [
+            "timer"
+        ]
+    },
+    {
+        "name": "phpmailer/phpmailer",
+        "version": "v5.2.15",
+        "version_normalized": "5.2.15.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPMailer/PHPMailer.git",
+            "reference": "d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c",
+            "reference": "d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0.0"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "*",
+            "phpunit/phpunit": "4.7.*"
+        },
+        "suggest": {
+            "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
+        },
+        "time": "2016-05-10 18:39:36",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "class.phpmailer.php",
+                "class.phpmaileroauth.php",
+                "class.phpmaileroauthgoogle.php",
+                "class.smtp.php",
+                "class.pop3.php",
+                "extras/EasyPeasyICS.php",
+                "extras/ntlm_sasl_client.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1"
+        ],
+        "authors": [
+            {
+                "name": "Jim Jagielski",
+                "email": "jimjag@gmail.com"
+            },
+            {
+                "name": "Marcus Bointon",
+                "email": "phpmailer@synchromedia.co.uk"
+            },
+            {
+                "name": "Andy Prevost",
+                "email": "codeworxtech@users.sourceforge.net"
+            },
+            {
+                "name": "Brent R. Matzelle"
+            }
+        ],
+        "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
     }
 ]

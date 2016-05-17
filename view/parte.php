@@ -27,29 +27,26 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
-			<div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Tramo Horario
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Primera</a></li>
-              <li><a href="#">Segunda</a></li>
-              <li><a href="#">Tercera</a></li>
-              <li><a href="#">Recreo</a></li>
-              <li><a href="#">Cuarta</a></li>
-              <li><a href="#">Quinta</a></li>
-              <li><a href="#">Sexta</a></li>        
-            </ul>
-          </div>
-			
+			 <div class="form-group">
+            <select class="form-control" id="sel1">
+              <option>Primera</option>
+              <option>Segunda</option>
+              <option>Tercera</option>
+              <option>Recreo</option>
+              <option>Cuarta</option>
+              <option>Quinta</option>
+              <option>Sexta</option>
+            </select>
+          </div>			
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
 			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
 		</div>
 		
-		<button type="submit" class="btn btn-default">Enviar</button>
+		<button type="submit" class="btn btn-danger">Cancelar</button>
+		<button type="submit" class="btn btn-primary">Guardar</button>
+		<button type="submit" class="btn btn-success">Aceptar</button>
 </form>
 <!--
   <div class="form-all">
