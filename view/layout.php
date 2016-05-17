@@ -141,7 +141,6 @@
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    
-<<<<<<< HEAD
 
 <style>
 * {
@@ -264,9 +263,6 @@ h1 a {
 </style>
 </head>
 
-
-=======
->>>>>>> 609f9c9de57c14da0b73b73de06ef233bac455bf
 <ul id="accordion" class="accordion">
   <li>
     <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
