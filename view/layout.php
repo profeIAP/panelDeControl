@@ -9,16 +9,11 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
-<<<<<<< HEAD
 	<link rel="stylesheet" href="/css/datatable.css">
-	
-=======
 	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
 
 	<script src="/js/jquery.min.js"></script>
-
->>>>>>> 609f9c9de57c14da0b73b73de06ef233bac455bf
     {% block cabecera %}
 			
 			
