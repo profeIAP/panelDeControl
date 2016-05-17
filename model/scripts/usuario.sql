@@ -1,7 +1,0 @@
--- Describe USUARIO
-CREATE TABLE "usuario" (
-    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "NOMBRE" TEXT,
-    "EMAIL" TEXT,
-    "CLAVE" TEXT
-)
