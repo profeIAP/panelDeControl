@@ -154,9 +154,9 @@
   <li>
     <div class="link"></i>Anotaciones<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
-      <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
-		</ul>
-		</li>
+                        <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
+		            </ul>
+  </li>
   
   <li>
     <div class="link"></i>Notificaciones<i class="fa fa-chevron-down"></i></div>
