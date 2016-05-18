@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link rel="stylesheet" href="/css/datatable.css">
-	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+	<link rel="stylesheet" href="/css/datatable2.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
 
 	<script src="/js/jquery.min.js"></script>
@@ -32,10 +32,10 @@
     <!-- ===========================
     FONTS & ICONS
     =========================== -->
-    <link href='//fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/datatable3.css" rel='stylesheet' type='text/css'>
+    <link href="/css/datatable4.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/datatablle5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--[if IE]>
