@@ -298,12 +298,12 @@ h1 a {
     <ul class="submenu">
       						<li><a href="/usuarios/crear">Crear</a></li>
 						<li><a href="/usuarios">Listar</a></li>
-<<<<<<< HEAD
+
 						<li>Importar</li>
 					</ul>
 
                     <li><a href="/logout">Salir</a></li>
-=======
+
     </ul>
   </li>
   
@@ -342,7 +342,7 @@ $(function() {
 	var accordion = new Accordion($('#accordion'), false);
 });
 </script>
->>>>>>> bedefd7ed76aea7b7166fce329aba4562db593db
+
                     
                 </div><!--info end-->
             </div><!--tech skills end-->
