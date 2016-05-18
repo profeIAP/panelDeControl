@@ -44,6 +44,7 @@ header('Content-type: text/html; charset=utf-8');
 
 require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
+require_once	'controller/Email.php';
 require_once	'controller/LoginClave.php';
 
 Twig_Autoloader::register();  
@@ -105,7 +106,7 @@ $app->group('/alumnos', function () use ($app) {
 	$app->post('/importar', function() use ($app){
 		global $twig;
 		$fichero=upload_file();
-		$valores=import_csv_to_sqlite($app->db, $fichero, array("delimiter"=>","));
+		$valores=import_csv_to_sqlite($app->db, $fichero, array("delimiter"=>",", "table"=>"alumno"));
 		echo $twig->render('importar.php',$valores);
 		  
 	}); 
@@ -128,7 +129,14 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
-			echo "hola";
+			echo json_encode(array('julio sánchez','jose antonio vázquez','patricia murillo','miguel angel hinojosa'));
+		});
+		
+		$app->post('/id', function() use ($app){
+			global $twig;
+			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
+            echo json_encode($miArray);
+			
 		}); 
 	});
 	
@@ -137,6 +145,10 @@ $app->group('/alumnos', function () use ($app) {
 			global $twig;
 			// Espacio "dedicado" a juan carlos
 		}); 
+		$app->get('/crear', function() use ($app){
+			global $twig;
+			echo $twig->render('anotacion.php'); 
+		});
 	});
 	
 	$app->get('/borrar', function() use ($app){
@@ -217,7 +229,13 @@ $app->group('/alumnos', function () use ($app) {
 		global $twig;
 		echo $twig->render('alumno.php');  
 	}); 
-});
+
+}); 
+
+	$app->get('/autocompletado', function() use ($app){
+		global $twig;
+		echo $twig->render('autocomplete.php');  
+	}); 
 
 $app->group('/notificaciones', function () use ($app) {
 	
@@ -425,11 +443,34 @@ $app->get('/contartabla', function() use ($app){
 		echo "Hay ". $r['numero'] . " tablas.";
 });
 
+$app->group('/partes', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('comentarios'=>$r);
+		echo $twig->render('partes.php',$valores);  
+	}); 
+
+	$app->get('/crear', function() use ($app){
+		global $twig;
+		echo $twig->render('parte.php');  
+	}); 
+});
+
 $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
- 
+
+$app->get('/login', function() use ($app){
+    global $twig;
+    echo $twig->render('login.php');  
+}); 
+
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	
 	extract($options);
@@ -440,11 +481,12 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	if(!$delimiter)
 		$delimiter = ';';
 		
-	$table = (isset($table) && !empty($table)) ? $table : preg_replace("/[^A-Z0-9]/i", '', basename($csv_path));
+	$table = (isset($table) && !empty($table)) ? $table : preg_replace("/[^A-Z0-9_]/i", '', basename($csv_path));
+	
 	
 	if(!isset($fields)){
 		$fields = array_map(function ($field){
-			return strtolower(preg_replace("/[^A-Z0-9]/i", '', $field));
+			return strtolower(preg_replace("/[^A-Z0-9_]/i", '', $field));
 		}, fgetcsv($csv_handle, 0, $delimiter));
 	}
 	
@@ -455,7 +497,6 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	$pdo->beginTransaction();
 	
 	$create_table_sql = "CREATE TABLE IF NOT EXISTS $table ($create_fields_str)";
-	
 	$pdo->exec($create_table_sql);
 	
 	$insert_fields_str = join(', ', $fields);
@@ -542,39 +583,55 @@ function upload_file(){
 	// Check if file already exists
 	if (file_exists($target_file)) {
 		// TODO quitar esto de aquí
-		echo "Sorry, file already exists.";
+		
+		/*echo "Sorry, file already exists.";*/
+		
 		$uploadOk = 0;
 	}
 	// Check file size
 	if ($_FILES["fileToUpload"]["size"] > 500000) {
 		// TODO quitar esto de aquí
-		echo "Sorry, your file is too large.";
+		
+		/*echo "Sorry, your file is too large.";*/
+		
 		$uploadOk = 0;
 	}
 	// Allow certain file formats
 	if($imageFileType != "CSV") {
 		// TODO quitar esto de aquí
-		echo "Sorry, only CSV files are allowed.";
+		
+		/*echo "Sorry, only CSV files are allowed.;"*/
+		
 		$uploadOk = 0;
 	}
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
 		// TODO quitar esto de aquí
-		echo "Sorry, your file was not uploaded.";
+		
+		/*echo "Sorry, your file was not uploaded.";*/
+		
 	// if everything is ok, try to upload file
 	} else {
 		if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 			// TODO quitar esto de aquí
-		    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+			
+		    /*echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";*/
+		    
 		} else {
 			// TODO quitar esto de aquí
-		    echo "Sorry, there was an error uploading your file.";
+			
+		    /*echo "Sorry, there was an error uploading your file.";*/
+		    
 		}
 	}
 	
 	return $target_file;
 }  
 
+$app->get('/email', function() use ($app){
+	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
+    echo "enviado";
+}); 
 
 // Ponemos en marcha el router
 $app->run();

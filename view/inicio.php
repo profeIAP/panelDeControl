@@ -18,10 +18,34 @@
 	<p class="lead">Panel de control y lista de alumnos del instituto I.E.S. Al-Andalus</p>
 </div>
 
-  <title>Tabla de partes dividida por género</title>
-</head>
+  Partes
+<div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px"></div>
+<div id="piechart" style="width: 900px; height: 500px;"></div>
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+    
+      
+      <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+       function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Partes por género'],
+          ['Chicos',     46],
+          ['Chicas',      47],
+          
+        ]);
+
+        var options = {
+          title: 'Partes por género'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 <script>
    google.load("visualization", "1", {packages:["corechart"]});
    google.setOnLoadCallback(dibujarGrafico);
@@ -42,38 +66,8 @@
        document.getElementById('GraficoGoogleChart-ejemplo-1')
      ).draw(data, options);
    }
- </script> 
-
-Partes
-<div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px">
-</div>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Partes por género'],
-          ['Chicos',     46],
-          ['Chicas',      47],
-          
-        ]);
-
-        var options = {
-          title: 'Partes por género'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    </head>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-  </body>
-</html>
+   
+  </script> 
 
 
 
