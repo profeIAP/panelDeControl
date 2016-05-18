@@ -136,7 +136,7 @@
                     <span class="secicon fa fa-briefcase"></span>
                 </div><!--icon end-->
 
-                <div class="col-sm-11 col-md-10 ">
+                <div class="col-sm-13 col-md-14 ">
                     <h3 class="mobmid">MENÚ</h3>
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
