@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="/css/font-awesome.css" rel="stylesheet" type="text/css">	
+    <link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
+	<link rel="stylesheet" href="/css/datatable.css">
 	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
 
 	<script src="/js/jquery.min.js"></script>
-
     {% block cabecera %}
 			
 			
@@ -141,6 +141,128 @@
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+ul { list-style-type: none; }
+
+a {
+  color: #b63b4d;
+  text-decoration: none;
+}
+
+/** =======================
+ * Contenedor Principal
+ ===========================*/
+
+
+h1 {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 80px;
+}
+
+h1 a {
+  color: #c12c42;
+  font-size: 16px;
+}
+
+.accordion {
+  width: 100%;
+  max-width: 360px;
+  margin: 30px auto 20px;
+  background: #FFF;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.accordion .link {
+  cursor: pointer;
+  display: block;
+  padding: 15px 15px 15px 42px;
+  color: #4D4D4D;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid #CCC;
+  position: relative;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.accordion li:last-child .link { border-bottom: 0; }
+
+.accordion li i {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  font-size: 18px;
+  color: #595959;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+  right: 12px;
+  left: auto;
+  font-size: 16px;
+}
+
+.accordion li.open .link { color: #b63b4d; }
+
+.accordion li.open i { color: #b63b4d; }
+
+.accordion li.open i.fa-chevron-down {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/**
+ * Submenu
+ -----------------------------*/
+
+
+.submenu {
+  display: none;
+  background: #444359;
+  font-size: 14px;
+}
+
+.submenu li { border-bottom: 1px solid #4b4a5e; }
+
+.submenu a {
+  display: block;
+  text-decoration: none;
+  color: #d9d9d9;
+  padding: 12px;
+  padding-left: 42px;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.submenu a:hover {
+  background: #b63b4d;
+  color: #FFF;
+}
+</style>
+</head>
+
 <ul id="accordion" class="accordion">
   <li>
     <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
@@ -154,9 +276,9 @@
   <li>
     <div class="link"></i>Anotaciones<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
-      <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
-		</ul>
-		</li>
+                        <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
+		            </ul>
+  </li>
   
   <li>
     <div class="link"></i>Notificaciones<i class="fa fa-chevron-down"></i></div>
@@ -176,6 +298,12 @@
     <ul class="submenu">
       						<li><a href="/usuarios/crear">Crear</a></li>
 						<li><a href="/usuarios">Listar</a></li>
+<<<<<<< HEAD
+						<li>Importar</li>
+					</ul>
+
+                    <li><a href="/logout">Salir</a></li>
+=======
     </ul>
   </li>
   
@@ -214,6 +342,7 @@ $(function() {
 	var accordion = new Accordion($('#accordion'), false);
 });
 </script>
+>>>>>>> bedefd7ed76aea7b7166fce329aba4562db593db
                     
                 </div><!--info end-->
             </div><!--tech skills end-->
