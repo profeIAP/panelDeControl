@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link rel="stylesheet" href="/css/datatable.css">
-	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+	<link rel="stylesheet" href="/css/datatable2.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
 
 	<script src="/js/jquery.min.js"></script>
@@ -32,10 +32,10 @@
     <!-- ===========================
     FONTS & ICONS
     =========================== -->
-    <link href='//fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/datatable3.css" rel='stylesheet' type='text/css'>
+    <link href="/css/datatable4.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/datatablle5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--[if IE]>
@@ -136,7 +136,7 @@
                     <span class="secicon fa fa-briefcase"></span>
                 </div><!--icon end-->
 
-                <div class="col-sm-11 col-md-10 ">
+                <div class="col-sm-13 col-md-14 ">
                     <h3 class="mobmid">MENÚ</h3>
 
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
@@ -298,12 +298,12 @@ h1 a {
     <ul class="submenu">
       						<li><a href="/usuarios/crear">Crear</a></li>
 						<li><a href="/usuarios">Listar</a></li>
-<<<<<<< HEAD
+
 						<li>Importar</li>
 					</ul>
 
                     <li><a href="/logout">Salir</a></li>
-=======
+
     </ul>
   </li>
   
@@ -342,7 +342,7 @@ $(function() {
 	var accordion = new Accordion($('#accordion'), false);
 });
 </script>
->>>>>>> bedefd7ed76aea7b7166fce329aba4562db593db
+
                     
                 </div><!--info end-->
             </div><!--tech skills end-->
