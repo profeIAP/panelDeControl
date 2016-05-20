@@ -40,8 +40,28 @@
 		    <label for="comentario">Comentario:</label>
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textarea>
 		</div>
+		<div class="form-group">
+			<label for="localidad">Localidad:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="localidad" name="localidad" >{{comentario.LOCALIDAD}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="provincia">Provincia:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="provincia" name="provincia" >{{comentario.PROVINCIA}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="dni_tutor">dni_tutor:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="dni_tutor" name="dni_tutor" >{{comentario.DNI_TUTOR}}</textarea>
+		</div>
+		<div class="form-group">
+			<label for="curso">Curso:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="curso" name="curso" >{{comentario.CURSO}}</textarea>
+		</div>
 		
-		<button type="submit" class="btn btn-default">Enviar</button>
+		</div>
+		
+		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
+
+		<button type="submit" class="btn btn-success">Aceptar</button><a href="/alumnos/aceptar"></a>
 </form>
 
 {% endblock cuerpo %}
