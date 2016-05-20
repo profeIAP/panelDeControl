@@ -44,11 +44,23 @@
 			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
 		</div>
 		
+		<div class="row">
+            
+            <div class="col-md-8">
+			</div>
+			
+			
+			<div class="col-md-4">
 		<button type="submit" class="btn btn-danger">Cancelar</button>
 		<button type="submit" class="btn btn-primary">Guardar</button>
 		<button type="submit" class="btn btn-success">Aceptar</button>
-</form>
-<!--
+           
+           </div>
+         </div>
+        </form> 
+         
+         
+         <!--
   <div class="form-all">
     <ul class="form-section page-section">
       <li id="cid_1" class="form-input-wide" data-type="control_head">
