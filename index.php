@@ -108,6 +108,7 @@ $app->group('/alumnos', function () use ($app) {
 		$fichero=upload_file();
 		$valores=import_csv_to_sqlite($app->db, $fichero, array("delimiter"=>",", "table"=>"alumno"));
 		echo $twig->render('importar.php',$valores);
+		unlink($fichero);
 		  
 	}); 
 	
