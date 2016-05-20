@@ -44,7 +44,13 @@
 		
 		<div class="form-group col-md-12">
 			<label for="observaciones">Observaciones:</label>
+			<head>
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+</head>
+<body>
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="observacion" name="observacion"></textarea>
+</body>
 		</div>
 		
 </form>
