@@ -17,6 +17,7 @@ class ComposerStaticInit0af214af8c72315842ecd5cb591b04c0
         ),
         'D' => 
         array (
+            'Dompdf\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
         ),
     );
@@ -25,6 +26,10 @@ class ComposerStaticInit0af214af8c72315842ecd5cb591b04c0
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -53,6 +58,10 @@ class ComposerStaticInit0af214af8c72315842ecd5cb591b04c0
         ),
         'S' => 
         array (
+            'Svg\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src',
+            ),
             'Slim\\Extras' => 
             array (
                 0 => __DIR__ . '/..' . '/slim/extras',
@@ -76,9 +85,17 @@ class ComposerStaticInit0af214af8c72315842ecd5cb591b04c0
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phenx/php-font-lib/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
+        'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'EasyPeasyICS' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/EasyPeasyICS.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
@@ -3645,6 +3662,11 @@ class ComposerStaticInit0af214af8c72315842ecd5cb591b04c0
         'Google_Utils_URITemplate' => __DIR__ . '/..' . '/google/apiclient/src/Google/Utils/URITemplate.php',
         'Google_Verifier_Abstract' => __DIR__ . '/..' . '/google/apiclient/src/Google/Verifier/Abstract.php',
         'Google_Verifier_Pem' => __DIR__ . '/..' . '/google/apiclient/src/Google/Verifier/Pem.php',
+        'HTML5_Data' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Data.php',
+        'HTML5_InputStream' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/InputStream.php',
+        'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
+        'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
+        'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
         'PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmailer.php',
         'PHPMailerOAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauth.php',
         'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',

@@ -48,6 +48,7 @@ require_once	'controller/Email.php';
 require_once	'controller/LoginClave.php';
 
 use Respect\Validation\Validator as v;
+use Dompdf\Dompdf;
 
 Twig_Autoloader::register();  
 
@@ -640,6 +641,25 @@ function upload_file(){
 $app->get('/email', function() use ($app){
 	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
     echo "enviado";
+}); 
+
+$app->get('/pdf', function() use ($app){
+	
+	$stuff = '<html>
+                <body>
+                <p>
+                    Hola mundo (PDF)!!!
+                </p>
+            </body></html>';
+            
+    set_time_limit(300);
+    ini_set('memory_limit', '-1');
+
+    $dompdf = new DOMPDF();
+    $dompdf->load_html($stuff);
+    $dompdf->set_paper( 'letter' , 'portrait' );
+    $dompdf->render();
+    echo $dompdf->stream('ejemplo');
 }); 
 
 $app->get('/validar', function() use ($app){
