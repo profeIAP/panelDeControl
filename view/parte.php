@@ -92,6 +92,25 @@
 			<input type="checkbox" class="form-control" id="conducta7" name="conducta7" value="">
 		</div>
 		
+<<<<<<< HEAD
+		<div class="row">
+            
+            <div class="col-md-8">
+			</div>
+			
+			
+			<div class="col-md-4">
+		<button type="submit" class="btn btn-danger">Cancelar</button>
+		<button type="submit" class="btn btn-primary">Guardar</button>
+		<button type="submit" class="btn btn-success">Aceptar</button>
+           
+           </div>
+         </div>
+        </form> 
+         
+         
+         <!--
+=======
 </form>
 
 
@@ -134,6 +153,7 @@
 </form>
 
 <!--
+>>>>>>> 7ba95a90335b90215702af9b5dd03b8c91fe8f0e
   <div class="form-all">
     <ul class="form-section page-section">
       <li id="cid_1" class="form-input-wide" data-type="control_head">
