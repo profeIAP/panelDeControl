@@ -138,7 +138,7 @@
                     <span class="secicon fa fa-briefcase"></span>
                 </div><!--icon end-->
                 
-                <div class="col-sm-13 col-md-10 ">
+                <div class="col-sm-13 col-md-12 ">
 					
                     <h3 class="mobmid">MENÚ</h3>
 
