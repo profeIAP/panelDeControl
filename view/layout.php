@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/home/usuario/Vídeos/panelDeControl/img/favicon.ico" rel="icon" type="image/x-icon" />
     
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css">	
     <link rel="stylesheet" href="/css/bootstrap.css">
@@ -12,13 +13,13 @@
 	<link rel="stylesheet" href="/css/datatable.css">
 	<link rel="stylesheet" href="/css/datatable2.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
-
+    <link href="/css/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"> 
 	<script src="/js/jquery.min.js"></script>
 	
     {% block cabecera %}
 			
 			
-			<!--
+		    <!--
 			<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
 			<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 			<link href="/css/jumbotron-narrow.css" rel="stylesheet">
@@ -207,11 +208,6 @@
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-		$(".campofecha").calendarioDW();
-		})
-	</script>
 	<script>
 		$(document).ready(function(){
 			$('#myTable').dataTable();

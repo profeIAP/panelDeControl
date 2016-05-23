@@ -130,7 +130,15 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
-			echo json_encode(array('julio sánchez','jose antonio vázquez','patricia murillo','miguel angel hinojosa'));
+			
+			$pdo=$app->db;
+			
+			$statement=$pdo->prepare("SELECT nombre FROM alumno where nombre like '%sánchez%'");
+			$statement->execute();
+			$results=$statement->fetchAll(PDO::FETCH_COLUMN, 0);
+			$json= json_encode($results);
+			
+			echo $json;
 		});
 		
 		$app->post('/id', function() use ($app){
