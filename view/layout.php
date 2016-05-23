@@ -301,18 +301,17 @@ h1 a {
 <<<<<<< HEAD
 						<li>Importar</li>
 					</ul>
+					 <li>
+    <div class="link"></i>Salir<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      						<li><a href="/logout/crear">Salir</a></li>
+						<li><a href="/logout">Salir</a></li>
 
-                    <li><a href="/logout">Salir</a></li>
-=======
+                    	
     </ul>
   </li>
   
-   <li>
-    <div class="link"></i>Salir<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-    </ul>
-  </li>
-</ul>
+
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
 <script>
 $(function() {
@@ -342,7 +341,6 @@ $(function() {
 	var accordion = new Accordion($('#accordion'), false);
 });
 </script>
->>>>>>> bedefd7ed76aea7b7166fce329aba4562db593db
                     
                 </div><!--info end-->
             </div><!--tech skills end-->
