@@ -11,5 +11,6 @@ return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Slim\\Extras' => array($vendorDir . '/slim/extras'),
     'Slim' => array($vendorDir . '/slim/slim'),
+    'Respect\\Validation' => array($vendorDir . '/respect/validation/library'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
 );
