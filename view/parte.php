@@ -27,7 +27,7 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
-			<input type="text" class="form-control col-md-6" id="hora" name="hora" value=""><a class="botoncal" href="#"><span></span></a>
+			<input type="text" class="form-control col-md-6" id="hora" name="hora" value="">
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
@@ -77,7 +77,7 @@
 		</div>
 		<div class="form-group col-md-12">
 			<label for="conducta4">Deteriorar instalaciones, documentos o pertenencias</label>
-			<input type="checkbox" class="form-control" id="conducta4" name="conducta4" value=""><a class="botoncal" href="#"><span></span></a>
+			<input type="checkbox" class="form-control" id="conducta4" name="conducta4" value="">
 		</div>
 		<div class="form-group col-md-12">
 			<label for="conducta5">Utilizar el teléfono móvil en clase</label>
@@ -139,7 +139,7 @@
 		</div>
 		<div class="form-group col-md-12">
 			<label for="conducta11">Suplantación personalidad, falsificación o sustracción</label>
-			<input type="checkbox" class="form-control" id="conducta4" name="conducta11" value=""><a class="botoncal" href="#"><span></span></a>
+			<input type="checkbox" class="form-control" id="conducta4" name="conducta11" value="">
 		</div>
 		<div class="form-group col-md-12">
 			<label for="conducta12">Fumar en clase</label>
