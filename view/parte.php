@@ -23,8 +23,8 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="fecha">Fecha:</label>
-			<input type="text" class="form-control" id="fecha" name="fecha" value="">
-		</div>
+			<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value=""> 		
+			</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
 			<input type="text" class="form-control col-md-6" id="hora" name="hora" value="">
@@ -396,4 +396,9 @@
     </ul>
   </div>
   -->
+    	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".campofecha").calendarioDW();
+		});
+	</script>
 {% endblock cuerpo %}
