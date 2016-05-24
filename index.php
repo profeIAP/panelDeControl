@@ -143,7 +143,23 @@ $app->group('/alumnos', function () use ($app) {
 			
 			echo $json;
 		});
+				$app->get('/poralumno', function() use ($app){
+			global $twig;
+			
+			$valores=array(
+				"id_alumno"=>$app->request()->get('id_alumno')
+			);
+			
+			$pdo=$app->db;
+			$q = $pdo->prepare("select * from partes where id_alumno=:id_alumno");
+			$q->execute($valores);
+			$r=$q->fetch(PDO::FETCH_ASSOC);
 		
+			
+			$valores=array('partes'=>$r);
+			echo $twig->render('partes.php',$valores);  
+			 
+		});
 		$app->post('/id', function() use ($app){
 			global $twig;
 			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
