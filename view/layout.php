@@ -37,7 +37,7 @@
     <link href="/css/datatable3.css" rel='stylesheet' type='text/css'>
     <link href="/css/datatable4.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <link href="/css/datatablle5.css" rel="stylesheet" type="text/css">
+    <link href="/css/datatable5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--[if IE]>
