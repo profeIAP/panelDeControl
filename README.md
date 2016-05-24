@@ -6,4 +6,4 @@ El objetivo de este proyecto es desarrollar un sistema web para la gestión de i
 
 ![](http://findicons.com/files/icons/2209/beos/128/beos_mailbox.png) [BUZÓN DE SUGERENCIAS](https://docs.google.com/spreadsheets/d/1GWBdArQ-0j-Db2zIGtvORs9uhucbrG9X1V1fWlzMtlo/edit#gid=0) NOS IMPORTA TU OPINIÓN
 
-![](http://findicons.com/files/icons/1066/orb/300/blogger.png) [BLOGGER](http://semillerodeempresas.blogspot.com.es/) VISITA NUESTRAS ÚLTIMAS NOVEDADES
+![](http://findicons.com/files/icons/1066/orb/96/blogger.png) [BLOGGER](http://semillerodeempresas.blogspot.com.es/) VISITA NUESTRAS ÚLTIMAS NOVEDADES
