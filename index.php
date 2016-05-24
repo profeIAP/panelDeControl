@@ -120,7 +120,7 @@ $app->group('/alumnos', function () use ($app) {
     echo $twig->render('upload.php');
 }); 
 	
-    $app->get('/', function() use ($app){
+     $app->get('/', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
