@@ -177,6 +177,10 @@ h1 a {
   font-size: 16px;
 }
 
+.lead {
+	text-align:center;
+}
+
 .accordion {
   width: 100%;
   max-width: 360px;
