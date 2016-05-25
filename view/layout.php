@@ -140,7 +140,7 @@
                 <div class="col-sm-11 col-md-10 ">
                     <h3 class="mobmid">MENÚ</h3>
 
-                   <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
+              
                    
 
 <style>
