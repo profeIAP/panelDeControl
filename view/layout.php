@@ -191,7 +191,7 @@ h1 a {
   cursor: pointer;
   display: block;
   padding: 15px 15px 15px 42px;
-  color: #3030F8;
+  color: #4242FF;
   font-size: 14px;
   font-weight: 700;
   border-bottom: 1px solid #CCC;
