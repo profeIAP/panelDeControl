@@ -268,22 +268,22 @@ h1 a {
 </head>
 
 <ul id="accordion" class="accordion">
+  
   <li>
     <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
-						<li><a href="/alumnos/crear">Crear</a></li>
-						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/alumnos/importar">Importar</a></li>
-					</ul>
+		<li><a href="/alumnos/crear">Crear</a></li>
+		<li><a href="/alumnos">Listar</a></li>
+		<li><a href="/alumnos/importar">Importar</a></li>
+	</ul>
   </li>
  
   <li>
     <div class="link"></i>Anotaciones<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
       <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
-		</ul>
-		</li>
-  
+	</ul>
+  </li>
   <li>
     <div class="link"></i>Notificaciones<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
@@ -294,7 +294,7 @@ h1 a {
     <div class="link"></i>Partes<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
       <li><a href="/partes/crear">Crear</a></li>
-						<li><a href="/partes">Listar</a></li>
+	  <li><a href="/partes">Listar</a></li>
     </ul>
   </li>
   <li>
@@ -302,10 +302,10 @@ h1 a {
     <ul class="submenu">
       						<li><a href="/usuarios/crear">Crear</a></li>
 						<li><a href="/usuarios">Listar</a></li>
-<<<<<<< HEAD
-						<li>Importar</li>
-					</ul>
-					 <li>
+						<li><a href="#">Importar</a></li>
+	</ul>
+ </li>
+ <li>
     <div class="link"></i>Salir<i class="fa fa-chevron-down"></i></div>
     <ul class="submenu">
       						<li><a href="/logout/crear">Salir</a></li>
@@ -314,38 +314,6 @@ h1 a {
                     	
     </ul>
   </li>
-  
-
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
-<script>
-$(function() {
-	var Accordion = function(el, multiple) {
-		this.el = el || {};
-		this.multiple = multiple || false;
-
-		// Variables privadas
-		var links = this.el.find('.link');
-		// Evento
-		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-	}
-
-	Accordion.prototype.dropdown = function(e) {
-		var $el = e.data.el;
-			$this = $(this),
-			$next = $this.next();
-
-		$next.slideToggle();
-		$this.parent().toggleClass('open');
-
-		if (!e.data.multiple) {
-			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-		};
-	}	
-
-	var accordion = new Accordion($('#accordion'), false);
-});
-</script>
-                    
                 </div><!--info end-->
             </div><!--tech skills end-->
 		</div><!--right end-->
@@ -381,6 +349,36 @@ $(function() {
 			$('#myTable').dataTable();
 		});
 	</script>
+	
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+<script>
+$(function() {
+	var Accordion = function(el, multiple) {
+		this.el = el || {};
+		this.multiple = multiple || false;
+
+		// Variables privadas
+		var links = this.el.find('.link');
+		// Evento
+		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+	}
+
+	Accordion.prototype.dropdown = function(e) {
+		var $el = e.data.el;
+			$this = $(this),
+			$next = $this.next();
+
+		$next.slideToggle();
+		$this.parent().toggleClass('open');
+
+		if (!e.data.multiple) {
+			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+		};
+	}	
+
+	var accordion = new Accordion($('#accordion'), false);
+});
+</script>
 </body>
 
 </html>
