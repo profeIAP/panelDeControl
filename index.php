@@ -120,7 +120,7 @@ $app->group('/alumnos', function () use ($app) {
     echo $twig->render('upload.php');
 }); 
 	
-    $app->get('/', function() use ($app){
+     $app->get('/', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
@@ -143,7 +143,23 @@ $app->group('/alumnos', function () use ($app) {
 			
 			echo $json;
 		});
+		$app->get('/poralumno', function() use ($app){
+			global $twig;
+			
+			$valores=array(
+				"id_alumno"=>$app->request()->get('id_alumno')
+			);
+			
+			$pdo=$app->db;
+			$q = $pdo->prepare("select * from partes where id_alumno=:id_alumno");
+			$q->execute($valores);
+			$r=$q->fetch(PDO::FETCH_ASSOC);
 		
+			
+			$valores=array('partes'=>$r);
+			echo $twig->render('partes.php',$valores);  
+			 
+		});
 		$app->post('/id', function() use ($app){
 			global $twig;
 			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
@@ -340,6 +356,8 @@ $app->group('/partes', function () use ($app) {
 			$sql = "insert into partes (ID_ALUMNO,GRUPO,FECHA,HORA,ASIGNATURA,PROFESOR,TUTOR,L_PERTURBAR,L_DIFICULTAR,L_FALTARINJUSTIFICADAMENTE,L_DETERIORAR,L_MOVIL,L_GAFAS,L_GORRA,L_PASILLOS,L_FALTAINJUSTIFICADA,L_NOCOLABORAR,L_IMPUNTUAL,L_DESCONSIDERABLES,L_BEBEROCOMER,L_FALTAMATERIAL,L_ORDENADOR,L_ALTERAR,L_FUMAR,L_USOINDEBIDO,G_ AGRESION,G_INCUMPLIMIENTO,G_AMENAZAS,G_SUPLANTACION,G_FUMAR,G_OFENSAS,G_HUMILLACIONES,G_DETERIORO,G_IMPEDIMENTO)values(:ID_ALUMNO,:GRUPO,:FECHA,:HORA,:ASIGNATURA,:PROFESOR,:TUTOR,:L_PERTURBAR,:L_DIFICULTAR,:L_FALTARINJUSTIFICADAMENTE,:L_DETERIORAR,:L_MOVIL,:L_GAFAS,:L_GORRA,:L_PASILLOS,:L_FALTAINJUSTIFICADA,:L_NOCOLABORAR,:L_IMPUNTUAL,:L_DESCONSIDERABLES,:L_BEBEROCOMER,:L_FALTAMATERIAL,:L_ORDENADOR,:L_ALTERAR,:L_FUMAR,:L_USOINDEBIDO,:G_ AGRESION,:G_INCUMPLIMIENTO,:G_AMENAZAS,:G_SUPLANTACION,:G_FUMAR,:G_OFENSAS,:G_HUMILLACIONES,:G_DETERIORO,:G_IMPEDIMENTO)";
 			$pdo=$app->db;
 			$q = $pdo->prepare($sql);
+			echo $sql;
+			var_dump($valores);
 			$q->execute($valores);
 				
 			$app->redirect('/partes');

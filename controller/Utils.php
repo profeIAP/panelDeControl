@@ -64,7 +64,10 @@ class Utilidades {
 	
 	public static function registrarAccion(){
 		// TODO incluir anotación en la BD
+
 		$app = \Slim\Slim::getInstance();
+		$pdo=$app->db;
+		
 		$req=$app->request;
 		echo "...".$req->getPathInfo()."...";
 		
