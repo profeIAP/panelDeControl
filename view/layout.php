@@ -144,6 +144,7 @@
                    
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
@@ -156,10 +157,7 @@
 
 ul { list-style-type: none; }
 
-a {
-  color: #b63b4d;
-  text-decoration: none;
-}
+
 
 /** =======================
  * Contenedor Principal
@@ -167,11 +165,11 @@ a {
 
 
 h1 {
-  color: #FFF;
-  font-size: 24px;
+  color: #000;
+  font-size: 36px;
   font-weight: 400;
-  text-align: center;
-  margin-top: 80px;
+  text-align: left;
+  margin-top: 0px;
 }
 
 h1 a {
@@ -197,7 +195,7 @@ h1 a {
   cursor: pointer;
   display: block;
   padding: 15px 15px 15px 42px;
-  color: #4D4D4D;
+  color: #4242FF;
   font-size: 14px;
   font-weight: 700;
   border-bottom: 1px solid #CCC;
@@ -225,10 +223,10 @@ h1 a {
   left: auto;
   font-size: 16px;
 }
+#3030F8
+.accordion li.open .link { color: #3030F8; }
 
-.accordion li.open .link { color: #b63b4d; }
-
-.accordion li.open i { color: #b63b4d; }
+.accordion li.open i { color: #3030F8; }
 
 .accordion li.open i.fa-chevron-down {
   -webkit-transform: rotate(180deg);
@@ -244,7 +242,7 @@ h1 a {
 
 .submenu {
   display: none;
-  background: #444359;
+  background: #625AFF;
   font-size: 14px;
 }
 
@@ -262,9 +260,10 @@ h1 a {
 }
 
 .submenu a:hover {
-  background: #b63b4d;
+  background: #524AEC;
   color: #FFF;
 }
+
 </style>
 </head>
 

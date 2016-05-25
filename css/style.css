@@ -57,7 +57,9 @@ a {
     letter-spacing: 1px;
     font-size: 16px;
 }
-
+.cv-title a {
+color:#00F;
+}
 li {
     padding: 7px 0;
 }
