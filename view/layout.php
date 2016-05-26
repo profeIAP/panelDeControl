@@ -133,67 +133,68 @@
         =========================== -->
         <div class="col-md-3 mainright">
             <div class="row">
-                <div class="col-sm-1 col-md-2 mobmid">
+                
+				<div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-briefcase"></span>
                 </div><!--icon end-->
-
+                
                 <div class="col-sm-11 col-md-10 ">
-                    <h3 class="mobmid">MENÚ</h3>
+                    <h3 class="mobmid" style="margin-top: 2px;">MENÚ</h3>
+				</div>
+				
+			</div>
+            <div class="row">
+				<ul id="accordion" class="accordion">
+				  
+					<li>
+						<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+							<li><a href="/alumnos/crear">Crear</a></li>
+							<li><a href="/alumnos">Listar</a></li>
+							<li><a href="/alumnos/importar">Importar</a></li>
+						</ul>
+					</li>
 
-              
-                   
+					<li>
+						<div class="link">Anotaciones<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+						  <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
+						</ul>
+					</li>
 
-<ul id="accordion" class="accordion">
-  
-  <li>
-    <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-		<li><a href="/alumnos/crear">Crear</a></li>
-		<li><a href="/alumnos">Listar</a></li>
-		<li><a href="/alumnos/importar">Importar</a></li>
-	</ul>
-  </li>
- 
-  <li>
-    <div class="link"></i>Anotaciones<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
-	</ul>
-  </li>
-  
-  <li>
-    <div class="link"></i>Notificaciones<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="/notificaciones">Listar</a></li>
-    </ul>
-  </li>
-  
-  <li>
-    <div class="link"></i>Partes<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="/partes/crear">Crear</a></li>
-	  <li><a href="/partes">Listar</a></li>
-    </ul>
-  </li>
+					<li>
+						<div class="link">Notificaciones<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+						  <li><a href="/notificaciones">Listar</a></li>
+						</ul>
+					</li>
 
-  <li>
-    <div class="link"></i>Usuarios<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-		<li><a href="/usuarios/crear">Crear</a></li>
-		<li><a href="/usuarios">Listar</a></li>
-		<li><a href="#">Importar</a></li>
-	</ul>
- </li>
- 
- <li>
-    <div class="link"></i>Salir<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-		<li><a href="/logout/crear">Salir</a></li>
-		<li><a href="/logout">Salir</a></li>
-    </ul>
- </li>
-                </div><!--info end-->
-            </div><!--tech skills end-->
+					<li>
+						<div class="link">Partes<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+						  <li><a href="/partes/crear">Crear</a></li>
+						  <li><a href="/partes">Listar</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<div class="link">Usuarios<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+							<li><a href="/usuarios/crear">Crear</a></li>
+							<li><a href="/usuarios">Listar</a></li>
+							<li><a href="#">Importar</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<div class="link">Salir<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+							<li><a href="/logout/crear">Salir</a></li>
+							<li><a href="/logout">Salir</a></li>
+						</ul>
+					</li>
+				 </ul>
+            </div>
 		</div><!--right end-->
     </div><!--container end-->
 
