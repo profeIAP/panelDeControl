@@ -23,11 +23,19 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="fecha">Fecha:</label>
-			<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value=""> 		
-			</div>
+			<input type="text" class="form-control" id="fecha" name="fecha" value="">
+		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
-			<input type="text" class="form-control col-md-6" id="hora" name="hora" value="">
+			 <select class="form-control" id="sel1">
+              <option>Primera</option>
+               <option>Segunda</option>
+               <option>Tercera</option>
+               <option>Recreo</option>
+               <option>Cuarta</option>
+               <option>Quinta</option>
+               <option>Sexta</option>
+             </select>
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
@@ -52,108 +60,60 @@
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="observacion" name="observacion"></textarea>
 </body>
 		</div>
-		
-</form>
-
-<div class="jumbotron">
+	
+<div>
 	<h1>Conductas contrarias a las normas de convivencia (Leves) </h1>
 </div>
-	
-<form method="post" action="/partes/guardar" role="form">
-		
-		<input type="hidden" name="id" value="">
-		
-		<div class="form-group col-md-12">
-			<label for="conducta1">Perturbar el desarrollonde las clases</label>
-			<input type="checkbox" class="form-control" id="conducta1" name="conducta1" value="">
+
+        <div class="form-group col-md-12">
+			<label><input type="checkbox" value=""> Perturbar el desarrollo de las clases</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label for="conducta2">Dificultar el estudio de los compañeros</label>
-			<input type="checkbox" class="form-control" id="conducta2" name="conducta2" value="">
+			<label><input type="checkbox" value=""> Dificultar el estudio de los compañeros</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label for="conducta3">Faltar a clase injustificadamente</label>
-			<input type="checkbox" class="form-control" id="conducta3" name="conducta3" value="">
+			<label><input type="checkbox" value=""> Faltar a clase injustificadamente</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label for="conducta4">Deteriorar instalaciones, documentos o pertenencias</label>
-			<input type="checkbox" class="form-control" id="conducta4" name="conducta4" value="">
+			<label><input type="checkbox" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label for="conducta5">Utilizar el teléfono móvil en clase</label>
-			<input type="checkbox" class="form-control" id="conducta5" name="conducta5" value="">
+			<label><input type="checkbox" value=""> Utilizar el teléfono móvil en clase</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label for="conducta6">Usar gorras, gafas de sol o reprod. de música en clase</label>
-			<input type="checkbox" class="form-control" id="conducta6" name="conducta6" value="">
+			<label><input type="checkbox" value=""> Usar gorras, gafas de sol o reprod. de música en clase</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label for="conducta7">Usar el ordenador indebidamente</label>
-			<input type="checkbox" class="form-control" id="conducta7" name="conducta7" value="">
+			<label><input type="checkbox" value=""> Usar el ordenador indebidamente</label>
 		</div>
 		
-<<<<<<< HEAD
-		<div class="row">
-            
-            <div class="col-md-8">
-			</div>
-			
-			
-			<div class="col-md-4">
-		<button type="submit" class="btn btn-danger">Cancelar</button>
-		<button type="submit" class="btn btn-primary">Guardar</button>
-		<button type="submit" class="btn btn-success">Aceptar</button>
-           
-           </div>
-         </div>
-        </form> 
-         
-         
-         <!--
-=======
-</form>
-
-
-
-<div class="jumbotron">
+<div>
 	<h1>Conductas gravemente perjudiciales para la convivencia (Graves) </h1>
 </div>
 
-
-
-<form method="post" action="/partes/guardar" role="form">
+        <div class="form-group col-md-12">
+			<label><input type="checkbox" value=""> Agresión física</label>
+		</div>
+		<div class="form-group col-md-12">
+			<label><input type="checkbox" value=""> Incumplimiento de correcciones impuestas</label>
+		</div>
+		<div class="form-group col-md-12">
+			<label><input type="checkbox" value=""> Amenazas o coacciones</label>
+		</div>
+		<div class="form-group col-md-12">
+			<label><input type="checkbox" value=""> Suplantación personalidad, falsificación o sustracción</label>
+		</div>
+		<div class="form-group col-md-12">
+			<label><input type="checkbox" value=""> Fumar en clase</label>
+		</div>
 		
-		<input type="hidden" name="id" value="">
-		
-		<div class="form-group col-md-12">
-			<label for="conducta8">Agresión física</label>
-			<input type="checkbox" class="form-control" id="conducta8" name="conducta8" value="">
-		</div>
-		<div class="form-group col-md-12">
-			<label for="conducta9">Incumplimiento de correcciones impuestas</label>
-			<input type="checkbox" class="form-control" id="conducta9" name="conducta9" value="">
-		</div>
-		<div class="form-group col-md-12">
-			<label for="conducta10">Amenazas o coacciones</label>
-			<input type="checkbox" class="form-control" id="conducta3" name="conducta10" value="">
-		</div>
-		<div class="form-group col-md-12">
-			<label for="conducta11">Suplantación personalidad, falsificación o sustracción</label>
-			<input type="checkbox" class="form-control" id="conducta4" name="conducta11" value="">
-		</div>
-		<div class="form-group col-md-12">
-			<label for="conducta12">Fumar en clase</label>
-			<input type="checkbox" class="form-control" id="conducta5" name="conducta12" value="">
-		</div>
-</form>
-
-<form method="post" action="/partes/guardar" role="form">		
-        
 		<button type="submit" class="btn btn-default">Enviar</button>
+		
 </form>
+
+
 
 <!--
->>>>>>> 7ba95a90335b90215702af9b5dd03b8c91fe8f0e
   <div class="form-all">
     <ul class="form-section page-section">
       <li id="cid_1" class="form-input-wide" data-type="control_head">
@@ -204,19 +164,7 @@
           <input class=" form-textbox" data-type="input-textbox" id="input_8" name="asignatura" size="20" value="" type="text">
         </div>
       </li>
-<<<<<<< HEAD
-        <li class="form-line" data-type="control_textbox" id="id_9">
-        <label class="form-label form-label-left form-label-auto" id="label_9" for="input_9"> Profesor/a: </label>
-        <div id="cid_9" class="form-input jf-required">
-          <input class=" form-textbox" data-type="input-textbox" id="input_9" name="q9_profesora" size="20" value="" type="text">
-        </div>
-      </li>
-      <li class="form-line" data-type="control_textbox" id="id_10">
-        <label class="form-label form-label-left form-label-auto" id="label_10" for="input_10"> Tutor/a: </label>
-        <div id="cid_10" class="form-input jf-required">
-          <input class=" form-textbox" data-type="input-textbox" id="input_10" name="q10_tutora" size="20" value="" type="text">
-        </div>
-=======
+      
       -->
       
       <!--
@@ -416,9 +364,4 @@
     </ul>
   </div>
   -->
-    	<script type="text/javascript">
-		$(document).ready(function(){
-			$(".campofecha").calendarioDW();
-		});
-	</script>
 {% endblock cuerpo %}
