@@ -23,7 +23,7 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="fecha">Fecha:</label>
-			<input type="text" class="form-control" id="fecha" name="fecha" value="">
+			<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value=""> 		
 		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
@@ -83,6 +83,22 @@
 			<label><input type="checkbox" value=""> Usar el ordenador indebidamente</label>
 		</div>
 		
+		<div class="row">
+             
+             <div class="col-md-8">
+ 			</div>
+ 			
+ 			
+ 			<div class="col-md-4">
+ 		<button type="submit" class="btn btn-danger">Cancelar</button>
+ 		<button type="submit" class="btn btn-primary">Guardar</button>
+ 		<button type="submit" class="btn btn-success">Aceptar</button>
+            
+            </div>
+          </div>
+         </form> 
+          
+		
 	<div>
 		<h1>Conductas gravemente perjudiciales para la convivencia (Graves) </h1>
 	</div>
@@ -104,6 +120,12 @@
 		</div>
 		
 		<button type="submit" class="btn btn-default">Enviar</button>
+		
+		<script type="text/javascript">
+ 		$(document).ready(function(){
+ 			$(".campofecha").calendarioDW();
+ 		});
+ 	</script>
 		
 </form>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
