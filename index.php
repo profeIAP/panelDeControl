@@ -370,11 +370,31 @@ $app->group('/partes', function () use ($app) {
  
 	});
 	
+
+	
+		//cambiar alumno por usuario
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from partes WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/partes');
+	}); 
+	
+
 	 $app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('parte.php'); 
 	});
 });
+
 
 $app->group('/usuarios', function () use ($app) {
 	
