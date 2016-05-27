@@ -82,22 +82,7 @@
 		<div class="form-group col-md-12">
 			<label><input type="checkbox" value=""> Usar el ordenador indebidamente</label>
 		</div>
-		
-		<div class="row">
-             
-             <div class="col-md-8">
- 			</div>
- 			
- 			
- 			<div class="col-md-4">
- 		<button type="submit" class="btn btn-danger">Cancelar</button>
- 		<button type="submit" class="btn btn-primary">Guardar</button>
- 		<button type="submit" class="btn btn-success">Aceptar</button>
-            
-            </div>
-          </div>
-         </form> 
-          
+		  
 		
 	<div>
 		<h1>Conductas gravemente perjudiciales para la convivencia (Graves) </h1>
@@ -119,7 +104,20 @@
 			<label><input type="checkbox" value=""> Fumar en clase</label>
 		</div>
 		
-		<button type="submit" class="btn btn-default">Enviar</button>
+		<div class="row">
+             
+             <div class="col-md-8">
+ 			</div>
+ 			
+ 			
+ 			<div class="col-md-4">
+ 		<button type="submit" class="btn btn-danger">Cancelar</button>
+ 		<button type="submit" class="btn btn-primary">Guardar</button>
+ 		<button type="submit" class="btn btn-success">Aceptar</button>
+            
+            </div>
+          </div>
+         </form>
 		
 		<script type="text/javascript">
  		$(document).ready(function(){
