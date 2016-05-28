@@ -135,15 +135,17 @@
         =========================== -->
         <div class="col-md-3 mainright">
             <div class="row">
-				
+                
+                <div class="col-sm-13 col-md-10 ">
+                    <h3 class="mobmid" style="margin-top: 5px;">MENÚ</h3>
+				</div>
 				<div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-briefcase"></span>
                 </div><!--icon end-->
                 
-                <div class="col-sm-13 col-md-12 ">
-					
-                    <h3 class="mobmid">MENÚ</h3>
-
+			</div>
+			<div class="row">
+				<div class="col-sm-13 col-md-12 ">
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
                    <ul id="accordion" class="accordion">
 						  <li>
@@ -189,8 +191,8 @@
 							
 						  </li>
 					</ul>
-                
-                </div><!--info end-->
+                </div>
+            </div><!--info end-->
                 
             </div><!--tech skills end-->
 		</div><!--right end-->
