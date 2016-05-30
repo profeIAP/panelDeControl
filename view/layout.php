@@ -36,10 +36,10 @@
     =========================== -->
     <link href="/css/datatable3.css" rel='stylesheet' type='text/css'>
     <link href="/css/datatable4.css" rel="stylesheet">
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/js/local1.js"></script>
     <link href="/css/datatable5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="/js/local2.js"></script>
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -206,8 +206,9 @@
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/evenfly.js"></script>
     
-	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/js/local3.js"></script>
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
+	<script type="text/javascript" src="/js/local4.js"></script>
 
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	
