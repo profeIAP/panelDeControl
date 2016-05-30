@@ -283,7 +283,7 @@ $app->group('/partes', function () use ($app) {
 				global $twig;
 				
 				$valores=array(
-					"ID"=>$app->request()->get('ID')
+					"id"=>$app->request()->get('id')
 				);
 				
 				$pdo=$app->db;
@@ -293,7 +293,7 @@ $app->group('/partes', function () use ($app) {
 			
 				
 				$valores=array('partes'=>$r);
-				echo $twig->render('comentarios.php',$valores);  
+				echo $twig->render('partes.php',$valores);  
 				 
 			});
 		});
