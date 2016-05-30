@@ -31,6 +31,8 @@
 		</div>
 		<div class="form-group">
 			<label for="direccion">Dirección:</label>
+			<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textare' });</script>
 			<input type="text" class="form-control" id="dirección" name="dirección" value="{{comentario.DIRECCIÓN}}">
 		</div>
 		<div class="form-group">
@@ -38,7 +40,7 @@
 		    <input type="text" class="form-control" id="teléfono" name="teléfono" value="{{comentario.TELÉFONO}}">      
 		</div>
 		    <label for="comentario">Comentario:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textarea>
+			<textare style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textare>
 		</div>
 		<div class="form-group">
 			<label for="localidad">Localidad:</label>
