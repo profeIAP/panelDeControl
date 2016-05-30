@@ -3,23 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/home/usuario/Vídeos/panelDeControl/img/favicon.ico" rel="icon" type="image/x-icon" />
     
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">	
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/css/font-awesome.css" rel="stylesheet" type="text/css">	
+    <link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
-	<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="/css/datatable.css">
+	<link rel="stylesheet" href="/css/datatable2.css"></style>
+	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"> 
+	<script src="/js/jquery.min.js"></script>
 	
     {% block cabecera %}
 			
 			
-			<!--
-			
-			
-			
+		    <!--
 			<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
 			<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-			<link href="/css/jumbotron-narrow.css" rel="stylesheet">		-->
+			<link href="/css/jumbotron-narrow.css" rel="stylesheet">
+			
+   
+   		-->
 			
 	{% endblock %}
 		
@@ -28,12 +34,12 @@
     <!-- ===========================
     FONTS & ICONS
     =========================== -->
-    <link href='//fonts.googleapis.com/css?family=Kristi|Alegreya+Sans:300' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/datatable3.css" rel='stylesheet' type='text/css'>
+    <link href="/css/datatable4.css" rel="stylesheet">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/datatable5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -57,7 +63,7 @@
                         <div class="col-sm-7">
                             <h1>Control de Partes</h1>
                         </div>
-                        <div class="col-sm-5 text-right dl-share">
+                        <div class="col-sm-5 text-right dl-share" >
                             
                         </div>
                     </div>
@@ -128,95 +134,65 @@
         =========================== -->
         <div class="col-md-3 mainright">
             <div class="row">
-                <div class="col-sm-1 col-md-2 mobmid">
+                
+                <div class="col-sm-13 col-md-10 ">
+                    <h3 class="mobmid" style="margin-top: 5px;">MENÚ</h3>
+				</div>
+				<div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-briefcase"></span>
                 </div><!--icon end-->
-
-                <div class="col-sm-11 col-md-10 ">
-                    <h3 class="mobmid">MENÚ</h3>
-
+                
+			</div>
+			<div class="row">
+				<div class="col-sm-13 col-md-12 ">
                    <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
-                   
-<ul id="accordion" class="accordion">
-  <li>
-    <div class="link"></i>Alumnos<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-						<li><a href="/alumnos/crear">Crear</a></li>
-						<li><a href="/alumnos">Listar</a></li>
-						<li><a href="/alumnos/importar">Importar</a></li>
+                   <ul id="accordion" class="accordion">
+						  <li>
+							<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+												<li><a href="/alumnos/crear">Crear</a></li>
+												<li><a href="/alumnos">Listar</a></li>
+												<li><a href="/alumnos/importar">Importar</a></li>
+											</ul>
+						  </li>
+						 
+						  <li>
+							<div class="link">Anotaciones<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+							  <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
+								</ul>
+								</li>
+						  
+						  <li>
+							<div class="link">Notificaciones<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+							  <li><a href="/notificaciones">Listar</a></li>
+							</ul>
+						  </li>
+						  <li>
+							<div class="link">Partes<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+							  <li><a href="/partes/crear">Crear</a></li>
+												<li><a href="/partes">Listar</a></li>
+							</ul>
+						  </li>
+						  <li>
+							<div class="link">Usuarios<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+													<li><a href="/usuarios/crear">Crear</a></li>
+												<li><a href="/usuarios">Listar</a></li>
+							</ul>
+						  </li>
+						  
+						   <li>
+							<div class="link">Salir</i></div>
+							
+							
+						  </li>
 					</ul>
-  </li>
- 
-  <li>
-    <div class="link"></i>Anotaciones<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="/alumnos/anotaciones/crear">Crear</a></li>
-		</ul>
-		</li>
-  
-  <li>
-    <div class="link"></i>Notificaciones<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="/notificaciones">Listar</a></li>
-    </ul>
-  </li>
-  <li>
-    <div class="link"></i>Partes<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      <li><a href="/partes/crear">Crear</a></li>
-						<li><a href="/partes">Listar</a></li>
-    </ul>
-  </li>
-  <li>
-    <div class="link"></i>Usuarios<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-      						<li><a href="/usuarios/crear">Crear</a></li>
-						<li><a href="/usuarios">Listar</a></li>
-    </ul>
-  </li>
-  
-   <li>
-    <div class="link"></i>Salir<i class="fa fa-chevron-down"></i></div>
-    <ul class="submenu">
-    </ul>
-  </li>
-</ul>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
-<script>
-$(function() {
-	var Accordion = function(el, multiple) {
-		this.el = el || {};
-		this.multiple = multiple || false;
-
-		// Variables privadas
-		var links = this.el.find('.link');
-		// Evento
-		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-	}
-
-	Accordion.prototype.dropdown = function(e) {
-		var $el = e.data.el;
-			$this = $(this),
-			$next = $this.next();
-
-		$next.slideToggle();
-		$this.parent().toggleClass('open');
-
-		if (!e.data.multiple) {
-			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-		};
-	}	
-
-	var accordion = new Accordion($('#accordion'), false);
-});
-</script>
-                    
-                </div><!--info end-->
-            </div><!--tech skills end-->
-		</div><!--right end-->
-    </div><!--container end-->
-
-                </div><!--info end-->
+                </div>
+            </div><!--info end-->
+                
             </div><!--tech skills end-->
 		</div><!--right end-->
 
@@ -225,26 +201,55 @@ $(function() {
 
     <!--necessary scripts and plugins-->
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/evenfly.js"></script>
     
 	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
+
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script><!DOCTYPE html>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
 		$(".campofecha").calendarioDW();
 		})
 	</script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('#myTable').dataTable();
 		});
 	</script>
+	<script>
+		$(function() {
+			var Accordion = function(el, multiple) {
+				this.el = el || {};
+				this.multiple = multiple || false;
+
+				// Variables privadas
+				var links = this.el.find('.link');
+				// Evento
+				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
+
+			Accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el;
+					$this = $(this),
+					$next = $this.next();
+
+				$next.slideToggle();
+				$this.parent().toggleClass('open');
+
+				if (!e.data.multiple) {
+					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+				};
+			}	
+
+			var accordion = new Accordion($('#accordion'), false);
+		});
+</script>
 </body>
 
 </html>

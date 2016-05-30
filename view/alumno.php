@@ -31,15 +31,16 @@
 		</div>
 		<div class="form-group">
 			<label for="direccion">Dirección:</label>
-			<input type="text" class="form-control" id="direccion" name="direccion"  value="{{comentario.DIRECCION}}">
+			<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textare' });</script>
+			<input type="text" class="form-control" id="dirección" name="dirección" value="{{comentario.DIRECCIÓN}}">
 		</div>
 		<div class="form-group">
-			<label for="telefono">Teléfono:</label>
-			<input type="text" class="campofecha" id="telefono" name="telefono" size="12" value="{{comentario.TELEFONO}}">
+			<label for="Telefono" >Teléfono:<label>
+		    <input type="text" class="form-control" id="teléfono" name="teléfono" value="{{comentario.TELÉFONO}}">      
 		</div>
-		<div class="form-group">
-			<label for="comentario">Comentario:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textarea>
+		    <label for="comentario">Comentario:</label>
+			<textare style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textare>
 		</div>
 		<div class="form-group">
 			<label for="localidad">Localidad:</label>
@@ -58,7 +59,22 @@
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="curso" name="curso" >{{comentario.CURSO}}</textarea>
 		</div>
 		
-		<button type="submit" class="btn btn-default">Enviar</button>
+		<div class="form-group col-md-9">
+			
+		</div>
+		
+		<div class="form-group col-md-3">
+			
+		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
+
+		<button type="submit" class="btn btn-success">Aceptar</button><a href="/alumnos/aceptar"></a>
+		
+		</div>
+		
+
+
+
+
 </form>
 
 {% endblock cuerpo %}

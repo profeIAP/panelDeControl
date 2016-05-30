@@ -1,0 +1,6 @@
+CREATE TABLE accion (
+    "ID_USUARIO" TEXT DEFAULT (1),
+    "ID" INTEGER,
+    "FECHA" TEXT,
+    "RUTA" TEXT
+)

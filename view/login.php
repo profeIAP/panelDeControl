@@ -30,7 +30,7 @@
 										</div>
 										<div class="form-group">
 											<label for="email">Contraseña:</label>
-											<input type="text" class="form-control" id="email" name="email"  value="{{comentario.EMAIL}}">
+											<input type="password" class="form-control" id="email" name="email"  value="{{comentario.EMAIL}}">
 										</div>
 										
 										<button type="submit" class="btn btn-default">Enviar</button>
