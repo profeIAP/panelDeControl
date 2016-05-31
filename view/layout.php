@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/home/usuario/Vídeos/panelDeControl/img/favicon.ico" rel="icon" type="image/x-icon" />
-    
     <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css">	
     <link rel="stylesheet" href="/css/bootstrap.css">
@@ -37,10 +36,10 @@
     =========================== -->
     <link href="/css/datatable3.css" rel='stylesheet' type='text/css'>
     <link href="/css/datatable4.css" rel="stylesheet">
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/js/local1.js"></script>
     <link href="/css/datatable5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="/js/local2.js"></script>
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -146,7 +145,8 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-13 col-md-12 ">
-                   <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
+                   <li id="grafica"><a href="/grafica"
+                   </a></li>
                    <ul id="accordion" class="accordion">
 						  <li>
 							<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
@@ -186,9 +186,11 @@
 						  </li>
 						  
 						   <li>
-							<div class="link">Salir</i></div>
-							
-							
+							<div class="link">Salir<i class="fa fa-chevron-down"></i></div>
+							<ul class="submenu">
+							                       <li><a href="/logout">Salir</a></li>
+									
+							</ul>		
 						  </li>
 					</ul>
                 </div>
@@ -207,9 +209,9 @@
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/evenfly.js"></script>
     
-	<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/js/local3.js"></script>
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/local4.js"></script>
 
 	<script>
 		$(document).ready(function(){
@@ -221,26 +223,21 @@
 			var Accordion = function(el, multiple) {
 				this.el = el || {};
 				this.multiple = multiple || false;
-
 				// Variables privadas
 				var links = this.el.find('.link');
 				// Evento
 				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
 			}
-
 			Accordion.prototype.dropdown = function(e) {
 				var $el = e.data.el;
 					$this = $(this),
 					$next = $this.next();
-
 				$next.slideToggle();
 				$this.parent().toggleClass('open');
-
 				if (!e.data.multiple) {
 					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
 				};
 			}	
-
 			var accordion = new Accordion($('#accordion'), false);
 		});
 </script>
