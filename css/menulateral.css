@@ -74,9 +74,9 @@ h1 a {
   font-size: 16px;
 }
 #3030F8
-.accordion li.open .link { color: #3030F8; }
+.accordion li.open .link { color: #75d7fa; }
 
-.accordion li.open i { color: #3030F8; }
+.accordion li.open i { color: #75d7fa; }
 
 .accordion li.open i.fa-chevron-down {
   -webkit-transform: rotate(180deg);
@@ -92,11 +92,11 @@ h1 a {
 
 .submenu {
   display: none;
-  background: #625AFF;
+  background: #0072b4;
   font-size: 14px;
 }
 
-.submenu li { border-bottom: 1px solid #4b4a5e; }
+.submenu li { border-bottom: 1px solid #0072b4; }
 
 .submenu a {
   display: block;
@@ -110,7 +110,7 @@ h1 a {
 }
 
 .submenu a:hover {
-  background: #524AEC;
+  background: #00adef;
   color: #FFF;
 }
 
