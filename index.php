@@ -292,7 +292,7 @@ $app->group('/partes', function () use ($app) {
 				$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 				
-				$valores=array('partes'=>$r);
+				$valores=array('comentarios'=>$r);
 				echo $twig->render('partes.php',$valores);  
 				 
 			});
