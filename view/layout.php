@@ -145,7 +145,8 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-13 col-md-12 ">
-                   <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
+                   <li id="grafica"><a href="/grafica"
+                   </a></li>
                    <ul id="accordion" class="accordion">
 						  <li>
 							<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
@@ -222,26 +223,21 @@
 			var Accordion = function(el, multiple) {
 				this.el = el || {};
 				this.multiple = multiple || false;
-
 				// Variables privadas
 				var links = this.el.find('.link');
 				// Evento
 				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
 			}
-
 			Accordion.prototype.dropdown = function(e) {
 				var $el = e.data.el;
 					$this = $(this),
 					$next = $this.next();
-
 				$next.slideToggle();
 				$this.parent().toggleClass('open');
-
 				if (!e.data.multiple) {
 					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
 				};
 			}	
-
 			var accordion = new Accordion($('#accordion'), false);
 		});
 </script>
