@@ -37,10 +37,10 @@
     =========================== -->
     <link href="/css/datatable3.css" rel='stylesheet' type='text/css'>
     <link href="/css/datatable4.css" rel="stylesheet">
-    <script type="text/javascript" src="/js/local1.js"></script>
+    <script type="text/javascript" src="/js/jsapi.js"></script>
     <link href="/css/datatable5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/js/local2.js"></script>
+    <script type="text/javascript" src="/js/loader.js"></script>
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -186,9 +186,15 @@
 						  </li>
 						  
 						   <li>
+<<<<<<< HEAD
 							<div class="link">Salir<i				
 				           
 				          <li><a href="/logout"></li>
+=======
+							<div class="link">Salir</i></div>
+							
+							
+>>>>>>> f6b772c47c2114ec11e5f3e649e1dc09918661b2
 						  </li>
 					</ul>
                 </div>
@@ -202,14 +208,14 @@
 
     <!--necessary scripts and plugins-->
     
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/evenfly.js"></script>
     
-	<script type="text/javascript" src="/js/local3.js"></script>
+	<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
-	<script type="text/javascript" src="/js/local4.js"></script>
+	<script type="text/javascript" src="/js/1.10.2jquery-ui.min.js"></script>
 
 	<script>
 		$(document).ready(function(){
@@ -221,21 +227,26 @@
 			var Accordion = function(el, multiple) {
 				this.el = el || {};
 				this.multiple = multiple || false;
+
 				// Variables privadas
 				var links = this.el.find('.link');
 				// Evento
 				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
 			}
+
 			Accordion.prototype.dropdown = function(e) {
 				var $el = e.data.el;
 					$this = $(this),
 					$next = $this.next();
+
 				$next.slideToggle();
 				$this.parent().toggleClass('open');
+
 				if (!e.data.multiple) {
 					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
 				};
 			}	
+
 			var accordion = new Accordion($('#accordion'), false);
 		});
 </script>
