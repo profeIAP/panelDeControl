@@ -133,6 +133,17 @@ $app->group('/anotaciones', function () use ($app) {
 	
 $app->group('/alumnos', function () use ($app) {
 	
+	$app->group('/anotaciones', function () use ($app) {
+		$app->get('/', function() use ($app){
+			global $twig;
+			// Espacio "dedicado" a juan carlos
+		}); 
+		$app->get('/crear', function() use ($app){
+			global $twig;
+			echo $twig->render('anotacion.php'); 
+		});
+	});
+
 	$app->post('/importar', function() use ($app){
 		global $twig;
 		$fichero=upload_file();
@@ -143,9 +154,9 @@ $app->group('/alumnos', function () use ($app) {
 	}); 
 	
 	$app->get('/importar', function() use ($app){
-    global $twig;
-    echo $twig->render('upload.php');
-}); 
+		global $twig;
+		echo $twig->render('upload.php');
+	}); 
 	
      $app->get('/', function() use ($app){
 		global $twig;
@@ -248,10 +259,10 @@ $app->group('/alumnos', function () use ($app) {
 
 }); 
 
-	$app->get('/autocompletado', function() use ($app){
-		global $twig;
-		echo $twig->render('autocomplete.php');  
-	}); 
+$app->get('/autocompletado', function() use ($app){
+	global $twig;
+	echo $twig->render('autocomplete.php');  
+}); 
 
 $app->group('/notificaciones', function () use ($app) {
 	
@@ -296,7 +307,7 @@ $app->group('/partes', function () use ($app) {
 				$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 				
-				$valores=array('partes'=>$r);
+				$valores=array('comentarios'=>$r);
 				echo $twig->render('partes.php',$valores);  
 				 
 			});
