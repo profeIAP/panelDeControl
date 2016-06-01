@@ -103,7 +103,34 @@ if (password_verify('InFoRmAtIcA', $hash)) {
 
 });  
 
-
+$app->group('/anotaciones', function () use ($app) {
+		$app->get('/', function() use ($app){
+			global $twig;
+			// Espacio "dedicado" a juan carlos
+		}); 
+		$app->get('/crear', function() use ($app){
+			global $twig;
+			echo $twig->render('anotacion.php'); 
+		});
+		
+		$app->get('/borrar', function() use ($app){
+		
+			
+				global $twig;
+				echo $twig->render('anotacion.php'); 
+				
+			$valores=array(
+				"id"=>$app->request()->get('id')
+			);
+			
+			$sql = "delete from alumno WHERE ID=:id";
+			$pdo = $app->db;
+			$q   = $pdo->prepare($sql);
+			$q->execute($valores);
+			$app->redirect('/');
+		});	
+	});
+	
 $app->group('/alumnos', function () use ($app) {
 	
 	$app->post('/importar', function() use ($app){
@@ -152,31 +179,8 @@ $app->group('/alumnos', function () use ($app) {
 		}); 
 	});
 	
-	$app->group('/anotaciones', function () use ($app) {
-		$app->get('/', function() use ($app){
-			global $twig;
-			// Espacio "dedicado" a juan carlos
-		}); 
-		$app->get('/crear', function() use ($app){
-			global $twig;
-			echo $twig->render('anotacion.php'); 
-		});
-	});
 	
-	$app->get('/borrar', function() use ($app){
-	
-		global $twig;
-		
-		$valores=array(
-			"id"=>$app->request()->get('id')
-		);
-		
-		$sql = "delete from alumno WHERE ID=:id";
-		$pdo = $app->db;
-		$q   = $pdo->prepare($sql);
-		$q->execute($valores);
-		$app->redirect('/');
-	}); 
+	 
 	
 	$app->get('/editar', function() use ($app){
 	
