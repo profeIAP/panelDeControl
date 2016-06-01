@@ -1,0 +1,11 @@
+$app->get('/anotaciones', function() use ($app){
+    global $twig;
+    
+    $pdo=$app->db;
+    $r = $pdo->query("select * from anotaciones")->fetchAll(PDO::FETCH_ASSOC);
+		
+	$valores=array('anotaciones'=>$r);
+
+    echo $twig->render('anotaciones.php',$valores);  
+    
+}); 
