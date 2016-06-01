@@ -186,11 +186,9 @@
 						  </li>
 						  
 						   <li>
-							<div class="link">Salir<i class="fa fa-chevron-down"></i></div>
-							<ul class="submenu">
-							                       <li><a href="/logout">Salir</a></li>
-									
-							</ul>		
+							<div class="link">Salir<i				
+				           
+				          <li><a href="/logout"></li>
 						  </li>
 					</ul>
                 </div>
