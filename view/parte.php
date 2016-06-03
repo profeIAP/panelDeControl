@@ -19,7 +19,7 @@
 		</div>
 		<div class="form-group col-md-12">
 			<label for="cursoygrupo">Curso y Grupo</label>
-			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="">
+			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="" readonly="readonly">
 		</div>
 		<div class="form-group col-md-6">
 			<label for="fecha">Fecha:</label>
@@ -41,7 +41,7 @@
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
-			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
+			<input type="text" class="form-control" id="asignatura" name="asignatura" value="" readonly="readonly">
 		</div>
 		
 		<button type="submit" class="btn btn-danger">Cancelar</button>
