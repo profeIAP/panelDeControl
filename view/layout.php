@@ -185,26 +185,18 @@
 							</ul>
 						  </li>
 						  
-						   <li>
-<<<<<<< HEAD
-							<div class="link">Salir<i				
-				           
-				          <li><a href="/logout"></li>
-=======
-							<div class="link">Salir</i></div>
-							
-							
->>>>>>> f6b772c47c2114ec11e5f3e649e1dc09918661b2
-						  </li>
-					</ul>
+						   
+							<div class="link"><li><a href="/logout"></li>Salir<i</div>				
+				           				        			        						
+					
                 </div>
+                
             </div><!--info end-->
                 
             </div><!--tech skills end-->
 		</div><!--right end-->
 
     
-    <footer class="text-center">  ... </footer>
 
     <!--necessary scripts and plugins-->
     
