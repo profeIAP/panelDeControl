@@ -21,19 +21,19 @@
 		
 		<input type="hidden" name="id" value="{{comentario.ID}}"/>
 		
-										<div class="form-group">
-											<label for="fecha">Fecha:</label>
-			<input type="text" class="form-control" id="fecha" name="fecha" value="">
-		</div>
-										<div class="form-group">
+										<div class="form-group col-md-6">
 											<label for="hora">Hora:</label>
-			<input type="text" class="form-control" id="hora" name="hora" value=""><a class="botoncal" href="#"><span></span></a>
+			<input type="text" class="form-control" id="hora" name="hora" value="">
 		</div>
-		                                <div class="form-group">
+										<div class="form-group col-md-6">
+											<label for="fecha">Fecha:</label>
+			<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value="">
+		</div>
+		                                <div class="form-group col-md-12">
 			                                <label for="alumnoaImplicado">Alumno/a</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
 		</div>
-		                                <div class="form-group">
+		                                <div class="form-group col-md-12">
 			                                <label for="comentario">Descripción:</label>
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textarea>
 		</div>
@@ -41,5 +41,12 @@
 										
  				
 </form>	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".campofecha").calendarioDW();
+		});
+	</script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
 {% endblock cuerpo %}
 

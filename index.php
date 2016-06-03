@@ -47,6 +47,9 @@ require_once	'controller/Utils.php';
 require_once	'controller/Email.php';
 require_once	'controller/LoginClave.php';
 
+use Respect\Validation\Validator as v;
+use Dompdf\Dompdf;
+
 Twig_Autoloader::register();  
 
 $app = new \Slim\Slim(
@@ -101,8 +104,20 @@ if (password_verify('InFoRmAtIcA', $hash)) {
 });  
 
 
+
 $app->group('/alumnos', function () use ($app) {
 	
+	$app->group('/anotaciones', function () use ($app) {
+		$app->get('/', function() use ($app){
+			global $twig;
+			// Espacio "dedicado" a juan carlos
+		}); 
+		$app->get('/crear', function() use ($app){
+			global $twig;
+			echo $twig->render('anotacion.php'); 
+		});
+	});
+
 	$app->post('/importar', function() use ($app){
 		global $twig;
 		$fichero=upload_file();
@@ -113,11 +128,11 @@ $app->group('/alumnos', function () use ($app) {
 	}); 
 	
 	$app->get('/importar', function() use ($app){
-    global $twig;
-    echo $twig->render('upload.php');
-}); 
+		global $twig;
+		echo $twig->render('upload.php');
+	}); 
 	
-    $app->get('/', function() use ($app){
+     $app->get('/', function() use ($app){
 		global $twig;
 		
 		$pdo=$app->db;
@@ -130,9 +145,17 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
-			echo json_encode(array('julio sánchez','jose antonio vázquez','patricia murillo','miguel angel hinojosa'));
+			
+			$pdo=$app->db;
+			
+			$statement=$pdo->prepare("SELECT nombre FROM alumno where nombre like '%sánchez%'");
+			$statement->execute();
+			$results=$statement->fetchAll(PDO::FETCH_COLUMN, 0);
+			$json= json_encode($results);
+			
+			echo $json;
+			 
 		});
-		
 		$app->post('/id', function() use ($app){
 			global $twig;
 			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
@@ -141,16 +164,6 @@ $app->group('/alumnos', function () use ($app) {
 		}); 
 	});
 	
-	$app->group('/anotaciones', function () use ($app) {
-		$app->get('/', function() use ($app){
-			global $twig;
-			// Espacio "dedicado" a juan carlos
-		}); 
-		$app->get('/crear', function() use ($app){
-			global $twig;
-			echo $twig->render('anotacion.php'); 
-		});
-	});
 	
 	$app->get('/borrar', function() use ($app){
 	
@@ -233,10 +246,10 @@ $app->group('/alumnos', function () use ($app) {
 
 }); 
 
-	$app->get('/autocompletado', function() use ($app){
-		global $twig;
-		echo $twig->render('autocomplete.php');  
-	}); 
+$app->get('/autocompletado', function() use ($app){
+	global $twig;
+	echo $twig->render('autocomplete.php');  
+}); 
 
 $app->group('/notificaciones', function () use ($app) {
 	
@@ -266,6 +279,27 @@ $app->group('/notificaciones', function () use ($app) {
 
 $app->group('/partes', function () use ($app) {
 	
+	$app->group('/buscar', function () use ($app) {
+	
+		$app->get('/poralumno', function() use ($app){
+				global $twig;
+				
+				$valores=array(
+					"id"=>$app->request()->get('id')
+				);
+				
+				$pdo=$app->db;
+				$q = $pdo->prepare("select * from partes where id_alumno=:id_alumno");
+				$q->execute($valores);
+				$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+				
+				$valores=array('comentarios'=>$r);
+				echo $twig->render('partes.php',$valores);  
+				 
+			});
+		});
+		
 	$app->get('/', function() use ($app){
 		global $twig;
 		echo $twig->render('partes.php');  
@@ -315,7 +349,7 @@ $app->group('/partes', function () use ($app) {
 		);
 		
 		if($valores['id']){
-			$sql = "update alumno set ID_ALUMNO=:id_alumno, GRUPO=:grupo, FECHA=:fecha, HORA=:hora, ASIGNATURA=:asignatura, PROFESOR=:profesor, TUTOR=:tutor, L_PERTUBAR=:l_pertubar, L_DIFICULTAR=:l_dificultar, L_FALTARINJUSTIFICADAMENTE=:l_faltarinjustificadamente, L_DETERIORAR=:l_deteriorar, L_MOVIL=:l_movil, L_GAFAS=:l_gafas, L_GORRA=:l_gorra, L_PASILLOS=:l_pasillos, L_FALTAINJUSTIFICADA=:l_faltainjustificada, L_NOCOLABORAR=:l_nocolaborar, L_IMPUNTUAL=:l_impuntual, L_DESCONSIDERABLES=:l_desconsiderables, L_BEBEROCOMER=:l_beberocomer, L_FALTAMATERIAL=:l_faltamaterial, L_ORDENADOR=:l_ordenador, L_ALTERAR=:l_alterar, L_FUMAR=:l_fumar, L_USOINDEBIDO=:l_usoindebido, G_AGRESION=:g_agresion, G_INCUMPLIMIENTO=:g_incumplimiento, G_AMENAZAS=:g_amenazas, G_SUPLANTACION=:g_suplatancion, G_FUMAR=:g_fumar, G_OFENSAS=:g_ofensas, G_HUMILLACIONES=:g_humillaciones, G_DETERIORO=:g_deterioro, G_IMPEDIMENTO=:g_impedimento WHERE ID=:id ";
+			$sql = "update partes set ID_ALUMNO=:id_alumno, GRUPO=:grupo, FECHA=:fecha, HORA=:hora, ASIGNATURA=:asignatura, PROFESOR=:profesor, TUTOR=:tutor, L_PERTUBAR=:l_pertubar, L_DIFICULTAR=:l_dificultar, L_FALTARINJUSTIFICADAMENTE=:l_faltarinjustificadamente, L_DETERIORAR=:l_deteriorar, L_MOVIL=:l_movil, L_GAFAS=:l_gafas, L_GORRA=:l_gorra, L_PASILLOS=:l_pasillos, L_FALTAINJUSTIFICADA=:l_faltainjustificada, L_NOCOLABORAR=:l_nocolaborar, L_IMPUNTUAL=:l_impuntual, L_DESCONSIDERABLES=:l_desconsiderables, L_BEBEROCOMER=:l_beberocomer, L_FALTAMATERIAL=:l_faltamaterial, L_ORDENADOR=:l_ordenador, L_ALTERAR=:l_alterar, L_FUMAR=:l_fumar, L_USOINDEBIDO=:l_usoindebido, G_AGRESION=:g_agresion, G_INCUMPLIMIENTO=:g_incumplimiento, G_AMENAZAS=:g_amenazas, G_SUPLANTACION=:g_suplatancion, G_FUMAR=:g_fumar, G_OFENSAS=:g_ofensas, G_HUMILLACIONES=:g_humillaciones, G_DETERIORO=:g_deterioro, G_IMPEDIMENTO=:g_impedimento WHERE ID=:id ";
 			$pdo=$app->db;
 			$q = $pdo->prepare($sql);
 			$q->execute($valores);
@@ -323,26 +357,46 @@ $app->group('/partes', function () use ($app) {
 			$app->redirect('/partes');
 		}
 		else
-		{
+	{
 			unset($valores['id']);
 			
-			$sql = "INSERT INTO alumno (id_alumno, grupo, fecha, fecha, hora, asignatura, profesor, tutor, l_pertubar, l_dificultar, l_dificultar, l_faltarinjustificadamente, l_deteriorar, l_movil, l_gafas, l_gorra, l_pasillos, l_faltainjustificada, l_nocolaborar, l_impuntual, l_desconsiderables, l_beberocomer, l_faltamaterial, l_ordenador, l_alterar, l_fumar, l_usoindebido, g_agresion, g_incumplimiento, g_amenazas, g_suplantacion, g_fumar, g_ofensas, g_humillaciones, g_deterioro, g_impedimento) VALUES (:id_alumno, :grupo, :fecha, :hora, :asignatura, :profesor, :tutor, :l_pertubar, :l_dificultar, :l_faltarinjustificadamente, :l_deteriorar, :l_movil, :l_gafas, :l_gorra, :l_pasillos, :l_faltainjustificada, :l_nocolaborar, :l_impuntual, :l_desconsiderables, :l_beberocomer, :l_faltamaterial, :l_ordenador, :l_alterar, :l_fumar, :l_usoindebido, :g_agresion, :g_amenazas, :g_suplantacion, :g_fumar, :g_ofensas, :g_humillaciones, :g_deterioro, :g_impedimento)";
+			$sql = "insert into partes (ID_ALUMNO,GRUPO,FECHA,HORA,ASIGNATURA,PROFESOR,TUTOR,L_PERTURBAR,L_DIFICULTAR,L_FALTARINJUSTIFICADAMENTE,L_DETERIORAR,L_MOVIL,L_GAFAS,L_GORRA,L_PASILLOS,L_FALTAINJUSTIFICADA,L_NOCOLABORAR,L_IMPUNTUAL,L_DESCONSIDERABLES,L_BEBEROCOMER,L_FALTAMATERIAL,L_ORDENADOR,L_ALTERAR,L_FUMAR,L_USOINDEBIDO,G_ AGRESION,G_INCUMPLIMIENTO,G_AMENAZAS,G_SUPLANTACION,G_FUMAR,G_OFENSAS,G_HUMILLACIONES,G_DETERIORO,G_IMPEDIMENTO)values(:ID_ALUMNO,:GRUPO,:FECHA,:HORA,:ASIGNATURA,:PROFESOR,:TUTOR,:L_PERTURBAR,:L_DIFICULTAR,:L_FALTARINJUSTIFICADAMENTE,:L_DETERIORAR,:L_MOVIL,:L_GAFAS,:L_GORRA,:L_PASILLOS,:L_FALTAINJUSTIFICADA,:L_NOCOLABORAR,:L_IMPUNTUAL,:L_DESCONSIDERABLES,:L_BEBEROCOMER,:L_FALTAMATERIAL,:L_ORDENADOR,:L_ALTERAR,:L_FUMAR,:L_USOINDEBIDO,:G_ AGRESION,:G_INCUMPLIMIENTO,:G_AMENAZAS,:G_SUPLANTACION,:G_FUMAR,:G_OFENSAS,:G_HUMILLACIONES,:G_DETERIORO,:G_IMPEDIMENTO)";
 			$pdo=$app->db;
 			$q = $pdo->prepare($sql);
+			echo $sql;
+			var_dump($valores);
 			$q->execute($valores);
-		
-			// Mostramos un mensaje al usuario
-			
+				
 			$app->redirect('/partes');
 		}
  
 	});
 	
+
+	
+		//cambiar alumno por usuario
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from partes WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/partes');
+	}); 
+	
+
 	 $app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('parte.php'); 
 	});
 });
+
 
 $app->group('/usuarios', function () use ($app) {
 	
@@ -632,6 +686,42 @@ function upload_file(){
 $app->get('/email', function() use ($app){
 	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
     echo "enviado";
+}); 
+
+$app->get('/pdf', function() use ($app){
+	
+	$stuff = '<html>
+                <body>
+                <p>
+                    Hola mundo (PDF)!!!
+                </p>
+            </body></html>';
+            
+    set_time_limit(300);
+    ini_set('memory_limit', '-1');
+
+    $dompdf = new DOMPDF();
+    $dompdf->load_html($stuff);
+    $dompdf->set_paper( 'letter' , 'portrait' );
+    $dompdf->render();
+    echo $dompdf->stream('ejemplo');
+}); 
+
+$app->get('/validar', function() use ($app){
+	
+	$usernameValidator = v::alnum()->noWhitespace()->length(1,5);
+	
+	if($usernameValidator->validate("justo"))
+		echo  "Tamaño correcto";
+	else
+		echo  "Tamaño anómalo";
+	
+	echo "<br>";
+	
+	if($usernameValidator->validate("demasiado grande"))
+		echo  "Tamaño correcto";
+	else
+		echo  "Tamaño anómalo";
 }); 
 
 // Ponemos en marcha el router
