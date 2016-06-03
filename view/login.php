@@ -1,4 +1,4 @@
-{% extends "layout.php" %}
+{% extends "layoutlogin.php" %}
 
 {% block tabActivo %}contacto{% endblock tabActivo %}
 
