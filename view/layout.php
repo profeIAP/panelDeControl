@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="">
 
 <head>
@@ -185,26 +184,18 @@
 							</ul>
 						  </li>
 						  
-						   <li>
-<<<<<<< HEAD
-							<div class="link">Salir<i				
-				           
-				          <li><a href="/logout"></li>
-=======
-							<div class="link">Salir</i></div>
-							
-							
->>>>>>> f6b772c47c2114ec11e5f3e649e1dc09918661b2
-						  </li>
-					</ul>
+						   
+							<div class="link"><li><a href="/logout"></li>Salir<i</div>				
+				           				        			        						
+					
                 </div>
+                
             </div><!--info end-->
                 
             </div><!--tech skills end-->
 		</div><!--right end-->
 
     
-    <footer class="text-center">  ... </footer>
 
     <!--necessary scripts and plugins-->
     
@@ -217,6 +208,14 @@
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
 	<script type="text/javascript" src="/js/1.10.2jquery-ui.min.js"></script>
 
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$(".campofecha").calendarioDW();
+		})
+	</script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('#myTable').dataTable();
