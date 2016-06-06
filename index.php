@@ -285,13 +285,13 @@ $app->group('/partes', function () use ($app) {
 				global $twig;
 				
 				$valores=array(
-					"id"=>$app->request()->get('id')
+					"id_alumno"=>$app->request()->get('id')
 				);
 				
 				$pdo=$app->db;
 				$q = $pdo->prepare("select * from partes where id_alumno=:id_alumno");
 				$q->execute($valores);
-				$r=$q->fetch(PDO::FETCH_ASSOC);
+				$r=$q->fetchAll(PDO::FETCH_ASSOC);
 			
 				
 				$valores=array('comentarios'=>$r);
