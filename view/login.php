@@ -14,11 +14,11 @@
 
  <div id="header" class="row-fluid">
             
-            <div class="col-sm-2">
+            <div class="col-sm-3">
 				<img src="/img/logo.png">
 			</div>
 			
-			<div class="col-sm-8">
+			<div class="col-sm-6">
 				
 												<form method="post" action="/login" role="form">
 										
