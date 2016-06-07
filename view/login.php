@@ -12,9 +12,9 @@
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
 {% endif %}
 
- <div id="header" class="row">
+ <div id="header" class="row-fluid">
             
-            <div class="col-sm-4">
+            <div class="col-sm-2">
 				<img src="/img/logo.png">
 			</div>
 			

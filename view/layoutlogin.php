@@ -72,15 +72,16 @@
             </div><!-- header right end-->
         </div><!-- header end-->
 
-        <hr class="firsthr">
+    
 
         <!-- ===========================
         BODY LEFT PART
         ============================ -->
-        <div class="col-md-9 mainleft">
-            <div id="statement" class="row mobmid" style="margin left:40px">
+       
                 
-                <div class="col-sm-12">
+              <div class="container-fluid">
+
+
                     <!--<h3>Inicio </h3>
                     <p>Bienvenidos a la página principal de Control de Partes</p>-->
                     {% block cuerpo %} {% endblock %}
