@@ -110,7 +110,17 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/anotaciones', function () use ($app) {
 		$app->get('/', function() use ($app){
 			global $twig;
-			// Espacio "dedicado" a juan carlos
+$app->get('/anotaciones', function() use ($app){
+    global $twig;
+    
+    $pdo=$app->db;
+    $r = $pdo->query("select * from anotaciones")->fetchAll(PDO::FETCH_ASSOC);
+		
+	$valores=array('anotaciones'=>$r);
+
+    echo $twig->render('anotaciones.php',$valores);  
+    
+}); 
 		}); 
 		$app->get('/crear', function() use ($app){
 			global $twig;
