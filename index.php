@@ -257,7 +257,7 @@ $app->group('/notificaciones', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("selectgit  * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('notificaciones'=>$r);
 		echo $twig->render('notificaciones.php',$valores);  

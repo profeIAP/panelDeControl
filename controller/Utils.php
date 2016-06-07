@@ -69,7 +69,7 @@ class Utilidades {
 		$pdo=$app->db;
 
 	$valores=array(
-	'url'=>$app->$req->getPathInfo());
+	'url'=>$app->request->getPathInfo());
 			
 	 $sql = "INSERT INTO accion (ruta) VALUES (:url)";
 			$pdo=$app->db;
