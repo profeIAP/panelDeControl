@@ -67,10 +67,16 @@ class Utilidades {
 
 		$app = \Slim\Slim::getInstance();
 		$pdo=$app->db;
+
+	$valores=array(
+	'url'=>$app->request->getPathInfo());
+			
+	 $sql = "INSERT INTO accion (ruta) VALUES (:url)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
 		
-		$req=$app->request;
-		echo "...".$req->getPathInfo()."...";
-		
+	
 	}
 	
 }
