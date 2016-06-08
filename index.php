@@ -103,17 +103,15 @@ if (password_verify('InFoRmAtIcA', $hash)) {
 
 });  
 
-$app->group('/anotaciones', function () use ($app) {
+	
+$app->group('/alumnos', function () use ($app) {
+	
+	$app->group('/anotaciones', function () use ($app) {
 		$app->get('/', function() use ($app){
 			global $twig;
 			// Espacio "dedicado" a juan carlos
 		}); 
-		$app->get('/crear', function() use ($app){
-			global $twig;
-			echo $twig->render('anotacion.php'); 
-		});
-		
-		$app->get('/borrar', function() use ($app){
+	$app->get('/borrar', function() use ($app){
 		
 			
 				global $twig;
@@ -128,20 +126,50 @@ $app->group('/anotaciones', function () use ($app) {
 			$q   = $pdo->prepare($sql);
 			$q->execute($valores);
 			$app->redirect('/');
-		});	
-	});
-	
-$app->group('/alumnos', function () use ($app) {
-	
-	$app->group('/anotaciones', function () use ($app) {
-		$app->get('/', function() use ($app){
-			global $twig;
-			// Espacio "dedicado" a juan carlos
-		}); 
+		});
 		$app->get('/crear', function() use ($app){
 			global $twig;
 			echo $twig->render('anotacion.php'); 
 		});
+		
+				$app->post('/guardar', function() use ($app){
+	
+		global $twig;
+		
+		// Recogemos datos formulario de contacto
+		
+		$valores=array(
+			'id'=>$app->request()->post('id'),
+			'id_alumno'=>$app->request()->post('alumnoaImplicado'),
+			'fecha'=>$app->request()->post('fecha'),		
+			'hora'=>$app->request()->post('hora'),	
+			'descripcion'=>$app->request()->post('comentario'),	
+			
+		);
+		
+		if($valores['id']){
+			$sql = "update alumno set ID_ALUMNO=:id_alumno, FECHA=:fecha, HORA=:hora, DESCRIPCION=:descripcion, WHERE ID=:id ";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+			
+			$app->redirect('/alumnos');
+		}
+		else
+		{
+			unset($valores['id']);
+			
+			$sql = "INSERT INTO anotacion (ID_ALUMNO, FECHA, HORA, DESCRIPCION) VALUES (:id_alumno, :fecha, :hora, :descripcion)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+			// Mostramos un mensaje al usuario
+			
+			$app->redirect('/alumnos');
+		}
+	}); 
+
 	});
 
 	$app->post('/importar', function() use ($app){
