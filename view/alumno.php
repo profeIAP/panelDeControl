@@ -21,53 +21,64 @@
 		
 		<input type="hidden" name="id" value="{{comentario.ID}}"/>
 		
-		<div class="form-group">
+		<div class="form-group col-md-12">
 			<label for="nombre">Nombre:</label>
 			<input type="text" class="form-control" id="nombre" name="nombre" value="{{comentario.NOMBRE}}">
 		</div>
-		<div class="form-group">
-			<label for="email">Correo electrónico:</label>
-			<input type="text" class="form-control" id="email" name="email"  value="{{comentario.EMAIL}}">
-		</div>
-		<div class="form-group">
-			<label for="direccion">Dirección:</label>
-			<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'textare' });</script>
-			<input type="text" class="form-control" id="dirección" name="dirección" value="{{comentario.DIRECCIÓN}}">
-		</div>
-		<div class="form-group">
-			<label for="Telefono" >Teléfono:<label>
-		    <input type="text" class="form-control" id="teléfono" name="teléfono" value="{{comentario.TELÉFONO}}">      
-		</div>
-		    <label for="comentario">Comentario:</label>
-			<textare style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textare>
-		</div>
-		<div class="form-group">
-			<label for="localidad">Localidad:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="localidad" name="localidad" >{{comentario.LOCALIDAD}}</textarea>
-		</div>
-		<div class="form-group">
-			<label for="provincia">Provincia:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="provincia" name="provincia" >{{comentario.PROVINCIA}}</textarea>
-		</div>
-		<div class="form-group">
-			<label for="dni_tutor">dni_tutor:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="dni_tutor" name="dni_tutor" >{{comentario.DNI_TUTOR}}</textarea>
-		</div>
-		<div class="form-group">
-			<label for="curso">Curso:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="curso" name="curso" >{{comentario.CURSO}}</textarea>
+		<div class="form-group col-md-12">
+			<label for="apellido">Apellidos:</label>
+			<input type="text" class="form-control" id="apellido" name="apellido"  value="{{comentario.APELLIDO}}">
 		</div>
 		
-		<div class="form-group col-md-9">
+			<div class="form-group col-md-12">
+			<label for="correoelectronico">Correo Electrónico:</label>
+			<input type="text" class="form-control" id="correoelectronico" name="correoelectronico" value="{{comentario.CORREOELECTRONICO}}">
+		</div>
+		<div class="form-group col-md-12">
+		<label for="calle">Calle:</label>
+			<input type="text" class="form-control" id="calle" name="calle" value="{{comentario.CALLE}}">
+		</div>
+		
+		  <div class="form-group col-md-6">
+		  <label for="codigopostal">Código Postal:</label>
+		    <input type="text" class="form-control" id="fecha" name="codigopostal" size="12" value="">
+ </div>
+ 
+		   <div class="form-group col-md-6">
+		  <label for="localidad">Localidad:</label>
+			<input type="text" class="form-control" id="localidad" name="localidad" size="12" value="">
+ </div>
+		<div class="form-group col-md-12">
+		<label for="provincia">Provincia:</label>
+			<input type="text" class="form-control" id="provincia" name="provincia" value="{{comentario.PROVINCIA}}">
+		</div>
+		<div class="form-group col-md-12">
+		<label for="tutor1">D.N.I:</label>
+			<input type="text" class="form-control" id="dni" name="dni" value="{{comentario.DNI}}">
+		</div>
+		<div class="form-group col-md-12">
+			<label for="dni">Tutor 1:</label>
+			<input type="text" class="form-control" id="tutor1" name="tutor1" value="{{comentario.TUTOR1}}">
+		</div>
+		<div class="form-group col-md-12">
+		<label for="tutor2">D.N.I:</label>
+			<input type="text" class="form-control" id="dni" name="dni" value="{{comentario.DNI}}">
+		</div>
+		<div class="form-group col-md-12">
+			<label for="dni">Tutor 2:</label>
+			<input type="text" class="form-control" id="tutor2" name="dni" value="{{comentario.TUTOR2}}">
+		
+		
+
 			
 		</div>
 		
 		<div class="form-group col-md-3">
 			
-		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
-
 		<button type="submit" class="btn btn-success">Aceptar</button><a href="/alumnos/aceptar"></a>
+		</div>
+        <div class="form-group col-md-3">
+		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
 		
 		</div>
 		
