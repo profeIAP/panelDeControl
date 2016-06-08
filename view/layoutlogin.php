@@ -47,38 +47,6 @@
     <![endif]-->
 </head>
 
-<body>
-
-            <!-- photo end-->
-
-
-
-                <!-- ===========================
-                SOCIAL & CONTACT
-                ============================ -->
-                
-                <!--
-				    <li id="notificaciones"><a href="/notificaciones">Notificaciones</a></li>
-				    
-                -->
-
-  
-
-                   
-                    
-                    
-                    <!-- social 3rd col end-->
-                </div><!-- header social end-->
-            </div><!-- header right end-->
-        </div><!-- header end-->
-
-    
-
-        <!-- ===========================
-        BODY LEFT PART
-        ============================ -->
-       
-                
               <div class="container-fluid">
 
 
