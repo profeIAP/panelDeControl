@@ -187,7 +187,7 @@ $app->get('/anotaciones', function() use ($app){
 		$pdo = $app->db;
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
-		$app->redirect('/');
+		$app->redirect('/alumnos');
 	}); 
 	
 	$app->get('/editar', function() use ($app){
