@@ -20,10 +20,20 @@ img {
 .propic {
     border-radius: 10px;
 }
+.container-fluid{
+  height:100%;
+  display:table;
+  width: 100%;
+  padding: 0;
+}
+
+.row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
 
 hr {
     margin: 40px 0;
 }
+html, body{height:100%; margin:0;padding:0}
+
 
 h1 {
     font-size: 2em;

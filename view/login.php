@@ -12,13 +12,15 @@
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
 {% endif %}
 
- <div id="header" class="row">
+ <div id="header" class="row-fluid">
+
             
-            <div class="col-sm-4">
-				<img src="/img/logo.png">
+            <div class="col-sm-3">
 			</div>
 			
-			<div class="col-sm-8">
+			<div class="col-sm-6">
+			
+
 				
 												<form method="post" action="/login" role="form">
 										
@@ -28,10 +30,13 @@
 											<label for="nombre">Usuario:</label>
 											<input type="text" class="form-control" id="nombre" name="nombre" value="{{comentario.NOMBRE}}">
 										</div>
-										<div class="form-group">
+										
+											<div class="form-group">
 											<label for="email">Contraseña:</label>
-											<input type="password" class="form-control" id="email" name="email"  value="{{comentario.EMAIL}}">
+											<input type="text" class="form-control" id="email" name="email" value="{{comentario.EMAIL}}">
 										</div>
+										
+										
 										
 										<button type="submit" class="btn btn-default">Enviar</button>
 								</form>

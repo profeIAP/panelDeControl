@@ -21,9 +21,12 @@
 		
 		<input type="hidden" name="id" value="{{comentario.ID}}"/>
 		
-										<div class="form-group col-md-6">
-											<label for="hora">Hora:</label>
-			<input type="text" class="form-control" id="hora" name="hora" value="">
+								
+			
+		
+		                                   <div class="form-group col-md-6">
+											<label for="fecha">Hora:</label>
+			<input type="text" class="form-control" id="hora" name="hora" size="12" value="">
 		</div>
 										<div class="form-group col-md-6">
 											<label for="fecha">Fecha:</label>

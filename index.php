@@ -109,24 +109,16 @@ $app->group('/alumnos', function () use ($app) {
 	$app->group('/anotaciones', function () use ($app) {
 		$app->get('/', function() use ($app){
 			global $twig;
-			// Espacio "dedicado" a juan carlos
-		}); 
-	$app->get('/borrar', function() use ($app){
-		
-			
-				global $twig;
-				echo $twig->render('anotacion.php'); 
+    
+			$pdo=$app->db;
+			$r = $pdo->query("select * from anotaciones")->fetchAll(PDO::FETCH_ASSOC);
 				
-			$valores=array(
-				"id"=>$app->request()->get('id')
-			);
+			$valores=array('anotaciones'=>$r);
+
+			echo $twig->render('anotaciones.php',$valores);  
 			
-			$sql = "delete from alumno WHERE ID=:id";
-			$pdo = $app->db;
-			$q   = $pdo->prepare($sql);
-			$q->execute($valores);
-			$app->redirect('/');
-		});
+		}); 
+
 		$app->get('/crear', function() use ($app){
 			global $twig;
 			echo $twig->render('anotacion.php'); 
@@ -219,7 +211,20 @@ $app->group('/alumnos', function () use ($app) {
 	});
 	
 	
-	 
+	$app->get('/borrar', function() use ($app){
+	
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$sql = "delete from alumno WHERE ID=:id";
+		$pdo = $app->db;
+		$q   = $pdo->prepare($sql);
+		$q->execute($valores);
+		$app->redirect('/alumnos');
+	}); 
 	
 	$app->get('/editar', function() use ($app){
 	
@@ -298,7 +303,7 @@ $app->group('/notificaciones', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("selectgit  * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('notificaciones'=>$r);
 		echo $twig->render('notificaciones.php',$valores);  
@@ -326,13 +331,13 @@ $app->group('/partes', function () use ($app) {
 				global $twig;
 				
 				$valores=array(
-					"id"=>$app->request()->get('id')
+					"id_alumno"=>$app->request()->get('id')
 				);
 				
 				$pdo=$app->db;
 				$q = $pdo->prepare("select * from partes where id_alumno=:id_alumno");
 				$q->execute($valores);
-				$r=$q->fetch(PDO::FETCH_ASSOC);
+				$r=$q->fetchAll(PDO::FETCH_ASSOC);
 			
 				
 				$valores=array('comentarios'=>$r);
@@ -343,9 +348,15 @@ $app->group('/partes', function () use ($app) {
 		
 	$app->get('/', function() use ($app){
 		global $twig;
-		echo $twig->render('partes.php');  
-	}); 
-
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('comentarios'=>$r);
+		echo $twig->render('partes.php',$valores);   
+				 
+			});
+	
 	$app->post('/guardar', function() use ($app){
 	
 		global $twig;
@@ -412,8 +423,6 @@ $app->group('/partes', function () use ($app) {
 		}
  
 	});
-	
-
 	
 		//cambiar alumno por usuario
 	$app->get('/borrar', function() use ($app){
@@ -537,24 +546,6 @@ $app->get('/contartabla', function() use ($app){
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		echo "Hay ". $r['numero'] . " tablas.";
-});
-
-$app->group('/partes', function () use ($app) {
-	
-	$app->get('/', function() use ($app){
-		global $twig;
-		
-		$pdo=$app->db;
-		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
-			
-		$valores=array('comentarios'=>$r);
-		echo $twig->render('partes.php',$valores);  
-	}); 
-
-	$app->get('/crear', function() use ($app){
-		global $twig;
-		echo $twig->render('parte.php');  
-	}); 
 });
 
 $app->get('/about', function() use ($app){
