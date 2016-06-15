@@ -18,7 +18,12 @@
             <div class="col-sm-3">
 			</div>
 			
-			<div class="col-sm-6">
+            <div class="col-sm-2">
+				<img src="/img/logo.png">
+			</div>
+			
+			<div class="col-sm-4">
+				
 			
 
 				
