@@ -1,4 +1,3 @@
-
 <?php 
 // ------------------------------------------------------------------------------------------------
 //
@@ -35,23 +34,17 @@
 // [http://goo.gl/53iEcN] oAuth con Slim
 // [http://goo.gl/PXt2YG] Otra implementación de oAuth
 // ------------------------------------------------------------------------------------------------
-
 // DUDA funcionará flash() y error() tras poner session_start() antes de header()
-
 session_cache_limiter(false);	
 session_start();
 header('Content-type: text/html; charset=utf-8');
-
 require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
 require_once	'controller/Email.php';
 require_once	'controller/LoginClave.php';
-
 use Respect\Validation\Validator as v;
 use Dompdf\Dompdf;
-
 Twig_Autoloader::register();  
-
 $app = new \Slim\Slim(
 		array(
 			//'debug' => true,
@@ -60,7 +53,6 @@ $app = new \Slim\Slim(
 	);
 	
 $loader = new Twig_Loader_Filesystem('./view');  
-
 $twig = new Twig_Environment($loader, array(  
 	//'cache' => 'cache',  
 ));  
@@ -73,14 +65,11 @@ $app->get('/', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
-
 $app->get('/hash',function() use ($app){
     global $twig;
     $userPassword="informatica";
     $hash = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]) ;
-
 	//echo $hash;
-
 /*
 if (password_verify($userPassword, $hash)) {
     // Login successful.
@@ -100,9 +89,7 @@ if (password_verify('InFoRmAtIcA', $hash)) {
 } else {
     echo 'La contraseña no es válida.';
 }
-
 });  
-
 	
 $app->group('/alumnos', function () use ($app) {
 	
@@ -114,11 +101,9 @@ $app->group('/alumnos', function () use ($app) {
 			$r = $pdo->query("select * from anotaciones")->fetchAll(PDO::FETCH_ASSOC);
 				
 			$valores=array('anotaciones'=>$r);
-
 			echo $twig->render('anotaciones.php',$valores);  
 			
 		}); 
-
 		$app->get('/crear', function() use ($app){
 			global $twig;
 			echo $twig->render('anotacion.php'); 
@@ -161,9 +146,7 @@ $app->group('/alumnos', function () use ($app) {
 			$app->redirect('/alumnos');
 		}
 	}); 
-
 	});
-
 	$app->post('/importar', function() use ($app){
 		global $twig;
 		$fichero=upload_file();
@@ -284,23 +267,19 @@ $app->group('/alumnos', function () use ($app) {
 			$app->redirect('/alumnos');
 		}
 	}); 
-
 	$app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('alumno.php');  
 	}); 
-
 }); 
-
 $app->get('/autocompletado', function() use ($app){
 	global $twig;
 	echo $twig->render('autocomplete.php');  
 }); 
-				$pdo=$app->db;
-				$q = $pdo->prepare("select * from partes where id_alumno=:id_alumno");
-				$q->execute($valores);
-				$r=$q->fetchAll(PDO::FETCH_ASSOC);
-			
+$app->group('/notificaciones', function () use ($app) {
+	
+	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
+		global $twig;
 		
 		$pdo=$app->db;
 		$r = $pdo->query("selectgit  * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
@@ -320,9 +299,7 @@ $app->get('/autocompletado', function() use ($app){
 			
 		echo $twig->render('rss.php', array('items' => $r));
 	});
-
 });
-
 $app->group('/partes', function () use ($app) {
 	
 	$app->group('/buscar', function () use ($app) {
@@ -440,14 +417,11 @@ $app->group('/partes', function () use ($app) {
 		$app->redirect('/partes');
 	}); 
 	
-
 	 $app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('parte.php'); 
 	});
 });
-
-
 $app->group('/usuarios', function () use ($app) {
 	
     $app->get('/', function() use ($app){
@@ -528,14 +502,12 @@ $app->group('/usuarios', function () use ($app) {
 		
 		}
 	}); 
-
 	$app->get('/crear', function() use ($app){
 		global $twig;
 		// TODO indicar la vista a renderizar (aun no existe el formulario)
 		echo $twig->render('');  
 	}); 
 });
-
 $app->get('/contartabla', function() use ($app){
 	
 		global $twig;
@@ -547,17 +519,14 @@ $app->get('/contartabla', function() use ($app){
 			
 		echo "Hay ". $r['numero'] . " tablas.";
 });
-
 $app->get('/about', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
-
 $app->get('/login', function() use ($app){
     global $twig;
     echo $twig->render('login.php');  
 }); 
-
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	
 	extract($options);
@@ -609,8 +578,6 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 			'inserted_rows' => $inserted_rows
 	);
 }
-
-
 $app->get('/contarFicheros', function() use ($app){
 	$directory = "./model/scripts/";
 	$filecount = 0;
@@ -620,12 +587,10 @@ $app->get('/contarFicheros', function() use ($app){
 	}
 	echo "There were $filecount files";
 });
-
 $app->get('/grafica', function() use ($app){
     global $twig;
     echo $twig->render('grafica.php');  
 }); 
-
 $app->get('/login', function() use ($app){
     global $twig;
 	if(LoginClave::autenticar("profeIAP", "clave"))
@@ -633,12 +598,10 @@ $app->get('/login', function() use ($app){
 	else
 		echo "!OK";
 }); 
-
 $app->get('/upload', function() use ($app){
     global $twig;
     echo $twig->render('upload.php');
 }); 
-
 $app->get('/Bd', function() use ($app){
 	$directory = "./model/dictados.db";
 	$filecount = 0;
@@ -648,14 +611,12 @@ $app->get('/Bd', function() use ($app){
 	}
 	echo "Hay $filecount fichero dictados.db";
 });
-
 function upload_file(){
 		$target_dir = "model/datos/";
 	$target_file = $target_dir .basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = strtoupper(pathinfo($target_file,PATHINFO_EXTENSION));
 	// Check if image file is a actual image or fake image
-
 	/*if(isset($_POST["submit"])) {
 		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 		if($check !== false) {
@@ -666,7 +627,6 @@ function upload_file(){
 		    $uploadOk = 0;
 		}
 	}*/
-
 	// Check if file already exists
 	if (file_exists($target_file)) {
 		// TODO quitar esto de aquí
@@ -714,12 +674,10 @@ function upload_file(){
 	
 	return $target_file;
 }  
-
 $app->get('/email', function() use ($app){
 	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
     echo "enviado";
 }); 
-
 $app->get('/pdf', function() use ($app){
 	
 	$stuff = '<html>
@@ -731,14 +689,12 @@ $app->get('/pdf', function() use ($app){
             
     set_time_limit(300);
     ini_set('memory_limit', '-1');
-
     $dompdf = new DOMPDF();
     $dompdf->load_html($stuff);
     $dompdf->set_paper( 'letter' , 'portrait' );
     $dompdf->render();
     echo $dompdf->stream('ejemplo');
 }); 
-
 $app->get('/validar', function() use ($app){
 	
 	$usernameValidator = v::alnum()->noWhitespace()->length(1,5);
@@ -755,8 +711,6 @@ $app->get('/validar', function() use ($app){
 	else
 		echo  "Tamaño anómalo";
 }); 
-
 // Ponemos en marcha el router
 $app->run();
-
 ?>
