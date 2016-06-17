@@ -296,11 +296,11 @@ $app->get('/autocompletado', function() use ($app){
 	global $twig;
 	echo $twig->render('autocomplete.php');  
 }); 
-
-$app->group('/notificaciones', function () use ($app) {
-	
-	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
-		global $twig;
+				$pdo=$app->db;
+				$q = $pdo->prepare("select * from partes where id_alumno=:id_alumno");
+				$q->execute($valores);
+				$r=$q->fetchAll(PDO::FETCH_ASSOC);
+			
 		
 		$pdo=$app->db;
 		$r = $pdo->query("selectgit  * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
