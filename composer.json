@@ -8,8 +8,12 @@
     "slim/slim": "2.*",
     "slim/extras": "*",
 	"twig/twig": "*",
-    "swiftmailer/swiftmailer": "5.*"
-    "katzgrau/klogger": "dev-master"
+    "swiftmailer/swiftmailer": "5.*",
+    "katzgrau/klogger": "dev-master",
+    "google/apiclient": "1.*",
+    "phpmailer/phpmailer": "~5.2",
+    "respect/validation": "0.6.*",
+    "dompdf/dompdf": "dev-master"
   },
   "require-dev": {
 	"phpunit/phpunit": "4.8.*"

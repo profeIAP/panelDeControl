@@ -62,6 +62,23 @@ class Utilidades {
 		echo $twig->render('session.php',$valores);
 	}
 	
+	public static function registrarAccion(){
+		// TODO incluir anotación en la BD
+
+		$app = \Slim\Slim::getInstance();
+		$pdo=$app->db;
+
+	$valores=array(
+	'url'=>$app->request->getPathInfo());
+			
+	 $sql = "INSERT INTO accion (ruta) VALUES (:url)";
+			$pdo=$app->db;
+			$q = $pdo->prepare($sql);
+			$q->execute($valores);
+		
+	
+	}
+	
 }
 
 ?>
