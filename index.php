@@ -110,17 +110,6 @@ $app->group('/alumnos', function () use ($app) {
 		});
 		
 				$app->post('/guardar', function() use ($app){
-$app->get('/anotaciones', function() use ($app){
-    global $twig;
-    
-    $pdo=$app->db;
-    $r = $pdo->query("select * from anotaciones")->fetchAll(PDO::FETCH_ASSOC);
-		
-	$valores=array('anotaciones'=>$r);
-
-    echo $twig->render('anotaciones.php',$valores);  
-    
-}); 
 	
 		global $twig;
 		
@@ -287,10 +276,6 @@ $app->get('/autocompletado', function() use ($app){
 	global $twig;
 	echo $twig->render('autocomplete.php');  
 }); 
-<<<<<<< HEAD
-
-=======
->>>>>>> dfb71238279ef8ba957c8ad9ae55921209759ffa
 $app->group('/notificaciones', function () use ($app) {
 	
 	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
