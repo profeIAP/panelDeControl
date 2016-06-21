@@ -42,8 +42,10 @@ require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
 require_once	'controller/Email.php';
 require_once	'controller/LoginClave.php';
+require_once	'controller/Logger.php';
 use Respect\Validation\Validator as v;
 use Dompdf\Dompdf;
+
 Twig_Autoloader::register();  
 $app = new \Slim\Slim(
 		array(
@@ -282,7 +284,7 @@ $app->group('/notificaciones', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("selectgit  * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("select * from notificacion")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('notificaciones'=>$r);
 		echo $twig->render('notificaciones.php',$valores);  
@@ -695,6 +697,16 @@ $app->get('/pdf', function() use ($app){
     $dompdf->render();
     echo $dompdf->stream('ejemplo');
 }); 
+
+$app->get('/anotalog', function() use ($app){
+	    global $twig;
+	    $dir=__DIR__.'/logs';
+	    echo $dir;
+		$logger = new Katzgrau\KLogger\Logger($dir);
+	$logger->debug('HOLA');
+});	
+	
+	
 $app->get('/validar', function() use ($app){
 	
 	$usernameValidator = v::alnum()->noWhitespace()->length(1,5);
