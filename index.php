@@ -46,11 +46,7 @@ require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
 require_once	'controller/Email.php';
 require_once	'controller/LoginClave.php';
-<<<<<<< HEAD
 require_once	'controller/Logger.php';
-=======
-
->>>>>>> 52852085a5f50aa49a0c15bf01e09ce2071726a7
 use Respect\Validation\Validator as v;
 use Dompdf\Dompdf;
 
@@ -749,7 +745,6 @@ $app->get('/pdf', function() use ($app){
     echo $dompdf->stream('ejemplo');
 }); 
 
-<<<<<<< HEAD
 $app->get('/anotalog', function() use ($app){
 	    global $twig;
 	    $dir=__DIR__.'/logs';
@@ -759,7 +754,6 @@ $app->get('/anotalog', function() use ($app){
 });	
 	
 	
-=======
 $app->get('/crearTabla', function() use ($app){
 				global $twig;
 				$pdo=$app->db;
@@ -769,7 +763,6 @@ $app->get('/crearTabla', function() use ($app){
 				echo "todo bien...";
 });
 
->>>>>>> 52852085a5f50aa49a0c15bf01e09ce2071726a7
 $app->get('/validar', function() use ($app){
 	
 	$usernameValidator = v::alnum()->noWhitespace()->length(1,5);
