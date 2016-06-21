@@ -30,8 +30,8 @@
 		</div>
 										<div class="form-group col-md-6">
 											<label for="fecha">Fecha:</label>
-			<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value="">
-		</div>
+											<input type="text" class="form-control campofecha" id="fecha" name="fecha" size="12" value="">
+										</div>
 		                                <div class="form-group col-md-12">
 			                                <label for="alumnoaImplicado">Alumno/a</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
@@ -50,11 +50,6 @@
 		</div>										
  				
 </form>	
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$(".campofecha").calendarioDW();
-		});
-	</script>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 {% endblock cuerpo %}
