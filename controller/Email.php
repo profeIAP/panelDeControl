@@ -1,9 +1,12 @@
 <?php
 
+use Respect\Validation\Validator as v;
+
 require getcwd().'/vendor/autoload.php';
 	
 define('APPLICATION_NAME', 'Gmail API PHP Quickstart');
 define('CREDENTIALS_PATH', '~/.credentials/gmail-php-quickstart.json');
+// https://console.cloud.google.com para obtener el fichero client_secret.json
 define('CLIENT_SECRET_PATH', getcwd().'/client_secret.json');
 
 // If modifying these scopes, delete your previously saved credentials at ~/.credentials/gmail-php-quickstart.json 
@@ -70,7 +73,9 @@ class Email {
 	
 		// Get the API client and construct the service object.
 		
-		$client = self::getClient();
+		$client = self::getClient(null);
+		if(is_null($client)) return;
+		
 		$service = new Google_Service_Gmail($client);
 
 		$mail = new PHPMailer();
@@ -119,7 +124,12 @@ class Email {
 	 
 	// [https://goo.gl/QZIHWU] Para descargar el fichero de credenciales client_id.json
 	
-	public static function getClient() {
+	public static function getClient($authCode) {
+	  
+	  $dir=__DIR__.'/logs';
+	  $logger = new Katzgrau\KLogger\Logger($dir);
+	  $logger->debug('HOLA');
+	
 	  $client = new Google_Client();
 	  $client->setApplicationName(APPLICATION_NAME);
 	  $client->setScopes(SCOPES);
@@ -132,34 +142,37 @@ class Email {
 		$accessToken = file_get_contents($credentialsPath);
 	  } else {
 		
-		if (php_sapi_name() != 'cli') {
-			throw new Exception('El fichero con la credencial no existe (o ha caducado)\n Invoca este comando desde la terminal para generar uno nuevo.');
-		}
-		
-		// Request authorization from the user.
-		$authUrl = $client->createAuthUrl();
-		printf("Open the following link in your browser:\n%s\n", $authUrl);
-		print 'Enter verification code: ';
-		$authCode = trim(fgets(STDIN));
+		if (!isset($authCode)){
+			$app = \Slim\Slim::getInstance();
+			global $twig;
+			
+			$authUrl = $client->createAuthUrl();
+			
+			$valores=array('url'=>$authUrl);
+			echo $twig->render('auth.php',$valores);  
+			return;
+		}else{
+			// Exchange authorization code for an access token.
+			$accessToken = $client->authenticate($authCode);
 
-		// Exchange authorization code for an access token.
-		$accessToken = $client->authenticate($authCode);
-
-		// Store the credentials to disk.
-		if(!file_exists(dirname($credentialsPath))) {
-		  mkdir(dirname($credentialsPath), 0700, true);
+			// Store the credentials to disk.
+			if(!file_exists(dirname($credentialsPath))) {
+			  mkdir(dirname($credentialsPath), 0700, true);
+			}
+			
+			file_put_contents($credentialsPath, $accessToken);
 		}
-		file_put_contents($credentialsPath, $accessToken);
-		printf("Credentials saved to %s\n", $credentialsPath);
-	  }
+	}
+	  
 	  $client->setAccessToken($accessToken);
 
-	  // Refresh the token if it's expired.
-	  if ($client->isAccessTokenExpired()) {
-		$client->refreshToken($client->getRefreshToken());
-		file_put_contents($credentialsPath, $client->getAccessToken());
-	  }
-	  return $client;
+		// Refresh the token if it's expired.
+		if ($client->isAccessTokenExpired()) {
+			$client->refreshToken($client->getRefreshToken());
+			file_put_contents($credentialsPath, $client->getAccessToken());
+		}
+		
+		return $client;
 	}
 
 	/**

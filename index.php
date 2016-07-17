@@ -103,6 +103,23 @@ if (password_verify('InFoRmAtIcA', $hash)) {
 
 });  
 
+$app->group('/auth', function () use ($app) {
+	$app->post('/aceptar', function () use ($app){
+		global $twig;
+		
+		$authCode =trim($app->request()->post('codigo'));
+		
+		if(! is_null(Email::getClient($authCode)))
+			echo $twig->render('auth_ok.php');
+		else
+			echo $twig->render('auth_nok.php');
+	});
+
+	$app->get('/cancelar', function () use ($app){
+		global $twig;
+		echo $twig->render('auth_nok.php');
+	});
+});
 
 
 $app->group('/alumnos', function () use ($app) {
@@ -722,8 +739,12 @@ function upload_file(){
 }  
 
 $app->get('/email', function() use ($app){
+	global $twig;
+	
 	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
-    echo "enviado";
+	$valores['message']='Email enviado con éxito';
+	
+	echo $twig->render('inicio.php',$valores);
 }); 
 
 $app->get('/pdf', function() use ($app){
@@ -748,7 +769,6 @@ $app->get('/pdf', function() use ($app){
 $app->get('/anotalog', function() use ($app){
 	    global $twig;
 	    $dir=__DIR__.'/logs';
-	    echo $dir;
 		$logger = new Katzgrau\KLogger\Logger($dir);
 	$logger->debug('HOLA');
 });	
