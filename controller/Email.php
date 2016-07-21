@@ -1,19 +1,7 @@
 <?php
 
-use Respect\Validation\Validator as v;
-
+require_once('Google.php');
 require getcwd().'/vendor/autoload.php';
-	
-define('APPLICATION_NAME', 'Gmail API PHP Quickstart');
-define('CREDENTIALS_PATH', '~/.credentials/gmail-php-quickstart.json');
-// https://console.cloud.google.com para obtener el fichero client_secret.json
-define('CLIENT_SECRET_PATH', getcwd().'/client_secret.json');
-
-// If modifying these scopes, delete your previously saved credentials at ~/.credentials/gmail-php-quickstart.json 
-
-define('SCOPES', implode(' ', array(
-  'https://mail.google.com/')
-));
 
 // Documentación Swift_Message [http://goo.gl/Z12Bo]
 	
@@ -28,9 +16,9 @@ class Email {
     public static function enviar($to, $subject, $body) {
 		
 		if(Utilidades::isEntorno(Utilidades::ENTORNO_DESARROLLO))
-			self::enviarGMail($to, $subject, $body);
+			return self::enviarGMail($to, $subject, $body);
 		else
-			self::enviarProduccion($to, $subject, $body);
+			return self::enviarProduccion($to, $subject, $body);
 	}
 	
 	private static function enviarProduccion($to, $subject, $body){
@@ -40,6 +28,8 @@ class Email {
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 		mail($to, $subject, $body, $headers);
+		
+		return true;
 	}
 	
 	private static function enviarDesarrollo($to, $subject, $body){
@@ -73,8 +63,8 @@ class Email {
 	
 		// Get the API client and construct the service object.
 		
-		$client = self::getClient(null);
-		if(is_null($client)) return;
+		$client = Google::getClient(null);
+		if(is_null($client)) return false;
 		
 		$service = new Google_Service_Gmail($client);
 
@@ -94,7 +84,10 @@ class Email {
 		$data = base64_encode($mime);
 		$data = str_replace(array('+','/','='),array('-','_',''),$data); // url safe
 		$m->setRaw($data);
+		
 		$service->users_messages->send('me', $m);
+		
+		return true;
 	}
 	
 	public static function getMessageAutenticacion($to, $token) {
@@ -117,76 +110,6 @@ class Email {
 		return "El usuario $email está realizando actividades extrañas en <b>'$donde'</b>";
 	}
 
-	/**
-	 * Returns an authorized API client.
-	 * @return Google_Client the authorized client object
-	 */
-	 
-	// [https://goo.gl/QZIHWU] Para descargar el fichero de credenciales client_id.json
-	
-	public static function getClient($authCode) {
-	  
-	  $dir=__DIR__.'/logs';
-	  $logger = new Katzgrau\KLogger\Logger($dir);
-	  $logger->debug('HOLA');
-	
-	  $client = new Google_Client();
-	  $client->setApplicationName(APPLICATION_NAME);
-	  $client->setScopes(SCOPES);
-	  $client->setAuthConfigFile(CLIENT_SECRET_PATH);
-	  $client->setAccessType('offline');
-
-	  // Load previously authorized credentials from a file.
-	  $credentialsPath = self::expandHomeDirectory(CREDENTIALS_PATH);
-	  if (file_exists($credentialsPath)) {
-		$accessToken = file_get_contents($credentialsPath);
-	  } else {
-		
-		if (!isset($authCode)){
-			$app = \Slim\Slim::getInstance();
-			global $twig;
-			
-			$authUrl = $client->createAuthUrl();
-			
-			$valores=array('url'=>$authUrl);
-			echo $twig->render('auth.php',$valores);  
-			return;
-		}else{
-			// Exchange authorization code for an access token.
-			$accessToken = $client->authenticate($authCode);
-
-			// Store the credentials to disk.
-			if(!file_exists(dirname($credentialsPath))) {
-			  mkdir(dirname($credentialsPath), 0700, true);
-			}
-			
-			file_put_contents($credentialsPath, $accessToken);
-		}
-	}
-	  
-	  $client->setAccessToken($accessToken);
-
-		// Refresh the token if it's expired.
-		if ($client->isAccessTokenExpired()) {
-			$client->refreshToken($client->getRefreshToken());
-			file_put_contents($credentialsPath, $client->getAccessToken());
-		}
-		
-		return $client;
-	}
-
-	/**
-	 * Expands the home directory alias '~' to the full path.
-	 * @param string $path the path to expand.
-	 * @return string the expanded path.
-	 */
-	public static function expandHomeDirectory($path) {
-	  $homeDirectory = getenv('HOME');
-	  if (empty($homeDirectory)) {
-		$homeDirectory = getenv("HOMEDRIVE") . getenv("HOMEPATH");
-	  }
-	  return str_replace('~', realpath($homeDirectory), $path);
-	}   
 }
 
 ?>
