@@ -120,13 +120,14 @@ class GoogleDrive {
 	// Métodos y atributos de la API de Google [https://github.com/google/google-api-php-client-services/blob/master/Sheets/Spreadsheet.php]
 	// Inspiración para su uso [http://stackoverflow.com/a/37861831]
 	
-	// Crea una hoja de cálculo (sin nombre)
-	public static function crearLibroSinNombre(){
+	// Crea una hoja de cálculo 
+	public static function crearLibro($nombre){
 		
 		$client = Google::getClient(null);
 		
 		$service = new Google_Service_Sheets($client);
-		$ss = $service->spreadsheets->create(new Google_Service_Sheets_Spreadsheet());
+		$props=array('properties'=>array('title'=>$nombre));
+		$ss = $service->spreadsheets->create(new Google_Service_Sheets_Spreadsheet($props));
 	}
 	
 	// Creación de directorios	
@@ -164,6 +165,12 @@ class GoogleDrive {
 		}
 	  }
 	}
+	
+	public static function prueba(){
+		self::crearLibro('es mío... mi tesoro');
+	}
 }
+
+
 
 ?>

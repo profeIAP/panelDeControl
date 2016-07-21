@@ -45,8 +45,10 @@ header('Content-type: text/html; charset=utf-8');
 require 	 	'vendor/autoload.php';
 require_once	'controller/Utils.php';
 require_once	'controller/Email.php';
+require_once	'controller/GoogleDrive.php';
 require_once	'controller/LoginClave.php';
 require_once	'controller/Logger.php';
+
 use Respect\Validation\Validator as v;
 use Dompdf\Dompdf;
 
@@ -109,7 +111,7 @@ $app->group('/auth', function () use ($app) {
 		
 		$authCode =trim($app->request()->post('codigo'));
 		
-		if(! is_null(Email::getClient($authCode)))
+		if(! is_null(Google::getClient($authCode)))
 			echo $twig->render('auth_ok.php');
 		else
 			echo $twig->render('auth_nok.php');
@@ -635,13 +637,18 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 
 
 $app->get('/contarFicheros', function() use ($app){
+	
+	global $twig;
+	
 	$directory = "./model/scripts/";
 	$filecount = 0;
 	$files = glob($directory . "*");
 	if ($files){
 	 $filecount = count($files);
 	}
-	echo "There were $filecount files";
+	
+	$valores['message']="Hay $filecount ficheros en /model/scripts";
+	echo $twig->render('inicio.php',$valores);
 });
 
 $app->get('/grafica', function() use ($app){
@@ -662,14 +669,19 @@ $app->get('/upload', function() use ($app){
     echo $twig->render('upload.php');
 }); 
 
-$app->get('/Bd', function() use ($app){
+$app->get('/bd', function() use ($app){
+	
+	global $twig;
+	
 	$directory = "./model/dictados.db";
 	$filecount = 0;
 	$files = glob($directory . "*");
 	if ($files){
 	 $filecount = count($files);
 	}
-	echo "Hay $filecount fichero dictados.db";
+	
+	$valores['message']="Hay $filecount ficheros dictados.db";
+	echo $twig->render('inicio.php',$valores);
 });
 
 function upload_file(){
@@ -741,10 +753,10 @@ function upload_file(){
 $app->get('/email', function() use ($app){
 	global $twig;
 	
-	Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>");
-	$valores['message']='Email enviado con éxito';
-	
-	echo $twig->render('inicio.php',$valores);
+	if(Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>")){
+		$valores['message']='Email enviado con éxito';
+		echo $twig->render('inicio.php',$valores);
+	}
 }); 
 
 $app->get('/pdf', function() use ($app){
@@ -775,12 +787,13 @@ $app->get('/anotalog', function() use ($app){
 	
 	
 $app->get('/crearTabla', function() use ($app){
-				global $twig;
-				$pdo=$app->db;
-				$q = $pdo->prepare('CREATE TABLE accion ("ID_USUARIO" TEXT DEFAULT (1),"ID" INTEGER,"FECHA" TEXT,"RUTA" TEXT)');
-				$q->execute();
-				
-				echo "todo bien...";
+	global $twig;
+	$pdo=$app->db;
+	$q = $pdo->prepare('CREATE TABLE accion ("ID_USUARIO" TEXT DEFAULT (1),"ID" INTEGER,"FECHA" TEXT,"RUTA" TEXT)');
+	$q->execute();
+
+	$valores['message']='Tabla creada sin problemas';
+	echo $twig->render('inicio.php',$valores);
 });
 
 $app->get('/validar', function() use ($app){
@@ -800,14 +813,13 @@ $app->get('/validar', function() use ($app){
 		echo  "Tamaño anómalo";
 }); 
 
-
-$app->get('/crearTabla', function() use ($app){
-				global $twig;
-				$pdo=$app->db;
-				$q = $pdo->prepare('CREATE TABLE accion ("ID_USUARIO" TEXT DEFAULT (1),"ID" INTEGER,"FECHA" TEXT,"RUTA" TEXT)');
-				$q->execute();
+$app->get('/drive', function() use ($app){
+	global $twig;
+	GoogleDrive::prueba();
+	
+	$valores['message']='Acceso a Drive correcto';
+	echo $twig->render('inicio.php',$valores);
 				
-				echo "todo bien...";
 });
 
 
