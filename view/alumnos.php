@@ -36,8 +36,8 @@
             <td>{{alumno.ID}}</td>  
             <td>{{alumno.NOMBRE}}</td>  
             <td>{{alumno.EMAIL}}</td>  
-            <td>{{alumno.DIRECCION}} </td><td><a href="/alumnos/borrar?id="><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		<a href="/alumnos/editar?id="><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br></td>
+            <td>{{alumno.DIRECCION}} </td><td><a href="/alumnos/borrar?id={{alumno.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+		<a href="/alumnos/editar?id={{alumno.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br></td>
 		</td>
             
           </tr>  

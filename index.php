@@ -49,6 +49,7 @@ require_once	'controller/GoogleDrive.php';
 require_once	'controller/LoginClave.php';
 require_once	'controller/Logger.php';
 require_once	'controller/Listado.php';
+require_once	'controller/AccesoDatos.php';
 
 use Respect\Validation\Validator as v;
 
@@ -192,19 +193,16 @@ $app->group('/alumnos', function () use ($app) {
      $app->get('/pdf', function() use ($app){
 		global $twig;
 			
-		$pdo=$app->db;
-		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso from alumno")->fetchAll(PDO::FETCH_ASSOC);
-			
+		$r=AccesoDatos::listar($app->db, "alumno", "id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso");
 		$valores=array('alumnos'=>$r);
+		
 		Listados::generarPDF($twig->render('listado_alumnos.php',$valores),'alumnos');
 	 });
 	 
      $app->get('/', function() use ($app){
 		global $twig;
 		
-		$pdo=$app->db;
-		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso from alumno")->fetchAll(PDO::FETCH_ASSOC);
-			
+		$r=AccesoDatos::listar($app->db, "alumno", "id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso");
 		$valores=array('alumnos'=>$r);
 		
 		echo $twig->render('alumnos.php',$valores);  
@@ -234,35 +232,18 @@ $app->group('/alumnos', function () use ($app) {
 	
 	
 	$app->get('/borrar', function() use ($app){
-	
 		global $twig;
-		
-		$valores=array(
-			"id"=>$app->request()->get('id')
-		);
-		
-		$sql = "delete from alumno WHERE ID=:id";
-		$pdo = $app->db;
-		$q   = $pdo->prepare($sql);
-		$q->execute($valores);
-		$app->redirect('/');
+		AccesoDatos::borrar($app->db,"alumno", $app->request()->get('id'));
+		$app->redirect('/alumnos');
 	}); 
 	
 	$app->get('/editar', function() use ($app){
-	
 		global $twig;
 		
-		$valores=array(
-			"id"=>$app->request()->get('id')
-		);
-		
-		$pdo=$app->db;
-		$q = $pdo->prepare("select * from alumno where id=:id");
-		$q->execute($valores);
-		$r=$q->fetch(PDO::FETCH_ASSOC);
-			
+		$r=AccesoDatos::recuperar($app->db, 'alumno', $app->request()->get('id'));
 		$valores=array('comentario'=>$r);
-		echo $twig->render('/usaurios',$valores);  	
+
+		echo $twig->render('/alumno.php',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
@@ -272,39 +253,20 @@ $app->group('/alumnos', function () use ($app) {
 		// Recogemos datos formulario de contacto
 		
 		$valores=array(
-			'id'=>$app->request()->post('id'),
-			'nombre'=>$app->request()->post('nombre'),
-			'email'=>$app->request()->post('email'),		
-			'direccion'=>$app->request()->post('direccion'),	
-			'telefono'=>$app->request()->post('telefono'),	
-			'comentario'=>$app->request()->post('comentario'),
-			'localidad'=>$app->request()->post('localidad'),		
-			'provincia'=>$app->request()->post('provincia'),	
-			'dni_tutor'=>$app->request()->post('dni_tutor'),	
-			'curso'=>$app->request()->post('curso')
+			'ID'=>$app->request()->post('id'),
+			'NOMBRE'=>$app->request()->post('nombre'),
+			'EMAIL'=>$app->request()->post('email'),		
+			'DIRECCION'=>$app->request()->post('direccion'),	
+			'TELEFONO'=>$app->request()->post('telefono'),	
+			'COMENTARIO'=>$app->request()->post('comentario'),
+			'LOCALIDAD'=>$app->request()->post('localidad'),		
+			'PROVINCIA'=>$app->request()->post('provincia'),	
+			'DNI_TUTOR'=>$app->request()->post('dni_tutor'),	
+			'CURSO'=>$app->request()->post('curso')
 		);
 		
-		if($valores['id']){
-			$sql = "update alumno set NOMBRE=:nombre, EMAIL=:email, DIRECCION=:direccion, TELEFONO=:telefono, COMENTARIO=:comentario, LOCALIDAD=:localidad, PROVINCIA=:provincia, DNI_TUTOR=:dni_tutor, CURSO=:curso WHERE ID=:id ";
-			$pdo=$app->db;
-			$q = $pdo->prepare($sql);
-			$q->execute($valores);
-			
-			$app->redirect('/alumnos');
-		}
-		else
-		{
-			unset($valores['id']);
-			
-			$sql = "INSERT INTO alumno (nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso) VALUES (:nombre, :email, :direccion, :telefono, :comentario, :localidad, :provincia, :dni_tutor, :curso)";
-			$pdo=$app->db;
-			$q = $pdo->prepare($sql);
-			$q->execute($valores);
-		
-			// Mostramos un mensaje al usuario
-			
-			$app->redirect('/alumnos');
-		}
+		AccesoDatos::guardar($app->db, "alumno",$valores);
+		$app->redirect('/alumnos');
 	}); 
 
 	$app->get('/crear', function() use ($app){
@@ -768,19 +730,6 @@ $app->get('/email', function() use ($app){
 		$valores['message']='Email enviado con éxito';
 		echo $twig->render('inicio.php',$valores);
 	}
-}); 
-
-$app->get('/pdf', function() use ($app){
-	
-	$stuff = '<html>
-                <body>
-                <p>
-                    Hola mundo (PDF)!!!
-                </p>
-            </body></html>';
-            
-    Listados::generarPDF($stuff, 'ejemplo');
-    // TODO mostrar la página ¿inicial? tras generar el pdf
 }); 
 
 $app->get('/anotalog', function() use ($app){

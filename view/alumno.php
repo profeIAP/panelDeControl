@@ -32,16 +32,16 @@
 		
 			<div class="form-group col-md-12">
 			<label for="correoelectronico">Correo Electrónico:</label>
-			<input type="text" class="form-control" id="correoelectronico" name="correoelectronico" value="{{comentario.CORREOELECTRONICO}}">
+			<input type="text" class="form-control" id="email" name="email" value="{{comentario.EMAIL}}">
 		</div>
 		<div class="form-group col-md-12">
 		<label for="calle">Calle:</label>
-			<input type="text" class="form-control" id="calle" name="calle" value="{{comentario.CALLE}}">
+			<input type="text" class="form-control" id="direccion" name="direccion" value="{{comentario.DIRECCION}}">
 		</div>
 		
 		  <div class="form-group col-md-6">
 		  <label for="codigopostal">Código Postal:</label>
-		    <input type="text" class="form-control" id="fecha" name="codigopostal" size="12" value="">
+		    <input type="text" class="form-control" id="codigopostal" name="codigopostal" size="12" value="">
  </div>
  
 		   <div class="form-group col-md-6">
