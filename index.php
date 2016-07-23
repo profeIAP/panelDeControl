@@ -48,9 +48,9 @@ require_once	'controller/Email.php';
 require_once	'controller/GoogleDrive.php';
 require_once	'controller/LoginClave.php';
 require_once	'controller/Logger.php';
+require_once	'controller/Listado.php';
 
 use Respect\Validation\Validator as v;
-use Dompdf\Dompdf;
 
 Twig_Autoloader::register();  
 
@@ -189,6 +189,16 @@ $app->group('/alumnos', function () use ($app) {
 		echo $twig->render('upload.php');
 	}); 
 	
+     $app->get('/pdf', function() use ($app){
+		global $twig;
+			
+		$pdo=$app->db;
+		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso from alumno")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('alumnos'=>$r);
+		Listados::generarPDF($twig->render('listado_alumnos.php',$valores),'alumnos');
+	 });
+	 
      $app->get('/', function() use ($app){
 		global $twig;
 		
@@ -196,6 +206,7 @@ $app->group('/alumnos', function () use ($app) {
 		$r = $pdo->query("select id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso from alumno")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('alumnos'=>$r);
+		
 		echo $twig->render('alumnos.php',$valores);  
 	}); 
 	
@@ -768,14 +779,8 @@ $app->get('/pdf', function() use ($app){
                 </p>
             </body></html>';
             
-    set_time_limit(300);
-    ini_set('memory_limit', '-1');
-
-    $dompdf = new DOMPDF();
-    $dompdf->load_html($stuff);
-    $dompdf->set_paper( 'letter' , 'portrait' );
-    $dompdf->render();
-    echo $dompdf->stream('ejemplo');
+    Listados::generarPDF($stuff, 'ejemplo');
+    // TODO mostrar la página ¿inicial? tras generar el pdf
 }); 
 
 $app->get('/anotalog', function() use ($app){
