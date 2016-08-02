@@ -28,6 +28,14 @@ class Login {
 			$app->stop();
 		}
 	}
+
+	// Cierra la sesión de usuario 
+	
+	public static function forzarLogOut(){
+		$app = \Slim\Slim::getInstance();
+		unset($_SESSION['user']);
+		$app->redirect('/');
+	}
 	
 	// Comprueba que el login proporcionado sea correcto
 	

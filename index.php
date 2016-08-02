@@ -538,6 +538,10 @@ $app->get('/about','Login::forzarLogin', function() use ($app){
 	echo $twig->render('about.php');  
 }); 
 
+$app->get('/logout', function () use ($app) {
+		Login::forzarLogOut();
+});
+
 $app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
