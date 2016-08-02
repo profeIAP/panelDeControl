@@ -48,15 +48,8 @@
 
               <div class="container-fluid">
 
-
-                    <!--<h3>Inicio </h3>
-                    <p>Bienvenidos a la página principal de Control de Partes</p>-->
                     {% block cuerpo %} {% endblock %}
-                    <script>
-						$(document).ready(function(){
-							$('#myTable').dataTable();
-						});
-					</script>
+
                 </div><!--info end-->
             </div><!--personal statement end-->
 
@@ -71,9 +64,6 @@
             </div><!--tech skills end-->
 		</div><!--right end-->
 
-    
-
-
     <!--necessary scripts and plugins-->
     
     <script src="/js/bootstrap.min.js"></script>
@@ -85,39 +75,6 @@
 	<script type="text/javascript" src="/js/calendario_dw.js"></script>
 	<script type="text/javascript" src="/js/1.10.2jquery-ui.min.js"></script>
 
-	<script>
-		$(document).ready(function(){
-			$('#myTable').dataTable();
-		});
-	</script>
-	<script>
-		$(function() {
-			var Accordion = function(el, multiple) {
-				this.el = el || {};
-				this.multiple = multiple || false;
-
-				// Variables privadas
-				var links = this.el.find('.link');
-				// Evento
-				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-			}
-
-			Accordion.prototype.dropdown = function(e) {
-				var $el = e.data.el;
-					$this = $(this),
-					$next = $this.next();
-
-				$next.slideToggle();
-				$this.parent().toggleClass('open');
-
-				if (!e.data.multiple) {
-					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-				};
-			}	
-
-			var accordion = new Accordion($('#accordion'), false);
-		});
-</script>
 </body>
 
 </html>

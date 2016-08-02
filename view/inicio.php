@@ -12,8 +12,7 @@
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
 {% endif %}
 
-<div
-  class="jumbotron">
+<div class="jumbotron">
 	<h1>Bienvenid@</h1>
 	<p class="lead">Panel de control y lista de alumnos del instituto I.E.S. Al-Andalus</p>
 </div>

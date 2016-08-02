@@ -73,41 +73,41 @@ $app->container->singleton('db', function () {
     return new \PDO('sqlite:model/dictados.db');
 });
 	
-$app->get('/', function() use ($app){
+$app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
 }); 
 
-$app->get('/hash',function() use ($app){
+$app->get('/hash','Login::forzarLogin',function() use ($app){
     global $twig;
     $userPassword="informatica";
     $hash = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]) ;
 
 	//echo $hash;
 
-/*
-if (password_verify($userPassword, $hash)) {
-    // Login successful.
-     if (password_needs_rehash($hash, PASSWORD_DEFAULT, ['cost' => 12])) {
-        // Recalculate a new password_hash() and overwrite the one we stored previously
-    }
-}*/
-	$userPassword="InFoRmAtIcA";
-	$hash2 = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]);
-	
-	echo $hash."<br>";
-	echo $hash2."<br>";
-	$userPasswordveryfied="InFoRmAtIcA";
-	
-if (password_verify('InFoRmAtIcA', $hash)) {
-    echo '¡La contraseña es válida!';
-} else {
-    echo 'La contraseña no es válida.';
-}
+	/*
+	if (password_verify($userPassword, $hash)) {
+		// Login successful.
+		 if (password_needs_rehash($hash, PASSWORD_DEFAULT, ['cost' => 12])) {
+			// Recalculate a new password_hash() and overwrite the one we stored previously
+		}
+	}*/
+		$userPassword="InFoRmAtIcA";
+		$hash2 = password_hash($userPassword, PASSWORD_DEFAULT, ['cost' => 12]);
+		
+		echo $hash."<br>";
+		echo $hash2."<br>";
+		$userPasswordveryfied="InFoRmAtIcA";
+		
+	if (password_verify('InFoRmAtIcA', $hash)) {
+		echo '¡La contraseña es válida!';
+	} else {
+		echo 'La contraseña no es válida.';
+	}
 
 });  
 
-$app->group('/auth', function () use ($app) {
+$app->group('/auth','Login::forzarLogin', function () use ($app) {
 	$app->post('/aceptar', function () use ($app){
 		global $twig;
 		
@@ -125,56 +125,56 @@ $app->group('/auth', function () use ($app) {
 	});
 });
 
-
-$app->group('/alumnos', function () use ($app) {
+$app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 	
 	$app->group('/anotaciones', function () use ($app) {
 		$app->get('/', function() use ($app){
 			global $twig;
 			// Espacio "dedicado" a juan carlos
 		}); 
+		
 		$app->get('/crear', function() use ($app){
 			global $twig;
 			echo $twig->render('anotacion.php'); 
 		});
 		
-				$app->post('/guardar', function() use ($app){
+		$app->post('/guardar', function() use ($app){
 	
-		global $twig;
-		
-		// Recogemos datos formulario de contacto
-		
-		$valores=array(
-			'id'=>$app->request()->post('id'),
-			'id_alumno'=>$app->request()->post('alumnoaImplicado'),
-			'fecha'=>$app->request()->post('fecha'),		
-			'hora'=>$app->request()->post('hora'),	
-			'descripcion'=>$app->request()->post('comentario'),	
+			global $twig;
 			
-		);
-		
-		if($valores['id']){
-			$sql = "update alumno set ID_ALUMNO=:id_alumno, FECHA=:fecha, HORA=:hora, DESCRIPCION=:descripcion, WHERE ID=:id ";
-			$pdo=$app->db;
-			$q = $pdo->prepare($sql);
-			$q->execute($valores);
+			// Recogemos datos formulario de contacto
 			
-			$app->redirect('/alumnos');
-		}
-		else
-		{
-			unset($valores['id']);
+			$valores=array(
+				'id'=>$app->request()->post('id'),
+				'id_alumno'=>$app->request()->post('alumnoaImplicado'),
+				'fecha'=>$app->request()->post('fecha'),		
+				'hora'=>$app->request()->post('hora'),	
+				'descripcion'=>$app->request()->post('comentario'),	
+				
+			);
 			
-			$sql = "INSERT INTO anotacion (ID_ALUMNO, FECHA, HORA, DESCRIPCION) VALUES (:id_alumno, :fecha, :hora, :descripcion)";
-			$pdo=$app->db;
-			$q = $pdo->prepare($sql);
-			$q->execute($valores);
-		
-			// Mostramos un mensaje al usuario
+			if($valores['id']){
+				$sql = "update alumno set ID_ALUMNO=:id_alumno, FECHA=:fecha, HORA=:hora, DESCRIPCION=:descripcion, WHERE ID=:id ";
+				$pdo=$app->db;
+				$q = $pdo->prepare($sql);
+				$q->execute($valores);
+				
+				$app->redirect('/alumnos');
+			}
+			else
+			{
+				unset($valores['id']);
+				
+				$sql = "INSERT INTO anotacion (ID_ALUMNO, FECHA, HORA, DESCRIPCION) VALUES (:id_alumno, :fecha, :hora, :descripcion)";
+				$pdo=$app->db;
+				$q = $pdo->prepare($sql);
+				$q->execute($valores);
 			
-			$app->redirect('/alumnos');
-		}
-	}); 
+				// Mostramos un mensaje al usuario
+				
+				$app->redirect('/alumnos');
+			}
+		}); 
 	});
 
 	$app->post('/importar', function() use ($app){
@@ -223,6 +223,7 @@ $app->group('/alumnos', function () use ($app) {
 			echo $json;
 			 
 		});
+		
 		$app->post('/id', function() use ($app){
 			global $twig;
 			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
@@ -277,12 +278,12 @@ $app->group('/alumnos', function () use ($app) {
 
 }); 
 
-$app->get('/autocompletado', function() use ($app){
+$app->get('/autocompletado','Login::forzarLogin', function() use ($app){
 	global $twig;
 	echo $twig->render('autocomplete.php');  
 }); 
 
-$app->group('/notificaciones', function () use ($app) {
+$app->group('/notificaciones','Login::forzarLogin', function () use ($app) {
 	
 	$app->get('/', 'Utilidades::registrarAccion', function() use ($app){
 		global $twig;
@@ -294,6 +295,8 @@ $app->group('/notificaciones', function () use ($app) {
 		echo $twig->render('notificaciones.php',$valores);  
 		
 	}); 
+	
+	// DUDA dará problemas el 'Login::forzarLogin' cuando se use Chromecast
 	
 	$app->get('/rss', function() use ($app){
 		global $twig;
@@ -308,7 +311,7 @@ $app->group('/notificaciones', function () use ($app) {
 
 });
 
-$app->group('/partes', function () use ($app) {
+$app->group('/partes','Login::forzarLogin', function () use ($app) {
 	
 	$app->group('/buscar', function () use ($app) {
 	
@@ -329,13 +332,20 @@ $app->group('/partes', function () use ($app) {
 				echo $twig->render('partes.php',$valores);  
 				 
 			});
+			
 		});
 		
 	$app->get('/', function() use ($app){
+		
 		global $twig;
-		echo $twig->render('partes.php');  
+		
+		$pdo=$app->db;
+		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
+			
+		$valores=array('comentarios'=>$r);
+		echo $twig->render('partes.php',$valores);  
 	}); 
-
+	
 	$app->post('/guardar', function() use ($app){
 	
 		global $twig;
@@ -403,9 +413,6 @@ $app->group('/partes', function () use ($app) {
  
 	});
 	
-
-	
-		//cambiar alumno por usuario
 	$app->get('/borrar', function() use ($app){
 	
 		global $twig;
@@ -421,15 +428,13 @@ $app->group('/partes', function () use ($app) {
 		$app->redirect('/partes');
 	}); 
 	
-
-	 $app->get('/crear', function() use ($app){
+	$app->get('/crear', function() use ($app){
 		global $twig;
 		echo $twig->render('parte.php'); 
 	});
 });
 
-
-$app->group('/usuarios', function () use ($app) {
+$app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 	
     $app->get('/', function() use ($app){
 		global $twig;
@@ -441,7 +446,6 @@ $app->group('/usuarios', function () use ($app) {
 		echo $twig->render('usuarios.php',$valores);  
 	}); 
 	
-	//cambiar alumno por usuario
 	$app->get('/borrar', function() use ($app){
 	
 		global $twig;
@@ -517,7 +521,7 @@ $app->group('/usuarios', function () use ($app) {
 	}); 
 });
 
-$app->get('/contartabla', function() use ($app){
+$app->get('/contartabla','Login::forzarLogin', function() use ($app){
 	
 		global $twig;
 		
@@ -529,34 +533,35 @@ $app->get('/contartabla', function() use ($app){
 		echo "Hay ". $r['numero'] . " tablas.";
 });
 
-$app->group('/partes', function () use ($app) {
-	
-	$app->get('/', function() use ($app){
-		global $twig;
-		
-		$pdo=$app->db;
-		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
-			
-		$valores=array('comentarios'=>$r);
-		echo $twig->render('partes.php',$valores);  
-	}); 
-
-	$app->get('/crear', function() use ($app){
-		global $twig;
-		echo $twig->render('parte.php');  
-	}); 
-});
-
-$app->get('/about', function() use ($app){
+$app->get('/about','Login::forzarLogin', function() use ($app){
 	global $twig;
 	echo $twig->render('about.php');  
 }); 
 
-$app->get('/login', function() use ($app){
-    global $twig;
-    echo $twig->render('login.php');  
-}); 
+$app->group('/login','Login::forzarLogin', function () use ($app) {
+	
+	$app->get('/', function() use ($app){
+		global $twig;
+		echo $twig->render('login.php');  
+	}); 
+	
+	$app->post('/', function() use ($app){
+		global $twig;
+		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
+			// TODO incluir nombre del usuario que se ha logado
+			$valores['message']="Bienvenid@ XXX";
+			echo $twig->render('inicio.php',$valores);
+		}
+		else{
+			// IDEA cargar campos con los datos que ha utilizado para intentar entrar
+			$valores['error']="Usuario/clave incorrectos";
+			echo $twig->render('login.php',$valores);
+		}
+	}); 
 
+});
+
+// TODO cambiar a un sitio más conveniente
 function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	
 	extract($options);
@@ -609,8 +614,7 @@ function import_csv_to_sqlite(&$pdo, $csv_path, $options = array()){
 	);
 }
 
-
-$app->get('/contarFicheros', function() use ($app){
+$app->get('/contarFicheros','Login::forzarLogin', function() use ($app){
 	
 	global $twig;
 	
@@ -625,25 +629,12 @@ $app->get('/contarFicheros', function() use ($app){
 	echo $twig->render('inicio.php',$valores);
 });
 
-$app->get('/grafica', function() use ($app){
-    global $twig;
-    echo $twig->render('grafica.php');  
-}); 
-
-$app->get('/login', function() use ($app){
-    global $twig;
-	if(LoginClave::autenticar("profeIAP", "clave"))
-		echo "OK";
-	else
-		echo "!OK";
-}); 
-
-$app->get('/upload', function() use ($app){
+$app->get('/upload','Login::forzarLogin', function() use ($app){
     global $twig;
     echo $twig->render('upload.php');
 }); 
 
-$app->get('/bd', function() use ($app){
+$app->get('/bd','Login::forzarLogin', function() use ($app){
 	
 	global $twig;
 	
@@ -658,6 +649,7 @@ $app->get('/bd', function() use ($app){
 	echo $twig->render('inicio.php',$valores);
 });
 
+// TODO cambiar a un sitio más conveniente
 function upload_file(){
 		$target_dir = "model/datos/";
 	$target_file = $target_dir .basename($_FILES["fileToUpload"]["name"]);
@@ -725,18 +717,8 @@ function upload_file(){
 }  
 
 $app->group('/email', function () use ($app) {
-	$app->get('/aceptar', function() use ($app){
-		global $twig;
-		$valores['message']='Procedemos <strong>a tramitar</strong> la expulsión';
-		echo $twig->render('inicio.php', $valores);
-	});
-	$app->get('/cancelar', function() use ($app){
-		global $twig;
-		$valores['message']='<strong>Anulamos </strong> la expulsión';
-		echo $twig->render('inicio.php', $valores);
-	});
 	
-	$app->get('/', function() use ($app){
+	$app->get('/','Login::forzarLogin', function() use ($app){
 		global $twig;
 
 		$valores=array(
@@ -753,19 +735,27 @@ $app->group('/email', function () use ($app) {
 		}
 	}); 
 	
-	
+	$app->get('/aceptar', function() use ($app){
+		global $twig;
+		$valores['message']='Procedemos <strong>a tramitar</strong> la expulsión';
+		echo $twig->render('inicio.php', $valores);
+	});
+
+	$app->get('/cancelar', function() use ($app){
+		global $twig;
+		$valores['message']='<strong>Anulamos </strong> la expulsión';
+		echo $twig->render('inicio.php', $valores);
+	});
 });
 
-
-$app->get('/anotalog', function() use ($app){
+$app->get('/anotalog','Login::forzarLogin', function() use ($app){
 	    global $twig;
 	    $dir=__DIR__.'/logs';
 		$logger = new Katzgrau\KLogger\Logger($dir);
 	$logger->debug('HOLA');
 });	
 	
-	
-$app->get('/crearTabla', function() use ($app){
+$app->get('/crearTabla','Login::forzarLogin', function() use ($app){
 	global $twig;
 	$pdo=$app->db;
 	$q = $pdo->prepare('CREATE TABLE accion ("ID_USUARIO" TEXT DEFAULT (1),"ID" INTEGER,"FECHA" TEXT,"RUTA" TEXT)');
@@ -775,7 +765,7 @@ $app->get('/crearTabla', function() use ($app){
 	echo $twig->render('inicio.php',$valores);
 });
 
-$app->get('/validar', function() use ($app){
+$app->get('/validar','Login::forzarLogin', function() use ($app){
 	
 	$usernameValidator = v::alnum()->noWhitespace()->length(1,5);
 	
@@ -792,7 +782,7 @@ $app->get('/validar', function() use ($app){
 		echo  "Tamaño anómalo";
 }); 
 
-$app->get('/drive', function() use ($app){
+$app->get('/drive','Login::forzarLogin', function() use ($app){
 	global $twig;
 	GoogleDrive::prueba();
 	
@@ -800,7 +790,6 @@ $app->get('/drive', function() use ($app){
 	echo $twig->render('inicio.php',$valores);
 				
 });
-
 
 // Ponemos en marcha el router
 $app->run();
