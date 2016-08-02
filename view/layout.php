@@ -81,18 +81,23 @@
                     <div class="col-sm-6">
                         <ul class="list-unstyled"></ul>
                     </div><!-- social 1st col end-->
+                    
+                    <div class="col-sm-2">
+						<ul class="list-unstyled">
+							{% if login.isLogged() %}
+								<li><a href="/logout"><span class="social fa fa-sign-out"></span>Log out</a></li>
+							{% else %}
+								<li><a href="/login"><span class="social fa fa-cog"></span>Log in</a></li>
+							{% endif %}
+						</ul>
+					</div><!-- social 2nd col end-->
+					
 					<div class="col-sm-2">
                         <ul class="list-unstyled">
                             <li><a href="/about"><span class="social fa fa-info"></span>Acerca de</a></li>
                         </ul>
                     </div><!-- social 2nd col end-->
                     
-                    <div class="col-sm-2">
-                        <ul class="list-unstyled">
-                            <li><a href="/login"><span class="social fa fa-cog"></span>Log in</a></li>
-                        </ul>
-                    </div><!-- social 2nd col end-->
-
                     <div class="col-sm-2">
                         <ul class="list-unstyled">
 							<li><a href="/"><span class="social fa fa-home"></span>Inicio</a></li>

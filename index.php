@@ -68,6 +68,8 @@ $loader = new Twig_Loader_Filesystem('./view');
 $twig = new Twig_Environment($loader, array(  
 	//'cache' => 'cache',  
 ));  
+
+$twig->addGlobal('login', new Login()); // Para poder consultar si existe sesión de usuario abierta
       
 $app->container->singleton('db', function () {
     return new \PDO('sqlite:model/dictados.db');
