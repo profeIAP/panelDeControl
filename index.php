@@ -538,7 +538,7 @@ $app->get('/about','Login::forzarLogin', function() use ($app){
 	echo $twig->render('about.php');  
 }); 
 
-$app->group('/login','Login::forzarLogin', function () use ($app) {
+$app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
 		global $twig;

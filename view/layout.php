@@ -144,7 +144,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-13 col-md-12 ">
-                   <li id="grafica"><a href="/grafica">Grafica Alumnos</a></li>
+                   
                    <ul id="accordion" class="accordion">
 						  <li>
 							<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
