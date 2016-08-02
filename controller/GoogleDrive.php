@@ -103,9 +103,6 @@ class GoogleDrive {
 		$service->spreadsheets->batchUpdate($spreadsheetId, $batchUpdateRequest);
 	}
 
-	// Métodos y atributos de la API de Google [https://github.com/google/google-api-php-client-services/blob/master/Sheets/Spreadsheet.php]
-	// Inspiración para su uso [http://stackoverflow.com/a/37861831]
-	
 	// Obtenemos una hoja de cálculo de Drive
 	public static function getLibro(){
 		
@@ -151,6 +148,7 @@ class GoogleDrive {
 	}
 	
 	// Lista correctamente los ficheros en Drive
+	
 	public static function listarFicherosDrive(){
 		
 		$client = Google::getClient(null);
@@ -166,8 +164,31 @@ class GoogleDrive {
 	  }
 	}
 	
+	// Sube a Drive el contenido del fichero indicado con $rutaFichero
+	// y le asigna $nombre como nombre del fichero en Drive
+	
+	public static function subirFichero($nombre, $rutaFichero){
+		
+		$client = Google::getClient(null);
+		$service = new Google_Service_Drive($client);
+		
+		$file = new Google_Service_Drive_DriveFile();
+		$file->setName($nombre);
+		$result = $service->files->create(
+			$file,
+			array(
+				'data' => file_get_contents($rutaFichero),
+				'mimeType' => 'application/octet-stream',
+				'uploadType' => 'multipart'
+			)
+		);
+		
+		return  $result->id ;
+		
+	}
+	
 	public static function prueba(){
-		self::crearLibro('es mío... mi tesoro');
+		self::subirFichero('fichero-subido.txt', '/tmp/prueba.txt');
 	}
 }
 
