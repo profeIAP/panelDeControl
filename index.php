@@ -43,6 +43,7 @@ session_start();
 header('Content-type: text/html; charset=utf-8');
 
 require 	 	'vendor/autoload.php';
+
 require_once	'controller/Utils.php';
 require_once	'controller/Email.php';
 require_once	'controller/GoogleDrive.php';
@@ -723,14 +724,38 @@ function upload_file(){
 	return $target_file;
 }  
 
-$app->get('/email', function() use ($app){
-	global $twig;
+$app->group('/email', function () use ($app) {
+	$app->get('/aceptar', function() use ($app){
+		global $twig;
+		$valores['message']='Procedemos <strong>a tramitar</strong> la expulsión';
+		echo $twig->render('inicio.php', $valores);
+	});
+	$app->get('/cancelar', function() use ($app){
+		global $twig;
+		$valores['message']='<strong>Anulamos </strong> la expulsión';
+		echo $twig->render('inicio.php', $valores);
+	});
 	
-	if(Email::enviar("jasvazquez@gmail.com","Prueba email","Esto es una prueba <b>sencilla</b>")){
-		$valores['message']='Email enviado con éxito';
-		echo $twig->render('inicio.php',$valores);
-	}
-}); 
+	$app->get('/', function() use ($app){
+		global $twig;
+
+		$valores=array(
+			'pregunta'=>'Consideras que se debe expulsar a <strong>Jose Antonio Sánchez (2º BACH A)</strong> por acumulación de partes en menos de un mes',
+			'aceptar' => array('texto'=>'Sí',
+							   'url'=>Utilidades::getCurrentUrl(false).'/email/aceptar'),
+			'cancelar' => array('texto'=>'No',
+							   'url'=>Utilidades::getCurrentUrl(false).'/email/cancelar')
+		);
+		
+		if(Email::enviar("jasvazquez@gmail.com","Prueba email",$twig->render('emailSiNo.php', $valores))){
+			$valores['message']='Email enviado con éxito';
+			echo $twig->render('inicio.php', $valores);
+		}
+	}); 
+	
+	
+});
+
 
 $app->get('/anotalog', function() use ($app){
 	    global $twig;
