@@ -14,7 +14,7 @@
 
 
 <div class="jumbotron">
-	<h1>Lista de alumno</h1>
+	<h1>Lista de alumnos</h1>
 	<p class="lead">Alumnos matriculados en el centro</p>
 </div>
 

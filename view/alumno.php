@@ -1,6 +1,10 @@
 {% extends "layout.php" %}
 
-{% block tabActivo %}contacto{% endblock tabActivo %}
+{% block cabecera %}
+	<link rel="stylesheet" type="text/css" href="/css/default.css" />
+	<!--<link rel="stylesheet" type="text/css" href="/css/component.css" />-->
+	<script src="/js/modernizr.custom.js"></script>
+{% endblock cabecera %}
 
 {% block cuerpo %}
 
@@ -13,8 +17,8 @@
 {% endif %}
 
 <div class="jumbotron">
-	<h1>Registrese como alumno del I.E.S. Al-Ándalus</h1>
-	<p class="lead">Todos los campos son obligatorios</p>
+	<h1>Alumnos registrados</h1>
+	<p class="lead">Listado de alumnos</p>
 </div>
 
 <form method="post" action="/alumnos/guardar" role="form">
@@ -67,25 +71,56 @@
 		<div class="form-group col-md-12">
 			<label for="dni">Tutor 2:</label>
 			<input type="text" class="form-control" id="tutor2" name="dni" value="{{comentario.TUTOR2}}">
-		
-		
-
-			
 		</div>
 		
-		<div class="form-group col-md-3">
-			
-		<button type="submit" class="btn btn-success">Aceptar</button><a href="/alumnos/aceptar"></a>
-		</div>
-        <div class="form-group col-md-3">
-		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
+		<div class="form-group col-md-10"></div>
 		
+		<div class="form-group col-md-1">
+			<button type="submit" class="btn btn-success">Aceptar</button><a href="/alumnos/aceptar"></a>
+		</div>
+        <div class="form-group col-md-1">
+			<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
 		</div>
 		
-
-
-
-
+		<!-- ANOTACIONES DEL ALUMNO -->
+		<!-- Cómo cambiar los iconos [https://css-tricks.com/html-for-icon-font-usage/] -->
+		
+		<div class="form-group col-md-12">
+				<ul class="cbp_tmtimeline">
+					<li>
+						<time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>18:30</span><span>14/10/15</span> </time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel">
+							<h2>Parte leve</h2>
+							<p>El alumno come chicle en clase y no cumple con el acuerdo de clase.</p>
+						</div>
+					</li>
+					<li>
+						<time class="cbp_tmtime" datetime="2013-04-11T12:04"> <span>12:04</span><span>4/11/15</span></time>
+						<div class="cbp_tmicon cbp_tmicon-screen"></div>
+						<div class="cbp_tmlabel">
+							<h2>Retraso</h2>
+							<p>A primera hora llega tarde sin pasar por jefatura de estudios</p>
+						</div>
+					</li>
+					<li>
+						<time class="cbp_tmtime" datetime="2013-04-13 05:36"> <span>05:36</span><span>23/12/15</span></time>
+						<div class="cbp_tmicon cbp_tmicon-mail"></div>
+						<div class="cbp_tmlabel">
+							<h2>Anotación</h2>
+							<p>Demuestra una especial predilección por las matemáticas</p>
+						</div>
+					</li>
+					<li>
+						<time class="cbp_tmtime" datetime="2013-04-15 13:15"> <span>13:15</span><span>4/01/16</span></time>
+						<div class="cbp_tmicon cbp_tmicon-phone"></div>
+						<div class="cbp_tmlabel">
+							<h2>Información al tutor</h2>
+							<p><STRONG>INFORMÁTICA: </STRONG> Muestra mucho interés por la asignatura y se le ve motivado.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
 </form>
 
 {% endblock cuerpo %}
