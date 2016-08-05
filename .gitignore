@@ -1,4 +1,5 @@
 client_secret.json
+model/alumnos_*.csv
 *~
 logs/
 /vendor/*

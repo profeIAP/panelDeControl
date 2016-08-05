@@ -179,19 +179,25 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		}); 
 	});
 
-	$app->post('/importar', function() use ($app){
-		global $twig;
-		$fichero=upload_file();
-		$valores=import_csv_to_sqlite($app->db, $fichero, array("delimiter"=>",", "table"=>"alumno"));
-		echo $twig->render('importar.php',$valores);
-		unlink($fichero);
-		  
-	}); 
+	$app->group('/importar', function () use ($app) {
+
+		$app->post('/', function() use ($app){
+			global $twig;
+			$fichero=upload_file();
+			// IDEA Permitir importar el fichero CSV de Séneca sin tener que editarlo
+			// Para ello debemos comprobar que el número de columnas de la fila a importar coincide con la última y/o penúltima (las primeras tienene menos)
+			$valores=import_csv_to_sqlite($app->db, $fichero, array("delimiter"=>",", "table"=>"alumnos_seneca"));
+			echo $twig->render('importar.php',$valores);
+			unlink($fichero);
+			  
+		}); 
+		
+		$app->get('/', function() use ($app){
+			global $twig;
+			echo $twig->render('upload.php');
+		}); 
 	
-	$app->get('/importar', function() use ($app){
-		global $twig;
-		echo $twig->render('upload.php');
-	}); 
+	});
 	
      $app->get('/pdf', function() use ($app){
 		global $twig;
@@ -205,7 +211,7 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
      $app->get('/', function() use ($app){
 		global $twig;
 		
-		$r=AccesoDatos::listar($app->db, "alumno", "id, nombre, email, direccion, telefono, comentario, localidad, provincia, dni_tutor, curso");
+		$r=AccesoDatos::listar($app->db, "alumno", "ID, NOMBRE, EMAIL, DIRECCION, TELEFONO, COMENTARIO, LOCALIDAD, PROVINCIA, DNI_TUTOR, CURSO");
 		$valores=array('alumnos'=>$r);
 		
 		echo $twig->render('alumnos.php',$valores);  
@@ -233,7 +239,6 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 			
 		}); 
 	});
-	
 	
 	$app->get('/borrar', function() use ($app){
 		global $twig;
