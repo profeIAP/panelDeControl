@@ -51,6 +51,7 @@ require_once	'controller/LoginClave.php';
 require_once	'controller/Logger.php';
 require_once	'controller/Listado.php';
 require_once	'controller/AccesoDatos.php';
+require_once	'controller/PermisosACL.php';
 
 use Respect\Validation\Validator as v;
 
@@ -73,6 +74,14 @@ $twig->addGlobal('login', new Login()); // Para poder consultar si existe sesió
       
 $app->container->singleton('db', function () {
     return new \PDO('sqlite:model/dictados.db');
+});
+$app->container->singleton('acl', function () {
+	$app = \Slim\Slim::getInstance();
+    return new PermisosACL($app->db);
+});
+
+$app->get('/acl', function() use ($app){
+	echo $app->acl->isAllowed('alumno', '/partes','ejecutar') ? "allowed" : "denied";
 });
 	
 $app->get('/','Login::forzarLogin', function() use ($app){

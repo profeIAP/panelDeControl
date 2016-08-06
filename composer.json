@@ -13,7 +13,8 @@
     "google/apiclient": "*",
     "phpmailer/phpmailer": "~5.2",
     "respect/validation": "0.6.*",
-    "dompdf/dompdf": "dev-master"
+    "dompdf/dompdf": "dev-master",
+    "jeremykendall/slim-auth": "1.0.*"
   },
   "require-dev": {
 	"phpunit/phpunit": "4.8.*"
