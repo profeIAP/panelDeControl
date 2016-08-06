@@ -150,15 +150,16 @@
 			<div class="row">
 				<div class="col-sm-13 col-md-12 ">
 					<ul id="accordion" class="accordion">
-						  <li>
-							<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
-							<ul class="submenu">
-								<li><a href="/alumnos/crear">Crear</a></li>
-								<li><a href="/alumnos">Listar</a></li>
-								<li><a href="/alumnos/importar">Importar</a></li>
-							</ul>
-						  </li>
-						 
+						  {% if acl.isAllowed('alumno', '/alumnos','ejecutar') %}
+							  <li>
+								<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
+								<ul class="submenu">
+									<li><a href="/alumnos/crear">Crear</a></li>
+									<li><a href="/alumnos">Listar</a></li>
+									<li><a href="/alumnos/importar">Importar</a></li>
+								</ul>
+							  </li>
+						  {% endif %}
 						  <li>
 							<div class="link">Anotaciones<i class="fa fa-chevron-down"></i></div>
 							<ul class="submenu">

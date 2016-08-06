@@ -70,8 +70,6 @@ $twig = new Twig_Environment($loader, array(
 	//'cache' => 'cache',  
 ));  
 
-$twig->addGlobal('login', new Login()); // Para poder consultar si existe sesión de usuario abierta
-      
 $app->container->singleton('db', function () {
     return new \PDO('sqlite:model/dictados.db');
 });
@@ -79,6 +77,9 @@ $app->container->singleton('acl', function () {
 	$app = \Slim\Slim::getInstance();
     return new PermisosACL($app->db);
 });
+
+$twig->addGlobal('login', new Login()); // Para poder consultar si existe sesión de usuario abierta
+$twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
 
 $app->get('/acl', function() use ($app){
 	echo $app->acl->isAllowed('alumno', '/partes','ejecutar') ? "allowed" : "denied";
