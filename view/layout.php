@@ -149,15 +149,14 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-13 col-md-12 ">
-                   
-                   <ul id="accordion" class="accordion">
+					<ul id="accordion" class="accordion">
 						  <li>
 							<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
 							<ul class="submenu">
-												<li><a href="/alumnos/crear">Crear</a></li>
-												<li><a href="/alumnos">Listar</a></li>
-												<li><a href="/alumnos/importar">Importar</a></li>
-											</ul>
+								<li><a href="/alumnos/crear">Crear</a></li>
+								<li><a href="/alumnos">Listar</a></li>
+								<li><a href="/alumnos/importar">Importar</a></li>
+							</ul>
 						  </li>
 						 
 						  <li>
@@ -183,20 +182,19 @@
 						  <li>
 							<div class="link">Usuarios<i class="fa fa-chevron-down"></i></div>
 							<ul class="submenu">
-													<li><a href="/usuarios/crear">Crear</a></li>
-												<li><a href="/usuarios">Listar</a></li>
+								<li><a href="/usuarios/crear">Crear</a></li>
+								<li><a href="/usuarios">Listar</a></li>
 							</ul>
 						  </li>
-						  
-						   
-							<div class="link"><li><a href="/logout"></li>Salir<i</div>				
-				           				        			        						
-					
-                </div>
+						  <li>
+							<div class="link"><a href="/logout">Salir</a></div>				
+				          </li>			        			        						
+					</ul>
+                </div> <!-- jasv -->
                 
             </div><!--info end-->
                 
-            </div><!--tech skills end-->
+            
 		</div><!--right end-->
 
     
