@@ -6,7 +6,7 @@ use Zend\Permissions\Acl\Acl as ZendAcl;
 
 class PermisosACL extends ZendAcl
 {
-	protected $defaultPrivilege = array('ejecutar');
+	protected $defaultPrivilege = array('mostrar');
 	
 	public function __construct($pdo){
 		$this->cargarRoles($pdo);
@@ -15,10 +15,11 @@ class PermisosACL extends ZendAcl
 	}
 	
 	private function cargarRoles($pdo){
-		$this->addRole('alumno');
-		$this->addRole('profesor','alumno');
-		$this->addRole('administrativo','profesor');
-		$this->addRole('jefedeestudios','administrativo');
+		$this->addRole('Alumno');
+		$this->addRole('Profesor','Alumno');
+		$this->addRole('Tutor','Profesor');
+		$this->addRole('Administrativo','Tutor');
+		$this->addRole('Jefe de estudios','Administrativo');
 	}
 	
 	private function cargarRecursos($pdo){
@@ -29,8 +30,9 @@ class PermisosACL extends ZendAcl
 	}
 	
 	private function asociarRecursos($pdo){
-		$this->allow('profesor', '/alumnos', null);
-		$this->allow('jefedeestudios', '/partes', null);
+		$this->allow('Profesor', '/alumnos', null);
+		$this->allow('Administrativo', '/alumnos/importar', null);
+		$this->allow('Jefe de estudios', '/partes', null);
 	}
 		
 }

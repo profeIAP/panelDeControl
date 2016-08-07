@@ -150,13 +150,13 @@
 			<div class="row">
 				<div class="col-sm-13 col-md-12 ">
 					<ul id="accordion" class="accordion">
-						  {% if acl.isAllowed('alumno', '/alumnos','ejecutar') %}
+						  {% if acl.isAllowed(login.getUsuario().getRol(), '/alumnos','mostrar') %}
 							  <li>
 								<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
 								<ul class="submenu">
 									<li><a href="/alumnos/crear">Crear</a></li>
 									<li><a href="/alumnos">Listar</a></li>
-									<li><a href="/alumnos/importar">Importar</a></li>
+									{% if acl.isAllowed(login.getUsuario().getRol(), '/alumnos/importar','mostrar') %}<li><a href="/alumnos/importar">Importar</a></li>{% endif %}
 								</ul>
 							  </li>
 						  {% endif %}

@@ -78,7 +78,7 @@ $app->container->singleton('acl', function () {
     return new PermisosACL($app->db);
 });
 
-$twig->addGlobal('login', new Login()); // Para poder consultar si existe sesión de usuario abierta
+$twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
 
 $app->get('/acl', function() use ($app){
@@ -569,9 +569,7 @@ $app->group('/login', function () use ($app) {
 	$app->post('/', function() use ($app){
 		global $twig;
 		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
-			// TODO incluir nombre del usuario que se ha logado
-			$valores['message']="Bienvenid@ XXX";
-			echo $twig->render('inicio.php',$valores);
+			echo $twig->render('inicio.php');
 		}
 		else{
 			// IDEA cargar campos con los datos que ha utilizado para intentar entrar
@@ -771,6 +769,7 @@ $app->group('/email', function () use ($app) {
 
 $app->get('/anotalog','Login::forzarLogin', function() use ($app){
 	    global $twig;
+	    // TODO apuntar al directorio raíz (este distingue la ruta si estamos en index.php y en alguna clase de controller/*)
 	    $dir=__DIR__.'/logs';
 		$logger = new Katzgrau\KLogger\Logger($dir);
 	$logger->debug('HOLA');
