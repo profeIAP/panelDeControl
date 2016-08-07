@@ -79,7 +79,7 @@
                 -->
                 <div class="row">
                     <div class="col-sm-6">
-                        <ul class="list-unstyled"></ul>
+                        <ul class="list-unstyled"> {{ login.getUsuario().getNombre() }} [{{ login.getUsuario().getRol() }}]</ul>
                     </div><!-- social 1st col end-->
                     
                     <div class="col-sm-2">

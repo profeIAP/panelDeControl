@@ -38,10 +38,6 @@
 
 // DUDA funcionará flash() y error() tras poner session_start() antes de header()
 
-session_cache_limiter(false);	
-session_start();
-header('Content-type: text/html; charset=utf-8');
-
 require 	 	'vendor/autoload.php';
 
 require_once	'controller/Utils.php';
@@ -52,6 +48,10 @@ require_once	'controller/Logger.php';
 require_once	'controller/Listado.php';
 require_once	'controller/AccesoDatos.php';
 require_once	'controller/PermisosACL.php';
+
+session_cache_limiter(false);	
+session_start();
+header('Content-type: text/html; charset=utf-8');
 
 use Respect\Validation\Validator as v;
 
