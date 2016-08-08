@@ -14,19 +14,26 @@
 		<input type="hidden" name="id" value="">
 		<input type="hidden" id="id_alumno" name="id_alumno" value="">
 		
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-9">
 			<label for="alumnoaImplicado">Alumno/a implicado</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
 		</div>
-		<div class="form-group col-md-12">
-			<label for="cursoygrupo">Curso y Grupo</label>
-			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="" readonly="readonly">
-		</div>
-		<div class="form-group col-md-6">
+		<div class="form-group col-md-3">
 			<label for="fecha">Fecha:</label>
 			<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value=""> 		
 		</div>
+		
+		<div class="form-group col-md-4">
+			<label for="cursoygrupo">Curso y Grupo</label>
+			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="" readonly="readonly">
+		</div>
+		
 		<div class="form-group col-md-6">
+			<label for="cursoygrupo">Tutor/a:</label>
+			<input type="text" class="form-control" id="tutor" name="tutor" value="">
+		</div>
+		
+		<div class="form-group col-md-2">
 			<label for="hora">Hora:</label>
 			 <select class="form-control" id="sel1">
               <option>Primera</option>
@@ -40,15 +47,11 @@
 		</div>
 		<div class="form-group col-md-12">
 			<label for="asignatura">Asignatura:</label>
-			<input type="text" class="form-control" id="asignatura" name="asignatura" value="" readonly="readonly">
+			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
 		</div>
 		<div class="form-group col-md-12">
 			<label for="alumnoaImplicado">Profesor/a:</label>
 			<input type="text" class="form-control" id="profesor" name="profesor" value="{{login.getUsuario().getNombre()}}" readonly="readonly">
-		</div>
-		<div class="form-group col-md-12">
-			<label for="cursoygrupo">Tutor/a:</label>
-			<input type="text" class="form-control" id="tutor" name="tutor" value="">
 		</div>
 		
 		<div class="form-group col-md-12">
