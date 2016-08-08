@@ -24,7 +24,10 @@
 		</div>
 		<div class="form-group col-md-6">
 			<label for="fecha">Fecha:</label>
-			<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value=""> 		
+			<!--<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value=""> 		-->
+			<div class="input-append date">
+				<input type="text" class="span2" id="fecha" name="fecha" size="12" value=""><span class="add-on"><i class="icon-th"></i></span>
+			</div>
 		</div>
 		<div class="form-group col-md-6">
 			<label for="hora">Hora:</label>
@@ -123,7 +126,13 @@
 		<script type="text/javascript">
 			
  		$(document).ready(function(){
- 			$(".campofecha").calendarioDW();
+ 			//$(".campofecha").calendarioDW();
+ 			
+			$('.input-append.date').datepicker({
+				todayBtn: "linked",
+				language: "es",
+				daysOfWeekDisabled: "0,6"
+			});
  			
  			$( "#alumnoaImplicado" ).autocomplete({
 			  source: "/alumnos/buscar/nombre",

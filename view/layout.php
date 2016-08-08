@@ -12,7 +12,8 @@
 	<link rel="stylesheet" href="/css/datatable.css">
 	<link rel="stylesheet" href="/css/datatable2.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET"> 
+    <link href="/css/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="stylesheet"> 
+    <link href="/css/bootstrap-datepicker.standalone.min.css" type="text/css" rel="stylesheet"> 
 	<script src="/js/jquery.min.js"></script>
 	
     {% block cabecera %}
