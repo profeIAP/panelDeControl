@@ -12,6 +12,7 @@
 <form method="post" action="/partes/guardar" role="form">
 		
 		<input type="hidden" name="id" value="">
+		<input type="hidden" id="id_alumno" name="id_alumno" value="">
 		
 		<div class="form-group col-md-12">
 			<label for="alumnoaImplicado">Alumno/a implicado</label>
@@ -43,7 +44,7 @@
 		</div>
 		<div class="form-group col-md-12">
 			<label for="alumnoaImplicado">Profesor/a:</label>
-			<input type="text" class="form-control" id="profesor" name="profesor" value="">
+			<input type="text" class="form-control" id="profesor" name="profesor" value="{{login.getUsuario().getNombre()}}" readonly="readonly">
 		</div>
 		<div class="form-group col-md-12">
 			<label for="cursoygrupo">Tutor/a:</label>
@@ -120,9 +121,32 @@
          </form>
 		
 		<script type="text/javascript">
+			
  		$(document).ready(function(){
  			$(".campofecha").calendarioDW();
+ 			
+ 			$( "#alumnoaImplicado" ).autocomplete({
+			  source: "/alumnos/buscar/nombre",
+			  minLength: 3,
+			  select: function (event,ui){
+				$.ajax({
+					url:'/alumnos/buscar/id',
+					  type:'POST',
+					  dataType:'json',
+					  data:{ valor:ui.item.id}
+				  }).done(function(respuesta){
+					  
+					  //$("#alumnoaImplicado").val(respuesta.nombre);
+					  $("#id_alumno").val(respuesta.id);
+					  $("#cursoygrupo").val(respuesta.grupo);
+					  $("#tutor").val(respuesta.tutor);
+				  });  
+			  }
+			});
+ 			
  		});
+ 		
+ 		
  	</script>
 		
 </form>

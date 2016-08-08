@@ -227,24 +227,27 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		echo $twig->render('alumnos.php',$valores);  
 	}); 
 	
+	// [http://goo.gl/52g6F]  Documentación Autocomplete de jQuery UI 
+	// [http://goo.gl/Mp7LSN] Ejemplo de uso
+	
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
 			
 			$pdo=$app->db;
 			
-			$statement=$pdo->prepare("SELECT nombre FROM alumno where nombre like '%sánchez%'");
-			$statement->execute();
-			$results=$statement->fetchAll(PDO::FETCH_COLUMN, 0);
-			$json= json_encode($results);
+			$nombre=$app->request()->get('term');
 			
-			echo $json;
-			 
+			$statement=$pdo->prepare("SELECT nombre value, id FROM alumno where nombre like '%$nombre%'");
+			$statement->execute();
+			
+			echo json_encode($statement->fetchAll(PDO::FETCH_ASSOC));
 		});
 		
 		$app->post('/id', function() use ($app){
 			global $twig;
-			$miArray = array("nombre"=>"julio", "materno"=>"madre julio", "paterno"=>"padre julio");
+			// TODO acceder a la BD para traer los datos correctos
+			$miArray = array("id"=>325,"alumnoaImplicado"=>"el alumno más macarra", "grupo"=>"2ºESOA", "tutor"=>"nombre del tutor");
             echo json_encode($miArray);
 			
 		}); 
