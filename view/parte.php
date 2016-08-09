@@ -19,15 +19,14 @@
 			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
 		</div>
 		
-		<div class="form-group col-md-2">
+		<div class="form-group col-md-2 ">
 			<label for="fecha">Fecha:</label>
 			  <div class="input-append date" id="dp3" >
-				<input class="span2 " id="fecha" name="fecha" readonly type="text">
+				<input size="14" id="fecha" name="fecha" readonly type="text">
 				<span class="add-on"><span class="fa fa-calendar"></span></span>
 			  </div>
 		</div>
 		
-
 		<div class="form-group col-md-2">
 			<label for="hora">Hora:</label>
 			 <select class="form-control" id="sel1">
@@ -137,7 +136,6 @@
 			$('#dp3').datepicker(
 				{todayBtn: "linked",language: "es",weekStart:1,autoclose:true,format:"dd/mm/yyyy",daysOfWeekDisabled: "0,6"});
 		
- 			
  			$( "#alumnoaImplicado" ).autocomplete({
 			  source: "/alumnos/buscar/nombre",
 			  minLength: 3,
