@@ -21,10 +21,9 @@
 		
 		<div class="form-group col-md-2 ">
 			<label for="fecha">Fecha:</label>
-			  <div class="input-append date" id="dp3" >
-				<input size="14" id="fecha" name="fecha" readonly type="text">
-				<span class="add-on"><span class="fa fa-calendar"></span></span>
-			  </div>
+			<div class="input-group date">
+					<input type="text" id="fecha" name="fecha" class="form-control"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			</div>
 		</div>
 		
 		<div class="form-group col-md-2">
@@ -132,10 +131,14 @@
 		<script type="text/javascript">
 			
  		$(document).ready(function(){
-			
-			$('#dp3').datepicker(
-				{todayBtn: "linked",language: "es",weekStart:1,autoclose:true,format:"dd/mm/yyyy",daysOfWeekDisabled: "0,6"});
-		
+			$('.input-group.date').datepicker({
+				format: "dd/mm/yyyy",
+				weekStart: 1,
+				todayBtn: "linked",
+				language: "es",
+				daysOfWeekDisabled: "0,6",
+				autoclose: true
+			});
  			$( "#alumnoaImplicado" ).autocomplete({
 			  source: "/alumnos/buscar/nombre",
 			  minLength: 3,

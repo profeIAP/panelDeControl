@@ -214,7 +214,7 @@
 	
 	<script type="text/javascript" src="/js/1.10.2jquery-ui.min.js"></script>
     <script src="/js/bootstrap-datepicker.js"></script>
-	<script src="/js/locales/bootstrap-datepicker.es.js"></script>
+	<script src="/js/locales/bootstrap-datepicker.es.min.js"></script>
 	
 	<!-- TODO llevar a la vista concreta en la que se vaya a usar -->
 	
