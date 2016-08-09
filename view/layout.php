@@ -7,14 +7,16 @@
     
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css">	
     <link rel="stylesheet" href="/css/bootstrap.css">
+    
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link rel="stylesheet" href="/css/datatable.css">
 	<link rel="stylesheet" href="/css/datatable2.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="stylesheet"> 
-    <link href="/css/bootstrap-datepicker.standalone.min.css" type="text/css" rel="stylesheet"> 
+    <link href="/css/datepicker.css" rel="stylesheet">
+    
 	<script src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/loader.js"></script>
 	
     {% block cabecera %}
 			
@@ -39,7 +41,7 @@
     <script type="text/javascript" src="/js/jsapi.js"></script>
     <link href="/css/datatable5.css" rel="stylesheet" type="text/css">
 	<link href="/css/menulateral.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="/js/loader.js"></script>
+
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -202,23 +204,20 @@
     
 
     <!--necessary scripts and plugins-->
-    
+
     <script src="/js/bootstrap.min.js"></script>
     
     <script src="/js/jquery.nicescroll.min.js"></script>
     <script src="/js/evenfly.js"></script>
     
 	<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/js/calendario_dw.js"></script>
-	<script type="text/javascript" src="/js/1.10.2jquery-ui.min.js"></script>
-
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	
-	<script type="text/javascript">
-		$(document).ready(function(){
-		$(".campofecha").calendarioDW();
-		})
-	</script>
+	<script type="text/javascript" src="/js/1.10.2jquery-ui.min.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>
+	<script src="/js/locales/bootstrap-datepicker.es.js"></script>
+	
+	<!-- TODO llevar a la vista concreta en la que se vaya a usar -->
+	
 	<script>
 		$(document).ready(function(){
 			$('#myTable').dataTable();

@@ -81,10 +81,6 @@ $app->container->singleton('acl', function () {
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
 
-$app->get('/acl', function() use ($app){
-	echo $app->acl->isAllowed('alumno', '/partes','ejecutar') ? "allowed" : "denied";
-});
-	
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  

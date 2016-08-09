@@ -14,22 +14,21 @@
 		<input type="hidden" name="id" value="">
 		<input type="hidden" id="id_alumno" name="id_alumno" value="">
 		
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-8">
 			<label for="alumnoaImplicado">Alumno/a implicado</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
 		</div>
-		<div class="form-group col-md-12">
-			<label for="cursoygrupo">Curso y Grupo</label>
-			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="" readonly="readonly">
-		</div>
-		<div class="form-group col-md-6">
+		
+		<div class="form-group col-md-2">
 			<label for="fecha">Fecha:</label>
-			<!--<input type="text" class="campofecha" id="fecha" name="fecha" size="12" value=""> 		-->
-			<div class="input-append date">
-				<input type="text" class="span2" id="fecha" name="fecha" size="12" value=""><span class="add-on"><i class="icon-th"></i></span>
-			</div>
+			  <div class="input-append date" id="dp3" >
+				<input class="span2 " id="fecha" name="fecha" readonly type="text">
+				<span class="add-on"><span class="fa fa-calendar"></span></span>
+			  </div>
 		</div>
-		<div class="form-group col-md-6">
+		
+
+		<div class="form-group col-md-2">
 			<label for="hora">Hora:</label>
 			 <select class="form-control" id="sel1">
               <option>Primera</option>
@@ -41,17 +40,25 @@
                <option>Sexta</option>
              </select>
 		</div>
-		<div class="form-group col-md-12">
-			<label for="asignatura">Asignatura:</label>
-			<input type="text" class="form-control" id="asignatura" name="asignatura" value="" readonly="readonly">
+
+		<div class="form-group col-md-8">
+			<label for="cursoygrupo">Tutor/a:</label>
+			<input type="text" class="form-control" id="tutor" name="tutor" value="">
 		</div>
-		<div class="form-group col-md-12">
+
+		<div class="form-group col-md-4">
+			<label for="cursoygrupo">Curso y Grupo</label>
+			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="" readonly="readonly">
+		</div>
+		
+		<div class="form-group col-md-6">
 			<label for="alumnoaImplicado">Profesor/a:</label>
 			<input type="text" class="form-control" id="profesor" name="profesor" value="{{login.getUsuario().getNombre()}}" readonly="readonly">
 		</div>
-		<div class="form-group col-md-12">
-			<label for="cursoygrupo">Tutor/a:</label>
-			<input type="text" class="form-control" id="tutor" name="tutor" value="">
+		
+		<div class="form-group col-md-6">
+			<label for="asignatura">Asignatura:</label>
+			<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
 		</div>
 		
 		<div class="form-group col-md-12">
@@ -126,13 +133,10 @@
 		<script type="text/javascript">
 			
  		$(document).ready(function(){
- 			//$(".campofecha").calendarioDW();
- 			
-			$('.input-append.date').datepicker({
-				todayBtn: "linked",
-				language: "es",
-				daysOfWeekDisabled: "0,6"
-			});
+			
+			$('#dp3').datepicker(
+				{todayBtn: "linked",language: "es",weekStart:1,autoclose:true,format:"dd/mm/yyyy",daysOfWeekDisabled: "0,6"});
+		
  			
  			$( "#alumnoaImplicado" ).autocomplete({
 			  source: "/alumnos/buscar/nombre",
