@@ -137,7 +137,9 @@
 				todayBtn: "linked",
 				language: "es",
 				daysOfWeekDisabled: "0,6",
-				autoclose: true
+				orientation: "auto",
+				autoclose: true,
+				container: '.input-group' 
 			});
  			$( "#alumnoaImplicado" ).autocomplete({
 			  source: "/alumnos/buscar/nombre",
