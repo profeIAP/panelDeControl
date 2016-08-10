@@ -19,7 +19,8 @@
 
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
-		<input type="hidden" name="id" value="{{comentario.ID}}"/>
+		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
+		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
 		
 								
 			
@@ -34,11 +35,11 @@
 										</div>
 		                                <div class="form-group col-md-12">
 			                                <label for="alumnoaImplicado">Alumno/a</label>
-			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
+			<input type="text" class="form-control" id="alumnoaImplicado" value="">
 		</div>
 		                                <div class="form-group col-md-12">
 			                                <label for="comentario">Descripción:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="comentario" >{{comentario.COMENTARIO}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{comentario.COMENTARIO}}</textarea>
 		</div>
 										
 <div class="form-group col-md-3">

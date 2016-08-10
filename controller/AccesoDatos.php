@@ -13,11 +13,25 @@ class AccesoDatos{
 		$q->execute($valores);
 	}
 		
+	/* Obtiene el nombre de los campos que componen $nombreTabla */
+	
+	public static function getCamposTabla($pdo, $nombreTabla, $ordenarCampos=false){
+		
+		$q = $pdo->query("PRAGMA table_info($nombreTabla)");
+		$columns = array();
+		foreach ($q as $k) {
+			$columns[] = $k['name'];
+		}
+		
+		if($ordenarCampos) asort($columns,3);
+		return $columns;
+	}
+	
 	public static function guardar($pdo, $nombreTabla, $valores){
 		
 		// Distinguimos la operación a realizar
 		
-		if($valores['ID']){
+		if(isset($valores['ID']) && $valores['ID']){
 			$sql=self::generarActualizacion($nombreTabla, $valores);
 		}
 		else

@@ -213,6 +213,7 @@
 	<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
 	
 	<script type="text/javascript" src="/js/1.10.2jquery-ui.min.js"></script>
+	<!-- [https://goo.gl/KXLLgo] DatePicker usado -->
     <script src="/js/bootstrap-datepicker.js"></script>
 	<script src="/js/locales/bootstrap-datepicker.es.min.js"></script>
 	

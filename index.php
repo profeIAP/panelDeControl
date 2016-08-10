@@ -150,38 +150,11 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 	
 			global $twig;
 			
-			// Recogemos datos formulario de contacto
-			
-			$valores=array(
-				'id'=>$app->request()->post('id'),
-				'id_alumno'=>$app->request()->post('alumnoaImplicado'),
-				'fecha'=>$app->request()->post('fecha'),		
-				'hora'=>$app->request()->post('hora'),	
-				'descripcion'=>$app->request()->post('comentario'),	
-				
-			);
-			
-			if($valores['id']){
-				$sql = "update alumno set ID_ALUMNO=:id_alumno, FECHA=:fecha, HORA=:hora, DESCRIPCION=:descripcion, WHERE ID=:id ";
-				$pdo=$app->db;
-				$q = $pdo->prepare($sql);
-				$q->execute($valores);
-				
-				$app->redirect('/alumnos');
-			}
-			else
-			{
-				unset($valores['id']);
-				
-				$sql = "INSERT INTO anotacion (ID_ALUMNO, FECHA, HORA, DESCRIPCION) VALUES (:id_alumno, :fecha, :hora, :descripcion)";
-				$pdo=$app->db;
-				$q = $pdo->prepare($sql);
-				$q->execute($valores);
-			
-				// Mostramos un mensaje al usuario
-				
-				$app->redirect('/alumnos');
-			}
+			$valores=Utilidades::getDatosFormulario($app,false, true);
+			AccesoDatos::guardar($app->db, "anotacion",$valores);
+
+			// TODO quitar cuando tengamos la lista de anotaciones
+			$app->redirect('/alumnos');
 		}); 
 	});
 
@@ -369,8 +342,8 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		// Recogemos datos formulario de contacto
 		
 		$valores=array(
-			'id'=>$app->request()->post('id'),
-			'id_alumno'=>$app->request()->post('nombre'),
+			'ID'=>$app->request()->post('ID'),
+			'id_alumno'=>$app->request()->post('id_alumno'),
 			'grupo'=>$app->request()->post('grupo'),		
 			'fecha'=>$app->request()->post('fecha'),	
 			'hora'=>$app->request()->post('hora'),	
@@ -405,28 +378,9 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 			'g_impedimento'=>$app->request()->post('g_impedimento')
 		);
 		
-		if($valores['id']){
-			$sql = "update partes set ID_ALUMNO=:id_alumno, GRUPO=:grupo, FECHA=:fecha, HORA=:hora, ASIGNATURA=:asignatura, PROFESOR=:profesor, TUTOR=:tutor, L_PERTUBAR=:l_pertubar, L_DIFICULTAR=:l_dificultar, L_FALTARINJUSTIFICADAMENTE=:l_faltarinjustificadamente, L_DETERIORAR=:l_deteriorar, L_MOVIL=:l_movil, L_GAFAS=:l_gafas, L_GORRA=:l_gorra, L_PASILLOS=:l_pasillos, L_FALTAINJUSTIFICADA=:l_faltainjustificada, L_NOCOLABORAR=:l_nocolaborar, L_IMPUNTUAL=:l_impuntual, L_DESCONSIDERABLES=:l_desconsiderables, L_BEBEROCOMER=:l_beberocomer, L_FALTAMATERIAL=:l_faltamaterial, L_ORDENADOR=:l_ordenador, L_ALTERAR=:l_alterar, L_FUMAR=:l_fumar, L_USOINDEBIDO=:l_usoindebido, G_AGRESION=:g_agresion, G_INCUMPLIMIENTO=:g_incumplimiento, G_AMENAZAS=:g_amenazas, G_SUPLANTACION=:g_suplatancion, G_FUMAR=:g_fumar, G_OFENSAS=:g_ofensas, G_HUMILLACIONES=:g_humillaciones, G_DETERIORO=:g_deterioro, G_IMPEDIMENTO=:g_impedimento WHERE ID=:id ";
-			$pdo=$app->db;
-			$q = $pdo->prepare($sql);
-			$q->execute($valores);
-			
-			$app->redirect('/partes');
-		}
-		else
-	{
-			unset($valores['id']);
-			
-			$sql = "insert into partes (ID_ALUMNO,GRUPO,FECHA,HORA,ASIGNATURA,PROFESOR,TUTOR,L_PERTURBAR,L_DIFICULTAR,L_FALTARINJUSTIFICADAMENTE,L_DETERIORAR,L_MOVIL,L_GAFAS,L_GORRA,L_PASILLOS,L_FALTAINJUSTIFICADA,L_NOCOLABORAR,L_IMPUNTUAL,L_DESCONSIDERABLES,L_BEBEROCOMER,L_FALTAMATERIAL,L_ORDENADOR,L_ALTERAR,L_FUMAR,L_USOINDEBIDO,G_ AGRESION,G_INCUMPLIMIENTO,G_AMENAZAS,G_SUPLANTACION,G_FUMAR,G_OFENSAS,G_HUMILLACIONES,G_DETERIORO,G_IMPEDIMENTO)values(:ID_ALUMNO,:GRUPO,:FECHA,:HORA,:ASIGNATURA,:PROFESOR,:TUTOR,:L_PERTURBAR,:L_DIFICULTAR,:L_FALTARINJUSTIFICADAMENTE,:L_DETERIORAR,:L_MOVIL,:L_GAFAS,:L_GORRA,:L_PASILLOS,:L_FALTAINJUSTIFICADA,:L_NOCOLABORAR,:L_IMPUNTUAL,:L_DESCONSIDERABLES,:L_BEBEROCOMER,:L_FALTAMATERIAL,:L_ORDENADOR,:L_ALTERAR,:L_FUMAR,:L_USOINDEBIDO,:G_ AGRESION,:G_INCUMPLIMIENTO,:G_AMENAZAS,:G_SUPLANTACION,:G_FUMAR,:G_OFENSAS,:G_HUMILLACIONES,:G_DETERIORO,:G_IMPEDIMENTO)";
-			$pdo=$app->db;
-			$q = $pdo->prepare($sql);
-			echo $sql;
-			var_dump($valores);
-			$q->execute($valores);
-				
-			$app->redirect('/partes');
-		}
- 
+		AccesoDatos::guardar($app->db,"partes",$valores);
+		$app->redirect('/partes');
+		
 	});
 	
 	$app->get('/borrar', function() use ($app){

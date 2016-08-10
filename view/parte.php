@@ -11,12 +11,12 @@
 
 <form method="post" action="/partes/guardar" role="form">
 		
-		<input type="hidden" name="id" value="">
+		<input type="hidden" name="ID" value="">
 		<input type="hidden" id="id_alumno" name="id_alumno" value="">
 
 		<div class="form-group col-md-8">
 			<label for="alumnoaImplicado">Alumno/a implicado</label>
-			<input type="text" class="form-control" id="alumnoaImplicado" name="alumnoaImplicado" value="">
+			<input type="text" class="form-control" id="alumnoaImplicado" value="">
 		</div>
 		
 		<div class="form-group col-md-2 ">
@@ -28,7 +28,7 @@
 		
 		<div class="form-group col-md-2">
 			<label for="hora">Hora:</label>
-			 <select class="form-control" id="sel1">
+			 <select class="form-control" id="hora" name="hora">
               <option>Primera</option>
                <option>Segunda</option>
                <option>Tercera</option>
@@ -40,14 +40,14 @@
 		</div>
 
 		<div class="form-group col-md-8">
-			<label for="cursoygrupo">Tutor/a:</label>
+			<label for="tutor">Tutor/a:</label>
 			<input type="text" class="form-control" id="tutor" name="tutor" value="">
 
 		</div>
 
 		<div class="form-group col-md-4">
 			<label for="cursoygrupo">Curso y Grupo</label>
-			<input type="text" class="form-control" id="cursoygrupo" name="cursoygrupo" value="" readonly="readonly">
+			<input type="text" class="form-control" id="cursoygrupo" name="grupo" value="" readonly="readonly">
 		</div>
 		
 		<div class="form-group col-md-6">
@@ -99,7 +99,7 @@
 	</div>
 
         <div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Agresión física</label>
+			<label><input type="checkbox" value="" name="G_AGRESION"> Agresión física</label>
 		</div>
 		<div class="form-group col-md-12">
 			<label><input type="checkbox" value=""> Incumplimiento de correcciones impuestas</label>
