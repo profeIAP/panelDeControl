@@ -122,9 +122,8 @@
  			
  			<div class="col-md-4">
  		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/partes/cancelar"></a>
- 		<!-- TODO gestionar cómo se guarda un borrador -->
- 		<button type="submit" class="btn btn-primary">Guardar</button><a href="/partes/borrador"></a>
- 		<button type="submit" class="btn btn-success">Aceptar</button><a href="/partes/guardar"></a>
+ 		<button type="submit" class="btn btn-primary" name="borrador" value="1">Guardar</button>
+ 		<button type="submit" class="btn btn-success" name="borrador" value="0">Aceptar</button>
             
             </div>
           </div>
