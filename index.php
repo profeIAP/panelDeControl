@@ -364,7 +364,10 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 	
 	$app->get('/crear', function() use ($app){
 		global $twig;
-		echo $twig->render('parte.php'); 
+		
+		$valores= array ( "fecha" => date('d/m/Y'));
+		
+		echo $twig->render('parte.php', $valores); 
 	});
 });
 
