@@ -347,12 +347,6 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		$app->redirect('/partes');
 	}); 
 	
-	$app->get('/borrador', function() use ($app){
-		global $twig;
-		//$app->redirect('/partes');
-		echo "Deberíamos gestionar el borrador";
-	}); 
-	
 	$app->post('/guardar', function() use ($app){
 	
 		global $twig;
