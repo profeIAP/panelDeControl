@@ -67,52 +67,73 @@
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="observacion" name="observacion"></textarea>
 		</div>
 			
-		<div>
-			<h1>Conductas contrarias a las normas de convivencia (Leves) </h1>
-		</div>
-
-        <div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Perturbar el desarrollo de las clases</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" name="L_DIFICULTAR" value="1"> Dificultar el estudio de los compañeros</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Faltar a clase injustificadamente</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" name="L_MOVIL" value="1"> Utilizar el teléfono móvil en clase</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Usar gorras, gafas de sol o reprod. de música en clase</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Usar el ordenador indebidamente</label>
-		</div>
-		  
 		
-	<div>
-		<h1>Conductas gravemente perjudiciales para la convivencia (Graves) </h1>
-	</div>
 
+	
         <div class="form-group col-md-12">
-			<label><input type="checkbox" value="" name="G_AGRESION"> Agresión física</label>
+			<div class="form-group col-md-12">
+				<h1>Conductas contrarias a las normas de convivencia (Leves) </h1>
+			</div>
+			<div class="form-group col-md-6">
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Perturbar el desarrollo de las clases</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" name="L_DIFICULTAR" value="1"> Dificultar el estudio de los compañeros</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Faltar a clase injustificadamente</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" name="L_MOVIL" value="1"> Utilizar el teléfono móvil en clase</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Usar gorras, gafas de sol o reprod. de música en clase</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Usar el ordenador indebidamente</label>
+				</div>
+			</div>
 		</div>
+		
 		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Incumplimiento de correcciones impuestas</label>
+			<div class="form-group col-md-12">
+				<h1>Conductas gravemente perjudiciales para la convivencia (Graves)</h1>
+			</div>
+			<div class="form-group col-md-6">
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value="" name="G_AGRESION"> Agresión física</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Incumplimiento de correcciones impuestas</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Amenazas o coacciones</label>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Suplantación personalidad, falsificación o sustracción</label>
+				</div>
+				<div class="form-group col-md-12">
+					<label><input type="checkbox" value=""> Fumar en clase</label>
+				</div>
+				
+				
+			</div>
 		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Amenazas o coacciones</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Suplantación personalidad, falsificación o sustracción</label>
-		</div>
-		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Fumar en clase</label>
-		</div>
+		
+		
+	
+
+        
+		
 		
 		<div class="row">
              
