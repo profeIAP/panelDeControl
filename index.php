@@ -341,43 +341,7 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		
 		// Recogemos datos formulario de contacto
 		
-		$valores=array(
-			'ID'=>$app->request()->post('ID'),
-			'id_alumno'=>$app->request()->post('id_alumno'),
-			'grupo'=>$app->request()->post('grupo'),		
-			'fecha'=>$app->request()->post('fecha'),	
-			'hora'=>$app->request()->post('hora'),	
-			'asignatura'=>$app->request()->post('asignatura'),	
-			'profesor'=>$app->request()->post('profesor'),	
-			'l_pertubar'=>$app->request()->post('l_pertubar'),	
-			'l_dificultar'=>$app->request()->post('l_dificultar'),
-			'l_faltarinjustificadamente'=>$app->request()->post('l_faltarinjustificadamente'),
-			'l_deteriorar'=>$app->request()->post('l_deteriorar'),		
-			'l_movil'=>$app->request()->post('l_movil'),	
-			'l_gafas'=>$app->request()->post('l_gafas'),	
-			'l_gorra'=>$app->request()->post('l_gorra'),
-			'l_pasillos'=>$app->request()->post('l_pasillos'),	
-			'l_faltainjustificada'=>$app->request()->post('l_faltainjustificada'),
-			'l_nocolaborar'=>$app->request()->post('l_nocolaborar'),
-			'l_impuntual'=>$app->request()->post('l_impuntual'),		
-			'l_desconsiderables'=>$app->request()->post('l_desconsiderables'),	
-			'l_beberocomer'=>$app->request()->post('l_beberocomer'),	
-			'l_faltamaterial'=>$app->request()->post('l_faltamaterial'),
-			'l_ordenador'=>$app->request()->post('l_ordenador'),	
-			'l_alterar'=>$app->request()->post('l_alterar'),
-			'l_fumar'=>$app->request()->post('l_fumar'),
-			'l_usoindebido'=>$app->request()->post('l_usoindebido'),
-			'g_agresion'=>$app->request()->post('g_agresion'),			
-			'g_incumplimiento'=>$app->request()->post('g_incumplimiento'),	
-			'g_amenazas'=>$app->request()->post('g_amenazas'),	
-			'g_suplantacion'=>$app->request()->post('g_suplantacion'),
-			'g_fumar'=>$app->request()->post('g_fumar'),
-			'g_ofensas'=>$app->request()->post('g_ofensas'),	
-			'g_humillaciones'=>$app->request()->post('g_humillaciones'),	
-			'g_deterioro'=>$app->request()->post('g_deterioro'),
-			'g_impedimento'=>$app->request()->post('g_impedimento')
-		);
-		
+		$valores=Utilidades::getDatosFormulario($app);
 		AccesoDatos::guardar($app->db,"partes",$valores);
 		$app->redirect('/partes');
 		
