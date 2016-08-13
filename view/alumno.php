@@ -76,10 +76,10 @@
 		<div class="form-group col-md-10"></div>
 		
 		<div class="form-group col-md-1">
-			<button type="submit" class="btn btn-success">Aceptar</button><a href="/alumnos/aceptar"></a>
+			<button type="submit" class="btn btn-success">Aceptar</button>
 		</div>
         <div class="form-group col-md-1">
-			<button type="submit" class="btn btn-danger">Cancelar</button><a href="/alumnos/cancelar"></a>
+			<a href="/alumnos/cancelar" class="btn btn-danger">Cancelar</a>
 		</div>
 		
 		<!-- ANOTACIONES DEL ALUMNO -->

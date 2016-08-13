@@ -121,10 +121,9 @@
  			
  			
  			<div class="col-md-4">
- 		<!--<button type="submit" class="btn btn-danger">Cancelar</button>--><a class="btn btn-danger" href="/partes/cancelar">Cancelar</a>
- 		<button type="submit" class="btn btn-primary" name="borrador" value="1">Guardar</button>
- 		<button type="submit" class="btn btn-success" name="borrador" value="0">Aceptar</button>
-            
+				<a class="btn btn-danger" href="/partes/cancelar">Cancelar</a>
+				<button type="submit" class="btn btn-primary" name="borrador" value="1">Guardar</button>
+				<button type="submit" class="btn btn-success" name="borrador" value="0">Aceptar</button>
             </div>
           </div>
          </form>
