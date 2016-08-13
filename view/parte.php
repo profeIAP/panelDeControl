@@ -142,6 +142,7 @@
 				autoclose: true,
 				container: '.input-group' 
 			});
+			
  			$( "#alumnoaImplicado" ).autocomplete({
 			  source: "/alumnos/buscar/nombre",
 			  minLength: 3,
@@ -152,11 +153,9 @@
 					  dataType:'json',
 					  data:{ valor:ui.item.id}
 				  }).done(function(respuesta){
-					  
-					  //$("#alumnoaImplicado").val(respuesta.nombre);
-					  $("#id_alumno").val(respuesta.id);
-					  $("#cursoygrupo").val(respuesta.grupo);
-					  $("#tutor").val(respuesta.tutor);
+					  $("#id_alumno").val(respuesta.ID);
+					  $("#cursoygrupo").val(respuesta.CURSO);
+					  $("#tutor").val(respuesta.TUTOR);
 				  });  
 			  }
 			});

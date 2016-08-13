@@ -199,6 +199,8 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 	// [http://goo.gl/52g6F]  Documentación Autocomplete de jQuery UI 
 	// [http://goo.gl/Mp7LSN] Ejemplo de uso
 	
+	// DUDA son métodos utilizados en el formulario del parte
+	
 	$app->group('/buscar', function () use ($app) {
 		$app->get('/nombre', function() use ($app){
 			global $twig;
@@ -215,8 +217,13 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		
 		$app->post('/id', function() use ($app){
 			global $twig;
-			// TODO acceder a la BD para traer los datos correctos
-			$miArray = array("id"=>325,"alumnoaImplicado"=>"el alumno más macarra", "grupo"=>"2ºESOA", "tutor"=>"nombre del tutor");
+			
+			$id=$app->request()->post('valor');
+			
+			$miArray=AccesoDatos::recuperar($app->db, "partedatosalumno",$id);
+			
+			// TODO cargar la asignatura más probable (la más usada por ese profesor para el grupo del alumno)
+			
             echo json_encode($miArray);
 			
 		}); 
@@ -338,8 +345,6 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 	$app->post('/guardar', function() use ($app){
 	
 		global $twig;
-		
-		// Recogemos datos formulario de contacto
 		
 		$valores=Utilidades::getDatosFormulario($app);
 		AccesoDatos::guardar($app->db,"partes",$valores);
