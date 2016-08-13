@@ -75,7 +75,7 @@
 			<label><input type="checkbox" value=""> Perturbar el desarrollo de las clases</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Dificultar el estudio de los compañeros</label>
+			<label><input type="checkbox" name="L_DIFICULTAR" value="1"> Dificultar el estudio de los compañeros</label>
 		</div>
 		<div class="form-group col-md-12">
 			<label><input type="checkbox" value=""> Faltar a clase injustificadamente</label>
@@ -84,7 +84,7 @@
 			<label><input type="checkbox" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
 		</div>
 		<div class="form-group col-md-12">
-			<label><input type="checkbox" value=""> Utilizar el teléfono móvil en clase</label>
+			<label><input type="checkbox" name="L_MOVIL" value="1"> Utilizar el teléfono móvil en clase</label>
 		</div>
 		<div class="form-group col-md-12">
 			<label><input type="checkbox" value=""> Usar gorras, gafas de sol o reprod. de música en clase</label>
@@ -121,9 +121,10 @@
  			
  			
  			<div class="col-md-4">
- 		<button type="submit" class="btn btn-danger">Cancelar</button>
- 		<button type="submit" class="btn btn-primary">Guardar</button>
- 		<button type="submit" class="btn btn-success">Aceptar</button>
+ 		<button type="submit" class="btn btn-danger">Cancelar</button><a href="/partes/cancelar"></a>
+ 		<!-- TODO gestionar cómo se guarda un borrador -->
+ 		<button type="submit" class="btn btn-primary">Guardar</button><a href="/partes/borrador"></a>
+ 		<button type="submit" class="btn btn-success">Aceptar</button><a href="/partes/guardar"></a>
             
             </div>
           </div>

@@ -209,7 +209,7 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 			
 			$nombre=$app->request()->get('term');
 			
-			$statement=$pdo->prepare("SELECT nombre value, id FROM alumno where nombre like '%$nombre%'");
+			$statement=$pdo->prepare("SELECT nombre || ' (' || curso || ')' value, id FROM alumno where nombre like '%$nombre%'");
 			$statement->execute();
 			
 			echo json_encode($statement->fetchAll(PDO::FETCH_ASSOC));
@@ -340,6 +340,17 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 			
 		$valores=array('comentarios'=>$r);
 		echo $twig->render('partes.php',$valores);  
+	}); 
+	
+	$app->get('/cancelar', function() use ($app){
+		global $twig;
+		$app->redirect('/partes');
+	}); 
+	
+	$app->get('/borrador', function() use ($app){
+		global $twig;
+		//$app->redirect('/partes');
+		echo "Deberíamos gestionar el borrador";
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
