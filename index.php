@@ -114,12 +114,12 @@ $app->get('/hash','Login::forzarLogin',function() use ($app){
 	}
 
 });  
-
+	
 $app->group('/auth','Login::forzarLogin', function () use ($app) {
-	$app->post('/aceptar', function () use ($app){
+	$app->get('/aceptar', function () use ($app){
 		global $twig;
 		
-		$authCode =trim($app->request()->post('codigo'));
+		$authCode =trim($app->request()->get('code'));
 		
 		if(! is_null(Google::getClient($authCode)))
 			echo $twig->render('auth_ok.php');

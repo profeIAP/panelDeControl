@@ -18,8 +18,10 @@
 <form method="post" action="/auth/aceptar" role="form">
 		
 		<div class="form-group col-md-12">
-		  Visite la siguiente url para obtener la <a href="{{url}}" target="_blank">autorización de acceso</a>
+		  Para poder enviar notificaciones/avisos por correo electrónico y generar informes en Google Drive se requiere su consentimiento previo. <br><br>Visite la siguiente url para obtener la <a href="{{url}}" target="_blank">autorización de acceso</a>
 		</div>
+		
+		<!--
 		<div class="form-group col-md-12">
 			<label for="nombre">Código de comprobación:</label>
 			<input type="text" class="form-control" id="codigo" name="codigo" value="">
@@ -32,6 +34,7 @@
         <div class="form-group col-md-1">
 			<a type="button" class="btn btn-danger" href="/auth/cancelar">Cancelar</a>
 		</div>
+		-->
 
 </form>
 

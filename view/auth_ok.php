@@ -15,11 +15,17 @@
 	<p class="lead">Se necesita su autorización para acceder a su cuenta de Google</p>
 </div>
 
-		<div class="form-group col-md-12">
-		  <strong>Gracias</strong> por proporcionarnos acceso a los servicios de Google.
-		</div>
+<div class="form-group col-md-12">
+  <strong>Gracias</strong> por proporcionarnos acceso a los servicios de Google.
+</div>
 
-</form>
+<script type="text/javascript">
 
+// Cerramos la ventana que solicitaba la autorización
+
+window.opener.close();
+window.history.replaceState('Anterior', 'Title', window.location.pathname);
+
+</script>
 {% endblock cuerpo %}
 
