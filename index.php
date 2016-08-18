@@ -698,11 +698,7 @@ $app->group('/email', function () use ($app) {
 });
 
 $app->get('/anotalog','Login::forzarLogin', function() use ($app){
-	    global $twig;
-	    // TODO apuntar al directorio raíz (este distingue la ruta si estamos en index.php y en alguna clase de controller/*)
-	    $dir=__DIR__.'/logs';
-		$logger = new Katzgrau\KLogger\Logger($dir);
-	$logger->debug('HOLA');
+	    Utilidades::getLogger()->debug('prueba');
 });	
 	
 $app->get('/crearTabla','Login::forzarLogin', function() use ($app){

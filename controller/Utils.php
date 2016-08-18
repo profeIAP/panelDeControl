@@ -158,20 +158,22 @@ class Utilidades {
 	}
 	
 	public static function registrarAccion(){
-		// TODO incluir anotación en la BD
 
 		$app = \Slim\Slim::getInstance();
 		$pdo=$app->db;
 
-	$valores=array(
-	'url'=>$app->request->getPathInfo());
+		$valores=array(
+			'url'=>$app->request->getPathInfo());
 			
-	 $sql = "INSERT INTO accion (ruta) VALUES (:url)";
-			$pdo=$app->db;
-			$q = $pdo->prepare($sql);
-			$q->execute($valores);
-		
+	 	$sql = "INSERT INTO accion (ruta) VALUES (:url)";
+		$pdo=$app->db;
+		$q = $pdo->prepare($sql);
+		$q->execute($valores);
+	}
 	
+	public static function getLogger(){
+		$dir=getcwd().'/logs';
+		return new Katzgrau\KLogger\Logger($dir);
 	}
 	
 }

@@ -190,6 +190,10 @@ class GoogleDrive {
 	public static function prueba(){
 		self::subirFichero('fichero-subido.txt', '/tmp/prueba.txt');
 	}
+	
+	// ¿¡¿ No existe API para Google Docs ?!?
+	// [http://goo.gl/JSm4Sv] Cómo llamar a un Google Apps Script desde PHP
+	// [https://goo.gl/hT35TS] ReplaceText usando Google Apps Script
 }
 
 

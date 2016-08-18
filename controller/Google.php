@@ -42,6 +42,7 @@ class Google {
 	  $credentialsPath = self::expandHomeDirectory(CREDENTIALS_PATH);
 	  if (file_exists($credentialsPath)) {
 		$accessToken = file_get_contents($credentialsPath);
+		Utilidades::getLogger()->debug('Recuperamos el fichero de credenciales');
 	  } else
 	  {
 		
@@ -51,6 +52,8 @@ class Google {
 			
 			$app = \Slim\Slim::getInstance();
 			global $twig;
+			
+			Utilidades::getLogger()->debug('Solicitamos permisos para acceder a la cuenta de Google');
 			
 			$authUrl = $client->createAuthUrl();
 			
@@ -66,7 +69,7 @@ class Google {
 			if(!file_exists(dirname($credentialsPath))) {
 			  mkdir(dirname($credentialsPath), 0700, true);
 			}
-
+			Utilidades::getLogger()->debug('Anotamos el token de acceso');
 			file_put_contents($credentialsPath, json_encode($accessToken,JSON_PRETTY_PRINT));
 		}
 	}
@@ -75,6 +78,7 @@ class Google {
 
 		// Refresh the token if it's expired.
 		if ($client->isAccessTokenExpired()) {
+			Utilidades::getLogger()->debug('Actualizamos el token de acceso');
 			$client->refreshToken($client->getRefreshToken());
 			file_put_contents($credentialsPath, json_encode($client->getAccessToken(),JSON_PRETTY_PRINT));
 		}
