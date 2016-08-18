@@ -7,6 +7,7 @@
     
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css">	
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css" media="print">
     
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/responsive.css">
@@ -53,7 +54,7 @@
         <!-- ===========================
         HEADER
         ============================ -->
-        <div id="header" class="row">
+        <div id="header" class="row hidden-print" >
             <div class="col-sm-2">
                 <a href="/"><img class="propic" src="/img/logo.png" alt=""></a>
             </div>
@@ -114,7 +115,7 @@
             </div><!-- header right end-->
         </div><!-- header end-->
 
-        <hr class="firsthr">
+        <hr class="firsthr hidden-print">
 
         <!-- ===========================
         BODY LEFT PART
@@ -139,7 +140,7 @@
         <!-- ===========================
         SIDEBAR
         =========================== -->
-        <div class="col-md-3 mainright">
+        <div class="col-md-3 mainright hidden-print">
             <div class="row">
                 
                 <div class="col-sm-13 col-md-10 ">

@@ -6,7 +6,7 @@
 
 <div class="jumbotron">
 	<h1>Parte de incidencias</h1>
-	<p class="lead">Registre el problema</p>
+	<p class="lead hidden-print">Registre el problema</p>
 </div>
 
 <form method="post" action="/partes/guardar" role="form">
@@ -139,7 +139,7 @@
         
 		
 		
-		<div class="row">
+		<div class="row hidden-print">
              
              <div class="col-md-8">
  			</div>
