@@ -114,14 +114,14 @@ $app->get('/hash','Login::forzarLogin',function() use ($app){
 	}
 
 });  
-	
+
 $app->group('/auth','Login::forzarLogin', function () use ($app) {
 	$app->get('/aceptar', function () use ($app){
 		global $twig;
 		
-		$authCode =trim($app->request()->get('code'));
+		$campos=Utilidades::getDatosFormulario($app);
 		
-		if(! is_null(Google::getClient($authCode)))
+		if(! array_key_exists('error',$campos) && ! is_null(Google::getClient($campos['code'])))
 			echo $twig->render('auth_ok.php');
 		else
 			echo $twig->render('auth_nok.php');

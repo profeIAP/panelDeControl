@@ -20,12 +20,7 @@
 </div>
 
 <script type="text/javascript">
-
-// Cerramos la ventana que solicitaba la autorización
-
-window.opener.close();
-window.history.replaceState('Anterior', 'Title', window.location.pathname);
-
+	window.history.replaceState('Anterior', 'Title', window.location.pathname);
 </script>
 {% endblock cuerpo %}
 

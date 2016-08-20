@@ -36,6 +36,9 @@ class Google {
 	  $client->setScopes(SCOPES);
 	  $client->setAuthConfigFile(CLIENT_SECRET_FILE);
 	  $client->setAccessType('offline');
+	  // [http://goo.gl/BgPqgZ] Obligamos a mostrar la solicitud de permisos para garantizar el refresh_token
+	  $client->setApprovalPrompt('force'); 
+	  // Añade nuevos permisos de forma progresiva a los que ya se tenían
 	  $client->setIncludeGrantedScopes(true);
 
 	  // Load previously authorized credentials from a file.
@@ -63,7 +66,6 @@ class Google {
 		}else{
 			// Exchange authorization code for an access token.
 			$accessToken = $client->authenticate($authCode);
-			//print_r($accessToken);
 			
 			// Store the credentials to disk.
 			if(!file_exists(dirname($credentialsPath))) {
@@ -76,10 +78,11 @@ class Google {
 	  
 	  $client->setAccessToken($accessToken);
 
-		// Refresh the token if it's expired.
+		// [https://goo.gl/aqD7GG] Refresh the token if it's expired. 
+		
 		if ($client->isAccessTokenExpired()) {
 			Utilidades::getLogger()->debug('Actualizamos el token de acceso');
-			$client->refreshToken($client->getRefreshToken());
+			$client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
 			file_put_contents($credentialsPath, json_encode($client->getAccessToken(),JSON_PRETTY_PRINT));
 		}
 		
