@@ -40,13 +40,18 @@ class Google {
 	  $client->setApprovalPrompt('force'); 
 	  // Añade nuevos permisos de forma progresiva a los que ya se tenían
 	  $client->setIncludeGrantedScopes(true);
-
+	  
+	  // IDEA el parámetro 'State' permite continuar por donde íbamos 
+	  // (permite que anotemos la url que fue invocada) en nuestra 
+	  // aplicación tras la autorización [https://goo.gl/oDahl]
+	  
 	  // Load previously authorized credentials from a file.
 	  $credentialsPath = self::expandHomeDirectory(CREDENTIALS_PATH);
 	  if (file_exists($credentialsPath)) {
 		$accessToken = file_get_contents($credentialsPath);
 		Utilidades::getLogger()->debug('Recuperamos el fichero de credenciales');
-	  } else
+	  } 
+	  else
 	  {
 		
 		if (!isset($authCode)){
@@ -76,17 +81,27 @@ class Google {
 		}
 	}
 	  
-	  $client->setAccessToken($accessToken);
+	$client->setAccessToken($accessToken);
 
-		// [https://goo.gl/aqD7GG] Refresh the token if it's expired. 
+	if ($client->isAccessTokenExpired()) {
 		
-		if ($client->isAccessTokenExpired()) {
-			Utilidades::getLogger()->debug('Actualizamos el token de acceso');
-			$client->fetchAccessTokenWithRefreshToken($client->getRefreshToken());
-			file_put_contents($credentialsPath, json_encode($client->getAccessToken(),JSON_PRETTY_PRINT));
+		Utilidades::getLogger()->debug('Actualizamos el token de acceso');
+		
+		$refresh=$client->getRefreshToken();
+		$client->fetchAccessTokenWithRefreshToken($refresh);
+		
+		$token=$client->getAccessToken();
+		
+		// Si el nuevo token no contiene 'refresh_token' mantenemos el que ya teníamos
+		if(! array_key_exists("refresh_token",$token)){
+			$token['refresh_token']=$refresh;
+			Utilidades::getLogger()->debug('Incluimos el "refresh_token" que teníamos');
 		}
-		
-		return $client;
+			
+		file_put_contents($credentialsPath, json_encode($token,JSON_PRETTY_PRINT));
+	}
+
+	return $client;
 	}
 
 	/**

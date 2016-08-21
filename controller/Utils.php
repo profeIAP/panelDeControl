@@ -115,7 +115,7 @@ class Utilidades {
 	// Añade al String generado, las etiquetas "<pre>" de HTML para que se muestre correctamente en pantalla
 	
 	public static function prettyPrintJSON($json){
-		return "<PRE>".json_encode($json,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."</PRE>"
+		return "<PRE>".json_encode($json,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."</PRE>";
 	}
 	
 	// Intenta rellenar la lista de valores que espera la BD escribiendo los campos
