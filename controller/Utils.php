@@ -104,11 +104,18 @@ class Utilidades {
 		$valores_sobran=array_diff( $valores_form,$valores_bd);
 		
 		$rsdo="<br>Faltan:";
-		$rsdo=$rsdo."<PRE>".json_encode($valores_faltan,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."</PRE>";
+		$rsdo=$rsdo.self::prettyPrintJSON($valores_faltan);
 		$rsdo=$rsdo."<br>Sobran:";
-		$rsdo=$rsdo."<PRE>".json_encode($valores_sobran,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."</PRE>";	
+		$rsdo=$rsdo.self::prettyPrintJSON($valores_sobran); 
 	
 		return $rsdo;
+	}
+	
+	// Formatea un objeto JSON para que resulte más sencillo su lectura
+	// Añade al String generado, las etiquetas "<pre>" de HTML para que se muestre correctamente en pantalla
+	
+	public static function prettyPrintJSON($json){
+		return "<PRE>".json_encode($json,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."</PRE>"
 	}
 	
 	// Intenta rellenar la lista de valores que espera la BD escribiendo los campos
