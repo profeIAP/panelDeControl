@@ -24,7 +24,9 @@ class GoogleDrive {
 
 	}
 	
-	public static function setContenidoCeldas(){
+	// P.e. '1ovWPiLh3RYUzwxhYP1z4NdRIAeWH_R42PijHGs3u-iU','B3:D4'
+	
+	public static function setContenidoCeldas($id_sheet, $rango){
 		
 		$client = Google::getClient(null);
 		
@@ -40,12 +42,10 @@ class GoogleDrive {
 		$conf = ["valueInputOption" => "RAW"];
 
 		// Update the spreadsheet
-		$service->spreadsheets_values->update('1ovWPiLh3RYUzwxhYP1z4NdRIAeWH_R42PijHGs3u-iU','B3:D4', $valueRange, $conf);
+		$service->spreadsheets_values->update($id_sheet, $rango, $valueRange, $conf);
 
 	}
 	
-	
-		
 	// Cambiamos el nombre de una hoja de nuestro libro
 	// Aprovechamos para aprender cómo hacerlo "por lotes"
 	
@@ -187,8 +187,59 @@ class GoogleDrive {
 		
 	}
 	
+	
+	/*
+	 * Añade una fila (row) con el contenido indicado en $newValues en cada una de sus celdas
+	 */
+	
+	// IDEA crear método que permita añadir una colección de filas 
+	// (actualmente nos basta con una de ahí que no se implemente)
+	
+	// IDEA poder indicar la columna de inicio como se hace en setContenidoCeldas
+	// Actualmente se va a usar con las hojas de cálculo de los formularios de Drive
+	// por lo que sobra empezando desde la primera columna
+	
+	public static function addContenidoCeldas($id_libro, $id_hoja, $newValues = []){
+
+		$client = Google::getClient(null);
+		$service = new Google_Service_Sheets($client);
+		
+		$requests = array();
+		
+		$values = [];
+		foreach ($newValues AS $d) {
+			$cellData = new Google_Service_Sheets_CellData();
+			$value = new Google_Service_Sheets_ExtendedValue();
+			if(is_string($d))
+				$value->setStringValue($d);
+			else
+				$value->setNumberValue($d);
+				
+			$cellData->setUserEnteredValue($value);
+			$values[] = $cellData;
+		}
+		
+		// Build the RowData
+		$rowData = new Google_Service_Sheets_RowData();
+		$rowData->setValues($values);
+		// Prepare the request
+		$append_request = new Google_Service_Sheets_AppendCellsRequest();
+		$append_request->setSheetId($id_hoja);
+		$append_request->setRows($rowData);
+		$append_request->setFields('userEnteredValue');
+		// Set the request
+		$request = new Google_Service_Sheets_Request();
+		$request->setAppendCells($append_request);
+		// Add the request to the requests array
+		$requests = array();
+		$requests[] = $request;
+
+		$batchUpdateRequest = new Google_Service_Sheets_BatchUpdateSpreadsheetRequest(array('requests' => $requests));
+		$response = $service->spreadsheets->batchUpdate($id_libro, $batchUpdateRequest);
+	}
+		
 	public static function prueba(){
-		self::subirFichero('fichero-subido.txt', '/tmp/prueba.txt');
+		self::addContenidoCeldas("1ovWPiLh3RYUzwxhYP1z4NdRIAeWH_R42PijHGs3u-iU","0",[1234,4321,'salu2']);
 	}
 	
 	// ¿¡¿ No existe API para Google Docs ?!?
