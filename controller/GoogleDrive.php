@@ -237,10 +237,6 @@ class GoogleDrive {
 		$batchUpdateRequest = new Google_Service_Sheets_BatchUpdateSpreadsheetRequest(array('requests' => $requests));
 		$response = $service->spreadsheets->batchUpdate($id_libro, $batchUpdateRequest);
 	}
-		
-	public static function prueba(){
-		self::addContenidoCeldas("1ovWPiLh3RYUzwxhYP1z4NdRIAeWH_R42PijHGs3u-iU","0",[1234,4321,'salu2']);
-	}
 	
 	// ¿¡¿ No existe API para Google Docs ?!?
 	// [http://goo.gl/JSm4Sv] Cómo llamar a un Google Apps Script desde PHP

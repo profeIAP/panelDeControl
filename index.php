@@ -48,6 +48,7 @@ require_once	'controller/Logger.php';
 require_once	'controller/Listado.php';
 require_once	'controller/AccesoDatos.php';
 require_once	'controller/PermisosACL.php';
+require_once	'controller/Parte.php';
 
 session_cache_limiter(false);	
 session_start();
@@ -730,7 +731,7 @@ $app->get('/validar','Login::forzarLogin', function() use ($app){
 
 $app->get('/drive','Login::forzarLogin', function() use ($app){
 	global $twig;
-	GoogleDrive::prueba();
+	ParteIncidencia::generarCarta('alumno díscolo',['Correr por los pasillos.','Golpear a un compañero en la huida.']);
 	
 	$valores['message']='Acceso a Drive correcto';
 	echo $twig->render('inicio.php',$valores);
