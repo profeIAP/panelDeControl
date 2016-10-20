@@ -1,5 +1,6 @@
 client_secret.json
 model/alumnos_*.csv
+composer.lock
 *~
 logs/
 /vendor/*
