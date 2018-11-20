@@ -52,6 +52,8 @@ require_once	'controller/Parte.php';
 
 session_cache_limiter(false);	
 session_start();
+
+date_default_timezone_set('Europe/Madrid');
 header('Content-type: text/html; charset=utf-8');
 
 use Respect\Validation\Validator as v;
