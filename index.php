@@ -149,6 +149,11 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 			echo $twig->render('anotacion.php'); 
 		});
 		
+		$app->get('/cancelar', function() use ($app){
+			global $twig;
+			$app->redirect('/'); 
+		});
+		
 		$app->post('/guardar', function() use ($app){
 	
 			global $twig;
@@ -467,7 +472,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 	$app->get('/crear', function() use ($app){
 		global $twig;
 		// TODO indicar la vista a renderizar (aun no existe el formulario)
-		echo $twig->render('');  
+		echo $twig->render('usuario.php');  
 	}); 
 });
 
