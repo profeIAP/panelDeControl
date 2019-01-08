@@ -118,9 +118,6 @@ $app->get('/hash','Login::forzarLogin',function() use ($app){
 
 });  
 
-// Este comentario es para MC
-// por que estamos probando GIT
-
 $app->group('/auth','Login::forzarLogin', function () use ($app) {
 	$app->get('/aceptar', function () use ($app){
 		global $twig;
