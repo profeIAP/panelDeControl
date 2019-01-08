@@ -118,6 +118,8 @@ $app->get('/hash','Login::forzarLogin',function() use ($app){
 
 });  
 
+// Este comentario es para MC
+
 $app->group('/auth','Login::forzarLogin', function () use ($app) {
 	$app->get('/aceptar', function () use ($app){
 		global $twig;
