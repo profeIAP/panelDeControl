@@ -136,6 +136,8 @@ $app->group('/auth','Login::forzarLogin', function () use ($app) {
 	});
 });
 
+// Vivan los alumnos de 1bachB
+
 $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 	
 	$app->group('/anotaciones', function () use ($app) {
