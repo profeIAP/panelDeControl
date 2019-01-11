@@ -134,6 +134,8 @@ $app->group('/auth','Login::forzarLogin', function () use ($app) {
 	});
 });
 
+
+
 $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 	
 	$app->group('/anotaciones', function () use ($app) {
@@ -490,6 +492,17 @@ $app->get('/logout', function () use ($app) {
 		Login::forzarLogOut();
 });
 
+
+$app->group('/usuarios', function () use ($app) {
+	
+	$app->get('/recuperar', function() use ($app){
+	    Utilidades::getLogger()->debug('Debemos implementar cómo recuperar la contraseña de un usuario.');
+   
+});
+	
+});
+
+
 $app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
@@ -665,6 +678,7 @@ function upload_file(){
 	
 	return $target_file;
 }  
+
 
 $app->group('/email', function () use ($app) {
 	
