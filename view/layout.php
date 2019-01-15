@@ -158,7 +158,7 @@
 							  <li>
 								<div class="link">Alumnos<i class="fa fa-chevron-down"></i></div>
 								<ul class="submenu">
-									<li><a href="/alumnos/crear">Crear</a></li>
+									<!--<li><a href="/alumnos/crear">Crear</a></li>-->
 									<li><a href="/alumnos">Listar</a></li>
 									{% if acl.isAllowed(login.getUsuario().getRol(), '/alumnos/importar','mostrar') %}<li><a href="/alumnos/importar">Importar</a></li>{% endif %}
 								</ul>
@@ -171,12 +171,12 @@
 								</ul>
 								</li>
 						  
-						  <li>
+						 <!-- <li>
 							<div class="link">Notificaciones<i class="fa fa-chevron-down"></i></div>
 							<ul class="submenu">
 							  <li><a href="/notificaciones">Listar</a></li>
 							</ul>
-						  </li>
+						  </li>-->
 						  <li>
 							<div class="link">Partes<i class="fa fa-chevron-down"></i></div>
 							<ul class="submenu">
