@@ -490,6 +490,19 @@ $app->get('/logout', function () use ($app) {
 		Login::forzarLogOut();
 });
 
+
+
+$app->group('/tarea', function () use ($app) {
+	$app->get('/isa', function() use ($app){
+		Utilidades::getLogger()->debug('ximooo');
+	}); 
+	
+});
+	
+	
+	
+
+
 $app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
