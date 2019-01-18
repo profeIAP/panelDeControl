@@ -52,6 +52,8 @@ require_once	'controller/Parte.php';
 
 session_cache_limiter(false);	
 session_start();
+
+date_default_timezone_set('Europe/Madrid');
 header('Content-type: text/html; charset=utf-8');
 
 use Respect\Validation\Validator as v;
@@ -134,6 +136,7 @@ $app->group('/auth','Login::forzarLogin', function () use ($app) {
 	});
 });
 
+
 $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 	
 	$app->group('/anotaciones', function () use ($app) {
@@ -145,6 +148,11 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		$app->get('/crear', function() use ($app){
 			global $twig;
 			echo $twig->render('anotacion.php'); 
+		});
+		
+		$app->get('/cancelar', function() use ($app){
+			global $twig;
+			$app->redirect('/'); 
 		});
 		
 		$app->post('/guardar', function() use ($app){
@@ -465,7 +473,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 	$app->get('/crear', function() use ($app){
 		global $twig;
 		// TODO indicar la vista a renderizar (aun no existe el formulario)
-		echo $twig->render('');  
+		echo $twig->render('usuario.php');  
 	}); 
 });
 
@@ -489,19 +497,15 @@ $app->get('/about','Login::forzarLogin', function() use ($app){
 $app->get('/logout', function () use ($app) {
 		Login::forzarLogOut();
 });
-
-
-
-$app->group('/tarea', function () use ($app) {
-	$app->get('/isa', function() use ($app){
-		Utilidades::getLogger()->debug('ximooo');
-	}); 
 	
+$app->group('/usuarios', function () use ($app) {
+	
+	$app->get('/recuperar', function() use ($app){
+	    Utilidades::getLogger()->debug('Debemos implementar cómo recuperar la contraseña de un usuario.');
+   
 });
 	
-	
-	
-
+});
 
 $app->group('/login', function () use ($app) {
 	
@@ -678,6 +682,7 @@ function upload_file(){
 	
 	return $target_file;
 }  
+
 
 $app->group('/email', function () use ($app) {
 	
