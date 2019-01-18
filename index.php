@@ -490,7 +490,7 @@ $app->get('/contartabla','Login::forzarLogin', function() use ($app){
 });
 
 $app->get('/about','Login::forzarLogin', function() use ($app){
-	global $twig;
+1	global $twig;
 	echo $twig->render('about.php');  
 }); 
 
@@ -502,8 +502,7 @@ $app->group('/usuarios', function () use ($app) {
 	
 	$app->get('/recuperar', function() use ($app){
 	    Utilidades::getLogger()->debug('Debemos implementar cómo recuperar la contraseña de un usuario.');
-   
-});
+	});
 	
 });
 
