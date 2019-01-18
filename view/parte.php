@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="form-group col-md-8">
 				<label for="tutor">Tutor/a:</label>
-				<input type="text" class="form-control" id="tutor" name="tutor" value="">
+				<input type="text" class="form-control" id="tutor" name="tutor" value readonly="readonly" >
 
 			</div>
 
