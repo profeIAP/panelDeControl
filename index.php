@@ -490,7 +490,7 @@ $app->get('/contartabla','Login::forzarLogin', function() use ($app){
 });
 
 $app->get('/about','Login::forzarLogin', function() use ($app){
-1	global $twig;
+	global $twig;
 	echo $twig->render('about.php');  
 }); 
 
