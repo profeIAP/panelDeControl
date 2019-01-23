@@ -60,7 +60,7 @@
 
 			<div class="form-group col-md-6">
 				<label for="asignatura">Asignatura:</label>
-				<input type="text" class="form-control" id="asignatura" name="asignatura" value="">
+				<input type="text" class="form-control" id="asignatura" name="asignatura" value readonly="readonly">
 			</div>
 		</div>
 		<div class="row">

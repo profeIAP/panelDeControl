@@ -534,16 +534,14 @@ $app->get('/about','Login::forzarLogin', function() use ($app){
 $app->get('/logout', function () use ($app) {
 		Login::forzarLogOut();
 });
-
+	
 $app->group('/usuarios', function () use ($app) {
 	
 	$app->get('/recuperar', function() use ($app){
 	    Utilidades::getLogger()->debug('Debemos implementar cómo recuperar la contraseña de un usuario.');
-   
-});
+	});
 	
 });
-
 
 $app->group('/login', function () use ($app) {
 	
@@ -792,6 +790,14 @@ $app->get('/drive','Login::forzarLogin', function() use ($app){
 	$valores['message']='Acceso a Drive correcto';
 	echo $twig->render('inicio.php',$valores);
 				
+});
+
+$app->group('/test', function () use ($app) {
+	
+	$app->get('/327','Login::forzarLogin', function() use ($app){
+		global $twig;
+		echo $twig->render('malandrin-hash.php'); 
+	});
 });
 
 // Ponemos en marcha el router
