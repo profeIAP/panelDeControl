@@ -794,9 +794,9 @@ $app->get('/drive','Login::forzarLogin', function() use ($app){
 
 $app->group('/test', function () use ($app) {
 	
-	$app->get('/327','Login::forzarLogin', function() use ($app){
+	$app->get('/326','Login::forzarLogin', function() use ($app){
 		global $twig;
-		echo $twig->render('malandrin-hash.php'); 
+		echo $twig->render('malandrin.php'); 
 	});
 });
 
