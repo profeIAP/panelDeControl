@@ -23,7 +23,6 @@
 		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
 		
 								
-			
 	<div class="form-group col-md-2">
 				<label for="hora">Hora:</label>
 				 <select class="form-control" id="hora" name="hora">
@@ -36,7 +35,8 @@
 				   <option>Sexta</option>
 				 </select>
 			</div>
-		</div>
+	
+	
 		                                <div class="form-group col-md-12">
 			                                <label for="alumnoaImplicado">Alumno/a</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" value="">
