@@ -81,8 +81,48 @@ $app->container->singleton('acl', function () {
     return new PermisosACL($app->db);
 });
 
+<<<<<<< HEAD
+=======
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
+$twig->addGlobal('utils', new Utilidades()); // Para poder encriptar urls (entre otras funcionalidades)
+
+$app->hook('slim.before.router', function () use ($app) {
+	
+	global $twig;
+	
+	$hash=$app->request()->get('hash');
+	
+	$uri=Utilidades::getCurrentURI();
+	$urls_exentas=array(
+		"/auth/aceptar",
+		"/auth/aceptar?error=access_denied"
+	);
+	
+	// Si hay parámetros en la URL deben proporcionarnos un 'hash'
+>>>>>>> b892729690639749b01ec41dccddba34642a42ca
+	
+	if(!isset($hash) && count($_GET)>0 && !in_array($uri, $urls_exentas))
+	{
+		$valores['uri']=Utilidades::getCurrentURI(true);
+		echo $twig->render('malandrin-hash.php',$valores);
+		$app->stop();
+	}
+<<<<<<< HEAD
+=======
+	
+	// Si hay 'hash' comprobamos que sea válido
+	
+	if(isset($hash) && !Utilidades::validarURL($app->request()))
+	{
+		// IDEA mostrar aviso indicando que no debería estar toqueteando urls
+		// IDEA anotar el intento en los logs y/o notificar al administrador de intentos de "sabotaje"
+		
+		echo $twig->render('malandrin.php');
+		$app->stop();
+	}
+});
+>>>>>>> b892729690639749b01ec41dccddba34642a42ca
 
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
@@ -118,7 +158,6 @@ $app->get('/hash','Login::forzarLogin',function() use ($app){
 
 });  
 
-
 $app->group('/auth','Login::forzarLogin', function () use ($app) {
 	$app->get('/aceptar', function () use ($app){
 		global $twig;
@@ -136,6 +175,7 @@ $app->group('/auth','Login::forzarLogin', function () use ($app) {
 		echo $twig->render('auth_nok.php');
 	});
 });
+
 
 $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 	
@@ -431,7 +471,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('usuario'=>$r);
-		echo $twig->render('alumno.php',$valores);  	
+		echo $twig->render('usuario.php',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
@@ -496,6 +536,14 @@ $app->get('/about','Login::forzarLogin', function() use ($app){
 
 $app->get('/logout', function () use ($app) {
 		Login::forzarLogOut();
+});
+	
+$app->group('/usuarios', function () use ($app) {
+	
+	$app->get('/recuperar', function() use ($app){
+	    Utilidades::getLogger()->debug('Debemos implementar cómo recuperar la contraseña de un usuario.');
+	});
+	
 });
 
 
@@ -689,6 +737,7 @@ function upload_file(){
 	return $target_file;
 }  
 
+
 $app->group('/email', function () use ($app) {
 	
 	$app->get('/','Login::forzarLogin', function() use ($app){
@@ -759,6 +808,14 @@ $app->get('/drive','Login::forzarLogin', function() use ($app){
 	$valores['message']='Acceso a Drive correcto';
 	echo $twig->render('inicio.php',$valores);
 				
+});
+
+$app->group('/test', function () use ($app) {
+	
+	$app->get('/326','Login::forzarLogin', function() use ($app){
+		global $twig;
+		echo $twig->render('malandrin.php'); 
+	});
 });
 
 // Ponemos en marcha el router
