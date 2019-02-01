@@ -23,16 +23,20 @@
 		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
 		
 								
-			
-		
-		                                   <div class="form-group col-md-6">
-											<label for="fecha">Hora:</label>
-			<input type="text" class="form-control" id="hora" name="hora" size="12" value="">
-		</div>
-										<div class="form-group col-md-6">
-											<label for="fecha">Fecha:</label>
-											<input type="text" class="form-control campofecha" id="fecha" name="fecha" size="12" value="">
-										</div>
+	<div class="form-group col-md-2">
+				<label for="hora">Hora:</label>
+				 <select class="form-control" id="hora" name="hora">
+				  <option>Primera</option>
+				   <option>Segunda</option>
+				   <option>Tercera</option>
+				   <option>Recreo</option>
+				   <option>Cuarta</option>
+				   <option>Quinta</option>
+				   <option>Sexta</option>
+				 </select>
+			</div>
+	
+	
 		                                <div class="form-group col-md-12">
 			                                <label for="alumnoaImplicado">Alumno/a</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" value="">

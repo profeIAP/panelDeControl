@@ -27,7 +27,7 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
+current_page=0
 FILE_NAME_0=18539;PHP;0;EUTF-8;1;1;0;%2Fhome%2Fmaricarmeng%2Fdesarrollo%2FpanelDeControl%2Findex.php;0;4
 FILE_NAME_1=1590;PHP;0;EUTF-8;1;1;0;%2Fhome%2Fmaricarmeng%2Fdesarrollo%2FpanelDeControl%2Fview%2Fparte.php;0;4
 
