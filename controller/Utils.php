@@ -23,6 +23,13 @@ class Utilidades {
 		}
 	}
 	
+	// Otro método mock
+	// Implementar algún día
+	
+	public static function protegerURL($url){
+		return $url;
+	}
+	
 	// Indica si el array proporcionado es asociativo (key, value) o secuencial (values)
 	private static function isAssoc($array){
 		return count(array_filter(array_keys($array), 'is_string')) > 0;

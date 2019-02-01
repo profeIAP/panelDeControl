@@ -498,25 +498,40 @@ $app->get('/logout', function () use ($app) {
 		Login::forzarLogOut();
 });
 
+
+
 $app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
 		global $twig;
-		echo $twig->render('login.php');  
-	}); 
-	
-	$app->post('/', function() use ($app){
-		global $twig;
-		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
-			echo $twig->render('inicio.php');
-		}
-		else{
-			// IDEA cargar campos con los datos que ha utilizado para intentar entrar
-			$valores['error']="Usuario/clave incorrectos";
-			echo $twig->render('login.php',$valores);
-		}
+		if (LoginClave::isLogged())
+			$app->redirect('/');
+		else
+			echo $twig->render('login.php');  
 	}); 
 
+	$app->post('/', function() use ($app){
+		global $twig;
+		
+		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
+			$app->redirect('/');
+		}
+		else{
+			
+			$valores=array(
+			    "error"=>"Usuario/clave incorrectos...",
+				"email"=>$app->request()->post('nombre')
+			);
+			
+			if (Usuario::existe($valores['email']))
+			{
+				$url=Utilidades::protegerURL('/usuario/recuperar?email='.$valores['email']);
+				$valores['error']="Usuario/clave incorrectos... ¿Desea <a href='.$url.'>recuperar su contraseña</a>?";
+			}
+			
+			echo $twig->render('login.php',$valores);
+		}
+	});
 });
 
 // TODO cambiar a un sitio más conveniente
