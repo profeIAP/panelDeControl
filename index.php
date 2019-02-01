@@ -81,22 +81,6 @@ $app->container->singleton('acl', function () {
     return new PermisosACL($app->db);
 });
 
-$twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
-$twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
-
-$app->hook('slim.before.router', function () use ($app) {
-	
-	global $twig;
-	
-	$hash=$app->request()->get('hash');
-	
-	$uri=Utilidades::getCurrentURI();
-	$urls_exentas=array(
-		"/auth/aceptar",
-		"/auth/aceptar?error=access_denied"
-	);
-	
-	// Si hay parámetros en la URL deben proporcionarnos un 'hash'
 	
 	if(!isset($hash) && count($_GET)>0 && !in_array($uri, $urls_exentas))
 	{
@@ -104,22 +88,6 @@ $app->hook('slim.before.router', function () use ($app) {
 		echo $twig->render('malandrin-hash.php',$valores);
 		$app->stop();
 	}
-	
-	// Si hay 'hash' comprobamos que sea válido
-	
-	if(isset($hash) && !Utilidades::validarURL($app->request()))
-	{
-		// IDEA mostrar aviso indicando que no debería estar toqueteando urls
-		// IDEA anotar el intento en los logs y/o notificar al administrador de intentos de "sabotaje"
-		
-		echo $twig->render('malandrin.php');
-		$app->stop();
-	}
-});
-
-
-
-
 
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;

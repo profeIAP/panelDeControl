@@ -15,7 +15,10 @@
 <div class="jumbotron">
 	<h1>Usuarios registrados...</h1>
 	<p class="lead">Listado de usuarios</p>
-	{% for comentario in usuarios %}
+	
+</div>
+
+{% for comentario in usuarios %}
 	
 		{% for campo, valor in comentario %}
 			{{campo}} : {{valor}} <br>
@@ -25,7 +28,5 @@
 		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
 		----------------<br>
 	{% endfor %}
-</div>
-
 {% endblock cuerpo %}
 
