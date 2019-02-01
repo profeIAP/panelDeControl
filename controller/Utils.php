@@ -74,6 +74,12 @@ class Utilidades {
           return "http" . (($_SERVER['SERVER_PORT']==443) ? "s://" : "://") . $_SERVER['HTTP_HOST'];
     }
     
+	// Este método es de mentira BÓRRALO cuando copies aquí el código de verdad
+	
+	public static function getCurrentURI($full = true) {
+		// No hago  ná
+    }
+    
     // Obtiene el ID de la sesión actual
 	
 	public static function getSessionID() {

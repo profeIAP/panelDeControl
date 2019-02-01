@@ -81,6 +81,26 @@ $app->container->singleton('acl', function () {
     return new PermisosACL($app->db);
 });
 
+<<<<<<< HEAD
+=======
+$twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
+$twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
+$twig->addGlobal('utils', new Utilidades()); // Para poder encriptar urls (entre otras funcionalidades)
+
+$app->hook('slim.before.router', function () use ($app) {
+	
+	global $twig;
+	
+	$hash=$app->request()->get('hash');
+	
+	$uri=Utilidades::getCurrentURI();
+	$urls_exentas=array(
+		"/auth/aceptar",
+		"/auth/aceptar?error=access_denied"
+	);
+	
+	// Si hay parámetros en la URL deben proporcionarnos un 'hash'
+>>>>>>> b892729690639749b01ec41dccddba34642a42ca
 	
 	if(!isset($hash) && count($_GET)>0 && !in_array($uri, $urls_exentas))
 	{
@@ -88,6 +108,21 @@ $app->container->singleton('acl', function () {
 		echo $twig->render('malandrin-hash.php',$valores);
 		$app->stop();
 	}
+<<<<<<< HEAD
+=======
+	
+	// Si hay 'hash' comprobamos que sea válido
+	
+	if(isset($hash) && !Utilidades::validarURL($app->request()))
+	{
+		// IDEA mostrar aviso indicando que no debería estar toqueteando urls
+		// IDEA anotar el intento en los logs y/o notificar al administrador de intentos de "sabotaje"
+		
+		echo $twig->render('malandrin.php');
+		$app->stop();
+	}
+});
+>>>>>>> b892729690639749b01ec41dccddba34642a42ca
 
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
@@ -436,7 +471,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('usuario'=>$r);
-		echo $twig->render('alumno.php',$valores);  	
+		echo $twig->render('usuario.php',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
@@ -762,9 +797,9 @@ $app->get('/drive','Login::forzarLogin', function() use ($app){
 
 $app->group('/test', function () use ($app) {
 	
-	$app->get('/327','Login::forzarLogin', function() use ($app){
+	$app->get('/326','Login::forzarLogin', function() use ($app){
 		global $twig;
-		echo $twig->render('malandrin-hash.php'); 
+		echo $twig->render('malandrin.php'); 
 	});
 });
 
