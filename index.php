@@ -81,8 +81,6 @@ $app->container->singleton('acl', function () {
     return new PermisosACL($app->db);
 });
 
-<<<<<<< HEAD
-=======
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('utils', new Utilidades()); // Para poder encriptar urls (entre otras funcionalidades)
@@ -100,7 +98,6 @@ $app->hook('slim.before.router', function () use ($app) {
 	);
 	
 	// Si hay parámetros en la URL deben proporcionarnos un 'hash'
->>>>>>> b892729690639749b01ec41dccddba34642a42ca
 	
 	if(!isset($hash) && count($_GET)>0 && !in_array($uri, $urls_exentas))
 	{
@@ -108,8 +105,6 @@ $app->hook('slim.before.router', function () use ($app) {
 		echo $twig->render('malandrin-hash.php',$valores);
 		$app->stop();
 	}
-<<<<<<< HEAD
-=======
 	
 	// Si hay 'hash' comprobamos que sea válido
 	
@@ -122,7 +117,6 @@ $app->hook('slim.before.router', function () use ($app) {
 		$app->stop();
 	}
 });
->>>>>>> b892729690639749b01ec41dccddba34642a42ca
 
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
