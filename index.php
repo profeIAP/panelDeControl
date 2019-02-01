@@ -117,10 +117,6 @@ $app->hook('slim.before.router', function () use ($app) {
 	}
 });
 
-
-
-
-
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
@@ -468,7 +464,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('usuario'=>$r);
-		echo $twig->render('alumno.php',$valores);  	
+		echo $twig->render('usuario.php',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
