@@ -29,7 +29,7 @@
 		----------------<br>
 	{% endfor %}
 
-</div>
+
 <table class="table table-bordered table-hover" id="temas">				
 	<thead>	
 		<tr>			
