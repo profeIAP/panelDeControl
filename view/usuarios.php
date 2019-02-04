@@ -54,6 +54,5 @@
 		{% endfor %}
 	</tbody>
 </table>
->>>>>>> b892729690639749b01ec41dccddba34642a42ca
 {% endblock cuerpo %}
 
