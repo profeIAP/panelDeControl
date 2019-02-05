@@ -27,12 +27,12 @@
 
 					<div class="form-group">
 						<label for="nombre">Usuario:</label>
-						<input type="text" class="form-control" id="nombre" name="nombre">
+						<input type="text" class="form-control" id="nombre" name="nombre" required>
 					</div>
 					
 						<div class="form-group">
 						<label for="clave">Contraseña:</label>
-						<input type="password" class="form-control" id="clave" name="clave">
+						<input type="password" class="form-control" id="clave" name="clave" required>
 					</div>
 					
 					<button type="submit" class="btn btn-default">Enviar</button>
