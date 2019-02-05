@@ -81,8 +81,6 @@ $app->container->singleton('acl', function () {
     return new PermisosACL($app->db);
 });
 
-<<<<<<< HEAD
-=======
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('utils', new Utilidades()); // Para poder encriptar urls (entre otras funcionalidades)
@@ -100,7 +98,6 @@ $app->hook('slim.before.router', function () use ($app) {
 	);
 	
 	// Si hay parámetros en la URL deben proporcionarnos un 'hash'
->>>>>>> b892729690639749b01ec41dccddba34642a42ca
 	
 	if(!isset($hash) && count($_GET)>0 && !in_array($uri, $urls_exentas))
 	{
@@ -108,8 +105,6 @@ $app->hook('slim.before.router', function () use ($app) {
 		echo $twig->render('malandrin-hash.php',$valores);
 		$app->stop();
 	}
-<<<<<<< HEAD
-=======
 	
 	// Si hay 'hash' comprobamos que sea válido
 	
@@ -122,7 +117,6 @@ $app->hook('slim.before.router', function () use ($app) {
 		$app->stop();
 	}
 });
->>>>>>> b892729690639749b01ec41dccddba34642a42ca
 
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
@@ -546,25 +540,40 @@ $app->group('/usuarios', function () use ($app) {
 	
 });
 
+
+
 $app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
 		global $twig;
-		echo $twig->render('login.php');  
-	}); 
-	
-	$app->post('/', function() use ($app){
-		global $twig;
-		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
-			echo $twig->render('inicio.php');
-		}
-		else{
-			// IDEA cargar campos con los datos que ha utilizado para intentar entrar
-			$valores['error']="Usuario/clave incorrectos";
-			echo $twig->render('login.php',$valores);
-		}
+		if (LoginClave::isLogged())
+			$app->redirect('/');
+		else
+			echo $twig->render('login.php');  
 	}); 
 
+	$app->post('/', function() use ($app){
+		global $twig;
+		
+		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
+			$app->redirect('/');
+		}
+		else{
+			
+			$valores=array(
+			    "error"=>"Usuario/clave incorrectos...",
+				"email"=>$app->request()->post('nombre')
+			);
+			
+			if (Usuario::existe($valores['email']))
+			{
+				$url=Utilidades::protegerURL('/usuario/recuperar?email='.$valores['email']);
+				$valores['error']="Usuario/clave incorrectos... ¿Desea <a href='.$url.'>recuperar su contraseña</a>?";
+			}
+			
+			echo $twig->render('login.php',$valores);
+		}
+	});
 });
 
 // TODO cambiar a un sitio más conveniente

@@ -18,7 +18,22 @@
 	
 </div>
 
+<<<<<<< HEAD
 </div>
+=======
+{% for comentario in usuarios %}
+	
+		{% for campo, valor in comentario %}
+			{{campo}} : {{valor}} <br>
+		{% endfor %}
+		
+		<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
+		----------------<br>
+	{% endfor %}
+
+
+>>>>>>> 40d7c220b6ddf7ef2867f8737089f2fca7b80d1f
 <table class="table table-bordered table-hover" id="temas">				
 	<thead>	
 		<tr>			
@@ -43,6 +58,5 @@
 		{% endfor %}
 	</tbody>
 </table>
->>>>>>> b892729690639749b01ec41dccddba34642a42ca
 {% endblock cuerpo %}
 
