@@ -86,20 +86,13 @@ class Utilidades {
           return "http" . (($_SERVER['SERVER_PORT']==443) ? "s://" : "://") . $_SERVER['HTTP_HOST'];
     }
     
-<<<<<<< HEAD
     // Obtiene la ruta solicitada en el servidor actual (con o sin los parámetros GET)
     
     public static function getCurrentURI($includeParams=false){
 		$uri=$_SERVER["REQUEST_URI"];
 		return ($includeParams?$uri:strtok($uri,'?'));
 	}
-=======
-	// Este método es de mentira BÓRRALO cuando copies aquí el código de verdad
-	
-	public static function getCurrentURI($full = true) {
-		// No hago  ná
-    }
->>>>>>> e9b300a86831a4f8878e1c20a8976eaffa050360
+
     
     // Obtiene el ID de la sesión actual
 	
