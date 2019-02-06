@@ -12,7 +12,7 @@ class LoginClave extends Login {
 		
 		// TODO usar hash contra el campo clave de la BD en lugar de tener la contraseña en claro
 		
-		$r=($clave==$u['CLAVE']);
+		$r=($clave===$u['CLAVE']);
 		
 		// Anotamos en sesión el usuario logado (si procede)
 
@@ -38,4 +38,3 @@ class LoginClave extends Login {
 		return (self::isLogged()?$_SESSION['user']:null);
 	}
 }
-?>

@@ -1,6 +1,8 @@
 <?php
 
 class AccesoDatos{
+	
+	
 
 	public static function borrar($pdo, $nombreTabla, $id){
 		
@@ -12,7 +14,22 @@ class AccesoDatos{
 		$q   = $pdo->prepare($sql);
 		$q->execute($valores);
 	}
+	
+	/* Elimina todas las entradas de la tabla $NOMBRETABLA que cumplan la condición indicada en $WHERE */
+	
+	public static function eliminar($pdo, $nombreTabla, $where=""){
 		
+		
+		Utilidades::getLogger()->debug("Invocado un AccesoDatos::eliminar('$nombreTabla', '$where');");	
+		
+		if(trim($where)!="")
+			$where = "WHERE $where";
+		
+		$sql = "delete from $nombreTabla $where";
+		$q   = $pdo->prepare($sql);
+		$q->execute();
+	}
+	
 	/* Obtiene el nombre de los campos que componen $nombreTabla */
 	
 	public static function getCamposTabla($pdo, $nombreTabla, $ordenarCampos=false){
@@ -40,10 +57,18 @@ class AccesoDatos{
 			$sql=self::generarInsercion($nombreTabla, $valores);
 		}
 		
+		Utilidades::getLogger()->Debug("AccesoDatos::guardar(): $sql");
+		Utilidades::getLogger()->Debug("Datos usados: ".Utilidades::prettyPrintJSON($valores));
+		
 		// Lanzamos la operación contra la BD
 		
 		$q = $pdo->prepare($sql);
 		$q->execute($valores);
+		
+		if(isset($valores['ID']) && $valores['ID'])
+			return $valores['ID'];
+		else
+			return $pdo->lastInsertId();
 		
 	}
 	
@@ -58,18 +83,39 @@ class AccesoDatos{
 		
 		return $q->fetch(PDO::FETCH_ASSOC);
 	}
+
+	/* Lanza la SQL directamente contra la BD */
 	
-	public static function buscar($pdo, $nombreTabla, $camposSelect="*", $where){
+	public static function ejecutar($pdo, $sql){
+		$q = $pdo->prepare($sql);
+		$q->execute();		
+	}
+	
+    public static function buscar($pdo, $nombreTabla, $camposSelect="*", $where=""){
 		
-		$q = $pdo->prepare("select $camposSelect from $nombreTabla where $where");
+        if(trim($where)!="")
+			$where = "WHERE $where";
+
+		$sql="select $camposSelect from $nombreTabla $where";
+		Utilidades::getLogger()->debug("Lanzamos SQL: $sql");
+		
+		$q = $pdo->prepare($sql);
 		$q->execute();
 		
 		return $q->fetch(PDO::FETCH_ASSOC);
 	}
+	
+	public static function listar($pdo, $nombreTabla, $camposSelect="*", $where=""){
 		
-	public static function listar($pdo, $nombreTabla, $camposSelect){
-		return $pdo->query("select $camposSelect from $nombreTabla")->fetchAll(PDO::FETCH_ASSOC);
+		if(trim($where)!="")
+			$where="WHERE $where";
+		
+		$sql="select $camposSelect from $nombreTabla $where";
+		Utilidades::getLogger()->debug("Listamos la SQL $sql");
+		
+		return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 	}
+	
 
 	private static function generarActualizacion($nombreTabla, $valores){
 
@@ -77,7 +123,8 @@ class AccesoDatos{
 		$sql  = "UPDATE $nombreTabla SET ";
 	   
 		foreach($valores as $column => $value){
-		   $sqlArray[] = "'$column' = :$column ";
+			if($column <> 'ID')
+				$sqlArray[] = "'$column' = :$column ";
 		}
 		$sql .= implode(', ', $sqlArray);
 		$sql .= "WHERE ID = :ID";

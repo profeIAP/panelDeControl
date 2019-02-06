@@ -23,5 +23,6 @@ class Usuario {
     public static function existe($email){	
       return Usuario::recuperarPorEmail($email)!=FALSE;
     } 
+
 }
 ?>

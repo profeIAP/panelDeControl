@@ -1,6 +1,6 @@
 # Panel De Control
 
-El objetivo de este proyecto es desarrollar un sistema web para la gestión de incidencias en un instituto de Secundaria
+El objetivo de este proyecto es desarrollar un sistema web para la gestión de incidencias en un instituto de Secundaria.
 
 | Imagen | Información |
 | ------ | -------- |
