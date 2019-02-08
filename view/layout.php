@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css" media="print">
     
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/tablasorter.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link rel="stylesheet" href="/css/datatable.css">
 	<link rel="stylesheet" href="/css/datatable2.css"></style>
