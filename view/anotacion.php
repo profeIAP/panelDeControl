@@ -16,8 +16,6 @@
 	<h1>Anotación</h1>
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
-
-                       
                        
 			<div class="form-group col-md-8">
 				<label for="alumnoaImplicado">Alumno/a</label>
