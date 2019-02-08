@@ -21,7 +21,6 @@
 	
     {% block cabecera %}
 			
-	
 	{% endblock %}
 		
     <title>Control de Partes</title>
