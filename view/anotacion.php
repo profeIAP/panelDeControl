@@ -17,23 +17,22 @@
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
 
-
-				</div>
-				<div class="form-group col-md-2 ">
-				<label for="fecha">Fecha:</label>
-				<div class="input-group date">
-						<input type="text" id="fecha" name="fecha" class="form-control" value="25/01/2019"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-			</div>
+                       
+                       
+			<div class="form-group col-md-8">
+				<label for="alumnoaImplicado">Alumno/a</label>
+				<input type="text" class="form-control ui-autocomplete-input" id="alumnoaImplicado" value="" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
 			</div>
 			
-
-<form method="post" action="/alumnos/anotaciones/guardar" role="form">
-		
-		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
-		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
-		
-								
-	<div class="form-group col-md-2">
+			<div class="form-group col-md-2 ">
+				<label for="fecha">Fecha:</label>
+				<div class="input-group date">
+						<input type="text" id="fecha" name="fecha" class="form-control" value="08/02/2019"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				</div>
+			</div>
+			
+			
+		<div class="form-group col-md-2">
 				<label for="hora">Hora:</label>
 				 <select class="form-control" id="hora" name="hora">
 				  <option>Primera</option>
@@ -45,14 +44,17 @@
 				   <option>Sexta</option>
 				 </select>
 			</div>
-	
-	
-	
-	
-		                                <div class="form-group col-md-12">
-			                                <label for="alumnoaImplicado">Alumno/a</label>
-			<input type="text" class="form-control" id="alumnoaImplicado" value="">
-		</div>
+                         
+				
+			        
+		
+
+<form method="post" action="/alumnos/anotaciones/guardar" role="form">
+		
+		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
+		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
+		
+		                              
 		                                <div class="form-group col-md-12">
 			                                <label for="comentario">Descripción:</label>
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{comentario.COMENTARIO}}</textarea>
