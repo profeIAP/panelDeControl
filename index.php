@@ -84,6 +84,39 @@ $app->container->singleton('acl', function () {
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
 
+$app->hook('slim.before.router', function () use ($app) {
+	
+	global $twig;
+	
+	$hash=$app->request()->get('hash');
+	
+	$uri=Utilidades::getCurrentURI();
+	$urls_exentas=array(
+		"/auth/aceptar",
+		"/auth/aceptar?error=access_denied"
+	);
+	
+	// Si hay parámetros en la URL deben proporcionarnos un 'hash'
+	
+	if(!isset($hash) && count($_GET)>0 && !in_array($uri, $urls_exentas))
+	{
+		$valores['uri']=Utilidades::getCurrentURI(true);
+		echo $twig->render('malandrin-hash.php',$valores);
+		$app->stop();
+	}
+	
+	// Si hay 'hash' comprobamos que sea válido
+	
+	if(isset($hash) && !Utilidades::validarURL($app->request()))
+	{
+		// IDEA mostrar aviso indicando que no debería estar toqueteando urls
+		// IDEA anotar el intento en los logs y/o notificar al administrador de intentos de "sabotaje"
+		
+		echo $twig->render('malandrin.php');
+		$app->stop();
+	}
+});
+
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
@@ -431,7 +464,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 		$r=$q->fetch(PDO::FETCH_ASSOC);
 			
 		$valores=array('usuario'=>$r);
-		echo $twig->render('alumno.php',$valores);  	
+		echo $twig->render('usuario.php',$valores);  	
 	}); 
 	
 	$app->post('/guardar', function() use ($app){
@@ -497,36 +530,49 @@ $app->get('/about','Login::forzarLogin', function() use ($app){
 $app->get('/logout', function () use ($app) {
 		Login::forzarLogOut();
 });
-
+	
 $app->group('/usuarios', function () use ($app) {
 	
 	$app->get('/recuperar', function() use ($app){
 	    Utilidades::getLogger()->debug('Debemos implementar cómo recuperar la contraseña de un usuario.');
-   
-});
+	});
 	
 });
+
 
 
 $app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
 		global $twig;
-		echo $twig->render('login.php');  
-	}); 
-	
-	$app->post('/', function() use ($app){
-		global $twig;
-		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
-			echo $twig->render('inicio.php');
-		}
-		else{
-			// IDEA cargar campos con los datos que ha utilizado para intentar entrar
-			$valores['error']="Usuario/clave incorrectos";
-			echo $twig->render('login.php',$valores);
-		}
+		if (LoginClave::isLogged())
+			$app->redirect('/');
+		else
+			echo $twig->render('login.php');  
 	}); 
 
+	$app->post('/', function() use ($app){
+		global $twig;
+		
+		if(LoginClave::autenticar($app->db,$app->request()->post('nombre'), $app->request()->post('clave'))){
+			$app->redirect('/');
+		}
+		else{
+			
+			$valores=array(
+			    "error"=>"Usuario/clave incorrectos...",
+				"email"=>$app->request()->post('nombre')
+			);
+			
+			if (Usuario::existe($valores['email']))
+			{
+				$url=Utilidades::protegerURL('/usuario/recuperar?email='.$valores['email']);
+				$valores['error']="Usuario/clave incorrectos... ¿Desea <a href='.$url.'>recuperar su contraseña</a>?";
+			}
+			
+			echo $twig->render('login.php',$valores);
+		}
+	});
 });
 
 // TODO cambiar a un sitio más conveniente
@@ -755,6 +801,14 @@ $app->get('/drive','Login::forzarLogin', function() use ($app){
 	$valores['message']='Acceso a Drive correcto';
 	echo $twig->render('inicio.php',$valores);
 				
+});
+
+$app->group('/test', function () use ($app) {
+	
+	$app->get('/326','Login::forzarLogin', function() use ($app){
+		global $twig;
+		echo $twig->render('malandrin.php'); 
+	});
 });
 
 // Ponemos en marcha el router
