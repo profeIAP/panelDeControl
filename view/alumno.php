@@ -56,23 +56,22 @@
 		<label for="provincia">Provincia:</label>
 			<input type="text" class="form-control" id="provincia" name="provincia" value="{{comentario.PROVINCIA}}">
 		</div>
-		<div class="form-group col-md-12">
-		<label for="tutor1">D.N.I:</label>
-			<input type="text" class="form-control" id="dni" name="dni" value="{{comentario.DNI}}">
-		</div>
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-9">
 			<label for="dni">Tutor 1:</label>
 			<input type="text" class="form-control" id="tutor1" name="tutor1" value="{{comentario.TUTOR1}}">
 		</div>
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-3">
+		<label for="tutor1">D.N.I:</label>
+			<input type="text" class="form-control" id="dni" name="dni" value="{{comentario.DNI}}">
+		</div>
+		<div class="form-group col-md-9">
+		<label for="dni">Tutor 2:</label>
+			<input type="text" class="form-control" id="tutor2" name="tutor2" value="{{comentario.TUTOR2}}">
+		</div>
+		<div class="form-group col-md-3">
 		<label for="tutor2">D.N.I:</label>
 			<input type="text" class="form-control" id="dni" name="dni" value="{{comentario.DNI}}">
 		</div>
-		<div class="form-group col-md-12">
-			<label for="dni">Tutor 2:</label>
-			<input type="text" class="form-control" id="tutor2" name="dni" value="{{comentario.TUTOR2}}">
-		</div>
-		
 		<div class="form-group col-md-10"></div>
 		
 		<div class="form-group col-md-1">

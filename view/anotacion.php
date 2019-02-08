@@ -17,22 +17,38 @@
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
 
+
+				</div>
+				<div class="form-group col-md-2 ">
+				<label for="fecha">Fecha:</label>
+				<div class="input-group date">
+						<input type="text" id="fecha" name="fecha" class="form-control" value="25/01/2019"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			</div>
+			</div>
+			
+
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
 		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
 		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
 		
 								
-			
-		
-		                                   <div class="form-group col-md-6">
-											<label for="fecha">Hora:</label>
-			<input type="text" class="form-control" id="hora" name="hora" size="12" value="">
-		</div>
-										<div class="form-group col-md-6">
-											<label for="fecha">Fecha:</label>
-											<input type="text" class="form-control campofecha" id="fecha" name="fecha" size="12" value="">
-										</div>
+	<div class="form-group col-md-2">
+				<label for="hora">Hora:</label>
+				 <select class="form-control" id="hora" name="hora">
+				  <option>Primera</option>
+				   <option>Segunda</option>
+				   <option>Tercera</option>
+				   <option>Recreo</option>
+				   <option>Cuarta</option>
+				   <option>Quinta</option>
+				   <option>Sexta</option>
+				 </select>
+			</div>
+	
+	
+	
+	
 		                                <div class="form-group col-md-12">
 			                                <label for="alumnoaImplicado">Alumno/a</label>
 			<input type="text" class="form-control" id="alumnoaImplicado" value="">
