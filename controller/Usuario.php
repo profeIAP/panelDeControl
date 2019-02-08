@@ -20,12 +20,9 @@ class Usuario {
 		return $this->email;
 	}
 
-	// Esto es un método mock
-	// Ya lo implementará alguien
-	
-	public static function existe($nombre){
-		return true;
-	}
+    public static function existe($email){	
+      return Usuario::recuperarPorEmail($email)!=FALSE;
+    } 
 
 }
 ?>
