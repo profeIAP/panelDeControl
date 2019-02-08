@@ -1,0 +1,50 @@
+
+{% extends "layoutlogin.php" %}
+
+{% block cuerpo %}
+<div id="header" class="col-md-3 col-md-offset-5"></div>
+ <div id="header" class="row-fluid">
+            <div class="col-md-2 col-md-offset-5">
+  		        <a href="/"><img src="/img/logo.png"></a>
+			</div>
+
+			<div>
+
+				<form method="post" action="/usuario/recuperar" role="form">
+
+<div class="container">
+        <div class="row centered-form">
+			<div class="col-md-6 col-md-offset-3">
+				{% if message %}
+							<div class="alert alert-success" role="alert"> {{ message|raw}}</div>
+						{% endif %}
+
+						{% if error %}
+							<div class="alert alert-error" role="alert">{{ error|raw}}</div>
+						{% endif %}	
+				<div class="panel panel-default">
+					<div class="panel-heading">
+							<h3 class="panel-title">Recordar Contraseña</h3>
+							</div>
+							<div class="panel-body">
+							<form role="form">
+
+
+								<div class="form-group">
+									<input type="email" name="email" id="email" class="form-control input-md" placeholder="Email" value="{{email}}">
+								</div>
+
+
+
+								<input type="submit" value="Enviar email" class="btn btn-info btn-block">
+
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+{% endblock cuerpo %}
+

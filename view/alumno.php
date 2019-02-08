@@ -30,11 +30,11 @@
 			<input type="text" class="form-control" id="nombre" name="nombre" value="{{comentario.NOMBRE}}">
 		</div>
 		<div class="form-group col-md-12">
-			<label for="primerapellido">Apellidos:</label>
+			<label for="primerapellido">Primer apellido</label>
 			<input type="text" class="form-control" id="primerapellido" name="primerapellido"  value="{{comentario.APELLIDO}}">
 		</div>
 		<div class="form-group col-md-12">
-			<label for="segundoapellido">Apellidos:</label>
+			<label for="segundoapellido">Segundo apellido</label>
 			<input type="text" class="form-control" id="segundoapellido" name="segundoapellido"  value="{{comentario.APELLIDO}}">
 		</div>
 			<div class="form-group col-md-12">
@@ -59,23 +59,26 @@
 		<label for="provincia">Provincia:</label>
 			<input type="text" class="form-control" id="provinciaderesidencia" name="provinciaderesidencia" value="{{comentario.PROVINCIA}}">
 		</div>
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-9">
+			<label for="dni">Tutor 1:</label>
+			<input type="text" class="form-control" id="tutor1" name="tutor1" value="{{comentario.TUTOR1}}">
+		</div>
+		<div class="form-group col-md-3">
 		<label for="tutor1">D.N.I:</label>
-			<input type="text" class="form-control" id="dnipasaporte" name="dnipasaporte" value="{{comentario.DNI}}">
+			<input type="text" class="form-control" id="dnipasaporte" name="dnipasaporteprimertutor" value="{{comentario.DNIPASAPORTEPRIMERTUTOR}}">
 		</div>
-		<div class="form-group col-md-12">
-			<label for="nombreprimertutor">Tutor 1:</label>
-			<input type="text" class="form-control" id="nombreprimertutor" name="nombreprimertutor" value="{{comentario.TUTOR1}}">
-		</div>
-		<div class="form-group col-md-12">
-		<label for="dnipasaporteprimertutor">D.N.I:</label>
-			<input type="text" class="form-control" id="dnipasaporteprimertutor" name="dnipasaporteprimertutor" value="{{comentario.DNI}}">
-		</div>
-		<div class="form-group col-md-12">
+
+		<div class="form-group col-md-9">
 			<label for="nombresegundotutor">Tutor 2:</label>
 			<input type="text" class="form-control" id="nombresegundotutor" name="nombresegundotutor" value="{{comentario.TUTOR2}}">
 		</div>
 		
+
+		<div class="form-group col-md-3">
+		<label for="tutor2">D.N.I:</label>
+			<input type="text" class="form-control" id="dni" name="dnipasaportesegundotutor" value="{{comentario.DNIPASAPORTESEGUNDOTUTOR}}">
+		</div>
+
 		<div class="form-group col-md-10"></div>
 		
 		<div class="form-group col-md-1">
