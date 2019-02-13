@@ -17,19 +17,11 @@
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
     <link href="/css/datepicker.css" rel="stylesheet">
     
-	<script src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/loader.js"></script>
+	<script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
 	
     {% block cabecera %}
-			
-			
-		    <!--
-			<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
-			<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-			<link href="/css/jumbotron-narrow.css" rel="stylesheet">
-			
-   
-   		-->
 			
 	{% endblock %}
 		
