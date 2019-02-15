@@ -94,7 +94,8 @@
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_MOVIL" value="1"> Utilizar el teléfono móvil en clase</label>
 					</div>
-					<div class="form-group col-md-12" value=""> Usar gorras, gafas de sol o reprod. de música en clase</label>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_GORRA" value="1"> Usar gorras, gafas de sol o reprod. de música en clase</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_ORDENADOR" value=""> Usar el ordenador indebidamente</label>
