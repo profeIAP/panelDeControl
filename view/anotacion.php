@@ -25,7 +25,7 @@
 			<div class="form-group col-md-2 ">
 				<label for="fecha">Fecha:</label>
 				<div class="input-group date">
-						<input type="text" id="fecha" name="fecha" class="form-control" value="08/02/2019"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+						<input type="text" id="fecha" name="fecha" class="form-control" value="{{fecha}}"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 				</div>
 			</div>
 			
