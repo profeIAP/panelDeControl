@@ -18,9 +18,9 @@
 	
 </div>
 
-<<<<<<< HEAD
+
 </div>
-=======
+
 {% for comentario in usuarios %}
 	
 		{% for campo, valor in comentario %}
@@ -33,14 +33,6 @@
 		----------------<br>
 	{% endfor %}
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 40d7c220b6ddf7ef2867f8737089f2fca7b80d1f
-=======
->>>>>>> 40d7c220b6ddf7ef2867f8737089f2fca7b80d1f
-=======
->>>>>>> 40d7c220b6ddf7ef2867f8737089f2fca7b80d1f
 <table class="table table-bordered table-hover" id="temas">				
 	<thead>	
 		<tr>			
