@@ -65,7 +65,7 @@
 		</div>
 		<div class="form-group col-md-3">
 		<label for="tutor1">D.N.I:</label>
-			<input type="text" class="form-control" id="dnipasaporte" name="dnipasaporteprimertutor" value="{{comentario.DNIPASAPORTEPRIMERTUTOR}}">
+			<input type="text" class="form-control" id="dnipasaporteprimertutor" name="dnipasaporteprimertutor" value="{{comentario.DNIPASAPORTEPRIMERTUTOR}}">
 		</div>
 
 		<div class="form-group col-md-9">
