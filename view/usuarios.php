@@ -51,8 +51,10 @@
 				<td>{{valor}}</td>
 			{% endfor %}
 				<td>
-					<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-					<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
+					{% set url=utils.protegerURL('/usuarios/borrar?id=?id=' ~ comentario.ID )%}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+					{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID )%}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
 				</td>
 			</tr>
 		{% endfor %}
