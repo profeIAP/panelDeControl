@@ -26,7 +26,10 @@
 			<div class="form-group col-md-2 ">
 				<label for="fecha">Fecha:</label>
 				<div class="input-group date">
+
 						<input type="text" id="fecha" name="fecha" class="form-control" value="15/02/2019"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+			
 				</div>
 			</div>
 			
@@ -62,6 +65,42 @@
  				
 </form>	
 
+<script type="text/javascript">
+			
+ 		$(document).ready(function(){
+			$('.input-group.date').datepicker({
+				format: "dd/mm/yyyy",
+				weekStart: 1,
+				todayBtn: "linked",
+				language: "es",
+				daysOfWeekDisabled: "0,6",
+				orientation: "auto",
+				autoclose: true,
+				container: '.input-group' 
+			});
+			
+ 			$( "#alumnoaImplicado" ).autocomplete({
+			  source: "/alumnos/buscar/nombre",
+			  minLength: 3,
+			  select: function (event,ui){
+				$.ajax({
+					url:'/alumnos/buscar/id',
+					  type:'POST',
+					  dataType:'json',
+					  data:{ valor:ui.item.id}
+				  }).done(function(respuesta){
+					  $("#id_alumno").val(respuesta.ID);
+					  $("#cursoygrupo").val(respuesta.CURSO);
+					  $("#tutor").val(respuesta.TUTOR);
+				  });  
+			  }
+			});
+ 			
+ 		});
+ 		
+ 		
+ 	</script>
+ 	
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 {% endblock cuerpo %}
