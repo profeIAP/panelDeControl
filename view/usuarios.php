@@ -18,29 +18,6 @@
 	
 </div>
 
-<<<<<<< HEAD
-</div>
-=======
-{% for comentario in usuarios %}
-	
-		{% for campo, valor in comentario %}
-			{{campo}} : {{valor}} <br>
-		{% endfor %}
-		{% set url=utils.protegerURL('/usuarios/borrar?id=?id=' ~ comentario.ID )%}
-		<a href="/usuarios/borrar?id={{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID )%}
-		<a href="/usuarios/editar?id={{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-		----------------<br>
-	{% endfor %}
-
-
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 40d7c220b6ddf7ef2867f8737089f2fca7b80d1f
-=======
->>>>>>> 40d7c220b6ddf7ef2867f8737089f2fca7b80d1f
-=======
->>>>>>> 40d7c220b6ddf7ef2867f8737089f2fca7b80d1f
 <table class="table table-bordered table-hover" id="temas">				
 	<thead>	
 		<tr>			
@@ -51,8 +28,7 @@
 			<th>Acciones</th>
 		</tr>	
 	</thead>
-	<tbody style=" .table-hover"><a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+	<tbody style=" .table-hover">
 		{% for comentario in usuarios %}
 			<tr>
 			{% for campo, valor in comentario %}
