@@ -44,5 +44,5 @@
 		{% endfor %}
 	</tbody>
 </table>
-{% endblock cuerpo %}
 
+{% endblock cuerpo %}

@@ -16,21 +16,24 @@
 	<h1>Anotación</h1>
 	<p class="lead">Todos los campos son obligatorios</p>
 </div>
-                       
+           
+     <div class="row">
 			<div class="form-group col-md-8">
-				<label for="alumnoaImplicado">Alumno/a</label>
+				<label for="alumnoaImplicado">Alumno/a implicado</label>
 				<input type="text" class="form-control ui-autocomplete-input" id="alumnoaImplicado" value="" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
 			</div>
 			
 			<div class="form-group col-md-2 ">
 				<label for="fecha">Fecha:</label>
 				<div class="input-group date">
-						<input type="text" id="fecha" name="fecha" class="form-control" value="08/02/2019"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+						<input type="text" id="fecha" name="fecha" class="form-control" value="15/02/2019"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+			
 				</div>
 			</div>
 			
-			
-		<div class="form-group col-md-2">
+			<div class="form-group col-md-2">
 				<label for="hora">Hora:</label>
 				 <select class="form-control" id="hora" name="hora">
 				  <option>Primera</option>
@@ -42,11 +45,8 @@
 				   <option>Sexta</option>
 				 </select>
 			</div>
-                         
-				
-			        
+		</div>
 		
-
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
 		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
@@ -64,6 +64,49 @@
 		</div>										
  				
 </form>	
+
+
+
+
+
+<script type="text/javascript">
+			
+ 		$(document).ready(function(){
+			$('.input-group.date').datepicker({
+				format: "dd/mm/yyyy",
+				weekStart: 1,
+				todayBtn: "linked",
+				language: "es",
+				daysOfWeekDisabled: "0,6",
+				orientation: "auto",
+				autoclose: true,
+				container: '.input-group' 
+			});
+			
+ 			$( "#alumnoaImplicado" ).autocomplete({
+			  source: "/alumnos/buscar/nombre",
+			  minLength: 3,
+			  select: function (event,ui){
+				$.ajax({
+					url:'/alumnos/buscar/id',
+					  type:'POST',
+					  dataType:'json',
+					  data:{ valor:ui.item.id}
+				  }).done(function(respuesta){
+					  $("#id_alumno").val(respuesta.ID);
+					  $("#cursoygrupo").val(respuesta.CURSO);
+					  $("#tutor").val(respuesta.TUTOR);
+				  });  
+			  }
+			});
+ 			
+ 		});
+ 		
+ 		
+ 	</script>
+ 	
+ 	
+ 	
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 {% endblock cuerpo %}
