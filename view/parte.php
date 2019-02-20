@@ -88,6 +88,19 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_DETERIORAR" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_DETERIORAR" value=""> No traer o no utilizar el material necesario</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_DETERIORAR" value=""> Utilizar ordenadores sin permiso</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_DETERIORAR" value=""> Alterar el orden y limp. en zonas comunes</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_DETERIORAR" value=""> Utilizar indebidamente material en aulas especificas</label>
+					
 					</div>
 				</div>
 				<div class="form-group col-md-6">
@@ -99,6 +112,24 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_ORDENADOR" value=""> Usar el ordenador indebidamente</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ORDENADOR" value="">Permanecer en los pasillos en los recreos</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ORDENADOR" value="">Faltar injustificadamente a clase antes de un examen</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ORDENADOR" value="">No colaborar de forma sistematica</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ORDENADOR" value="">Ser inpuntual sin justificacion</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ORDENADOR" value="">Ser desconsiderado con el profesor,compañeros...</label>
+							</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ORDENADOR" value="">Comer o beber en clse</label>
 					</div>
 				</div> 
 			</div>
@@ -117,6 +148,10 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="" name="G_AMENAZAS"> Amenazas o coacciones</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="" name="G_AMENAZAS"> Injurias,ofensas,vejaciones y humillaciones</label>	
+						
 					</div>
 				</div>
 				<div class="form-group col-md-6">
@@ -126,9 +161,16 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value=""> Fumar en clase</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value=""> Salir del centro sin autorizacion</label>
+							</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value=""> Deterioro grave inst., docu o pertenencias</label>
+								</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value=""> Impedimento del desarrollo de actividades</label
 					</div>
-					
-					
 				</div>
 			</div>
 		</div>
