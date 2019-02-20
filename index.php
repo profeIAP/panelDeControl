@@ -83,6 +83,7 @@ $app->container->singleton('acl', function () {
 
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
+$twig->addGlobal('utils', new Utilidades()); // Para poder encriptar urls (entre otras funcionalidades)
 
 $app->hook('slim.before.router', function () use ($app) {
 	
@@ -180,7 +181,10 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		
 		$app->get('/crear', function() use ($app){
 			global $twig;
-			echo $twig->render('anotacion.php'); 
+			
+			$valores= array ( "fecha" => date('d/m/Y'));
+			
+			echo $twig->render('anotacion.php',$valores); 
 		});
 		
 		$app->get('/cancelar', function() use ($app){
@@ -378,7 +382,7 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("select ID, ID_ALUMNO, GRUPO, FECHA, HORA, ASIGNATURA, PROFESOR from partes")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentarios'=>$r);
 		echo $twig->render('partes.php',$valores);  
