@@ -23,8 +23,10 @@
 			{{campo}} : {{valor}} <br>
 		{% endfor %}
 		
-		<a href="/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		<a href="/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
+	    {% set url=utils.protegerURL('/borrar?id=' ~ comentario.ID) %}
+		<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+		{% set url=utils.protegerURL('/editar?id=' ~ comentario.ID) %}
+		<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
 		----------------<br>
 {% endfor %}
 	
