@@ -181,7 +181,10 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		
 		$app->get('/crear', function() use ($app){
 			global $twig;
-			echo $twig->render('anotacion.php'); 
+			
+			$valores= array ( "fecha" => date('d/m/Y'));
+			
+			echo $twig->render('anotacion.php',$valores); 
 		});
 		
 		$app->get('/cancelar', function() use ($app){
