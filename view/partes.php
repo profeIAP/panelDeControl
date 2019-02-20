@@ -17,16 +17,31 @@
 	<p class="lead">Listado de partes</p>
 </div>
 
-{% for comentario in comentarios %}
-	
-		{% for campo, valor in comentario %}
-			{{campo}} : {{valor}} <br>
+<table class="table table-bordered table-hover" id="temas">				
+	<thead>	
+		<tr>			
+			<th>ID</th>	
+			<th>Alumno</th>
+			<th>Email</th>
+			<th>Clave</th>
+			<th>Hora</th>
+		</tr>	
+	</thead>
+	<tbody style=" .table-hover">
+		{% for comentario in comentarios %}
+			<tr>
+			{% for campo, valor in comentario %}
+				<td>{{valor}}</td>
+			{% endfor %}
+				<td>
+					<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+					<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
+				</td>
+			</tr>
 		{% endfor %}
-		
-		<a href="/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		<a href="/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-		----------------<br>
-{% endfor %}
+	</tbody>
+</table>
+
 	
 {% endblock cuerpo %}
 
