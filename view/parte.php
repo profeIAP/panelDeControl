@@ -66,8 +66,6 @@
 		<div class="row">
 			<div class="form-group col-md-12">
 				<label for="observaciones">Observaciones:</label>
-				<head>
-	  
 				<textarea style="width:100%" rows="8" cols="50" class="form-control" id="observacion" name="observacion"></textarea>
 			</div>
 		</div>
@@ -173,29 +171,20 @@
 					</div>
 				</div>
 			</div>
+			</div>
 		</div>
 			
-		
-	
-
-        
-		
-		
 		<div class="row hidden-print">
-             
-             <div class="col-md-8">
- 			</div>
- 			
- 			
+			<div class="col-md-8"></div>
  			<div class="col-md-4">
 				<a class="btn btn-danger" href="/partes/cancelar">Cancelar</a>
 				<button type="submit" class="btn btn-primary" name="borrador" value="1">Guardar</button>
 				<button type="submit" class="btn btn-success" name="borrador" value="0">Aceptar</button>
             </div>
           </div>
-         </form>
+</form>
 		
-		<script type="text/javascript">
+<script type="text/javascript">
 			
  		$(document).ready(function(){
 			$('.input-group.date').datepicker({
@@ -229,9 +218,8 @@
  		});
  		
  		
- 	</script>
-		
-</form>
+</script>
+
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea',menubar: false });</script>
 {% endblock cuerpo %}
