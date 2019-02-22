@@ -61,7 +61,7 @@
 		</div>
 		<div class="form-group col-md-9">
 			<label for="dni">Tutor 1:</label>
-			<input type="text" class="form-control" id="tutor1" name="tutor1" value="{{comentario.TUTOR1}}">
+			<input type="text" class="form-control" id="nombreprimertutor" name="nombreprimertutor" value="{{comentario.TUTOR1}}">
 		</div>
 		<div class="form-group col-md-3">
 		<label for="tutor1">D.N.I:</label>

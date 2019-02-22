@@ -18,4 +18,31 @@
 	
 </div>
 
+<table class="table table-bordered table-hover" id="temas">				
+	<thead>	
+		<tr>			
+			<th>ID</th>	
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>Clave</th>
+			<th>Acciones</th>
+		</tr>	
+	</thead>
+	<tbody style=" .table-hover">
+		{% for comentario in usuarios %}
+			<tr>
+			{% for campo, valor in comentario %}
+				<td>{{valor}}</td>
+			{% endfor %}
+				<td>
+					{% set url=utils.protegerURL('/usuarios/borrar?id=?id=' ~ comentario.ID )%}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+					{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID )%}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
 {% endblock cuerpo %}
