@@ -17,25 +17,32 @@
 	<p class="lead">Indica los datos del nuevo usuario del sistema</p>
 </div>
 
-<img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.comune.sandonatomilanese.mi.it%2Fwp-content%2Fuploads%2F2016%2F09%2Fpp-work-in-progress.jpg&f=1">
+
+<form method="post" action="/alumnos/anotaciones/guardar" role="form">
+		
+		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
+		
+		                              
+		<div class="form-group col-md-12">
+			<label for="comentario">Observaciones:</label>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{comentario.COMENTARIO}}</textarea>
+		</div>
+										
+		<div class="form-group col-md-9">
+		</div>
+		
+		<div class="form-group col-md-3">
+			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>
+			<button type="submit" class="btn btn-success">Aceptar</button>
+		</div>										
+ 				
+</form>	
+
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
-
-
-
-
-
-{% for comentario in usuarios %}
-	
-		{% for campo, valor in comentario %}
-			{{campo}} : {{valor}} <br>
-		{% endfor %}
-		
-		<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-		----------------<br>
-	{% endfor %}
 
 {% endblock cuerpo %}
 
