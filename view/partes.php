@@ -22,9 +22,11 @@
 		<tr>			
 			<th>ID</th>	
 			<th>Alumno</th>
-			<th>Email</th>
-			<th>Clave</th>
+			<th>Curso</th>
+			<th>Fecha</th>
 			<th>Hora</th>
+			<th>Asignatura</th>
+			<th>Tutor</th>
 		</tr>	
 	</thead>
 	<tbody style=" .table-hover">
