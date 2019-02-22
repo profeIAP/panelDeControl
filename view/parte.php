@@ -16,8 +16,8 @@
 
 		<div class="row">
 			<div class="form-group col-md-8">
-				<label for="alumnoaImplicado">Alumno/a implicado</label>
-				<input type="text" class="form-control" id="alumnoaImplicado" value="">
+				<label for="alumnoaImplicado">Alumno/a implicado <span style="color:red">*</span></label>
+				<input type="text" class="form-control" id="alumnoaImplicado" required>
 			</div>
 			
 			<div class="form-group col-md-2 ">
@@ -146,9 +146,10 @@
  			
  			
  			<div class="col-md-4">
-				<a class="btn btn-danger" href="/partes/cancelar">Cancelar</a>
+		
 				<button type="submit" class="btn btn-primary" name="borrador" value="1">Guardar</button>
 				<button type="submit" class="btn btn-success" name="borrador" value="0">Aceptar</button>
+				<a class="btn btn-danger" href="/partes/cancelar">Cancelar</a>
             </div>
           </div>
          </form>
