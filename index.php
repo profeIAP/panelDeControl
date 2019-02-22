@@ -382,7 +382,7 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("select ID, ID_ALUMNO, GRUPO, FECHA, HORA, ASIGNATURA, PROFESOR from partes")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentarios'=>$r);
 		echo $twig->render('partes.php',$valores);  
