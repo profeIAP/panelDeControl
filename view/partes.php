@@ -11,7 +11,35 @@
 {% if error %}
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
 {% endif %}
-
+<table class="table table-bordered table-hover" id="temas">				
+	<thead>	GIT
+		<tr>			
+			<th>ID</th>	
+			<th>NOMBRE</th>
+			<th>EMAIL</th>
+			<th>CLAVE</th>
+			<th>GRUPO</th>
+			<th>ASIGNATURA</th>
+			<th>PROFESOR</th>
+			<th>ACCIONES</th>
+		</tr>	
+	</thead>
+	<tbody style=" .table-hover">
+		{% for comentario in usuarios %}
+			<tr>
+			{% for campo, valor in comentario %}
+				<td>{{valor}}</td>
+			{% endfor %}
+				<td>
+					{% set url=utils.protegerURL('/usuarios/borrar?id=?id=' ~ comentario.ID )%}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+					{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID )%}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
 <div class="jumbotron">
 	<h1>Partes registrados</h1>
 	<p class="lead">Listado de partes</p>
@@ -22,9 +50,11 @@
 		<tr>			
 			<th>ID</th>	
 			<th>Alumno</th>
-			<th>Email</th>
-			<th>Clave</th>
+			<th>Curso</th>
+			<th>Fecha</th>
 			<th>Hora</th>
+			<th>Asignatura</th>
+			<th>Tutor</th>
 		</tr>	
 	</thead>
 	<tbody style=" .table-hover">
@@ -34,24 +64,15 @@
 				<td>{{valor}}</td>
 			{% endfor %}
 				<td>
-					<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-					<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
+					{% set url=utils.protegerURL('/usuarios/borrar?id=' ~ comentario.ID) %}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+					{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID) %}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
 				</td>
 			</tr>
 		{% endfor %}
-<<<<<<< HEAD
 	</tbody>
 </table>
-
-=======
-		
-	    {% set url=utils.protegerURL('/borrar?id=' ~ comentario.ID) %}
-		<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		{% set url=utils.protegerURL('/editar?id=' ~ comentario.ID) %}
-		<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-		----------------<br>
-{% endfor %}
->>>>>>> 574d6f2d0436689f8286622141a5d25b0841bdeb
 	
 {% endblock cuerpo %}
 

@@ -58,9 +58,17 @@
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{comentario.COMENTARIO}}</textarea>
 		</div>
 										
+<<<<<<< HEAD
 		<div class="form-group col-md-3">
+=======
+	    <div class="form-group col-md-9"></div>
+	    
+	    <div class="form-group col-md-3">
 			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>
+>>>>>>> ee9e956afb8a2d493de5cb4ce3d11fbf302daf77
 			<button type="submit" class="btn btn-success">Aceptar</button>
+			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>
+			
 		</div>										
  				
 </form>	
@@ -68,20 +76,5 @@
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
-
-
-
-
-
-{% for comentario in usuarios %}
-	
-		{% for campo, valor in comentario %}
-			{{campo}} : {{valor}} <br>
-		{% endfor %}
-		
-		<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-		----------------<br>
-	{% endfor %}
 
 {% endblock cuerpo %}

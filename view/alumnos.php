@@ -44,7 +44,16 @@
           
           {% endfor %}
          
-        </tbody>  
-      </table>  
-      {% endblock cuerpo %}
+        </tbody>
+        <script>
+    //
+	$(document).ready(function() 
+    { 
+        $("#mytable").tablesorter(); 
+    } 
+     ); 
+    //
+        </script>		  
+        </table>  
+        {% endblock cuerpo %}
 
