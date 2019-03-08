@@ -433,7 +433,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select id, nombre, email, rol")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("select id, nombre, email, rol from usuario")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('usuarios'=>$r);
 		echo $twig->render('usuarios.php',$valores);  
