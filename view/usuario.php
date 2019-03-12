@@ -61,8 +61,9 @@
 	    <div class="form-group col-md-9"></div>
 	    
 	    <div class="form-group col-md-3">
-			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>
 			<button type="submit" class="btn btn-success">Aceptar</button>
+			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>
+			
 		</div>										
  				
 </form>	
