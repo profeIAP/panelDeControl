@@ -10,8 +10,7 @@
 
 {% if error %}
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
-{% endif %}
-<table class="table table-bordered table-hover" id="temas">				
+{% endif %}		
 	<thead>	GIT
 		<tr>			
 			<th>ID</th>	
