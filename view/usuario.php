@@ -40,15 +40,15 @@
 
 		</div>	
 		<div class="form-group col-md-12">
-			                                <label for="alumnoaImplicado">email</label>
+			                                <label for="alumnoaImplicado">Email</label>
 			<input type="text" class="form-control" id="email" name="email" value="">
 		</div>	
 		<div class="form-group col-md-6">
-			                                <label for="alumnoaImplicado">contraseña</label>
+			                                <label for="alumnoaImplicado">Contraseña</label>
 			<input type="text" class="form-control" id="clave" name="clave" value="">
 		</div>
 		<div class="form-group col-md-6">
-			                                <label for="alumnoaImplicado">repetir contraseña</label>
+			                                <label for="alumnoaImplicado">Repetir Contraseña</label>
 			<input type="text" class="form-control" id="clave2" name="clave2" value="">
 		</div>	
 	

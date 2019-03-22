@@ -10,6 +10,7 @@
 
 {% if error %}
 	<div class="alert alert-error" role="alert"> {{ error|raw}}</div>
+
 {% endif %}
 
 <div class="jumbotron">
@@ -27,6 +28,7 @@
 			<th>Hora</th>
 			<th>Asignatura</th>
 			<th>Tutor</th>
+			<th>Acciones</th>
 		</tr>	
 	</thead>
 	<tbody style=" .table-hover">
@@ -36,9 +38,15 @@
 				<td>{{valor}}</td>
 			{% endfor %}
 				<td>
-					{% set url=utils.protegerURL('/usuarios/borrar?id=' ~ comentario.ID) %}
+<<<<<<< HEAD
+					{% set url=utils.protegerURL('/partes/borrar?id=' ~ comentario.ID) %}
 					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-					{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID) %}
+					{% set url=utils.protegerURL('/partes/editar?id=' ~ comentario.ID) %}
+=======
+					{% set url=utils.protegerURL('/usuarios/borrar?id=?id=' ~ comentario.ID )%}
+					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+					{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID )%}
+>>>>>>> 02370484e8b988c7774d897ed79547de7d916cc9
 					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
 				</td>
 			</tr>
