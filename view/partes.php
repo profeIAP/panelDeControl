@@ -36,9 +36,9 @@
 				<td>{{valor}}</td>
 			{% endfor %}
 				<td>
-					{% set url=utils.protegerURL('/usuarios/borrar?id=' ~ comentario.ID) %}
+					{% set url=utils.protegerURL('/partes/borrar?id=' ~ comentario.ID) %}
 					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-					{% set url=utils.protegerURL('/usuarios/editar?id=' ~ comentario.ID) %}
+					{% set url=utils.protegerURL('/partes/editar?id=' ~ comentario.ID) %}
 					<a href="{{url}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a>			
 				</td>
 			</tr>
