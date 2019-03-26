@@ -25,7 +25,7 @@
 
 		<div class="form-group col-md-9">
 			<label for="alumnoaImplicado">Nombre</label>
-			<input type="text" class="form-control" id="alumnoaImplicado" name="nombre" value="">
+			<input type="text" class="form-control" id="alumnoaImplicado" name="nombre" value="{{comentario.NOMBRE}}">
 		</div>
 		
 		<div class="form-group col-md-3">
