@@ -65,7 +65,7 @@
 			<button type="submit" class="btn btn-danger">Cancelar</button>
 		</div>										
  				
-</form>	
+</form>
 
 
 
