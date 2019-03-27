@@ -17,6 +17,7 @@
 	<p class="lead">Listado de usuarios</p>
 	
 </div>
+	
 
 <table class="table table-bordered table-hover" id="temas">				
 	<thead>	
@@ -44,5 +45,16 @@
 		{% endfor %}
 	</tbody>
 </table>
+
+<script>
+
+	$(document).ready(function() 
+    { 
+        $("#temas").tablesorter(); 
+    } 
+); 
+
+</script>	
+
 
 {% endblock cuerpo %}
