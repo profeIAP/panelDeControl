@@ -40,15 +40,15 @@
 
 		</div>	
 		<div class="form-group col-md-12">
-			                                <label for="alumnoaImplicado">email</label>
+			                                <label for="alumnoaImplicado">Email</label>
 			<input type="text" class="form-control" id="email" name="email" value="">
 		</div>	
 		<div class="form-group col-md-6">
-			                                <label for="alumnoaImplicado">contraseña</label>
+			                                <label for="alumnoaImplicado">Contraseña</label>
 			<input type="text" class="form-control" id="clave" name="clave" value="">
 		</div>
 		<div class="form-group col-md-6">
-			                                <label for="alumnoaImplicado">repetir contraseña</label>
+			                                <label for="alumnoaImplicado">Repetir Contraseña</label>
 			<input type="text" class="form-control" id="clave2" name="clave2" value="">
 		</div>	
 	
@@ -68,5 +68,20 @@
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
+
+
+
+
+
+{% for comentario in usuarios %}
+	
+		{% for campo, valor in comentario %}
+			{{campo}} : {{valor}} <br>
+		{% endfor %}
+		
+		<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
+		----------------<br>
+	{% endfor %}
 
 {% endblock cuerpo %}

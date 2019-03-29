@@ -88,6 +88,9 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_DETERIORAR" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_FALTAMATERIAL" value=""> No traer o no utilizar el material necesario</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_MOVIL" value=""> Utilizar el teléfono móvil en clase</label>
@@ -97,14 +100,15 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_ORDENADOR" value=""> Usar el ordenador indebidamente</label>
-					</div>
+						</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_PASILLOS" value=""> Permanecer en los pasillos en los recreos</label>
-					</div>
+						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_FALTARANTESDEEXAMEN" value=""> Faltar injustificadamente a clase antes de un examen</label>
+						<label><input type="checkbox" name="L_FALTARANTESEXAMEN" value=""> Faltar injustificadamente a clase antes de un examen</label>
 				    </div>
-				    <div class="form-group col-md-6">
+			</div>
+			    <div class="form-group col-md-6">
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_NOCOLABORARL" value=""> No colaborar de forma sistemática</label>
 					</div>
@@ -130,7 +134,7 @@
 						<label><input type="checkbox" name="L_MATERIAL" value=""> Usar indebidamente material en aulas específicas</label>
 					</div>
 				</div> 
-			</div>
+			</div> 
 		</div>
 		<div class="row">
 			<div class="form-group col-md-12">
@@ -166,7 +170,7 @@
 						<label><input type="checkbox" value="" name="G_DETERIORO"> Deterioro grave inst. docu. o pertenencias</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="" name="G_IMPEDIR"> Impedimento del desarrollo de actividades</label>
+						<label><input type="checkbox" value="" name="G_IMPEDIMENTO"> Impedimento del desarrollo de actividades</label>
 					</div>
 					
 					
