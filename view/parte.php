@@ -129,7 +129,7 @@
 						<label><input type="checkbox" name="L_DESCONSIDERADO" value=""> Ser desconsiderado con el profesor,compañeros...</label>
 							</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_BEBEROCOMER" value=""> Comer o beber en clse</label>
+						<label><input type="checkbox" name="L_BEBEROCOMER" value=""> Comer o beber en clase</label>
 					</div>
 				</div> 
 			</div>
@@ -166,6 +166,9 @@
 								</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="G_IMPEDIMENTO"> Impedimento del desarrollo de actividades</label
+					</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="G_IMPEDIMENTO"> Injurias,ofensas,vejaciones y humillaciones</label
 					</div>
 					
 					
