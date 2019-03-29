@@ -19,18 +19,18 @@
 
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
-		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
-		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
+		<input type="hidden" name="ID" value="{{usuario.ID}}"/>
+		<input type="hidden" name="ID_ALUMNO" value="{{usuario.ID_ALUMNO}}"/>
 		
 
 		<div class="form-group col-md-9">
 			<label for="alumnoaImplicado">Nombre</label>
-			<input type="text" class="form-control" id="alumnoaImplicado" name="nombre" value="">
+			<input type="text" class="form-control" id="alumnoaImplicado" name="nombre" value="{{usuario.NOMBRE}}">
 		</div>
 		
 		<div class="form-group col-md-3">
 			<label for="alumnoaImplicado">Perfil</label>
-			<select class="form-control" id="hora" name="rol">
+			<select class="form-control" id="hora" value="rol">
 				  <option>Alumno</option>
 				   <option>Profeso</option>
 				   <option>Tutor</option>
@@ -40,16 +40,16 @@
 
 		</div>	
 		<div class="form-group col-md-12">
-			                                <label for="alumnoaImplicado">email</label>
-			<input type="text" class="form-control" id="email" name="email" value="">
+			                                <label for="alumnoaImplicado">Email</label>
+			<input type="text" class="form-control" id="email" name="email" value="{{usuario.EMAIL}}">
 		</div>	
 		<div class="form-group col-md-6">
-			                                <label for="alumnoaImplicado">contraseña</label>
-			<input type="text" class="form-control" id="clave" name="clave" value="">
+			                                <label for="alumnoaImplicado">Contraseña</label>
+			<input type="text" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
 		</div>
 		<div class="form-group col-md-6">
-			                                <label for="alumnoaImplicado">repetir contraseña</label>
-			<input type="text" class="form-control" id="clave2" name="clave2" value="">
+			                                <label for="alumnoaImplicado">Repetir Contraseña</label>
+			<input type="text" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
 		</div>	
 	
 		                                
@@ -58,9 +58,7 @@
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{comentario.COMENTARIO}}</textarea>
 		</div>
 										
-	    <div class="form-group col-md-9"></div>
-	    
-	    <div class="form-group col-md-3">
+		<div class="form-group col-md-3">
 			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>
 			<button type="submit" class="btn btn-success">Aceptar</button>
 		</div>										
@@ -70,5 +68,20 @@
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
+
+
+
+
+
+{% for comentario in usuarios %}
+	
+		{% for campo, valor in comentario %}
+			{{campo}} : {{valor}} <br>
+		{% endfor %}
+		
+		<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
+		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
+		----------------<br>
+	{% endfor %}
 
 {% endblock cuerpo %}
