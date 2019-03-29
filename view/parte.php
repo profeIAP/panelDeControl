@@ -172,6 +172,9 @@
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="" name="G_IMPEDIMENTO"> Impedimento del desarrollo de actividades</label>
 					</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="G_IMPEDIMENTO"> Injurias,ofensas,vejaciones y humillaciones</label
+					</div>
 					
 					
 				</div>

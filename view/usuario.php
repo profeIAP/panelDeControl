@@ -19,18 +19,18 @@
 
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
-		<input type="hidden" name="ID" value="{{comentario.ID}}"/>
-		<input type="hidden" name="ID_ALUMNO" value="{{comentario.ID_ALUMNO}}"/>
+		<input type="hidden" name="ID" value="{{usuario.ID}}"/>
+		<input type="hidden" name="ID_ALUMNO" value="{{usuario.ID_ALUMNO}}"/>
 		
 
 		<div class="form-group col-md-9">
 			<label for="alumnoaImplicado">Nombre</label>
-			<input type="text" class="form-control" id="alumnoaImplicado" name="nombre" value="{{comentario.NOMBRE}}">
+			<input type="text" class="form-control" id="alumnoaImplicado" name="nombre" value="{{usuario.NOMBRE}}">
 		</div>
 		
 		<div class="form-group col-md-3">
 			<label for="alumnoaImplicado">Perfil</label>
-			<select class="form-control" id="hora" name="rol">
+			<select class="form-control" id="hora" value="rol">
 				  <option>Alumno</option>
 				   <option>Profeso</option>
 				   <option>Tutor</option>
@@ -41,15 +41,15 @@
 		</div>	
 		<div class="form-group col-md-12">
 			                                <label for="alumnoaImplicado">Email</label>
-			<input type="text" class="form-control" id="email" name="email" value="">
+			<input type="text" class="form-control" id="email" name="email" value="{{usuario.EMAIL}}">
 		</div>	
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Contraseña</label>
-			<input type="text" class="form-control" id="clave" name="clave" value="">
+			<input type="text" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
 		</div>
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Repetir Contraseña</label>
-			<input type="text" class="form-control" id="clave2" name="clave2" value="">
+			<input type="text" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
 		</div>	
 	
 		                                
