@@ -31,11 +31,9 @@
 		<div class="form-group col-md-3">
 			<label for="alumnoaImplicado">Perfil</label>
 			<select class="form-control" id="hora" value="rol">
-				  <option>Alumno</option>
-				   <option>Profeso</option>
-				   <option>Tutor</option>
-				   <option>Administrativo</option>
-				   <option>Jefe de estudios</option>
+				{% for p in perfiles %}
+				  <option>p</option>
+				 {% endfor %}
 				 </select>
 
 		</div>	
