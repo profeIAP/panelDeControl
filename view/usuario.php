@@ -20,8 +20,6 @@
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
 		<input type="hidden" name="ID" value="{{usuario.ID}}"/>
-		
-		
 
 		<div class="form-group col-md-9">
 			<label for="alumnoaImplicado">Nombre</label>
