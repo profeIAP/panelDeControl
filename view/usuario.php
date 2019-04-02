@@ -51,7 +51,7 @@
 		                                
 		                                <div class="form-group col-md-12">
 			                                <label for="comentario">Observaciones:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{usuario.COMENTARIO}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{usuario.OBSERVACIONES}}</textarea>
 		</div>
 										
 		<div class="form-group col-md-3">
