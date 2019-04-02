@@ -20,7 +20,7 @@
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
 		<input type="hidden" name="ID" value="{{usuario.ID}}"/>
-		<input type="hidden" name="ID_ALUMNO" value="{{usuario.ID_ALUMNO}}"/>
+		
 		
 
 		<div class="form-group col-md-9">
