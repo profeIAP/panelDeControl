@@ -45,11 +45,11 @@
 		</div>	
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Contraseña</label>
-			<input type="text" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
+			<input type="password" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
 		</div>
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Repetir Contraseña</label>
-			<input type="text" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
+			<input type="password" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
 		</div>	
 	
 		                                
