@@ -45,17 +45,17 @@
 		</div>	
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Contraseña</label>
-			<input type="text" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
+			<input type="password" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
 		</div>
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Repetir Contraseña</label>
-			<input type="text" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
+			<input type="password" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
 		</div>	
 	
 		                                
 		                                <div class="form-group col-md-12">
 			                                <label for="comentario">Observaciones:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{comentario.COMENTARIO}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{usuario.COMENTARIO}}</textarea>
 		</div>
 										
 		<div class="form-group col-md-3">
@@ -81,7 +81,7 @@
 		
 		<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
 		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-		----------------<br>
+		---------------<br>
 	{% endfor %}
 
 {% endblock cuerpo %}
