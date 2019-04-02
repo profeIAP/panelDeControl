@@ -90,9 +90,6 @@
 						<label><input type="checkbox" name="L_DETERIORAR" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_FALTAMATERIAL" value=""> No traer o no utilizar el material necesario</label>
-					</div>
-					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_MOVIL" value=""> Utilizar el teléfono móvil en clase</label>
 					</div>
 					<div class="form-group col-md-12">
@@ -171,9 +168,6 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="" name="G_IMPEDIMENTO"> Impedimento del desarrollo de actividades</label>
-					</div>
-					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="G_IMPEDIMENTO"> Injurias,ofensas,vejaciones y humillaciones</label
 					</div>
 					
 					
