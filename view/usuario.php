@@ -54,10 +54,13 @@
 			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{usuario.OBSERVACIONES}}</textarea>
 		</div>
 										
-		<div class="form-group col-md-3">
-			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>
-			<button type="submit" class="btn btn-success">Aceptar</button>
-		</div>										
+		<div class="form-group col-md-9"></div>			
+
+ 	    <div class="form-group col-md-3">	
+			<button type="submit" class="btn btn-success">Aceptar</button>	
+			<a href="/alumnos/anotaciones/cancelar" class="btn btn-danger">Cancelar</a>				
+		</div>
+									
  				
 </form>	
 
