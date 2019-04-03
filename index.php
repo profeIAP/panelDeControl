@@ -236,10 +236,10 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
      $app->get('/', function() use ($app){
 		global $twig;
 		
-		$r=AccesoDatos::listar($app->db, "alumno", "ID, NOMBRE, EMAIL, DIRECCION, TELEFONO, COMENTARIO, LOCALIDAD, PROVINCIA, DNI_TUTOR, CURSO");
-		$valores=array('alumnos'=>$r);
+		$r=AccesoDatos::listar($app->db, "t_rol", "*");
+		$valores=array('roles'=>$r);
 		
-		echo $twig->render('alumnos.php',$valores);  
+		echo $twig->render('usuario.php',$valores);  
 	}); 
 	
 	// [http://goo.gl/52g6F]  Documentación Autocomplete de jQuery UI 
