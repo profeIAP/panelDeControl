@@ -20,8 +20,6 @@
 <form method="post" action="/alumnos/anotaciones/guardar" role="form">
 		
 		<input type="hidden" name="ID" value="{{usuario.ID}}"/>
-		<input type="hidden" name="ID_ALUMNO" value="{{usuario.ID_ALUMNO}}"/>
-		
 
 		<div class="form-group col-md-9">
 			<label for="alumnoaImplicado">Nombre</label>
@@ -31,11 +29,9 @@
 		<div class="form-group col-md-3">
 			<label for="alumnoaImplicado">Perfil</label>
 			<select class="form-control" id="hora" value="rol">
-				  <option>Alumno</option>
-				   <option>Profeso</option>
-				   <option>Tutor</option>
-				   <option>Administrativo</option>
-				   <option>Jefe de estudios</option>
+				{% for p in perfiles %}
+				  <option>p</option>
+				 {% endfor %}
 				 </select>
 
 		</div>	
@@ -45,17 +41,17 @@
 		</div>	
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Contraseña</label>
-			<input type="text" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
+			<input type="password" class="form-control" id="clave" name="clave" value="{{usuario.CLAVE}}">
 		</div>
 		<div class="form-group col-md-6">
 			                                <label for="alumnoaImplicado">Repetir Contraseña</label>
-			<input type="text" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
+			<input type="password" class="form-control" id="clave2" name="clave2" value="{{usuario.CLAVE}}">
 		</div>	
 	
 		                                
 		                                <div class="form-group col-md-12">
 			                                <label for="comentario">Observaciones:</label>
-			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{comentario.COMENTARIO}}</textarea>
+			<textarea style="width:100%" rows="8" cols="50" class="form-control" id="comentario" name="descripcion" >{{usuario.OBSERVACIONES}}</textarea>
 		</div>
 										
 		<div class="form-group col-md-3">
@@ -68,20 +64,5 @@
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
-
-
-
-
-
-{% for comentario in usuarios %}
-	
-		{% for campo, valor in comentario %}
-			{{campo}} : {{valor}} <br>
-		{% endfor %}
-		
-		<a href="/usuarios/borrar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/trash_can1.png"></a>
-		<a href="/usuarios/editar?id={{comentario.ID}}"><img width="32px" src="http://findicons.com/files/icons/2226/matte_basic/32/document_edit.png"></a><br>
-		----------------<br>
-	{% endfor %}
 
 {% endblock cuerpo %}
