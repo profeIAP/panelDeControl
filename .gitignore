@@ -4,5 +4,6 @@ composer.lock
 *~
 logs/
 /vendor/*
+/model/datos/
 !/vendor/composer/
 vendor/
