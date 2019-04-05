@@ -156,19 +156,22 @@
 						<label><input type="checkbox" value="" name="G_SUPLANTACION"> Suplantación personalidad, falsificación o sustracción</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="G_FUMAR"> Fumar en clase</label>
+						<label><input type="checkbox" value="" name="G_FUMAR"> Fumar en el recinto escolar o en cualquier actividad docente</label>
+						</div>
+						<div class="form-group col-md-12">
+						<label><input type="checkbox" value="" name="G_OFENSAS"> Injurias,ofensas,vejaciones y humillaciones</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="G_INCUMPLIMIENTO"> Salir del centro sin autorizacion</label>
+						<label><input type="checkbox" value="" name="G_INCUMPLIMIENTO"> Salir del centro sin autorizacion</label>
 							</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="G_DETERIORO"> Deterioro grave inst., docu o pertenencias</label>
+						<label><input type="checkbox" value="" name="G_DETERIORO"> Deterioro grave inst., docu o pertenencias</label>
 								</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="G_IMPEDIMENTO"> Impedimento del desarrollo de actividades</label
+						<label><input type="checkbox" value="" name="G_IMPEDIMENTO"> Impedimento del desarrollo de actividades</label
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="G_IMPEDIMENTO"> Injurias,ofensas,vejaciones y humillaciones</label
+						<label><input type="checkbox" value="" name="G_IMPEDIMENTO"> Injurias,ofensas,vejaciones y humillaciones</label
 					</div>
 					
 					
