@@ -218,7 +218,7 @@
 					url:'/alumnos/buscar/id',
 					  type:'POST',
 					  dataType:'json',
-					  data:{ valor:ui.item.id}
+					  data:{ valor:ui.item.ID}
 				  }).done(function(respuesta){
 					  $("#id_alumno").val(respuesta.ID);
 					  $("#cursoygrupo").val(respuesta.CURSO);

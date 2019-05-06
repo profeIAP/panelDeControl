@@ -543,8 +543,6 @@ $app->group('/usuarios', function () use ($app) {
 	
 });
 
-
-
 $app->group('/login', function () use ($app) {
 	
 	$app->get('/', function() use ($app){
