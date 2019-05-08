@@ -84,7 +84,7 @@ $app->container->singleton('acl', function () {
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('utils', new Utilidades()); // Para poder encriptar urls (entre otras funcionalidades)
-
+/*
 $app->hook('slim.before.router', function () use ($app) {
 	
 	global $twig;
@@ -117,7 +117,7 @@ $app->hook('slim.before.router', function () use ($app) {
 		$app->stop();
 	}
 });
-
+*/
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
@@ -545,8 +545,6 @@ $app->group('/usuarios', function () use ($app) {
 	});
 	
 });
-
-
 
 $app->group('/login', function () use ($app) {
 	
