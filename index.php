@@ -509,8 +509,11 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 
 	$app->get('/crear', function() use ($app){
 		global $twig;
-		// TODO indicar la vista a renderizar (aun no existe el formulario)
-		echo $twig->render('usuario.php');  
+		
+		$r=AccesoDatos::listar($app->db, "t_rol", "*");
+		$valores=array('roles'=>$r);
+		
+		echo $twig->render('usuario.php',$valores);
 	}); 
 });
 
