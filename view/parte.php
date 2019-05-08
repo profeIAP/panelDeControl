@@ -158,7 +158,7 @@
 				<div class="form-group col-md-6">
 					
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="" name="G_OFENSAS"> Injurias ofensas, vejaciones y humillaciones</label>
+						<label><input type="checkbox" value="" name="G_OFENSAS"> Injurias, ofensas, vejaciones y humillaciones</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="" name="G_SALIR"> Salir del centro sin autorización</label>
