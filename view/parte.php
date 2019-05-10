@@ -78,10 +78,10 @@
 				</div>
 				<div class="form-group col-md-6">
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_PERTURBAR" value=""> Perturbar el desarrollo de las clases</label>
+						<label><input type="checkbox" name="L_PERTURBAR" value=1> Perturbar el desarrollo de las clases</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_DIFICULTAR"> Dificultar el estudio de los compañeros</label>
+						<label><input type="checkbox" name="L_DIFICULTAR" value=1> Dificultar el estudio de los compañeros</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_FALTARINJUSTIFICADAMENTE" value=""> Faltar a clase injustificadamente</label>
