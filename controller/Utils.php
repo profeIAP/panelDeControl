@@ -167,6 +167,15 @@ class Utilidades {
 	public static function prettyPrintJSON($json){
 		return "<PRE>".json_encode($json,JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."</PRE>";
 	}
+
+	// Dar que dia de la semana era
+	
+	public static function diaDeLaSemana($fecha){
+				
+		$dias=array("domingo", "lunes","martes","miércoles","jueves","viernes", "sábado");
+		$pos=date("w", strtotime($fecha));
+        return $dias[$pos]; 
+	}
 	
 	// Intenta rellenar la lista de valores que espera la BD escribiendo los campos
 	// con el uso de mayúsculas/minúsculas que se han usado en la tabla de la BD
@@ -178,6 +187,11 @@ class Utilidades {
 		// Anotamos los que coinciden en ambos conjuntos
 		
 		$coinciden=array_intersect($bd, array_keys($form));
+		
+		foreach($coinciden as $c)
+		{
+			$rsdo[$c]=$form[$c];
+		}
 		
 		foreach($coinciden as $c)
 		{
