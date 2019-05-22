@@ -223,8 +223,18 @@
 					  $("#id_alumno").val(respuesta.ID);
 					  $("#cursoygrupo").val(respuesta.CURSO);
 					  $("#tutor").val(respuesta.TUTOR);
-				  });  
+				  }); 
+				    $.post("/partes/buscar/asignatura",
+  {
+    FECHA: "Donald Duck",
+    HORA: "Duckburg"
+    GRUPO: "Duckburg"
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  }) 
 			  }
+			 
 			});
  			
  		});
