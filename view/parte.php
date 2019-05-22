@@ -227,7 +227,7 @@
 				    $.post("/partes/buscar/asignatura",
   {
     FECHA: "Donald Duck",
-    HORA: "Duckburg"
+    HORA: "Duckburg",
     GRUPO: "Duckburg"
   },
   function(data, status){
