@@ -814,6 +814,11 @@ $app->group('/test', function () use ($app) {
 		global $twig;
 		echo $twig->render('malandrin.php'); 
 	});
+
+	$app->get('/fecha', function() use ($app){
+		global $twig;
+		echo Utilidades::diaDeLaSemana("2019-05-25"); 
+	});
 });
 
 // Ponemos en marcha el router
