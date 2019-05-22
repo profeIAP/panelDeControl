@@ -107,7 +107,7 @@
 			</div>
 			    <div class="form-group col-md-6">
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_NOCOLABORARL" value="1"> No colaborar de forma sistemática</label>
+						<label><input type="checkbox" name="L_NOCOLABORAR" value="1"> No colaborar de forma sistemática</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_IMPUNTUAL" value="1"> Ser impuntual sin justificación</label>
@@ -119,10 +119,10 @@
 						<label><input type="checkbox" name="L_COMER" value="1"> Comer o beber en clase</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_NOTRAERMATERIAL" value="1"> No traer o no utilizar el material necesario</label>
+						<label><input type="checkbox" name="L_FALTAMATERIAL" value="1"> No traer o no utilizar el material necesario</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_ORDENADORES" value="1"> Utilizar ordenadores sin permiso</label>
+						<label><input type="checkbox" name="L_ORDENADOR" value="1"> Utilizar ordenadores sin permiso</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_ALTERARORDEN" value="1"> Alterar el orden y limp. en zonas comunes</label>
@@ -218,13 +218,23 @@
 					url:'/alumnos/buscar/id',
 					  type:'POST',
 					  dataType:'json',
-					  data:{ valor:ui.item.ID}
+					  data:{ valor:ui.item.id}
 				  }).done(function(respuesta){
 					  $("#id_alumno").val(respuesta.ID);
 					  $("#cursoygrupo").val(respuesta.CURSO);
 					  $("#tutor").val(respuesta.TUTOR);
-				  });  
+				  }); 
+				    $.post("/partes/buscar/asignatura",
+  {
+    FECHA: "Donald Duck",
+    HORA: "Duckburg"
+    GRUPO: "Duckburg"
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  }) 
 			  }
+			 
 			});
  			
  		});
