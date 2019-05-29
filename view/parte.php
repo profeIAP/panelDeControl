@@ -226,9 +226,9 @@
 				  }); 
 				    $.post("/partes/buscar/asignatura",
   {
-    FECHA: "Donald Duck",
-    HORA: "Duckburg"
-    GRUPO: "Duckburg"
+    FECHA: "06/05/2019",
+    HORA: "Segunda"
+    GRUPO: "2º ESO B"
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
