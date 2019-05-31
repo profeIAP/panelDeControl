@@ -113,10 +113,10 @@
 						<label><input type="checkbox" name="L_IMPUNTUAL" value="1"> Ser impuntual sin justificación</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_DESCONSIDERADOS" value="1"> Ser desconsiderados con profesores, compañeros...</label>
+						<label><input type="checkbox" name="L_DESCONSIDERABLES" value="1"> Ser desconsiderados con profesores, compañeros...</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_COMER" value="1"> Comer o beber en clase</label>
+						<label><input type="checkbox" name="L_BEBEROCOMER" value="1"> Comer o beber en clase</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_FALTAMATERIAL" value="1"> No traer o no utilizar el material necesario</label>
@@ -149,7 +149,7 @@
 						<label><input type="checkbox" value="1" name="G_AMENAZAS"> Amenazas o coacciones</label>
 				    </div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="1" name="G_SUPLANTACIÓN"> Suplantación personalidad, falsificación o sustracción</label>
+						<label><input type="checkbox" value="1" name="G_SUPLANTACION"> Suplantación personalidad, falsificación o sustracción</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="1" name="G_FUMAR"> Fumar en el recinto o en cualquier actividad docente</label>
