@@ -226,9 +226,15 @@
 				  }); 
 				    $.post("/partes/buscar/asignatura",
   {
+<<<<<<< HEAD
     FECHA: "06/05/2019",
     HORA: "Segunda"
     GRUPO: "2º ESO B"
+=======
+    FECHA: "06/05/2019",
+    HORA: "Segunda",
+    GRUPO: "2º ESO B"
+>>>>>>> 5d48c3aeff0f88faa6d5b5d0aa5e39a91cc2fbaa
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
