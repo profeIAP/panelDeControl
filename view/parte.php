@@ -244,8 +244,8 @@
 					  $("#tutor").val(respuesta.TUTOR);
 <<<<<<< HEAD
 					  {
-                       return (respuesta.tutor == null || respuesta.tutor === 0);}
-                       $("a").removeAttr("href");
+                       if (respuesta.tutor == null || respuesta.tutor === 0)
+                       $("a").removeAttr("readonly");
 				  });  
 =======
 				  }); 
