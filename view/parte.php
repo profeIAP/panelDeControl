@@ -108,11 +108,19 @@
 						<label><input type="checkbox" name="L_MOVIL" value="1"> Utilizar el teléfono móvil en clase</label>
 					</div>
 					<div class="form-group col-md-12">
+<<<<<<< HEAD
 						<label><input type="checkbox" name="L_GORRA" value="1"> Usar gorras, gafas de sol o reprod. de música en clase</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_ORDENADOR" value=""> Usar el ordenador indebidamente</label>
 						</div>
+=======
+						<label><input type="checkbox" name="L_DESCONSIDERABLES" value="1"> Ser desconsiderados con profesores, compañeros...</label>
+					</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_BEBEROCOMER" value="1"> Comer o beber en clase</label>
+					</div>
+>>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_PASILLOS" value=""> Permanecer en los pasillos en los recreos</label>
 						</div>
@@ -147,7 +155,17 @@
 						<label><input type="checkbox" value="" name="G_INCUMPLIMIENTO"> Incumplimiento de correcciones impuestas</label>
 					</div>
 					<div class="form-group col-md-12">
+<<<<<<< HEAD
 						<label><input type="checkbox" value="" name="G_AMENAZAS"> Amenazas o coacciones</label>
+=======
+						<label><input type="checkbox" value="1" name="G_AMENAZAS"> Amenazas o coacciones</label>
+				    </div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="1" name="G_SUPLANTACION"> Suplantación personalidad, falsificación o sustracción</label>
+					</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="1" name="G_FUMAR"> Fumar en el recinto o en cualquier actividad docente</label>
+>>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
 					</div>
 				</div>
 				<div class="form-group col-md-6">
@@ -224,10 +242,29 @@
 					  $("#id_alumno").val(respuesta.ID);
 					  $("#cursoygrupo").val(respuesta.CURSO);
 					  $("#tutor").val(respuesta.TUTOR);
+<<<<<<< HEAD
 					  {
                        return (respuesta.tutor == null || respuesta.tutor === 0);}
                        $("a").removeAttr("href");
 				  });  
+=======
+				  }); 
+				    $.post("/partes/buscar/asignatura",
+  {
+<<<<<<< HEAD
+    FECHA: "06/05/2019",
+    HORA: "Segunda"
+    GRUPO: "2º ESO B"
+=======
+    FECHA: "06/05/2019",
+    HORA: "Segunda",
+    GRUPO: "2º ESO B"
+>>>>>>> 5d48c3aeff0f88faa6d5b5d0aa5e39a91cc2fbaa
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  }) 
+>>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
 			  }
 			});
  			
