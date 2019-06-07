@@ -245,7 +245,7 @@
 <<<<<<< HEAD
 					  {
                        if (respuesta.TUTOR == null || respuesta.TUTOR === 0)
-                       $("a").removeAttr("readonly");
+                       $("tutor").removeAttr("readonly");
 				  });  
 =======
 				  }); 
