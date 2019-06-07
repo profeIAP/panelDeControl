@@ -112,7 +112,7 @@
 						<label><input type="checkbox" name="L_GORRA" value="1"> Usar gorras, gafas de sol o reprod. de música en clase</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_ORDENADOR" value=""> Usar el ordenador indebidamente</label>
+						<label><input type="checkbox" name="L_ORDENADOR" value="1"> Usar el ordenador indebidamente</label>
 						</div>
 =======
 						<label><input type="checkbox" name="L_DESCONSIDERABLES" value="1"> Ser desconsiderados con profesores, compañeros...</label>
@@ -128,13 +128,13 @@
 						<label><input type="checkbox" name="L_FALTARINJUSTIFICADAMENTE" value=""> Faltar injustificadamente a clase antes de un examen</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_NOCOLABORAR" value=""> No colaborar de forma sistematica</label>
+						<label><input type="checkbox" name="L_NOCOLABORAR" value="1"> No colaborar de forma sistematica</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_IMPUNTUAL" value=""> Ser inpuntual sin justificacion</label>
+						<label><input type="checkbox" name="L_IMPUNTUAL" value="1"> Ser inpuntual sin justificacion</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_DESCONSIDERADO" value=""> Ser desconsiderado con el profesor,compañeros...</label>
+						<label><input type="checkbox" name="L_DESCONSIDERADO" value="1"> Ser desconsiderado con el profesor,compañeros...</label>
 							</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" name="L_BEBEROCOMER" value=""> Comer o beber en clase</label>
@@ -149,15 +149,12 @@
 				</div>
 				<div class="form-group col-md-6">
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="" name="G_AGRESION"> Agresión física</label>
+						<label><input type="checkbox" value="1" name="G_AGRESION"> Agresión física</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="" name="G_INCUMPLIMIENTO"> Incumplimiento de correcciones impuestas</label>
+						<label><input type="checkbox" value="1" name="G_INCUMPLIMIENTO"> Incumplimiento de correcciones impuestas</label>
 					</div>
 					<div class="form-group col-md-12">
-<<<<<<< HEAD
-						<label><input type="checkbox" value="" name="G_AMENAZAS"> Amenazas o coacciones</label>
-=======
 						<label><input type="checkbox" value="1" name="G_AMENAZAS"> Amenazas o coacciones</label>
 				    </div>
 					<div class="form-group col-md-12">
@@ -165,13 +162,12 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="1" name="G_FUMAR"> Fumar en el recinto o en cualquier actividad docente</label>
->>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="" name="G_SUPLANTACION"> Suplantación personalidad, falsificación o sustracción</label>
+						<label><input type="checkbox" value="1" name="G_SUPLANTACION"> Suplantación personalidad, falsificación o sustracción</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="G_FUMAR"> Fumar en clase</label>
@@ -242,33 +238,22 @@
 					  $("#id_alumno").val(respuesta.ID);
 					  $("#cursoygrupo").val(respuesta.CURSO);
 					  $("#tutor").val(respuesta.TUTOR);
-<<<<<<< HEAD
-					  {
                        if (respuesta.TUTOR == null || respuesta.TUTOR === 0)
-                       $("a").removeAttr("readonly");
-				  });  
-=======
-				  }); 
+						$("a").removeAttr("readonly");
+				  });}});
+
+function buscarAsignatura(){				    
 				    $.post("/partes/buscar/asignatura",
   {
-<<<<<<< HEAD
-    FECHA: "06/05/2019",
-    HORA: "Segunda"
-    GRUPO: "2º ESO B"
-=======
+
     FECHA: "06/05/2019",
     HORA: "Segunda",
     GRUPO: "2º ESO B"
->>>>>>> 5d48c3aeff0f88faa6d5b5d0aa5e39a91cc2fbaa
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
-  }) 
->>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
+  } );
 			  }
-			});
- 			
- 		});
  		
  		
  	</script>
