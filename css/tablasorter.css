@@ -1,8 +1,4 @@
-{% endif %}
-</div>
 
-<style>
-	
 th.header { 
     background-image: url(/js/tablesorter-master/themes/blue/bg.gif);
     cursor: pointer;
@@ -18,22 +14,4 @@ th.headerSortUp {
     background-image: url(/js/tablesorter-master/themes/blue/asc.gif); 
     background-color: #3399FF; 
 } 
-
-
-</style>
-<script>
-//
-	$(document).ready(function() 
-    { 
-        $("#invoiceTable").tablesorter(); 
-    } 
-); 
-//
-</script>		
-
-
-	<div class="form-group col-md-12">
-		<table class="table table-bordered table-hover" id="invoiceTable">				
-			<thead>	
-			
 	

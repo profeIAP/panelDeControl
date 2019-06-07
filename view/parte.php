@@ -16,8 +16,8 @@
 
 		<div class="row">
 			<div class="form-group col-md-8">
-				<label for="alumnoaImplicado">Alumno/a implicado</label>
-				<input type="text" class="form-control" id="alumnoaImplicado" value="">
+				<label for="alumnoaImplicado">Alumno/a implicado <span style="color:red">*</span></label>
+				<input type="text" class="form-control" id="alumnoaImplicado" required>
 			</div>
 			
 			<div class="form-group col-md-2 ">
@@ -78,16 +78,29 @@
 				</div>
 				<div class="form-group col-md-6">
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Perturbar el desarrollo de las clases</label>
+						<label><input type="checkbox" name="L_PERTURBAR" value=""> Perturbar el desarrollo de las clases</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_DIFICULTAR" value="1"> Dificultar el estudio de los compañeros</label>
+						<label><input type="checkbox" name="L_DIFICULTAR"> Dificultar el estudio de los compañeros</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Faltar a clase injustificadamente</label>
+						<label><input type="checkbox" name="L_FALTARINJUSTIFICADAMENTE" value=""> Faltar a clase injustificadamente</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
+						<label><input type="checkbox" name="L_DETERIORAR" value=""> Deteriorar instalaciones, documentos o pertenencias</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_FALTAMATERIAL" value=""> No traer o no utilizar el material necesario</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ORDENADOR" value=""> Utilizar ordenadores sin permiso</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_ALTERAR" value=""> Alterar el orden y limp. en zonas comunes</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_USOINDEBIDO" value=""> Utilizar indebidamente material en aulas especificas</label>
+					
 					</div>
 				</div>
 				<div class="form-group col-md-6">
@@ -95,12 +108,38 @@
 						<label><input type="checkbox" name="L_MOVIL" value="1"> Utilizar el teléfono móvil en clase</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Usar gorras, gafas de sol o reprod. de música en clase</label>
+<<<<<<< HEAD
+						<label><input type="checkbox" name="L_GORRA" value="1"> Usar gorras, gafas de sol o reprod. de música en clase</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Usar el ordenador indebidamente</label>
+						<label><input type="checkbox" name="L_ORDENADOR" value=""> Usar el ordenador indebidamente</label>
+						</div>
+=======
+						<label><input type="checkbox" name="L_DESCONSIDERABLES" value="1"> Ser desconsiderados con profesores, compañeros...</label>
 					</div>
-				</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_BEBEROCOMER" value="1"> Comer o beber en clase</label>
+					</div>
+>>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_PASILLOS" value=""> Permanecer en los pasillos en los recreos</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_FALTARINJUSTIFICADAMENTE" value=""> Faltar injustificadamente a clase antes de un examen</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_NOCOLABORAR" value=""> No colaborar de forma sistematica</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_IMPUNTUAL" value=""> Ser inpuntual sin justificacion</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_DESCONSIDERADO" value=""> Ser desconsiderado con el profesor,compañeros...</label>
+							</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" name="L_BEBEROCOMER" value=""> Comer o beber en clase</label>
+					</div>
+				</div> 
 			</div>
 		</div>
 		<div class="row">
@@ -113,19 +152,41 @@
 						<label><input type="checkbox" value="" name="G_AGRESION"> Agresión física</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Incumplimiento de correcciones impuestas</label>
+						<label><input type="checkbox" value="" name="G_INCUMPLIMIENTO"> Incumplimiento de correcciones impuestas</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Amenazas o coacciones</label>
+<<<<<<< HEAD
+						<label><input type="checkbox" value="" name="G_AMENAZAS"> Amenazas o coacciones</label>
+=======
+						<label><input type="checkbox" value="1" name="G_AMENAZAS"> Amenazas o coacciones</label>
+				    </div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="1" name="G_SUPLANTACION"> Suplantación personalidad, falsificación o sustracción</label>
+					</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="1" name="G_FUMAR"> Fumar en el recinto o en cualquier actividad docente</label>
+>>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Suplantación personalidad, falsificación o sustracción</label>
+						<label><input type="checkbox" value="" name="G_SUPLANTACION"> Suplantación personalidad, falsificación o sustracción</label>
 					</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value=""> Fumar en clase</label>
+						<label><input type="checkbox" value="G_FUMAR"> Fumar en clase</label>
+						</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="G_INCUMPLIMIENTO"> Salir del centro sin autorizacion</label>
+							</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="G_DETERIORO"> Deterioro grave inst., docu o pertenencias</label>
+								</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="G_IMPEDIMENTO"> Impedimento del desarrollo de actividades</label
+					</div>
+					<div class="form-group col-md-12">
+						<label><input type="checkbox" value="G_IMPEDIMENTO"> Injurias,ofensas,vejaciones y humillaciones</label
 					</div>
 					
 					
@@ -146,9 +207,10 @@
  			
  			
  			<div class="col-md-4">
-				<a class="btn btn-danger" href="/partes/cancelar">Cancelar</a>
+		
 				<button type="submit" class="btn btn-primary" name="borrador" value="1">Guardar</button>
 				<button type="submit" class="btn btn-success" name="borrador" value="0">Aceptar</button>
+				<a class="btn btn-danger" href="/partes/cancelar">Cancelar</a>
             </div>
           </div>
          </form>
@@ -180,7 +242,29 @@
 					  $("#id_alumno").val(respuesta.ID);
 					  $("#cursoygrupo").val(respuesta.CURSO);
 					  $("#tutor").val(respuesta.TUTOR);
+<<<<<<< HEAD
+					  {
+                       if (respuesta.TUTOR == null || respuesta.TUTOR === 0)
+                       $("a").removeAttr("readonly");
 				  });  
+=======
+				  }); 
+				    $.post("/partes/buscar/asignatura",
+  {
+<<<<<<< HEAD
+    FECHA: "06/05/2019",
+    HORA: "Segunda"
+    GRUPO: "2º ESO B"
+=======
+    FECHA: "06/05/2019",
+    HORA: "Segunda",
+    GRUPO: "2º ESO B"
+>>>>>>> 5d48c3aeff0f88faa6d5b5d0aa5e39a91cc2fbaa
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  }) 
+>>>>>>> d594ec677925a203245bdb4e5432c8dfe234e2db
 			  }
 			});
  			

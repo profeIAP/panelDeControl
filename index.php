@@ -83,7 +83,8 @@ $app->container->singleton('acl', function () {
 
 $twig->addGlobal('login', new LoginClave()); // Para poder consultar si existe sesión de usuario abierta
 $twig->addGlobal('acl', $app->acl); // Para poder consultar si existe sesión de usuario abierta
-
+$twig->addGlobal('utils', new Utilidades()); // Para poder encriptar urls (entre otras funcionalidades)
+/*
 $app->hook('slim.before.router', function () use ($app) {
 	
 	global $twig;
@@ -116,7 +117,7 @@ $app->hook('slim.before.router', function () use ($app) {
 		$app->stop();
 	}
 });
-
+*/
 $app->get('/','Login::forzarLogin', function() use ($app){
     global $twig;
     echo $twig->render('inicio.php');  
@@ -180,7 +181,10 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		
 		$app->get('/crear', function() use ($app){
 			global $twig;
-			echo $twig->render('anotacion.php'); 
+			
+			$valores= array ( "fecha" => date('d/m/Y'));
+			
+			echo $twig->render('anotacion.php',$valores); 
 		});
 		
 		$app->get('/cancelar', function() use ($app){
@@ -235,7 +239,7 @@ $app->group('/alumnos','Login::forzarLogin', function () use ($app) {
 		$r=AccesoDatos::listar($app->db, "alumno", "ID, NOMBRE, EMAIL, DIRECCION, TELEFONO, COMENTARIO, LOCALIDAD, PROVINCIA, DNI_TUTOR, CURSO");
 		$valores=array('alumnos'=>$r);
 		
-		echo $twig->render('alumnos.php',$valores);  
+		echo $twig->render('alumnos.php',$valores);    
 	}); 
 	
 	// [http://goo.gl/52g6F]  Documentación Autocomplete de jQuery UI 
@@ -378,7 +382,7 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select * from partes")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("select ID, ID_ALUMNO, GRUPO, FECHA, HORA, ASIGNATURA, PROFESOR from partes")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('comentarios'=>$r);
 		echo $twig->render('partes.php',$valores);  
@@ -429,7 +433,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 		global $twig;
 		
 		$pdo=$app->db;
-		$r = $pdo->query("select id, nombre, email, clave from usuario")->fetchAll(PDO::FETCH_ASSOC);
+		$r = $pdo->query("select id, nombre, email, rol from usuario")->fetchAll(PDO::FETCH_ASSOC);
 			
 		$valores=array('usuarios'=>$r);
 		echo $twig->render('usuarios.php',$valores);  
@@ -477,7 +481,7 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 			'id'=>$app->request()->post('id'),
 			'nombre'=>$app->request()->post('nombre'),
 			'email'=>$app->request()->post('email'),		
-			'clave'=>$app->request()->post('clave'),	
+			'rol'=>$app->request()->post('rol'),	
 			
 		);
 		
@@ -505,8 +509,11 @@ $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
 
 	$app->get('/crear', function() use ($app){
 		global $twig;
-		// TODO indicar la vista a renderizar (aun no existe el formulario)
-		echo $twig->render('usuario.php');  
+		
+		$r=AccesoDatos::listar($app->db, "t_rol", "*");
+		$valores=array('roles'=>$r);
+		
+		echo $twig->render('usuario.php',$valores);
 	}); 
 });
 
@@ -538,8 +545,6 @@ $app->group('/usuarios', function () use ($app) {
 	});
 	
 });
-
-
 
 $app->group('/login', function () use ($app) {
 	
@@ -808,6 +813,11 @@ $app->group('/test', function () use ($app) {
 	$app->get('/326','Login::forzarLogin', function() use ($app){
 		global $twig;
 		echo $twig->render('malandrin.php'); 
+	});
+
+	$app->get('/fecha', function() use ($app){
+		global $twig;
+		echo Utilidades::diaDeLaSemana("2019-05-25"); 
 	});
 });
 

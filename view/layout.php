@@ -10,25 +10,18 @@
     <link rel="stylesheet" href="/css/bootstrap.css" media="print">
     
 	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/tablasorter.css">
 	<link rel="stylesheet" href="/css/responsive.css">
 	<link rel="stylesheet" href="/css/datatable.css">
 	<link rel="stylesheet" href="/css/datatable2.css"></style>
 	<link href="/css/jqueryui.css" type="text/css" rel="stylesheet"/>
     <link href="/css/datepicker.css" rel="stylesheet">
     
-	<script src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/loader.js"></script>
+	<script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
 	
     {% block cabecera %}
-			
-			
-		    <!--
-			<link href="/css/bootstrap-combined.min.css" rel="stylesheet">
-			<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-			<link href="/css/jumbotron-narrow.css" rel="stylesheet">
-			
-   
-   		-->
 			
 	{% endblock %}
 		

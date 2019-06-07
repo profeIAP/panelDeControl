@@ -30,49 +30,55 @@
 			<input type="text" class="form-control" id="nombre" name="nombre" value="{{comentario.NOMBRE}}">
 		</div>
 		<div class="form-group col-md-12">
-			<label for="apellido">Apellidos:</label>
-			<input type="text" class="form-control" id="apellido" name="apellido"  value="{{comentario.APELLIDO}}">
+			<label for="primerapellido">Primer apellido</label>
+			<input type="text" class="form-control" id="primerapellido" name="primerapellido"  value="{{comentario.APELLIDO}}">
 		</div>
-		
+		<div class="form-group col-md-12">
+			<label for="segundoapellido">Segundo apellido</label>
+			<input type="text" class="form-control" id="segundoapellido" name="segundoapellido"  value="{{comentario.APELLIDO}}">
+		</div>
 			<div class="form-group col-md-12">
-			<label for="correoelectronico">Correo Electrónico:</label>
-			<input type="text" class="form-control" id="email" name="email" value="{{comentario.EMAIL}}">
+			<label for="correoelectrnico">Correo Electrónico:</label>
+			<input type="text" class="form-control" id="ecorreolectrnico" name="correoelectrnico" value="{{comentario.EMAIL}}">
 		</div>
 		<div class="form-group col-md-12">
 		<label for="calle">Calle:</label>
-			<input type="text" class="form-control" id="direccion" name="direccion" value="{{comentario.DIRECCION}}">
+			<input type="text" class="form-control" id="direccin" name="direccin" value="{{comentario.DIRECCION}}">
 		</div>
 		
 		  <div class="form-group col-md-6">
 		  <label for="codigopostal">Código Postal:</label>
-		    <input type="text" class="form-control" id="codigopostal" name="codigopostal" size="12" value="">
+		    <input type="text" class="form-control" id="cdigopostal" name="cdigopostal" size="12" value="">
  </div>
  
 		   <div class="form-group col-md-6">
 		  <label for="localidad">Localidad:</label>
-			<input type="text" class="form-control" id="localidad" name="localidad" size="12" value="">
+			<input type="text" class="form-control" id="localidadderesidencia" name="localidadderesidencia" size="12" value="">
  </div>
 		<div class="form-group col-md-12">
 		<label for="provincia">Provincia:</label>
-			<input type="text" class="form-control" id="provincia" name="provincia" value="{{comentario.PROVINCIA}}">
+			<input type="text" class="form-control" id="provinciaderesidencia" name="provinciaderesidencia" value="{{comentario.PROVINCIA}}">
 		</div>
-		<div class="form-group col-md-12">
-		<label for="tutor1">D.N.I:</label>
-			<input type="text" class="form-control" id="dni" name="dni" value="{{comentario.DNI}}">
-		</div>
-		<div class="form-group col-md-12">
+		<div class="form-group col-md-9">
 			<label for="dni">Tutor 1:</label>
-			<input type="text" class="form-control" id="tutor1" name="tutor1" value="{{comentario.TUTOR1}}">
+			<input type="text" class="form-control" id="nombreprimertutor" name="nombreprimertutor" value="{{comentario.TUTOR1}}">
 		</div>
-		<div class="form-group col-md-12">
-		<label for="tutor2">D.N.I:</label>
-			<input type="text" class="form-control" id="dni" name="dni" value="{{comentario.DNI}}">
+		<div class="form-group col-md-3">
+		<label for="tutor1">D.N.I:</label>
+			<input type="text" class="form-control" id="dnipasaporteprimertutor" name="dnipasaporteprimertutor" value="{{comentario.DNIPASAPORTEPRIMERTUTOR}}">
 		</div>
-		<div class="form-group col-md-12">
-			<label for="dni">Tutor 2:</label>
-			<input type="text" class="form-control" id="tutor2" name="dni" value="{{comentario.TUTOR2}}">
+
+		<div class="form-group col-md-9">
+			<label for="nombresegundotutor">Tutor 2:</label>
+			<input type="text" class="form-control" id="nombresegundotutor" name="nombresegundotutor" value="{{comentario.TUTOR2}}">
 		</div>
 		
+
+		<div class="form-group col-md-3">
+		<label for="tutor2">D.N.I:</label>
+			<input type="text" class="form-control" id="dni" name="dnipasaportesegundotutor" value="{{comentario.DNIPASAPORTESEGUNDOTUTOR}}">
+		</div>
+
 		<div class="form-group col-md-10"></div>
 		
 		<div class="form-group col-md-1">
