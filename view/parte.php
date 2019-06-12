@@ -237,9 +237,9 @@ function buscarAsignatura(){
 				    $.post("/partes/buscar/asignatura",
   {
 
-    FECHA: "06/05/2019",
-    HORA: "Segunda",
-    GRUPO: "2º ESO B"
+    FECHA: "#fecha".val(),
+    HORA: "#hora".val(),
+    GRUPO: "#cursoygrupo".val()
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
