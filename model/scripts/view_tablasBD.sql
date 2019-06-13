@@ -4,15 +4,15 @@ select id, alumnoa NOMBRE, correoelectrnico EMAIL, direccin DIRECCION, telfono T
 from alumnos_seneca
 WHERE AODELAMATRCULA=(SELECT MAX(AODELAMATRCULA) FROM alumnos_seneca);
 
-insert into alumnos_seneca (alumnoa, correoelectrnico, direccin , telfono , localidadderesidencia ,provinciaderesidencia , dnipasaporteprimertutor , unidad, AODELAMATRCULA)
-values (
-'domínguez balbuena, juana', 
-'jdombal@hotmail.es', 
-'c/ cualquiera, 4', 
-'955444955', 
-'córdoba','córdoba',
-'33333333D',
-'1º ESO B',
-'2018');
+BEGIN TRANSACTION;
+insert into alumnos_seneca ("ID", "alumnoa", "estadomatrcula", "nidescolar", "dnipasaporte", "direccin", "cdigopostal", "localidadderesidencia", "fechadenacimiento", "provinciaderesidencia", "telfono", "telfonodeurgencia", "correoelectrnico", "curso", "ndelexpedientedelcentro", "unidad", "primerapellido", "segundoapellido", "nombre", "dnipasaporteprimertutor", "primerapellidoprimertutor", "segundoapellidoprimertutor", "nombreprimertutor", "sexoprimertutor", "dnipasaportesegundotutor", "primerapellidosegundotutor", "segundoapellidosegundotutor", "nombresegundotutor", "sexosegundotutor", "localidaddenacimiento", "aodelamatrcula", "ndematrculasenestecurso", "observacionesdelamatrcula", "provincianacimiento", "pasdenacimiento", "edada3112delaodematrcula", "nacionalidad", "sexo") values ('1', 'domínguez balbuena, juana', NULL, NULL, NULL, 'c/ cualquiera, 1', NULL, 'córdoba', NULL, 'córdoba', '955111955', NULL, 'jdombal@hotmail.es', NULL, NULL, '1º ESO A', NULL, NULL, NULL, '11111111A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+insert into alumnos_seneca ("ID", "alumnoa", "estadomatrcula", "nidescolar", "dnipasaporte", "direccin", "cdigopostal", "localidadderesidencia", "fechadenacimiento", "provinciaderesidencia", "telfono", "telfonodeurgencia", "correoelectrnico", "curso", "ndelexpedientedelcentro", "unidad", "primerapellido", "segundoapellido", "nombre", "dnipasaporteprimertutor", "primerapellidoprimertutor", "segundoapellidoprimertutor", "nombreprimertutor", "sexoprimertutor", "dnipasaportesegundotutor", "primerapellidosegundotutor", "segundoapellidosegundotutor", "nombresegundotutor", "sexosegundotutor", "localidaddenacimiento", "aodelamatrcula", "ndematrculasenestecurso", "observacionesdelamatrcula", "provincianacimiento", "pasdenacimiento", "edada3112delaodematrcula", "nacionalidad", "sexo") values ('2', 'fernández pérez, juan manuel', NULL, NULL, NULL, 'c/ cualquiera, 2', NULL, 'arahal', NULL, 'sevilla', '955222955', NULL, 'jmferper@outlook.com', NULL, NULL, '2º ESO B', NULL, NULL, NULL, '22222222B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+insert into alumnos_seneca ("ID", "alumnoa", "estadomatrcula", "nidescolar", "dnipasaporte", "direccin", "cdigopostal", "localidadderesidencia", "fechadenacimiento", "provinciaderesidencia", "telfono", "telfonodeurgencia", "correoelectrnico", "curso", "ndelexpedientedelcentro", "unidad", "primerapellido", "segundoapellido", "nombre", "dnipasaporteprimertutor", "primerapellidoprimertutor", "segundoapellidoprimertutor", "nombreprimertutor", "sexoprimertutor", "dnipasaportesegundotutor", "primerapellidosegundotutor", "segundoapellidosegundotutor", "nombresegundotutor", "sexosegundotutor", "localidaddenacimiento", "aodelamatrcula", "ndematrculasenestecurso", "observacionesdelamatrcula", "provincianacimiento", "pasdenacimiento", "edada3112delaodematrcula", "nacionalidad", "sexo") values ('3', 'cortés sánchez, jose antonio', NULL, NULL, NULL, 'c/ cualquiera, 3', NULL, 'paradas', NULL, 'sevilla', '955333955', NULL, 'jacorsan@gmail.com', NULL, NULL, '3º ESO C', NULL, NULL, NULL, '33333333C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+insert into alumnos_seneca ("ID", "alumnoa", "estadomatrcula", "nidescolar", "dnipasaporte", "direccin", "cdigopostal", "localidadderesidencia", "fechadenacimiento", "provinciaderesidencia", "telfono", "telfonodeurgencia", "correoelectrnico", "curso", "ndelexpedientedelcentro", "unidad", "primerapellido", "segundoapellido", "nombre", "dnipasaporteprimertutor", "primerapellidoprimertutor", "segundoapellidoprimertutor", "nombreprimertutor", "sexoprimertutor", "dnipasaportesegundotutor", "primerapellidosegundotutor", "segundoapellidosegundotutor", "nombresegundotutor", "sexosegundotutor", "localidaddenacimiento", "aodelamatrcula", "ndematrculasenestecurso", "observacionesdelamatrcula", "provincianacimiento", "pasdenacimiento", "edada3112delaodematrcula", "nacionalidad", "sexo") values ('4', 'dalton gamboa, jose francisco', NULL, NULL, NULL, 'c/ cualquiera, 4', NULL, 'marchea', NULL, 'sevilla', '955444955', NULL, 'jfdalgam@yahoo.es', NULL, NULL, '4º ESO D', NULL, NULL, NULL, '44444444C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+COMMIT;
 
-SELECT nombre || ' (' || curso || ')' value, id FROM alumno where nombre like '%jose%'
+
+CREATE VIEW listaPartes as
+select ID, ( select NOMBRE from ALUMNO where ALUMNO.ID=ID_ALUMNO ) ALUMNO, GRUPO, FECHA, HORA, ASIGNATURA, PROFESOR from partes;
+
+SELECT nombre || ' (' || curso || ')' value, id FROM alumno where nombre like '%jose%';
