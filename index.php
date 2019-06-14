@@ -388,6 +388,22 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		echo $twig->render('partes.php',$valores);  
 	}); 
 	
+	$app->get('/editar', function() use ($app){
+		global $twig;
+		
+		$valores=array(
+			"id"=>$app->request()->get('id')
+		);
+		
+		$pdo=$app->db;
+		$q = $pdo->prepare("select * from partes where id=:id");
+		$q->execute($valores);
+		$r=$q->fetch(PDO::FETCH_ASSOC);
+			
+		$valores=array('parte'=>$r);
+		echo $twig->render('parte.php',$valores);
+	});
+		
 	$app->get('/cancelar', function() use ($app){
 		global $twig;
 		$app->redirect('/partes');
@@ -425,6 +441,7 @@ $app->group('/partes','Login::forzarLogin', function () use ($app) {
 		
 		echo $twig->render('parte.php', $valores); 
 	});
+
 });
 
 $app->group('/usuarios','Login::forzarLogin', function () use ($app) {
