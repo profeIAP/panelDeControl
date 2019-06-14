@@ -222,8 +222,10 @@
 					  $("#cursoygrupo").val(respuesta.CURSO);
 					  $("#tutor").val(respuesta.TUTOR);
                        if (respuesta.TUTOR == null || respuesta.TUTOR === 0)
-						$("a").removeAttr("readonly");
-				  });}});
+                       $("#tutor").removeAttr("readonly");
+				  });  
+			  };
+			});
 
 function buscarAsignatura(){				    
 				    $.post("/partes/buscar/asignatura",
