@@ -125,10 +125,10 @@
 						<label><input type="checkbox" name="L_ORDENADORES" value="1"> Utilizar ordenadores sin permiso</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_NOCOLABORAR" value="1"> Alterar el orden y limp. en zonas comunes</label>
+						<label><input type="checkbox" name="L_ALTERARORDEN" value="1"> Alterar el orden y limp. en zonas comunes</label>
 						</div>
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" name="L_IMPUNTUAL" value="1"> Usar indebidamente material en aulas especificas</label>
+						<label><input type="checkbox" name="L_MATERIAL" value="1"> Usar indebidamente material en aulas especificas</label>
 						</div>
 					
 				</div> 
@@ -159,13 +159,10 @@
 				<div class="form-group col-md-6">
 					
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="1" name="G_INJURIAS"> Injurias, ofensas, vejaciones y humillaciones.</label>
-					</div>
+						<label><input type="checkbox" value="1" name="G_OFENSAS"> Injurias, ofensas, vejaciones y humillaciones.</label>
+					        </div> 
 					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="1" name="G_FUMAR"> Fumar en clase</label>
-					</div>
-					<div class="form-group col-md-12">
-						<label><input type="checkbox" value="1" name="G_INCUMPLIMIENTO"> Salir del centro sin autorizacion</label>
+						<label><input type="checkbox" value="1" name="G_SALIR"> Salir del centro sin autorización</label>
 							</div>
 					<div class="form-group col-md-12">
 						<label><input type="checkbox" value="1" name="G_DETERIORO"> Deterioro grave inst., docu o pertenencias</label>
@@ -231,9 +228,9 @@ function buscarAsignatura(){
 				    $.post("/partes/buscar/asignatura",
   {
 
-    FECHA: "#fecha".val(),
-    HORA: "#hora".val(),
-    GRUPO: "#cursoygrupo".val()
+    FECHA: "#06/05/2019".val(),
+    HORA: "#Primera".val(),
+    GRUPO: "#3º ESO B".val()
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);
